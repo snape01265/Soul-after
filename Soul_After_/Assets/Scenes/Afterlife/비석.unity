@@ -24609,6 +24609,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 813239846}
     m_Modifications:
     - target: {fileID: 285024785389922073, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Name
+      value: Dialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 285024785389922073, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2708301436544211815, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071160177500624316, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -24732,6 +24744,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3c075b9ac4f942a4ca4d556a84bad944, type: 3}
+    - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5504333258034670534, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -24771,12 +24803,36 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
   m_PrefabInstance: {fileID: 334661699}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 334661705}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &334661705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4071160177500624316, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+  m_PrefabInstance: {fileID: 334661699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &334661706
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334661705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f1a8ada95398f9845a9c23246c26cc4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &339419152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65154,10 +65210,10 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  animatorWhenTalking: {fileID: 0}
+  animatorWhenTalking: {fileID: 334661706}
   actualAnimator: {fileID: 0}
-  animatorBooleanName: 
-  animatorIntName: 
+  animatorBooleanName: talking
+  animatorIntName: talker
   cutscenePosition: 1
   textSpeed: 50
   currentChar: 0
@@ -65165,7 +65221,15 @@ MonoBehaviour:
   - variableName: name
     variableValue: 
   shouldUsePhotos: 1
-  characters: []
+  characters:
+  - character: {fileID: 11400000, guid: 28b3959032cc0154cadf8a3ce27b7942, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: 81e649c854be0c04694528e2f5c7cd3a, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
   UIPhoto: {fileID: 334661704}
   shouldStayOnScreen: 0
   textAudio: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
@@ -65181,14 +65245,7 @@ MonoBehaviour:
   wordWrap: 1
   maxCharInWidth: 50
   maxCharInHeight: 4
-  sprites:
-  - sprite: {fileID: 21300000, guid: 6b6b101a2d468f546a6b216968ac2fb6, type: 3}
-    lineWithSprite: 0
-    spritePosition: 0
-    width: 430
-    height: 550
-    alreadyInPlace: 0
-    animator: {fileID: 0}
+  sprites: []
   spritesUsed: []
   tmpSpriteAtlas: Default Sprite Asset
   actualTextSpeed: 50
@@ -65531,11 +65588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6290124792954174754, guid: 9ba106fbbf1be374fb9a14543493bd81, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -142.38937
+      value: 641
       objectReference: {fileID: 0}
     - target: {fileID: 6290124792954174754, guid: 9ba106fbbf1be374fb9a14543493bd81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -169.9
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 6290124792954174754, guid: 9ba106fbbf1be374fb9a14543493bd81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
