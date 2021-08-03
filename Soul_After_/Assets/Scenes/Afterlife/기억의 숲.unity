@@ -791,8 +791,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  lineToStart: 7
-  lineToBreak: 7
+  lineToStart: vincent_past1_start
+  lineToBreak: vincent_past1_end
   txtToParse: {fileID: 4900000, guid: c7309f958c9c7504398ea382ccc6ae25, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
@@ -800,18 +800,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2093478658}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1168179905}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: GiveBackControl
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -875,6 +863,7 @@ GameObject:
   - component: {fileID: 739184698}
   - component: {fileID: 739184700}
   - component: {fileID: 739184701}
+  - component: {fileID: 739184702}
   m_Layer: 0
   m_Name: RPGTalk Holder
   m_TagString: Untagged
@@ -916,7 +905,7 @@ MonoBehaviour:
   actualAnimator: {fileID: 0}
   animatorBooleanName: 
   animatorIntName: 
-  cutscenePosition: 0
+  cutscenePosition: 1
   textSpeed: 50
   currentChar: 0
   variables:
@@ -942,7 +931,7 @@ MonoBehaviour:
   sprites: []
   spritesUsed: []
   tmpSpriteAtlas: Default Sprite Asset
-  actualTextSpeed: 0
+  actualTextSpeed: 50
   isPlaying: 0
   isAnimating: 0
   choicePrefab: {fileID: 0}
@@ -1078,6 +1067,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveBetweenPlays: 1
   erase: 0
+--- !u!114 &739184702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739184697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1caa96ac5aef404091fc2bb8198d06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timelineDirector: {fileID: 2093478658}
+  isPaused: 0
 --- !u!114 &876562087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1123,6 +1126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Scene Transition To \uBE44\uC11D"
       objectReference: {fileID: 0}
+    - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+      propertyPath: _audio
+      value: 
+      objectReference: {fileID: 1805088501}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: fadeWait
       value: 0.75
@@ -48751,6 +48758,10 @@ PrefabInstance:
       value: "Scene Transition To \uAE30\uC5B5\uC758 \uC0D8"
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+      propertyPath: _audio
+      value: 
+      objectReference: {fileID: 1805088501}
+    - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: fadeWait
       value: 0.75
       objectReference: {fileID: 0}
@@ -49442,6 +49453,76 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.780325, y: 4.4152317}
   m_EdgeRadius: 0
+--- !u!1001 &1805088500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0ea62e213df40e41b65f93235a57fea, type: 3}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098034858052323625, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_Name
+      value: Transition SFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+--- !u!82 &1805088501 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+  m_PrefabInstance: {fileID: 1805088500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1833441603
 GameObject:
   m_ObjectHideFlags: 0
@@ -51901,7 +51982,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 72eac1205c63bff44a2af4f36d1cf5ab, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -51914,6 +51995,8 @@ PlayableDirector:
     value: {fileID: 40482290}
   - key: {fileID: -2755772425577938167, guid: 72eac1205c63bff44a2af4f36d1cf5ab, type: 2}
     value: {fileID: 40482290}
+  - key: {fileID: -8369615102746421117, guid: 72eac1205c63bff44a2af4f36d1cf5ab, type: 2}
+    value: {fileID: 739184698}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &2093478659
