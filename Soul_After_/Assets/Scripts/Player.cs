@@ -81,6 +81,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag($"MovableObject"))
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        }
+    }
+
     public void ResumeGame()
     {
         Time.timeScale = 1;
