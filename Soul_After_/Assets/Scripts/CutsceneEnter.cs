@@ -35,7 +35,10 @@ public class CutsceneEnter : MonoBehaviour
     }
     public void AddCutscene()
     {
-        cutsceneList.initialValue.Add(cutsceneName);
+        if (!cutsceneList.initialValue.Contains(cutsceneName))
+        {
+            cutsceneList.initialValue.Add(cutsceneName);
+        }
     }
     public IEnumerator FadeCo()
     {

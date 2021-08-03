@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {fileID: 11400000, guid: c9e0d12e35e07264e82a72df119b3c3a, type: 2}
   changedPosition: {x: 43, y: 17}
-  sceneChangePosition: {x: 16, y: 3.4}
+  sceneChangePosition: {x: 43, y: 17}
 --- !u!50 &12785205
 Rigidbody2D:
   serializedVersion: 4
@@ -4305,6 +4305,7 @@ GameObject:
   - component: {fileID: 714714718}
   - component: {fileID: 714714717}
   - component: {fileID: 714714719}
+  - component: {fileID: 714714720}
   m_Layer: 0
   m_Name: "\uC0AC\uC790 \uB4F1\uB85D\uCC98 cutscene"
   m_TagString: Untagged
@@ -4322,7 +4323,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f741a1389a163ab43bb3e84672162939, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4439,7 +4440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714714716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892072645}
@@ -4463,6 +4464,32 @@ MonoBehaviour:
   fadeWait: 0
   cutsceneName: Cutscene 3-1
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
+--- !u!61 &714714720
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714714716}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!4 &750822140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6121082099294048348, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
@@ -6974,6 +7001,9 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 578e31453c691c04faeccec8c8a75259, type: 2}
     - {fileID: 11400000, guid: c2734d0cdc147694ab694dc1ca4267b2, type: 2}
+    - {fileID: 11400000, guid: 134af8be40cc68e4989ff72279500c69, type: 2}
+    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
+    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -6994,6 +7024,60 @@ MonoBehaviour:
         - m_Target: {fileID: 994794683}
           m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
           m_MethodName: DisableComponent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 12785203}
+          m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
+          m_MethodName: ObjectEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 12785203}
+          m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
+          m_MethodName: ObjectEnableOnScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 12785204}
+          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+          m_MethodName: SetPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 714714719}
+          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
+          m_MethodName: AddCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7416,6 +7500,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c9f2b3b1022bcb34192222f732e973dc, type: 2}
     - {fileID: 11400000, guid: 89372e3d280ef1b46a64fd4a7f7e75c2, type: 2}
     - {fileID: 11400000, guid: 0f656de36da90de4790759fb8098136a, type: 2}
+    - {fileID: 11400000, guid: 2653db03b8aa6304f9fc5d222bf135e6, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -7450,6 +7535,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1649266994}
           m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
           m_MethodName: Enable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1086562392}
+          m_TargetAssemblyTypeName: RoadBlock, Assembly-CSharp
+          m_MethodName: QuestTrigger
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -13314,11 +13413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048348, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.99
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048348, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.28
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048348, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13354,19 +13453,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048349, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_Size.x
-      value: 1.979713
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048349, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_Size.y
-      value: 0.9394419
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048349, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_Offset.x
-      value: 0.010143518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048349, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_Offset.y
-      value: -3.0302792
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6121082099294048350, guid: 12923033fee25924883a7fb5eccbe99d, type: 3}
       propertyPath: m_Size.y
