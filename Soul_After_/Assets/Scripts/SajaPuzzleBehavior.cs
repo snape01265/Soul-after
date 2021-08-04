@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public List<GameObject> Buttons;
+    public BoolList PressedStates;
+    private readonly List<bool> finishedState = new List<bool> { true, true, true, true, true, true };
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (finishedState.Equals(PressedStates.initialValue)) {
+            // finish event
+        }
     }
 }
