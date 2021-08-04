@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     {
         if (collision.collider.CompareTag($"MovableObject"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
 
