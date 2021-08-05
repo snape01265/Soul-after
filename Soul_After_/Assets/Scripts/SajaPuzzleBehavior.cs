@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
-    public List<GameObject> Buttons;
-    public BoolList PressedStates;
-    private readonly List<bool> finishedState = new List<bool> { true, true, true, true, true, true };
+    public List<GameObject> buttons;
+    public BoolList pressedStates;
+    private readonly List<bool> FinishedState = new List<bool>(6) { true, true, true, true, true, true };
+    private bool finished = false;
 
-    private void Update()
+    private void Awake()
     {
-        if (finishedState.Equals(PressedStates.initialValue)) {
+        Debug.Log(this.name + " is awake!");
+    }
+
+    void Update()
+    {
+        if (!finished && FinishedState.Equals(pressedStates.initialValue))
+        {
             // finish event
+            Debug.Log("Event Finished!");
+            finished = true;
         }
     }
 }
