@@ -6,20 +6,16 @@ using UnityEngine;
 public class ButtonRenderer : MonoBehaviour
 {
     public BoolList buttonStates;
+    public BoolList boxOnBtn;
     private GameObject BtnUp;
     private bool BtnState;
     private int BtnIdx;
 
-    void Start()
+    private void Start()
     {
-        if (!buttonStates.initialValue.Equals(buttonStates.defaultValue))
-        {
-            buttonStates.initialValue = new List<bool>(buttonStates.defaultValue);
-        }
-
-        Debug.Log("this is =" + this.gameObject.name);
+        //Debug.Log("this is =" + this.gameObject.name);
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
-        Debug.Log("char is =" + a.ToString());
+        //Debug.Log("char is =" + a.ToString());
         BtnIdx = int.Parse(a.ToString()) - 1;
         BtnState = buttonStates.initialValue[BtnIdx];
 
@@ -40,38 +36,32 @@ public class ButtonRenderer : MonoBehaviour
 
         if (BtnUp.activeSelf && collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
-            Debug.Log(this.name + "is pressed!");
-            Debug.Log("BtnIdx = " + BtnIdx);
-            BtnUp.SetActive(false);
-            buttonStates.initialValue[BtnIdx] = true;
-        }
-
-        if (this.gameObject.CompareTag($"ResetBtn") && collision.GetComponent<Collider2D>().CompareTag($"Player"))
-        {
-            Debug.Log("Reset");
-            buttonStates.initialValue = new List<bool>(buttonStates.defaultValue);
-            InitBtn();
+            ButtonDown();
+            gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
         }
     }
 
-    private void InitBtn()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        BtnUp = this.transform.Find("Button Up").gameObject;
-        BtnState = buttonStates.initialValue[BtnIdx];
-
-        if (BtnState)
+        if (collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
-            BtnUp.SetActive(false);
-        } else
-        {
-            BtnUp.SetActive(true);
+            boxOnBtn.initialValue[BtnIdx] = false;
         }
     }
 
-    public void ButtonUp()
+    private void ButtonUp()
     {
         BtnUp = this.transform.Find("Button Up").gameObject;
         BtnUp.SetActive(true);
         buttonStates.initialValue[BtnIdx] = false;
+    }
+
+    private void ButtonDown()
+    {
+        //Debug.Log(this.name + "is pressed!");
+        //Debug.Log("BtnIdx = " + BtnIdx);
+        BtnUp.SetActive(false);
+        buttonStates.initialValue[BtnIdx] = true;
+        boxOnBtn.initialValue[BtnIdx] = true;
     }
 }

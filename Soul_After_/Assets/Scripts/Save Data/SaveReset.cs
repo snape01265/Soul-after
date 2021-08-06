@@ -52,10 +52,23 @@ public class SaveReset : MonoBehaviour
                         ob.initialValue = ob.defaultValue;
                         break;
                     }
+                case "VectorList":
+                    {
+                        VectorList ob = (VectorList)obj;
+                        ob.defaultPos = new List<Vector2>();
+                        break;
+                    }
                 case "BoolValue":
                     {
                         BoolValue ob = (BoolValue)obj;
                         ob.initialValue = ob.defaultValue;
+                        break;
+                    }
+                case "BoolList":
+                    {
+                        BoolList ob = (BoolList)obj;
+                        ob.initialValue = new List<bool>();
+                        ob.defaultValue = new List<bool>();
                         break;
                     }
                 case "AnimatorValue":
