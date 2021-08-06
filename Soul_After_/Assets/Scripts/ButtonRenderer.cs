@@ -33,7 +33,6 @@ public class ButtonRenderer : MonoBehaviour
         // also change ButtonState accordingly
 
         BtnUp = this.transform.Find("Button Up").gameObject;
-
         if (BtnUp.activeSelf && collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
             ButtonDown();
