@@ -537,7 +537,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -521528459
-  m_SortingLayer: 8
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 62aa1d7fe50c7604db07886286502951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1171,6 +1171,8 @@ GameObject:
   m_Component:
   - component: {fileID: 427994034}
   - component: {fileID: 427994033}
+  - component: {fileID: 427994036}
+  - component: {fileID: 427994035}
   m_Layer: 0
   m_Name: House Cutscene 4
   m_TagString: Untagged
@@ -1315,6 +1317,8 @@ PlayableDirector:
     value: {fileID: 1500986187}
   - key: {fileID: -8567591283994959128, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
     value: {fileID: 1008088969}
+  - key: {fileID: -4211145228355240595, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
+    value: {fileID: 427994032}
   m_ExposedReferences:
     m_References:
     - 8e3b78e9828df2b4fa28d82e747d7100: {fileID: 38664011}
@@ -1334,6 +1338,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427994035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427994032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 427994036}
+          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
+          m_MethodName: AddCutscene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &427994036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427994032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cbdbde2950e345459204f56423aca3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutscene: {fileID: 427994033}
+  fadeInPanel: {fileID: 0}
+  fadeOutPanel: {fileID: 0}
+  fadeWait: 0
+  cutsceneName: Cutscene 9-1
+  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!1 &446212481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,7 +4008,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1881301957
-  m_SortingLayer: 12
+  m_SortingLayer: 13
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -6175,7 +6227,7 @@ MonoBehaviour:
   actualAnimator: {fileID: 0}
   animatorBooleanName: 
   animatorIntName: 
-  cutscenePosition: 2
+  cutscenePosition: 3
   textSpeed: 50
   currentChar: 0
   variables: []
@@ -6191,8 +6243,8 @@ MonoBehaviour:
   enablePass: 1
   autoPass: 0
   secondsAutoPass: 3
-  lineToStart: 25
-  lineToBreak: 25
+  lineToStart: 1
+  lineToBreak: 2
   wordWrap: 1
   maxCharInWidth: 50
   maxCharInHeight: 4
@@ -6200,7 +6252,7 @@ MonoBehaviour:
   spritesUsed: []
   tmpSpriteAtlas: Default Sprite Asset
   actualTextSpeed: 15
-  isPlaying: 0
+  isPlaying: 1
   isAnimating: 1
   choicePrefab: {fileID: 0}
   choicesParent: {fileID: 0}
@@ -6572,7 +6624,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -725596913
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: -6277114798775027204, guid: 4e6c8e6cc40f4d0449596338a0c7df92, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7890,7 +7942,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1473228797
-  m_SortingLayer: 9
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

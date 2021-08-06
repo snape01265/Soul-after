@@ -14,11 +14,17 @@ public class DeactivateTalk : MonoBehaviour
         {
             if (cutsceneList.initialValue.Contains(previousCutscene))
             {
-                GetComponent<Collider2D>().enabled = true;
+                if(GetComponent<Collider2D>() != null)
+                {
+                    GetComponent<Collider2D>().enabled = true;
+                }
             }
             else
             {
-                GetComponent<Collider2D>().enabled = false;
+                if (GetComponent<Collider2D>() != null)
+                {
+                    GetComponent<Collider2D>().enabled = false;
+                }
             }
         }
         else
