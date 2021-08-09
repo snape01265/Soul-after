@@ -65,14 +65,11 @@ public class SajaPuzzleBehavior : MonoBehaviour
     {
         finished = false;
         pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
-        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("MovableObject");
-        for (int i = 0; i < 3; i++)
-        {
-            if (!birdPos.defaultPos[i].Equals(gameObjects[i].transform.position))
-            {
-                gameObjects[i].transform.position = birdPos.defaultPos[i];
-            }
-        }
+
+        GameObject.Find("등록시키고 싶은 새").transform.position = birdPos.defaultPos[0];
+        GameObject.Find("멀뚱 멀뚱한 새").transform.position = birdPos.defaultPos[1];
+        GameObject.Find("항상 까먹는 새").transform.position = birdPos.defaultPos[2];
+
 
         foreach (ButtonRenderer btnRend in btnRenders)
         {
