@@ -18,12 +18,12 @@ public class ButtonRenderer : MonoBehaviour
         //Debug.Log("char is =" + a.ToString());
         BtnIdx = int.Parse(a.ToString()) - 1;
         BtnState = buttonStates.initialValue[BtnIdx];
+        BtnUp = this.transform.Find("Button Up").gameObject;
 
         if (BtnState)
         {
             // if true, disable Button Up sprite
-            BtnUp = this.transform.Find("Button Up").gameObject;
-            BtnUp.SetActive(false);
+            ButtonDown();
         }
     }
 
@@ -31,12 +31,14 @@ public class ButtonRenderer : MonoBehaviour
     {
         // disable Button Up Sprite
         // also change ButtonState accordingly
-
-        BtnUp = this.transform.Find("Button Up").gameObject;
-        if (BtnUp.activeSelf && collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
+        if (collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
-            ButtonDown();
-            gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
+            boxOnBtn.initialValue[BtnIdx] = true;
+            if(BtnUp.activeSelf)
+            {
+                ButtonDown();
+                gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
+            }
         }
     }
 
@@ -48,19 +50,13 @@ public class ButtonRenderer : MonoBehaviour
         }
     }
 
-    private void ButtonUp()
+    public void ButtonUp()
     {
-        BtnUp = this.transform.Find("Button Up").gameObject;
         BtnUp.SetActive(true);
-        buttonStates.initialValue[BtnIdx] = false;
     }
 
-    private void ButtonDown()
+    public void ButtonDown()
     {
-        //Debug.Log(this.name + "is pressed!");
-        //Debug.Log("BtnIdx = " + BtnIdx);
         BtnUp.SetActive(false);
-        buttonStates.initialValue[BtnIdx] = true;
-        boxOnBtn.initialValue[BtnIdx] = true;
     }
 }

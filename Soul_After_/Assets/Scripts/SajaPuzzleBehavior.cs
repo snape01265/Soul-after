@@ -16,6 +16,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void Awake()
     {
+        boxOnBtn.initialValue = new List<bool>(6) { false, false, false, false, false, false };
         if (!pressedStates.initialValue.SequenceEqual(pressedStates.defaultValue))
         {
             pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
@@ -37,6 +38,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
             ButtonRenderer _btnRend = btn.GetComponent<ButtonRenderer>();
             if (_btnRend != null)
             {
+                GameObject.Find("Road Block").SetActive(true);
                 btnRenders.Add(_btnRend);
             }
         }
@@ -59,6 +61,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     public void ResetPuzzle()
     {
+        finished = false;
         pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("MovableObject");
         
@@ -72,7 +75,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
         foreach (ButtonRenderer btnRend in btnRenders)
         {
-            btnRend.Invoke("ButtonUp", 0f);
+            btnRend.ButtonUp();
         }
     }
 
@@ -80,7 +83,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
     {
         if (!finished)
         {
-            //Debug.Log("Advance: idx = " + idx);
+            pressedStates.initialValue[idx] = true;
 
             switch (idx)
             {
@@ -123,7 +126,10 @@ public class SajaPuzzleBehavior : MonoBehaviour
                         break;
                     }
                 default:
-                    break;
+                    {
+                        Debug.LogWarning("Some problem at SajaPuzleBehavior.cs!");
+                        break;
+                    }
             }
 
             CheckFinished();
@@ -135,7 +141,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (boxOnBtn.initialValue[idx] == false)
         {
             pressedStates.initialValue[idx] = false;
-            btnRenders[idx].Invoke("ButtonUp", 0.1f);
+            btnRenders[idx].ButtonUp();
         }
     }
 }
