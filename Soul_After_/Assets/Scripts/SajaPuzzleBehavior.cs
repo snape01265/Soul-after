@@ -13,6 +13,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
     private bool finished = false;
     private List<ButtonRenderer> btnRenders;
     private GameObject[] buttons;
+    public AudioSource _audio;
 
     private void Awake()
     {
@@ -53,6 +54,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
             GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
             puzzleFin.initialValue = true;
             finished = true;
+            _audio.Play();
         } else
         {
             Debug.Log("Not finished");

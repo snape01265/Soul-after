@@ -37,8 +37,4 @@ public class MusicPlayer : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    public IEnumerator MusicFade()
-    {
-
-    }
 }

@@ -7,9 +7,9 @@ public class SajaPuzzleReset : MonoBehaviour
     public VectorList birdPos;
     private SajaPuzzleBehavior SajaPuzzle;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>().CompareTag("Player"))
+        if (collision.GetComponent<Collider2D>().CompareTag("Player") && Input.GetButtonDown("Jump"))
         {
             SajaPuzzle = gameObject.GetComponentInParent<SajaPuzzleBehavior>();
 

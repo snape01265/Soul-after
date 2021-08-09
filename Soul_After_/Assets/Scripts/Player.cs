@@ -93,14 +93,14 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1;
         ispaused = false;
-        AudioListener.pause = false;
+        AudioListener.volume = 1f;
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
         ispaused = true;
-        AudioListener.pause = true;
+        AudioListener.volume = 0.25f;
     }
 
     //application quit

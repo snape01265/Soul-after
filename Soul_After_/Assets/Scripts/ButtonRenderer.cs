@@ -10,6 +10,7 @@ public class ButtonRenderer : MonoBehaviour
     private GameObject BtnUp;
     private bool BtnState;
     private int BtnIdx;
+    public AudioSource _audio;
 
     private void Start()
     {
@@ -52,11 +53,13 @@ public class ButtonRenderer : MonoBehaviour
 
     public void ButtonUp()
     {
+        _audio.Play();
         BtnUp.SetActive(true);
     }
 
     public void ButtonDown()
     {
+        _audio.Play();
         BtnUp.SetActive(false);
     }
 }
