@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class MusicPlayer : MonoBehaviour
 {
     public CutsceneList bgm;
+    public float fadeoutTime;
+    private AudioSource curMusic;
 
     private void Awake()
     {
+        curMusic = this.gameObject.GetComponent<AudioSource>();
         SetUpSingleton();
     }
     public void UpdateMusic(string scenetoload)
@@ -21,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            StartCoroutine(MusicFade());
             Debug.Log("Destroyed");
         }
 
@@ -39,6 +42,16 @@ public class MusicPlayer : MonoBehaviour
     }
     public IEnumerator MusicFade()
     {
+        float currentTime = 0;
+        float start = curMusic.volume;
 
+        while (currentTime < fadeoutTime)
+        {
+            currentTime += Time.deltaTime;
+            curMusic.volume = Mathf.Lerp(start, 0, currentTime / fadeoutTime);
+            yield return null;
+        }
+        Destroy(this.gameObject);
+        yield break;
     }
 }
