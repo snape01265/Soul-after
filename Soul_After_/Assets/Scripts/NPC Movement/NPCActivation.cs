@@ -6,12 +6,10 @@ public class NPCActivation : MonoBehaviour
 {
     public BoolValue activate;
     public GameObject NPC;
-
     void Start()
     {
         ActivateObject();
     }
-
     public void ActivateObject()
     {
         if (activate.initialValue)

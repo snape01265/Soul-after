@@ -1704,6 +1704,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1174571432573445897, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
+      propertyPath: SceneToPlayMusic1
+      value: "\uC778\uAC04\uBD80\uC11C1\uCE35"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174571432573445897, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
+      propertyPath: SceneToPlayMusic2
+      value: "\uC778\uAC04\uBD80\uC11C2\uCE35"
+      objectReference: {fileID: 0}
     - target: {fileID: 1562890201031171731, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1761,26 +1769,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a814cb2db9dcf2d4d864bf00680ebee5, type: 3}
     m_RemovedComponents:
-    - {fileID: 9156522538825242679, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
-    - {fileID: 1174571432573445897, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
---- !u!1 &104278151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3261455662815734082, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
-  m_PrefabInstance: {fileID: 104278150}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &104278152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104278151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e1f21bb19c9c146877d3756201dad1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &121318522
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,6 +2589,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 285024785389922073, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
   m_PrefabInstance: {fileID: 227950954}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &227950958 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4486433108246338005, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+  m_PrefabInstance: {fileID: 227950954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &286229922
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2712,6 +2707,10 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: c9175d797aeb4064abe49ce6ef2e48d0, type: 3}
+    - target: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4750232600887592611, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -2943,16 +2942,20 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  animatorWhenTalking: {fileID: 0}
+  animatorWhenTalking: {fileID: 227950958}
   actualAnimator: {fileID: 0}
-  animatorBooleanName: 
-  animatorIntName: 
+  animatorBooleanName: talking
+  animatorIntName: talker
   cutscenePosition: 0
   textSpeed: 50
   currentChar: 0
   variables: []
   shouldUsePhotos: 0
-  characters: []
+  characters:
+  - character: {fileID: 11400000, guid: 28b3959032cc0154cadf8a3ce27b7942, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
   UIPhoto: {fileID: 0}
   shouldStayOnScreen: 0
   textAudio: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
