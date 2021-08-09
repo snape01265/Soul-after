@@ -31,6 +31,7 @@ public class SceneTransition : MonoBehaviour
             lastScene.initialValue = sceneToLoad;
             playerStorage.initialValue = playerPosition;
             StartCoroutine(FadeCo());
+            GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
             //SceneManager.LoadScene(sceneToLoad);
         }
     }
@@ -48,7 +49,6 @@ public class SceneTransition : MonoBehaviour
         }
         yield return new WaitForSeconds(fadeWait);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
-        GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
         while (!asyncOperation.isDone)
         {
             yield return null;
