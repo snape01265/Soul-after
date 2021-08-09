@@ -14,14 +14,15 @@ public class MusicPlayer : MonoBehaviour
     public void UpdateMusic(string scenetoload)
     {
         string scene = scenetoload;
-
         if (bgm.initialValue.Contains(scene))
         {
             DontDestroyOnLoad(this.gameObject);
+            Debug.Log("Not Destroyed");
         }
         else
         {
             Destroy(this.gameObject);
+            Debug.Log("Destroyed");
         }
 
     }
@@ -35,5 +36,9 @@ public class MusicPlayer : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+    }
+    public IEnumerator MusicFade()
+    {
+
     }
 }
