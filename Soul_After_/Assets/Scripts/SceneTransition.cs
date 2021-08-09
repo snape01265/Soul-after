@@ -38,6 +38,7 @@ public class SceneTransition : MonoBehaviour
     {
         lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
+        GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
         StartCoroutine(FadeCo());
     }
     public IEnumerator FadeCo()
