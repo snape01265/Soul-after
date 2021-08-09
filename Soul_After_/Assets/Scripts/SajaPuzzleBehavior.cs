@@ -66,7 +66,6 @@ public class SajaPuzzleBehavior : MonoBehaviour
         finished = false;
         pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("MovableObject");
-        
         for (int i = 0; i < 3; i++)
         {
             if (!birdPos.defaultPos[i].Equals(gameObjects[i].transform.position))
