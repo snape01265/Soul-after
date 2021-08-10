@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicFade : MonoBehaviour
+public class MusicTransition : MonoBehaviour
 {
-    public AudioSource _audio;
+    private AudioSource _audio;
     public float duration;
     public float targetVolume;
     public IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
@@ -18,10 +18,12 @@ public class MusicFade : MonoBehaviour
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
         }
+
         yield break;
     }
     public void FadeMusic()
     {
+        _audio = GameObject.Find("Music Player").GetComponent<AudioSource>();
         StartCoroutine(StartFade(_audio, duration, targetVolume));
     }
 }

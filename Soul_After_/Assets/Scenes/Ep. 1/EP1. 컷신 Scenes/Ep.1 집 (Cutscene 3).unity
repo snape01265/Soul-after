@@ -924,6 +924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533187913}
   - component: {fileID: 533187912}
+  - component: {fileID: 533187914}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: Untagged
@@ -1041,6 +1042,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &533187914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533187911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: 12e65bd28e54003459cdba90a5a67194, type: 2}
+  fadeoutTime: 0
 --- !u!1 &599440781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,6 +2562,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 174975639484847921, guid: 2cd47a908f3542245bb2005e1a03d254, type: 3}
+      propertyPath: fadeWait
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 174975639484847921, guid: 2cd47a908f3542245bb2005e1a03d254, type: 3}
       propertyPath: sceneToLoad
       value: "Ep.1 \uC548\uBC29 (Cutscene)"

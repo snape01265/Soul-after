@@ -263,6 +263,10 @@ GameObject:
   m_Component:
   - component: {fileID: 201551804}
   - component: {fileID: 201551803}
+  - component: {fileID: 201551805}
+  - component: {fileID: 201551807}
+  - component: {fileID: 201551806}
+  - component: {fileID: 201551808}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: Untagged
@@ -282,9 +286,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4f6ca74f147a8944abd1465c6ec7337c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -380,6 +384,79 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201551805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201551802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: 12e65bd28e54003459cdba90a5a67194, type: 2}
+  fadeoutTime: 0
+--- !u!114 &201551806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201551802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b799838d861178a42bd3fb92b0b1258b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audio: {fileID: 201551803}
+  duration: 0.5
+  targetVolume: 0
+--- !u!114 &201551807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201551802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 939af2e2c79f0384399b7b9852079f32, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 201551806}
+          m_TargetAssemblyTypeName: MusicFade, Assembly-CSharp
+          m_MethodName: FadeMusic
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &201551808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201551802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e82d7fbd564e30439132942da9affd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  targetVolume: 0
 --- !u!1 &356582819
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,7 +898,7 @@ MonoBehaviour:
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
-  cutscenePosition: 7
+  cutscenePosition: 6
   textSpeed: 50
   currentChar: 0
   variables: []
@@ -837,8 +914,8 @@ MonoBehaviour:
   enablePass: 1
   autoPass: 0
   secondsAutoPass: 3
-  lineToStart: 15
-  lineToBreak: 15
+  lineToStart: 12
+  lineToBreak: 12
   wordWrap: 1
   maxCharInWidth: 50
   maxCharInHeight: 4
@@ -2208,7 +2285,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1917801675
   m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4e70edd070bcecd4abf4a1d39886984a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

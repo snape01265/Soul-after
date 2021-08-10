@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//비석과 큰길에서 사용되는 뮤직 플레이어
+//다른 scene에서도 지속적으로 음악을 플레이하게 하는 스크립트
 public class MusicPlayer : MonoBehaviour
 {
     public CutsceneList bgm;
@@ -11,7 +11,7 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
-        curMusic = this.gameObject.GetComponent<AudioSource>();
+        curMusic = gameObject.GetComponent<AudioSource>();
         SetUpSingleton();
     }
     public void UpdateMusic(string scenetoload)
@@ -19,7 +19,7 @@ public class MusicPlayer : MonoBehaviour
         string scene = scenetoload;
         if (bgm.initialValue.Contains(scene))
         {
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
             Debug.Log("Not Destroyed");
         }
         else
@@ -33,11 +33,11 @@ public class MusicPlayer : MonoBehaviour
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
     }
     public IEnumerator MusicFade()
@@ -51,7 +51,11 @@ public class MusicPlayer : MonoBehaviour
             curMusic.volume = Mathf.Lerp(start, 0, currentTime / fadeoutTime);
             yield return null;
         }
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         yield break;
+    }
+    public void DisableMusic()
+    {
+        gameObject.SetActive(false);
     }
 }
