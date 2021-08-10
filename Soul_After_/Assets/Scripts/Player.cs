@@ -36,11 +36,6 @@ public class Player : MonoBehaviour
             mainClothes = animatorValue.defaultAnimator;
             changeClothes = animatorValue.initialAnimator;
         }
-        else
-        {
-        animatorValue.defaultAnimator = mainClothes;
-        animatorValue.initialAnimator = changeClothes;
-        }
     }
     void Start()
     {
@@ -181,7 +176,6 @@ public class Player : MonoBehaviour
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
-        animatorValue.defaultAnimator = changeSuit;
         changeClothes = animatorValue.initialAnimator;
     }
     private void AnimatorOverride()
