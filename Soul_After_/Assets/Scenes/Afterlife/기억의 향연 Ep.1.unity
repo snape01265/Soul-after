@@ -1323,6 +1323,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8852b3c9ab60ce34887f0331ebea79db, type: 2}
     - {fileID: 11400000, guid: a9001a04adc48f141af652c04cdb8250, type: 2}
     - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
+    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1394,6 +1395,40 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 213297352}
+          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+          m_MethodName: SetPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &204883420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3732646352336015123, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
+  m_PrefabInstance: {fileID: 234356381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204883421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204883420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14948a7c5b8b88143934f4d2fc8840eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {fileID: 11400000, guid: 45cb1ef3635500e4ba3c5fb11d5170c0, type: 2}
+  changedPosition: {x: 43, y: 0}
+  sceneChangePosition: {x: 61, y: 0}
 --- !u!1 &211530588
 GameObject:
   m_ObjectHideFlags: 0
@@ -6538,6 +6573,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1722220642}
         m_TargetAssemblyTypeName: CutsceneToScene, Assembly-CSharp
         m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 204883421}
+        m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+        m_MethodName: SetPosition
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18323,6 +18370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 436536061}
     m_Modifications:
+    - target: {fileID: 5260913593522451200, guid: abeaad3ae875eea42b1898b2bab8252c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5260913594094426521, guid: abeaad3ae875eea42b1898b2bab8252c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -18410,6 +18461,10 @@ PrefabInstance:
     - target: {fileID: 5260913594094426597, guid: abeaad3ae875eea42b1898b2bab8252c, type: 3}
       propertyPath: m_Name
       value: Sub Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260913594482209996, guid: abeaad3ae875eea42b1898b2bab8252c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abeaad3ae875eea42b1898b2bab8252c, type: 3}
@@ -18527,15 +18582,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.323314
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.083275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -52.137558
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18565,6 +18620,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3057378388941152303, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
+      propertyPath: objects.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3057378388941152303, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
+      propertyPath: objects.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: c61a720e5a3ecdb46ab0373eb984eedf, type: 2}
+    - target: {fileID: 3057378388941152303, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
+      propertyPath: objects.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1170b77b67fc3f14b8c811baab7539c0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
 --- !u!114 &1389718836 stripped
