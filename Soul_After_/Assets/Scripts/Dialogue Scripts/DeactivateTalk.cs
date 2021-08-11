@@ -16,19 +16,9 @@ public class DeactivateTalk : MonoBehaviour
     {
         if (!cutsceneList.initialValue.Contains(watchedCutscene) && cutsceneList != null)
         {
-            if (cutsceneList.initialValue.Contains(previousCutscene))
+            if(GetComponent<Collider2D>() != null)
             {
-                if(GetComponent<Collider2D>() != null)
-                {
-                    GetComponent<Collider2D>().enabled = true;
-                }
-            }
-            else
-            {
-                if (GetComponent<Collider2D>() != null)
-                {
-                    GetComponent<Collider2D>().enabled = false;
-                }
+                GetComponent<Collider2D>().enabled = cutsceneList.initialValue.Contains(previousCutscene);
             }
         }
         else
