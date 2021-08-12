@@ -11,7 +11,7 @@ public class CutsceneToScene : MonoBehaviour
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
-
+    public AudioSource _audio;
     void Awake()
     {
         if (fadeInPanel != null)
@@ -22,6 +22,7 @@ public class CutsceneToScene : MonoBehaviour
     }
     private void OnEnable()
     {
+        _audio.Play();
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
     }
@@ -39,7 +40,6 @@ public class CutsceneToScene : MonoBehaviour
             yield return null;
         }
     }
-
     public void Activate()
     {
         this.gameObject.SetActive(true);

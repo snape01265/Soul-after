@@ -51,7 +51,8 @@ public class SajaPuzzleBehavior : MonoBehaviour
         {
             // finish event
             Debug.Log("Event Finished!");
-            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
+            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = false;
+            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area (Suit On)").GetComponent<RPGTalkArea>().enabled = true;
             puzzleFin.initialValue = true;
             finished = true;
             _audio.Play();

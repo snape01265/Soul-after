@@ -881,6 +881,7 @@ GameObject:
   - component: {fileID: 139900207}
   - component: {fileID: 139900211}
   - component: {fileID: 139900210}
+  - component: {fileID: 139900212}
   m_Layer: 0
   m_Name: RPGTalk Holder
   m_TagString: Untagged
@@ -1126,6 +1127,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &139900212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139900206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0385d72fa46a499bb77554b7dc4ba79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveBetweenPlays: 1
+  erase: 0
 --- !u!1 &171977117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6317998808120547055, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
@@ -4922,7 +4937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &714714717
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -5253,7 +5268,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.9349998}
+  m_ConnectedAnchor: {x: 0, y: -0.93499994}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!255 &756231372
@@ -5271,7 +5286,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -1.8099998}
+  m_ConnectedAnchor: {x: 0, y: -1.81}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!213 &763350272
@@ -8206,7 +8221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1004257824
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -8246,7 +8261,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004257823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.49, y: 2.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1892072645}
@@ -8467,6 +8482,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 89372e3d280ef1b46a64fd4a7f7e75c2, type: 2}
     - {fileID: 11400000, guid: 0f656de36da90de4790759fb8098136a, type: 2}
     - {fileID: 11400000, guid: 2653db03b8aa6304f9fc5d222bf135e6, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -8515,6 +8531,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1086562392}
           m_TargetAssemblyTypeName: RoadBlock, Assembly-CSharp
           m_MethodName: QuestTrigger
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1926154826}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9867,7 +9897,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -1.8099998}
+  m_ConnectedAnchor: {x: 0, y: -1.81}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!255 &1331114591
@@ -9885,7 +9915,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.936}
+  m_ConnectedAnchor: {x: 0, y: -0.9359999}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &1338804683
@@ -13508,6 +13538,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1157790374}
+  - {fileID: 1567025564}
   m_Father: {fileID: 367704312}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13607,6 +13638,142 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1567025563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567025564}
+  - component: {fileID: 1567025567}
+  - component: {fileID: 1567025566}
+  - component: {fileID: 1567025565}
+  m_Layer: 0
+  m_Name: RPGTalk Area (Suit On)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1567025564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567025563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1461480595}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567025565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567025563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
+--- !u!114 &1567025566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567025563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af02b5d7648a4e8492f3b9fc160319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rpgtalkTarget: {fileID: 139900208}
+  shouldInteractWithButton: 1
+  showWhenInteractionIsPossible: []
+  interactionKey: 32
+  interactionButton: 
+  interactWithMouse: 0
+  checkIfColliderHasTag: Player
+  callbackBeforeTalk:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1926154826}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: CancelControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lineToStart: 2
+  lineToBreak: 2
+  txtToParse: {fileID: 4900000, guid: 768c8509da5b95d418fc9412124d8d5c, type: 3}
+  overwriteCallbackAfterTalk:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1004257824}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  happenOnlyOnce: 1
+  alreadyHappened: 0
+  triggerEnter: 1
+  triggerExit: 0
+  shouldStayOnScreen: 0
+  forbidPlayIfRpgtalkIsPlaying: 1
+  timelineDirectorToPlay: {fileID: 0}
+  saveAlreadyHappened: 1
+  autoPass: 0
+  secondsAutoPass: 3
+  containInsideScreen: 0
+--- !u!61 &1567025567
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567025563}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.012320995, y: 0.29521883}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.3560114, y: 3.3286908}
+  m_EdgeRadius: 0
 --- !u!1 &1584589310
 GameObject:
   m_ObjectHideFlags: 0
