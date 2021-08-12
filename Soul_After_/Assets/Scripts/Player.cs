@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool nameSet;
     private static bool ispaused = false;
+    private readonly float normalVol = 1f;
+    private readonly float pauseVol = .25f;
 
     public VectorValue startingPosition;
     public BoolValue nameSetValue;
@@ -43,7 +45,7 @@ public class Player : MonoBehaviour
         animatorValue.initialAnimator = changeClothes;
         }
 
-        AudioListener.volume = curVol.initialValue * 1f;
+        AudioListener.volume = curVol.initialValue * normalVol;
     }
     void Start()
     {
@@ -96,14 +98,14 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1;
         ispaused = false;
-        AudioListener.volume = curVol.initialValue * 1f;
+        AudioListener.volume = curVol.initialValue * normalVol;
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
         ispaused = true;
-        AudioListener.volume = curVol.initialValue * 0.25f;
+        AudioListener.volume = curVol.initialValue * pauseVol;
     }
 
     //application quit
