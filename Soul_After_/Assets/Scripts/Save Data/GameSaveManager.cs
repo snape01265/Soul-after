@@ -6,11 +6,8 @@ using UnityEngine;
 
 public class GameSaveManager : MonoBehaviour
 {
-
     public static GameSaveManager gameSave;
     public List<ScriptableObject> objToSave;
-
-    private readonly int maxSaveSlots = 3;
 
     private void Awake()
     {
