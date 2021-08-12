@@ -664,6 +664,7 @@ GameObject:
   - component: {fileID: 52648249}
   - component: {fileID: 52648250}
   - component: {fileID: 52648251}
+  - component: {fileID: 52648252}
   m_Layer: 0
   m_Name: Cutscene (Last Memory)
   m_TagString: Untagged
@@ -706,6 +707,8 @@ PlayableDirector:
     value: {fileID: 1804433073}
   - key: {fileID: -6404526864323912081, guid: ba236e4d6788a844496098fbdd4cdfd7, type: 2}
     value: {fileID: 1804433074}
+  - key: {fileID: 2373662468503339107, guid: ba236e4d6788a844496098fbdd4cdfd7, type: 2}
+    value: {fileID: 52648246}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &52648248
@@ -738,7 +741,7 @@ MonoBehaviour:
   fadeInPanel: {fileID: 6626229727898054473, guid: 7e896ae3b7b09694193f5391c0d7f75c, type: 3}
   fadeOutPanel: {fileID: 8350721012333504612, guid: 4b1ca0a985a31144ba9592da358d193d, type: 3}
   fadeWait: 0.75
-  cutsceneName: Cutscene 11
+  cutsceneName: Cutscene 12
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!61 &52648250
 BoxCollider2D:
@@ -778,8 +781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousCutscene: Cutscene 10
-  watchedCutscene: Cutscene 11
+  previousCutscene: Cutscene 11
+  watchedCutscene: Cutscene 12
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!1 &59990560
 GameObject:
@@ -956,7 +959,7 @@ GameObject:
   - component: {fileID: 141633249}
   - component: {fileID: 141633248}
   - component: {fileID: 141633252}
-  - component: {fileID: 141633251}
+  - component: {fileID: 141633247}
   m_Layer: 0
   m_Name: RPGTalk Area 2
   m_TagString: Untagged
@@ -978,6 +981,21 @@ Transform:
   m_Father: {fileID: 557308892}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141633247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141633245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousCutscene: Cutscene 9-1
+  watchedCutscene: Cutscene 10
+  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!114 &141633248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,19 +1099,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &141633251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 141633245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627bb6ff693163a4085b6babbc600a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rpgTalk: {fileID: 141633249}
 --- !u!114 &141633252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1113,7 +1118,7 @@ MonoBehaviour:
     m_Events:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 141633251}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
           m_MethodName: EnableThisObject
           m_Mode: 1
@@ -1127,7 +1132,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 141633251}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
           m_MethodName: DisableThisObject
           m_Mode: 1
@@ -1731,7 +1736,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1224125434}
           m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
-          m_MethodName: DisableThisObject
+          m_MethodName: DisableAllObject
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1771,9 +1776,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 141633251}
+        - m_Target: {fileID: 1224125434}
           m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
-          m_MethodName: EnableThisObject
+          m_MethodName: EnableIndexObject
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1785,9 +1790,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 141633251}
+        - m_Target: {fileID: 1224125434}
           m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
-          m_MethodName: DisableThisObject
+          m_MethodName: DisableIndexObject
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7684,7 +7689,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.046560287, y: -0.039092183}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7695,7 +7700,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9356728, y: 2.0742476}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1001 &556574179
 PrefabInstance:
@@ -9226,7 +9231,7 @@ MonoBehaviour:
   mainCamera: 1
   otherCamera: {fileID: 0}
   txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
-  enableQuickSkip: 1
+  enableQuickSkip: 0
   callback:
     m_PersistentCalls:
       m_Calls: []
@@ -9632,7 +9637,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0016636848, y: 0.007125497}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9643,7 +9648,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0799227, y: 1.9702976}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1001 &865379517
 PrefabInstance:
@@ -10234,7 +10239,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1224125435}
   - component: {fileID: 1224125434}
-  - component: {fileID: 1224125436}
   m_Layer: 0
   m_Name: RPGTalk Controller
   m_TagString: Untagged
@@ -10254,7 +10258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627bb6ff693163a4085b6babbc600a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rpgTalk: {fileID: 405628398}
+  rpgTalk:
+  - {fileID: 405628398}
+  - {fileID: 141633249}
+  index: 01000000
 --- !u!4 &1224125435
 Transform:
   m_ObjectHideFlags: 0
@@ -10269,19 +10276,6 @@ Transform:
   m_Father: {fileID: 382166700}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1224125436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1224125433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627bb6ff693163a4085b6babbc600a1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rpgTalk: {fileID: 141633249}
 --- !u!1 &1232378697
 GameObject:
   m_ObjectHideFlags: 0
@@ -25010,7 +25004,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1273828522
 AudioSource:
@@ -25153,7 +25147,7 @@ MonoBehaviour:
   mainCamera: 1
   otherCamera: {fileID: 0}
   txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
-  enableQuickSkip: 1
+  enableQuickSkip: 0
   callback:
     m_PersistentCalls:
       m_Calls: []
@@ -25554,7 +25548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25969,7 +25963,7 @@ PrefabInstance:
       objectReference: {fileID: 1389718837}
     - target: {fileID: 8674970970675588282, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8674970970675588282, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26012,7 +26006,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 8674970970675588276, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
 --- !u!4 &1463962719 stripped
 Transform:
@@ -26256,6 +26250,37 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4486433108246338005, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
   m_PrefabInstance: {fileID: 1588639568}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1594499554 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8674970970675588273, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+  m_PrefabInstance: {fileID: 1761505140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1594499559
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594499554}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &1637462787
 GameObject:
   m_ObjectHideFlags: 0
@@ -26803,7 +26828,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758131489
 GameObject:
@@ -26898,14 +26923,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SavePoint (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8674970970675588276, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
-      propertyPath: m_Size.y
-      value: 2.61628
-      objectReference: {fileID: 0}
-    - target: {fileID: 8674970970675588276, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.1918599
-      objectReference: {fileID: 0}
     - target: {fileID: 8674970970675588278, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: gameSave
       value: 
@@ -26958,8 +26975,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8674970970675588276, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
 --- !u!4 &1761505141 stripped
 Transform:
@@ -27766,7 +27782,7 @@ Transform:
   - {fileID: 2136232216}
   - {fileID: 1281744867}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2069274115 stripped
 MonoBehaviour:
@@ -27832,7 +27848,7 @@ MonoBehaviour:
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
-  cutscenePosition: 10
+  cutscenePosition: 5
   textSpeed: 50
   currentChar: 0
   variables:

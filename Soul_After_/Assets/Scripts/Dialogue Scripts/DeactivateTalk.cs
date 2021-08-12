@@ -8,9 +8,13 @@ public class DeactivateTalk : MonoBehaviour
     public string watchedCutscene;
     public CutsceneList cutsceneList;
 
-    private void Update()
+    private void Start()
     {
-        if (!cutsceneList.initialValue.Contains(watchedCutscene))
+        CheckCutscene();
+    }
+    private void CheckCutscene()
+    {
+        if (!cutsceneList.initialValue.Contains(watchedCutscene) && cutsceneList != null)
         {
             if(GetComponent<Collider2D>() != null)
             {

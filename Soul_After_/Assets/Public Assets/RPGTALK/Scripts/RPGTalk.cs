@@ -1523,8 +1523,7 @@ public class RPGTalk : MonoBehaviour {
         }
 
 
-        if (textUI != null && textUI.Enabled() &&
-            currentChar >= rpgtalkElements [cutscenePosition - 1].dialogText.Length) {
+        if (textUI != null && textUI.Enabled() && currentChar >= rpgtalkElements [cutscenePosition - 1].dialogText.Length) {
             //if we hit the end of the talk, but we should stay on screen, return.
             //but if we have a callback, he can click on it once more.
             if (cutscenePosition >= rpgtalkElements.Count && shouldStayOnScreen) {
