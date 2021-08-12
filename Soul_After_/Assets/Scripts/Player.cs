@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
 using System;
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            // ÀÌÇÏ Animation °ª Á¶Á¤
+            // ï¿½ï¿½ï¿½ï¿½ Animation ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             animator.SetFloat("Move X", change.x);
             animator.SetFloat("Move Y", change.y);
             animator.SetBool("Moving", true);
@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
     }
     void MoveCharacter()
     {
-        // ´ë°¢¼± ¿òÁ÷ÀÓÀÌ µÎ¹èÀÇ ¼Óµµ¸¦ ¸¸µå´Â ¹®Á¦ ÇØ°á
+        // ï¿½ë°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½
         if (change.x != 0  && change.y != 0)
         {
             float ms = Mathf.Sqrt(2);
@@ -186,7 +186,6 @@ public class Player : MonoBehaviour
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
-        animatorValue.defaultAnimator = changeSuit;
         changeClothes = animatorValue.initialAnimator;
     }
     private void AnimatorOverride()
