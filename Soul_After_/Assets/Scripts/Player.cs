@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
 using System;
@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public GameObject askWho;
     public InputField myName;
     public RPGTalk rpgTalk;
+    public FloatValue curVol;
     public AnimatorOverrideController changeSuit;
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
     private Animator animator;
     private bool nameSet;
     private static bool ispaused = false;
+    private readonly float normalVol = 1f;
+    private readonly float pauseVol = .25f;
 
     public VectorValue startingPosition;
     public BoolValue nameSetValue;
@@ -36,6 +39,13 @@ public class Player : MonoBehaviour
             mainClothes = animatorValue.defaultAnimator;
             changeClothes = animatorValue.initialAnimator;
         }
+        else
+        {
+        animatorValue.defaultAnimator = mainClothes;
+        animatorValue.initialAnimator = changeClothes;
+        }
+
+        AudioListener.volume = curVol.initialValue * normalVol;
     }
     void Start()
     {
@@ -88,14 +98,14 @@ public class Player : MonoBehaviour
     {
         Time.timeScale = 1;
         ispaused = false;
-        AudioListener.volume = 1f;
+        AudioListener.volume = curVol.initialValue * normalVol;
     }
 
     public void PauseGame()
     {
         Time.timeScale = 0;
         ispaused = true;
-        AudioListener.volume = 0.25f;
+        AudioListener.volume = curVol.initialValue * pauseVol;
     }
 
     //application quit
@@ -126,7 +136,7 @@ public class Player : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            // ÀÌÇÏ Animation °ª Á¶Á¤
+            // ï¿½ï¿½ï¿½ï¿½ Animation ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             animator.SetFloat("Move X", change.x);
             animator.SetFloat("Move Y", change.y);
             animator.SetBool("Moving", true);
@@ -138,7 +148,7 @@ public class Player : MonoBehaviour
     }
     void MoveCharacter()
     {
-        // ´ë°¢¼± ¿òÁ÷ÀÓÀÌ µÎ¹èÀÇ ¼Óµµ¸¦ ¸¸µå´Â ¹®Á¦ ÇØ°á
+        // ï¿½ë°¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø°ï¿½
         if (change.x != 0  && change.y != 0)
         {
             float ms = Mathf.Sqrt(2);
