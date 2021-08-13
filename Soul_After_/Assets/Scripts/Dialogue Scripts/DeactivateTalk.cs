@@ -12,7 +12,7 @@ public class DeactivateTalk : MonoBehaviour
     {
         CheckCutscene();
     }
-    private void CheckCutscene()
+    public void CheckCutscene()
     {
         if (!cutsceneList.initialValue.Contains(watchedCutscene) && cutsceneList != null)
         {
