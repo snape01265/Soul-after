@@ -12,11 +12,11 @@ public class NPCActivation : MonoBehaviour
     }
     public void ActivateObject()
     {
-        if (activate.initialValue)
+        if (activate.initialValue && NPC != null)
         {
             NPC.SetActive(true);
         }
-        else
+        else if (!activate.initialValue)
         {
             NPC.SetActive(false);
         }

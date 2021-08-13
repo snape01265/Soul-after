@@ -17,7 +17,7 @@ public class SavePoint : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && inRange)
         {
             startingPosition.initialValue = new Vector2(transform.position.x, transform.position.y - 1);
-            gameSave.SaveScriptables(gameSave.objects);
+            gameSave.SaveScriptables(gameSave.objToSave);
             Debug.Log("game saved");
         }
     }
