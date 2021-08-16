@@ -6,8 +6,6 @@ public class CameraShake : MonoBehaviour
 {
     public Animator camAnim;
     public Animator imageAnim;
-    public float duration;
-    public float magnitude;
 
     public void CamShake()
     {
