@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public bool levelClear;
     public GameObject SPDisplay;
     private Text text;
+    private CameraShake shake;
     public AudioSource hitSound;
     public AudioSource acqSound;
 
@@ -25,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         text = SPDisplay.GetComponent<Text>();
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
     }
     void Update()
     {
@@ -62,6 +64,7 @@ public class PlayerHealth : MonoBehaviour
         int temp = 0;
         triggerCollider.enabled = false;
         hitSound.Play();
+        shake.CamShake();
         while(temp < numberOfFlashes)
         {
             mySprite.color = flashColor;

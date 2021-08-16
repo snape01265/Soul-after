@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    public IEnumerator Shake (float duration, float magnitude)
+    public Animator camAnim;
+    public Animator imageAnim;
+    public float duration;
+    public float magnitude;
+
+    public void CamShake()
     {
-        Vector3 originalPos = transform.localPosition;
-
-        float elapsed = 0.0f;
-        
-        while (elapsed < duration)
+        int rand = Random.Range(0, 3);
+        if (rand == 0)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
-
-            transform.localPosition = new Vector3(x, y, originalPos.z);
-
-            elapsed += Time.deltaTime;
-
-            yield return null;
+            camAnim.SetTrigger("shake1");
+            imageAnim.SetTrigger("flash1");
         }
-
-        transform.localPosition = originalPos;
+        else if (rand == 1)
+        {
+            camAnim.SetTrigger("shake2");
+            imageAnim.SetTrigger("flash2");
+        }
+        else if (rand == 2)
+        {
+            camAnim.SetTrigger("shake3");
+            imageAnim.SetTrigger("flash3");
+        }
+        else if (rand == 3)
+        {
+            camAnim.SetTrigger("shake4");
+            imageAnim.SetTrigger("flash4");
+        }
     }
-
 }
