@@ -26,8 +26,8 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!puzzleFin.initialValue)
         {
             GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
-        }
-        
+        } else GameObject.Find("Road Block").SetActive(true);
+
         btnRenders = new List<ButtonRenderer>();
     }
 
@@ -39,7 +39,6 @@ public class SajaPuzzleBehavior : MonoBehaviour
             ButtonRenderer _btnRend = btn.GetComponent<ButtonRenderer>();
             if (_btnRend != null)
             {
-                GameObject.Find("Road Block").SetActive(true);
                 btnRenders.Add(_btnRend);
             }
         }
