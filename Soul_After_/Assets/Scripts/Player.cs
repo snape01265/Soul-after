@@ -18,12 +18,14 @@ public class Player : MonoBehaviour
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
     public TimelinePlayer timeline;
+    [NonSerialized]
+    public bool ispaused = false;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
-    private static bool ispaused = false;
+    
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .25f;
 
@@ -136,7 +138,7 @@ public class Player : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            // ���� Animation �� ����
+            // Animation change
             animator.SetFloat("Move X", change.x);
             animator.SetFloat("Move Y", change.y);
             animator.SetBool("Moving", true);
@@ -148,7 +150,7 @@ public class Player : MonoBehaviour
     }
     void MoveCharacter()
     {
-        // �밢�� �������� �ι��� �ӵ��� ����� ���� �ذ�
+        // Diagonal movement should be normalized
         if (change.x != 0  && change.y != 0)
         {
             float ms = Mathf.Sqrt(2);

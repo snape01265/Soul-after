@@ -70,7 +70,16 @@ public class GameSaveManager : MonoBehaviour
             FileStream file = File.Create(Application.persistentDataPath +
             string.Format("/Save{0}.dat", slotNo));
 
-            binary.Serialize(file, JsonUtility.ToJson(objToSave));
+            string results = "";
+            foreach (ScriptableObject scriptable in objToSave)
+            {
+                results += JsonUtility.ToJson(scriptable) + " ";
+                Debug.Log(JsonUtility.ToJson(scriptable));
+                Debug.Log("results is " + results);
+            }
+            
+            binary.Serialize(file, results);
+
             file.Close();
             return true;
         } catch (Exception e)
@@ -92,7 +101,11 @@ public class GameSaveManager : MonoBehaviour
                 FileStream file = File.Open(Application.persistentDataPath +
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
-                JsonUtility.FromJsonOverwrite(binary.Deserialize(file).ToString(), objToSave);
+                string[] results = binary.Deserialize(file).ToString().Split(' ');
+                for (int i = 0; i < objToSave.Count; i++)
+                {
+                    JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
+                }
                 file.Close();
                 return true;
             }

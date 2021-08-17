@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class SavePoint : MonoBehaviour
 {
-    public GameObject gameSaveManager;
-    public GameSaveManager gameSave;
     public VectorValue startingPosition;
-    public bool inRange;
-    private void Start()
-    {
-        gameSave = gameSaveManager.GetComponent<GameSaveManager>();
-    }
+
+    private bool inRange;
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && inRange)
         {
             startingPosition.initialValue = new Vector2(transform.position.x, transform.position.y - 1);
-            gameSave.SaveScriptables(gameSave.objToSave);
-            Debug.Log("game saved");
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
