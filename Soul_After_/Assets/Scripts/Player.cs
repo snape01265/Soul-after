@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (change != Vector3.zero)
         {
             MoveCharacter();
-            // ���� Animation �� ����
+            // Animation change
             animator.SetFloat("Move X", change.x);
             animator.SetFloat("Move Y", change.y);
             animator.SetBool("Moving", true);
@@ -148,7 +148,7 @@ public class Player : MonoBehaviour
     }
     void MoveCharacter()
     {
-        // �밢�� �������� �ι��� �ӵ��� ����� ���� �ذ�
+        // Diagonal movement should be normalized
         if (change.x != 0  && change.y != 0)
         {
             float ms = Mathf.Sqrt(2);
