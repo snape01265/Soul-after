@@ -18,12 +18,14 @@ public class Player : MonoBehaviour
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
     public TimelinePlayer timeline;
+    [NonSerialized]
+    public bool ispaused = false;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
-    private static bool ispaused = false;
+    
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .25f;
 
