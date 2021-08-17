@@ -314,13 +314,21 @@ MonoBehaviour:
   variables:
   - variableName: name
     variableValue: 
-  shouldUsePhotos: 0
+  shouldUsePhotos: 1
   characters:
   - character: {fileID: 11400000, guid: 28b3959032cc0154cadf8a3ce27b7942, type: 2}
     follow: {fileID: 0}
     followOffset: {x: 0, y: 0, z: 0}
     animatorOverwrite: {fileID: 0}
-  UIPhoto: {fileID: 0}
+  - character: {fileID: 11400000, guid: 81e649c854be0c04694528e2f5c7cd3a, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: 37a0211f7da4d78469091b2efd4d1215, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  UIPhoto: {fileID: 1706242834}
   shouldStayOnScreen: 0
   textAudio: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
   passAudio: {fileID: 0}
@@ -373,11 +381,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 139101197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1caa96ac5aef404091fc2bb8198d06b, type: 3}
+  m_Script: {fileID: 11500000, guid: a0385d72fa46a499bb77554b7dc4ba79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineDirector: {fileID: 1740600811}
-  isPaused: 0
+  saveBetweenPlays: 1
+  erase: 0
 --- !u!82 &139101202
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2019,7 +2027,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 285024785389922073, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 640376445722905182, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2131,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751814179566881083, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
@@ -17972,11 +17980,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.75
+      value: 38.5
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19113,6 +19121,127 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1542724623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1542724624}
+  - component: {fileID: 1542724627}
+  - component: {fileID: 1542724626}
+  m_Layer: 0
+  m_Name: RPGTalk Area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1542724624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542724623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 992474883}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542724626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542724623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af02b5d7648a4e8492f3b9fc160319d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rpgtalkTarget: {fileID: 139101199}
+  shouldInteractWithButton: 0
+  showWhenInteractionIsPossible: []
+  interactionKey: 32
+  interactionButton: 
+  interactWithMouse: 0
+  checkIfColliderHasTag: Player
+  callbackBeforeTalk:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1883810321}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CancelControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  lineToStart: nowitbegins_start
+  lineToBreak: nowitbegins_end
+  txtToParse: {fileID: 4900000, guid: b567e726e639ae647a07660f238e5998, type: 3}
+  overwriteCallbackAfterTalk:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1740600811}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  happenOnlyOnce: 0
+  alreadyHappened: 0
+  triggerEnter: 1
+  triggerExit: 0
+  shouldStayOnScreen: 0
+  forbidPlayIfRpgtalkIsPlaying: 1
+  timelineDirectorToPlay: {fileID: 0}
+  saveAlreadyHappened: 0
+  autoPass: 0
+  secondsAutoPass: 3
+  containInsideScreen: 0
+--- !u!61 &1542724627
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542724623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -2}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 10, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &1598880785
 GameObject:
   m_ObjectHideFlags: 0
@@ -27404,6 +27533,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1706242834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
+  m_PrefabInstance: {fileID: 611144388}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1718049906
 GameObject:
   m_ObjectHideFlags: 0
@@ -29025,9 +29165,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1740600814}
-  - component: {fileID: 1740600813}
   - component: {fileID: 1740600812}
   - component: {fileID: 1740600811}
+  - component: {fileID: 1740600815}
   m_Layer: 0
   m_Name: (Cutscene) Enter the memory
   m_TagString: Untagged
@@ -29050,22 +29190,20 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -207683920187858569, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
-    value: {fileID: 1883810322}
-  - key: {fileID: -4707444762414010739, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
-    value: {fileID: 1883810322}
   - key: {fileID: -6935890824973073148, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
     value: {fileID: 992474879}
   - key: {fileID: -7387373819399761332, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
     value: {fileID: 992474879}
-  - key: {fileID: 2379819815569674221, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 139101199}
   - key: {fileID: -1284575206273891735, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
     value: {fileID: 992474880}
-  - key: {fileID: 8674099668703745671, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 138615125}
-  - key: {fileID: -5584301050977022377, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 138615126}
+  - key: {fileID: 3484691477959675428, guid: a7ac8d4ea12c68a4eb5ea65d5d9fdf62, type: 2}
+    value: {fileID: 1740600810}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1740600812
@@ -29081,37 +29219,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutscene: {fileID: 1740600811}
-  fadeInPanel: {fileID: 6626229727898054473, guid: 7e896ae3b7b09694193f5391c0d7f75c, type: 3}
-  fadeOutPanel: {fileID: 8350721012333504612, guid: 4b1ca0a985a31144ba9592da358d193d, type: 3}
-  fadeWait: 0.75
+  fadeInPanel: {fileID: 0}
+  fadeOutPanel: {fileID: 0}
+  fadeWait: 0
   cutsceneName: Cutscene 8
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
---- !u!61 &1740600813
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740600810}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 3.5302696, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 9.127708, y: 1}
-  m_EdgeRadius: 0
 --- !u!4 &1740600814
 Transform:
   m_ObjectHideFlags: 0
@@ -29119,13 +29231,43 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740600810}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35, y: 23, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1779739309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1740600815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740600810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1883810321}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1779739308
 GameObject:
   m_ObjectHideFlags: 0
@@ -29774,7 +29916,7 @@ Tilemap:
       - {fileID: 1750455274573958327, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -151359969788263723, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -1577847706117351362, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: 45, z: 0}
@@ -29906,7 +30048,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 46, z: 0}
@@ -29918,7 +30060,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 42, y: 46, z: 0}
@@ -30114,7 +30256,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: speed
-      value: 10
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: control
@@ -30210,11 +30352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e84bf7456b6b84fa91b7b272c2fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1883810322 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3315974713476907895, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
-  m_PrefabInstance: {fileID: 1883810319}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1914738184
 PrefabInstance:
   m_ObjectHideFlags: 0
