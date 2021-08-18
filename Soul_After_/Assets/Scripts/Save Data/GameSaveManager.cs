@@ -122,7 +122,7 @@ public class GameSaveManager : MonoBehaviour
     {
         List<DateTime> dateTimes = new List<DateTime>();
         int slotNo = 0;
-        int curTimeIdx = 18;
+        int curTimeIdx = 17;
 
         for (int n = 0; n < 3; n++)
         {

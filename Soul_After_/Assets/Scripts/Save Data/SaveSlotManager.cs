@@ -12,7 +12,7 @@ public class SaveSlotManager : MonoBehaviour
     private void OnEnable()
     {
         List<string> dateTimes = new List<string>();
-        int curTimeIdx = 18;
+        int curTimeIdx = 17;
         string defaultTimeMsg = " - ";
 
         GameObject.Find("Player").GetComponent<Player>().ispaused = true;
