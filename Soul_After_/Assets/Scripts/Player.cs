@@ -5,7 +5,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
+    private float speed = 80;//빌드할 때 11로 바꾸기
     public bool control;
     public Quest quest;
     public RoadBlock road;

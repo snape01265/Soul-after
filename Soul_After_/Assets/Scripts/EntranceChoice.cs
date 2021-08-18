@@ -8,6 +8,7 @@ public class EntranceChoice : MonoBehaviour
     public RPGTalk rpgTalk;
     public GameObject sceneTransition;
     public BoolValue passed;
+    public BoolValue vincentActivation;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +20,9 @@ public class EntranceChoice : MonoBehaviour
     {
         if (passed.initialValue == false & choiceID == 0)
         {
-            sceneTransition.SetActive(true);
             passed.initialValue = true;
+            vincentActivation.initialValue = true;
+            sceneTransition.SetActive(true);
         }
         else
         {
