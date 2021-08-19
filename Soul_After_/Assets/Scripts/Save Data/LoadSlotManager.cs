@@ -13,7 +13,6 @@ public class LoadSlotManager : MonoBehaviour
         int curTimeIdx = 17;
         string defaultTimeMsg = " - ";
 
-        GameObject.Find("Player").GetComponent<Player>().ispaused = true;
         this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = "";
         this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = "";
         this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = "";
@@ -64,6 +63,6 @@ public class LoadSlotManager : MonoBehaviour
         else
             Debug.Log("로드 실패!");
 
-        GameObject.Find("Save Loader").GetComponent<SaveLoader>().LoadNextScene();
+        GameObject.Find("SaveLoader").GetComponent<SaveLoader>().LoadNextScene();
     }
 }
