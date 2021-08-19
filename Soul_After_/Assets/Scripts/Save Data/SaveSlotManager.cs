@@ -11,12 +11,13 @@ public class SaveSlotManager : MonoBehaviour
     {
         List<string> dateTimes = new List<string>();
         int curTimeIdx = 17;
-        string defaultTimeMsg = " - ";
+        string defaultTimeMsg = "No Save";
+        string prefix = "- ";
 
         GameObject.Find("Player").GetComponent<Player>().ispaused = true;
-        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = "";
-        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = "";
-        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = "";
+        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = prefix;
+        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = prefix;
+        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = prefix;
 
 
         for (int n = 0; n < 3; n++)
