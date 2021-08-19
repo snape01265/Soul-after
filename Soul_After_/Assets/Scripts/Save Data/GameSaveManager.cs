@@ -150,7 +150,7 @@ public class GameSaveManager : MonoBehaviour
 
         for (int i = 1; i < 2; i++)
         {
-            if (DateTime.Compare(dateTimes[slotNo], dateTimes[i]) > 0) 
+            if (DateTime.Compare(dateTimes[slotNo], dateTimes[i]) < 0) 
             {
                 slotNo = i;
             }
