@@ -5,7 +5,6 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 80;//빌드할 때 11로 바꾸기
     public bool control;
     public Quest quest;
     public RoadBlock road;
@@ -25,7 +24,8 @@ public class Player : MonoBehaviour
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
-    
+
+    private readonly float speed = 80;
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .25f;
 
