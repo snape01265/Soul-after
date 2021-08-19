@@ -70,6 +70,19 @@ public class SaveSlotManager : MonoBehaviour
         Exit();
     }
 
+    public void LoadInSlot(int slotNo)
+    {
+        bool result = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>().LoadFunc(slotNo);
+
+        if (result)
+            Debug.Log("로드 성공!");
+        else
+            Debug.Log("로드 실패!");
+        Exit();
+
+        GameObject.Find("Save Loader").GetComponent<SaveLoader>().LoadNextScene();
+    }
+
     public void Exit()
     {
         GameObject.Find("Player").GetComponent<Player>().ispaused = false;
