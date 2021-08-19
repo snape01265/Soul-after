@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
     public TimelinePlayer timeline;
+    public GameObject walkZone;
     [NonSerialized]
     public bool ispaused = false;
 
