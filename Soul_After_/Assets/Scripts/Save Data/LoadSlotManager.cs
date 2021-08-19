@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SaveSlotManager : MonoBehaviour
+public class LoadSlotManager : MonoBehaviour
 {
     private void OnEnable()
     {
@@ -55,21 +55,15 @@ public class SaveSlotManager : MonoBehaviour
         this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text += dateTimes[2];
     }
 
-    public void SaveInSlot(int slotNo)
+    public void LoadInSlot(int slotNo)
     {
-        bool result = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>().SaveFunc(slotNo);
+        bool result = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>().LoadFunc(slotNo);
 
         if (result)
-            Debug.Log("저장 성공!");
+            Debug.Log("로드 성공!");
         else
-            Debug.Log("저장 실패!");
+            Debug.Log("로드 실패!");
 
-        gameObject.SetActive(false);
-        Exit();
-    }
-
-    public void Exit()
-    {
-        GameObject.Find("Player").GetComponent<Player>().ispaused = false;
+        GameObject.Find("Save Loader").GetComponent<SaveLoader>().LoadNextScene();
     }
 }
