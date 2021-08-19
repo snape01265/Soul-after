@@ -62,6 +62,9 @@ public class Player : MonoBehaviour
         {
             if (menuSet.activeSelf)
             {
+                menuSet.transform.Find("Sound Settings").gameObject.SetActive(true);
+                menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
+                menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
                 ResumeGame();
                 menuSet.SetActive(false);
             }
