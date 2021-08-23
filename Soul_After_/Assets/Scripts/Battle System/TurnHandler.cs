@@ -15,7 +15,7 @@ public class TurnHandler : MonoBehaviour
 {
     public BattleState state;
     public EnemyProfile[] enemiesInBattle;
-    public HeartControl playerHeart;
+    public PlayerHealth playerHealth;
     public RPGTalk rpgTalk;
     public int phaseCount;
     public bool enemyActed;
@@ -27,8 +27,7 @@ public class TurnHandler : MonoBehaviour
 
     void Start()
     {
-        playerHeart.gameObject.SetActive(true);
-        playerHeart.SetHeart();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         state = BattleState.Start;
         phaseCount = 0;
     }
@@ -37,7 +36,7 @@ public class TurnHandler : MonoBehaviour
     {
         if (state == BattleState.Start)
         {
-            playerHeart.GetComponent<PlayerHealth>().levelClear = false;
+            playerHealth.GetComponent<PlayerHealth>().levelClear = false;
             phaseCount += 1;
             state = BattleState.PlayerTurn;
         }
@@ -86,7 +85,7 @@ public class TurnHandler : MonoBehaviour
             }
             else
             {
-                if (playerHeart.GetComponent<PlayerHealth>().HP <= 0)
+                if (playerHealth.HP <= 0)
                 {
                     state = BattleState.Lost;
                 }
@@ -103,7 +102,7 @@ public class TurnHandler : MonoBehaviour
         else if (state == BattleState.Lost && !isReading)
         {
             Destroy(enemyAtk);
-            playerHeart.GetComponent<PlayerHealth>().HP = playerHeart.GetComponent<PlayerHealth>().maxHP;
+            playerHealth.HP = playerHealth.maxHP;
             enemyActed = false;
             isReading = true;
             rpgTalk.NewTalk("fail_start", "fail_end", rpgTalk.txtToParse);
