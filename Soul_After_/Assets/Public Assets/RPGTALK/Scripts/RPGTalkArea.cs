@@ -105,6 +105,8 @@ public class RPGTalkArea : MonoBehaviour {
     /// </summary>
     public bool containInsideScreen;
 
+	private bool ispaused;
+
     /// <summary>
     /// Hide anything that shouldn't be showing upon the start
     /// </summary>
@@ -117,13 +119,14 @@ public class RPGTalkArea : MonoBehaviour {
                 alreadyHappened = rpgtalkTarget.saveInstance.GetSavedData(name, 1);
             }
         }
+		ispaused = GameObject.Find("Player").GetComponent<Player>().ispaused;
     }
 	
 	/// <summary>
 	/// Check for the interaction. Override this method to implement your own rules
 	/// </summary>
 	protected virtual void Update () {
-		if (shouldInteractWithButton && canInteract) {
+		if (shouldInteractWithButton && canInteract && !ispaused) {
 			if ((interactionKey != KeyCode.None && Input.GetKeyDown (interactionKey)) || 
             (interactionButton != "" && Input.GetButtonDown(interactionButton)) || 
                 (interactWithMouse && Input.GetMouseButtonDown(0)) ) {
@@ -243,5 +246,8 @@ public class RPGTalkArea : MonoBehaviour {
 		}
 	}
 
-
+	public void TogglePause()
+	{
+		ispaused = !ispaused;
+	}
 }
