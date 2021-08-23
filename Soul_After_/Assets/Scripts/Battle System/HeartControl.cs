@@ -27,15 +27,14 @@ public class HeartControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal") * sensitivity;
-        float vertical = Input.GetAxis("Vertical") * sensitivity;
-
-        movePos.x += horizontal;
-        movePos.y += vertical;
+        movePos = Vector3.zero;
+        movePos.x = Input.GetAxisRaw("Horizontal");
+        movePos.y = Input.GetAxisRaw("Vertical");
 
         movePos.x = Mathf.Clamp(movePos.x, minX, maxX);
         movePos.y = Mathf.Clamp(movePos.y, minY, maxY);
 
         transform.position = Vector2.Lerp(transform.position, movePos, speed * Time.deltaTime);
     }
+
 }
