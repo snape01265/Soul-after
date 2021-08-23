@@ -126,7 +126,7 @@ public class RPGTalkArea : MonoBehaviour {
 	/// Check for the interaction. Override this method to implement your own rules
 	/// </summary>
 	protected virtual void Update () {
-		if (shouldInteractWithButton && canInteract && !ispaused) {
+		if (!ispaused && shouldInteractWithButton && canInteract) {
 			if ((interactionKey != KeyCode.None && Input.GetKeyDown (interactionKey)) || 
             (interactionButton != "" && Input.GetButtonDown(interactionButton)) || 
                 (interactWithMouse && Input.GetMouseButtonDown(0)) ) {
