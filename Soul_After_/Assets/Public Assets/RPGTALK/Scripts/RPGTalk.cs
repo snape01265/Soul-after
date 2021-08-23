@@ -1554,10 +1554,10 @@ public class RPGTalk : MonoBehaviour {
 
             //if we reached the end of the line and click on the screen...
             if (
+                !ispaused &&
                 enablePass && (
                 (passWithMouse && Input.GetMouseButtonDown (0)) ||
                 (passWithInputButton != "" && Input.GetButtonDown(passWithInputButton)) || (passWithKey != KeyCode.None && Input.GetKeyDown(passWithKey)
-                && !ispaused
                 )
 
             ) ){//if have an audio... playit
