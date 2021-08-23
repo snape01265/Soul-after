@@ -21,10 +21,15 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool ispaused = false;
 
+    private bool inBattle = true;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
+    private float minX = -8;
+    private float maxX = 8;
+    private float minY = -5;
+    private float maxY = 4;
 
     private readonly float speed = 80;
     private readonly float normalVol = 1f;
@@ -81,6 +86,11 @@ public class Player : MonoBehaviour
         {
             if (control)
             {
+                if (inBattle)
+                {
+                    change.x = Mathf.Clamp(change.x, minX, maxX);
+                    change.y = Mathf.Clamp(change.y, minY, maxY);
+                }
                 change = Vector3.zero;
                 change.x = Input.GetAxisRaw("Horizontal");
                 change.y = Input.GetAxisRaw("Vertical");
