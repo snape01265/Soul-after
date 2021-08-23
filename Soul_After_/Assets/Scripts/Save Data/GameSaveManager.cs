@@ -22,45 +22,6 @@ public class GameSaveManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void OnEnable()
-    {
-        LoadScriptables();
-    }
-
-    public void SaveGame()
-    {
-        SaveScriptables(objToSave);
-    }
-
-    public void SaveScriptables(List<ScriptableObject> objects)
-    {
-        for (int i = 0; i < objects.Count; i++)
-        {
-            FileStream file = File.Create(Application.persistentDataPath +
-                string.Format("/{0}.dat", i));
-            BinaryFormatter binary = new BinaryFormatter();
-            var json = JsonUtility.ToJson(objects[i]);
-            binary.Serialize(file, json);
-            file.Close();
-        }
-    }
-
-    public void LoadScriptables()
-    {
-        for (int i = 0; i < objToSave.Count; i++)
-        {
-            if (File.Exists(Application.persistentDataPath +
-                string.Format("/{0}.dat", i)))
-            {
-                FileStream file = File.Open(Application.persistentDataPath +
-                    string.Format("/{0}.dat", i), FileMode.Open);
-                BinaryFormatter binary = new BinaryFormatter();
-                JsonUtility.FromJsonOverwrite((string)binary.Deserialize(file), objToSave[i]);
-                file.Close();
-            }
-        }
-    }
-
     // 슬롯 번호로 데이터를 저장하여 성공시 true를 실패시 false 반환
     public bool SaveFunc(int slotNo)
     {

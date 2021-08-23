@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Playables;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -42,19 +42,20 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        if(animatorValue.defaultAnimator != null && animatorValue.initialAnimator != null)
+        if (animatorValue.defaultAnimator != null && animatorValue.initialAnimator != null)
         {
             mainClothes = animatorValue.defaultAnimator;
             changeClothes = animatorValue.initialAnimator;
         }
         else
         {
-        animatorValue.defaultAnimator = mainClothes;
-        animatorValue.initialAnimator = changeClothes;
+            animatorValue.defaultAnimator = mainClothes;
+            animatorValue.initialAnimator = changeClothes;
         }
 
         AudioListener.volume = curVol.initialValue * normalVol;
     }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
         transform.position = startingPosition.initialValue;
         nameSet = nameSetValue.initialValue;
     }
+
     void Update()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -129,17 +131,20 @@ public class Player : MonoBehaviour
     {
         Application.Quit();
     }
+
     //the player cant move
     public void CancelControl()
     {
         control = false;
         animator.SetBool("Moving", false);
     }
+
     //give back the controls to player
     public void GiveBackControl()
     {
         control = true;
     }
+
     public void ConditionalGiveBackControl()
     {
         if (nameSet)
@@ -147,6 +152,7 @@ public class Player : MonoBehaviour
             control = true;
         }
     }
+
     void UpdateAnimationAndMove()
     {
         if (change != Vector3.zero)
@@ -162,10 +168,11 @@ public class Player : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
+
     void MoveCharacter()
     {
         // Diagonal movement should be normalized
-        if (change.x != 0  && change.y != 0)
+        if (change.x != 0 && change.y != 0)
         {
             float ms = Mathf.Sqrt(2);
             change.x /= ms;
@@ -176,6 +183,7 @@ public class Player : MonoBehaviour
             transform.position + change * speed * Time.deltaTime
             );
     }
+
     public void WhoAreYou()
     {
         if (nameSet == false)
@@ -186,29 +194,40 @@ public class Player : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
+
     public void SetName()
     {
-        askWho.SetActive(false);
-        nameSave.initialValue = (string) myName.text;
-        AssignNameVariable();
-        nameSet = true;
-        nameSetValue.initialValue = nameSet;
-        timeline.StartTimeline();
+        string inputName = myName.text;
+        Regex rgx = new Regex("^[a-zA-Z가-힣0-9 ]{1,8}$");
+
+        if (rgx.IsMatch(inputName))
+        {
+            askWho.SetActive(false);
+            nameSave.initialValue = myName.text;
+            AssignNameVariable();
+            nameSet = true;
+            nameSetValue.initialValue = nameSet;
+            timeline.StartTimeline();
+        }
     }
+
     private void AssignNameVariable()
     {
         rpgTalk.variables[0].variableValue = nameSave.initialValue;
     }
+
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
         changeClothes = animatorValue.initialAnimator;
     }
+
     private void AnimatorOverride()
     {
         mainClothes = animatorValue.initialAnimator;
         animator.runtimeAnimatorController = mainClothes as RuntimeAnimatorController;
     }
+
     public void QuestProgress0()
     {
         if (quest.isActive)
@@ -221,6 +240,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     public void QuestProgress1()
     {
         if (quest.isActive)
@@ -233,6 +253,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     public void QuestProgress2()
     {
         if (quest.isActive)
