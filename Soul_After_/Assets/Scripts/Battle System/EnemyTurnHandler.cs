@@ -8,6 +8,7 @@ public class EnemyTurnHandler : MonoBehaviour
     public bool FinishedTurn;
     public int level;
     public int attackType;
+    public AudioSource dropSound;
 
     void Start()
     {
@@ -32,5 +33,6 @@ public class EnemyTurnHandler : MonoBehaviour
     public void CamShake()
     {
         shake.CamShake();
+        dropSound.Play();
     }
 }
