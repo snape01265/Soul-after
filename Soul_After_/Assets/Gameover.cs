@@ -16,11 +16,11 @@ public class Gameover : MonoBehaviour
         
     }
 
-    public void gameOver()
+    public void EndGame()
     {
         GameObject.Find("UI").SetActive(false);
         GameObject.Find("Objects").SetActive(false);
         GameObject.Find("Player").GetComponent<Player>().CancelControl();
-        GameObject.Find("Scene")
+        gameObject.transform.Find("Cutscene Manager").gameObject.SetActive(true);
     }
 }
