@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private CameraShake shake;
     public AudioSource hitSound;
     public AudioSource acqSound;
-    private GameObject gameOver;
+    private Gameover gameOver;
 
     [Header("Invulnerability Frame")]
     public Color flashColor;
@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer mySprite;
     void Start()
     {
-        gameOver = GameObject.Find("Game Over Screen");
+        gameOver = GameObject.Find("GameOver").GetComponent<Gameover>();
         text = SPDisplay.GetComponent<Text>();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
     }
@@ -40,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
         if(HP <= 0)
         {
             Death();
-            gameOver.SetActive(true);
+            gameOver.EndGame();
         }
         StartCoroutine(IFrame());
     }
