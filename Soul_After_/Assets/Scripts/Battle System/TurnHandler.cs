@@ -53,26 +53,26 @@ public class TurnHandler : MonoBehaviour
             if (phaseCount == 2)
             {
                 isReading = true;
-                rpgTalk.NewTalk("battle_start", "battle_end", rpgTalk.txtToParse);
+                rpgTalk.NewTalk("success1_start", "success1_end", rpgTalk.txtToParse);
                 rpgTalk.OnEndTalk += EnemyTurn;
             }
 
             if (phaseCount == 3)
             {
                 isReading = true;
-                rpgTalk.NewTalk("success_start", "success_end", rpgTalk.txtToParse);
+                rpgTalk.NewTalk("success2_start", "success2_end", rpgTalk.txtToParse);
                 rpgTalk.OnEndTalk += EnemyTurn;
             }
             if (phaseCount == 4)
             {
                 isReading = true;
-                rpgTalk.NewTalk("success_start", "success_end", rpgTalk.txtToParse);
+                rpgTalk.NewTalk("success3_start", "success3_end", rpgTalk.txtToParse);
                 rpgTalk.OnEndTalk += EnemyTurn;
             }
             if (phaseCount == 5)
             {
                 isReading = true;
-                rpgTalk.NewTalk("win_start", "win_end", rpgTalk.txtToParse);
+                rpgTalk.NewTalk("success4_start", "success4_end", rpgTalk.txtToParse);
                 rpgTalk.OnEndTalk += Won;
             }
         }

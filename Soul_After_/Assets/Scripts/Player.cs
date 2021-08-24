@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public Quest quest;
     [NonSerialized]
-    public bool control;
+    public bool control = true;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
