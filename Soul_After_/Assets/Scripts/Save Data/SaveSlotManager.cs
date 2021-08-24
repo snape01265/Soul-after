@@ -61,12 +61,15 @@ public class SaveSlotManager : MonoBehaviour
         bool result = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>().SaveFunc(slotNo);
 
         if (result)
+        {
             Debug.Log("저장 성공!");
+            gameObject.transform.Find("Background/Save Slot/Save Comp").gameObject.SetActive(true);
+            gameObject.GetComponent<AudioSource>().Play();
+        }
         else
+        {
             Debug.Log("저장 실패!");
-
-        gameObject.SetActive(false);
-        Exit();
+        }
     }
 
     public void Exit()
