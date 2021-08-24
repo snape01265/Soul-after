@@ -33,6 +33,9 @@ public class EnemyTurnHandler : MonoBehaviour
     public void CamShake()
     {
         shake.CamShake();
-        dropSound.Play();
+        if(dropSound != null)
+        {
+            dropSound.Play();
+        }
     }
 }
