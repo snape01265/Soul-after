@@ -336,7 +336,7 @@ public class RPGTalk : MonoBehaviour {
     string originalLineToStart;
     string originalLineToBreak;
 
-
+    private bool ispaused;
 
     void Start(){
         //Get the TMP_Translate Object
@@ -357,6 +357,8 @@ public class RPGTalk : MonoBehaviour {
         }
 
         saveInstance = GetComponent<RPGTalkSaveInstance>();
+
+        ispaused = GameObject.Find("Player").GetComponent<Player>().ispaused;
     }
 
     //Change txtToParse to be the correct for other language
@@ -1552,9 +1554,11 @@ public class RPGTalk : MonoBehaviour {
 
             //if we reached the end of the line and click on the screen...
             if (
+                !ispaused &&
                 enablePass && (
                 (passWithMouse && Input.GetMouseButtonDown (0)) ||
-                (passWithInputButton != "" && Input.GetButtonDown(passWithInputButton)) || (passWithKey != KeyCode.None && Input.GetKeyDown(passWithKey))
+                (passWithInputButton != "" && Input.GetButtonDown(passWithInputButton)) || (passWithKey != KeyCode.None && Input.GetKeyDown(passWithKey)
+                )
 
             ) ){//if have an audio... playit
                 if (passAudio != null) {
@@ -2139,4 +2143,9 @@ public class RPGTalk : MonoBehaviour {
         }
     }
 
+
+    public void TogglePause()
+    {
+        ispaused = !ispaused;
+    }
 }
