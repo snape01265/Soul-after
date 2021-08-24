@@ -20,13 +20,14 @@ public class TurnHandler : MonoBehaviour
     public int phaseCount;
     public bool enemyActed;
     public int patternCount;
-
+    private Animator anim;
 
     private bool isReading;
     private GameObject enemyAtk;
 
     void Start()
     {
+        anim.SetBool("Battle", true);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = true;
         state = BattleState.Start;
