@@ -7101,6 +7101,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 5421d8938c5aabd48a4a6b43921d8272, type: 2}
+    - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: maxX
+      value: 8.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: maxY
+      value: 3.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: minY
+      value: -4.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7151,23 +7163,23 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LinearDrag
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_AngularDrag
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Interpolate
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_UseFullKinematicContacts
@@ -7381,9 +7393,6 @@ GameObject:
   - component: {fileID: 1843943983}
   - component: {fileID: 1843943988}
   - component: {fileID: 1843943987}
-  - component: {fileID: 1843943986}
-  - component: {fileID: 1843943985}
-  - component: {fileID: 1843943984}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -7405,164 +7414,6 @@ Transform:
   m_Father: {fileID: 828637827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!66 &1843943984
-CompositeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843943982}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 0
-  m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1843943986}
-    m_ColliderPaths:
-    - - X: -79999900
-        Y: -60000041
-      - X: -79999900
-        Y: -60000000
-      - X: 79999900
-        Y: -60000000
-      - X: 79999900
-        Y: -60000041
-      - X: 79999959
-        Y: -60000100
-      - X: 85625020
-        Y: -60000100
-      - X: 85625057
-        Y: -60000085
-      - X: 85625142
-        Y: -60000000
-      - X: 90000000
-        Y: -60000000
-      - X: 90000000
-        Y: -55625142
-      - X: 90000085
-        Y: -55625057
-      - X: 90000100
-        Y: -55625020
-      - X: 90000100
-        Y: 50000041
-      - X: 90000041
-        Y: 50000100
-      - X: -90000041
-        Y: 50000100
-      - X: -90000100
-        Y: 50000041
-      - X: -90000100
-        Y: 39999959
-      - X: -90000041
-        Y: 39999900
-      - X: -90000000
-        Y: 39999900
-      - X: -90000000
-        Y: -49999900
-      - X: -90000041
-        Y: -49999900
-      - X: -90000100
-        Y: -49999959
-      - X: -90000100
-        Y: -55625020
-      - X: -90000085
-        Y: -55625057
-      - X: -90000000
-        Y: -55625142
-      - X: -90000000
-        Y: -60000000
-      - X: -85625142
-        Y: -60000000
-      - X: -85625057
-        Y: -60000085
-      - X: -85625020
-        Y: -60000100
-      - X: -79999959
-        Y: -60000100
-    - - X: -79999900
-        Y: -49999900
-      - X: -79999900
-        Y: 40000041
-      - X: -79999959
-        Y: 40000100
-      - X: -84374758
-        Y: 40000100
-      - X: -79999915
-        Y: 44374943
-      - X: -79999900
-        Y: 44374980
-      - X: -79999900
-        Y: 44999900
-      - X: 79999900
-        Y: 44999900
-      - X: 79999900
-        Y: 44374980
-      - X: 79999915
-        Y: 44374943
-      - X: 84374900
-        Y: 39999958
-      - X: 84374900
-        Y: -49999900
-  m_CompositePaths:
-    m_Paths:
-    - - {x: 8.99997, y: -6}
-      - {x: 8.999974, y: 5.00001}
-      - {x: -9.00001, y: 4.9999747}
-      - {x: -8.99997, y: -6}
-    - - {x: 8.4374895, y: -4.999961}
-      - {x: -7.9999905, y: -4.999961}
-      - {x: -8.000026, y: 4.00001}
-      - {x: -8.437414, y: 4.0000715}
-      - {x: -7.9999905, y: 4.437509}
-      - {x: -7.999961, y: 4.49999}
-      - {x: 7.9999905, y: 4.499961}
-      - {x: 7.9999995, y: 4.4374866}
-      - {x: 8.4374895, y: 3.9999847}
-  m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
---- !u!50 &1843943985
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843943982}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!19719996 &1843943986
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843943982}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1843943987
 TilemapRenderer:
   m_ObjectHideFlags: 0

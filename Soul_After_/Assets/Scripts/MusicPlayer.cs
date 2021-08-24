@@ -17,7 +17,7 @@ public class MusicPlayer : MonoBehaviour
     public void UpdateMusic(string scenetoload)
     {
         string scene = scenetoload;
-        if (bgm.initialValue.Contains(scene))
+        if (bgm != null && bgm.initialValue.Contains(scene))
         {
             DontDestroyOnLoad(gameObject);
             Debug.Log("Not Destroyed");

@@ -28,6 +28,7 @@ public class TurnHandler : MonoBehaviour
     void Start()
     {
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = true;
         state = BattleState.Start;
         phaseCount = 0;
     }
