@@ -32,7 +32,6 @@ public class SceneTransition : MonoBehaviour
             playerStorage.initialValue = playerPosition;
             StartCoroutine(FadeCo());
             GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
-            //SceneManager.LoadScene(sceneToLoad);
         }
     }
     public void ChangeScene()
