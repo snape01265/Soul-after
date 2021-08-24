@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyTurnHandler : MonoBehaviour
 {
+    private CameraShake shake;
     public bool FinishedTurn;
     public int level;
     public int attackType;
@@ -12,6 +13,7 @@ public class EnemyTurnHandler : MonoBehaviour
     {
         FinishedTurn = false;
         level = GameObject.FindGameObjectWithTag("GameController").GetComponent<TurnHandler>().phaseCount;
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
         GetComponent<Animator>().SetInteger("Level", level);
         GetComponent<Animator>().SetInteger("AtkType", attackType);
     }
@@ -26,5 +28,9 @@ public class EnemyTurnHandler : MonoBehaviour
     {
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         gameController.GetComponent<TurnHandler>().PatternFinished();
+    }
+    public void CamShake()
+    {
+        shake.CamShake();
     }
 }

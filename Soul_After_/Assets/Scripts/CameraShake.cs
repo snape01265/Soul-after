@@ -7,7 +7,7 @@ public class CameraShake : MonoBehaviour
     public Animator camAnim;
     public Animator imageAnim;
 
-    public void CamShake()
+    public void CamShakeWithImage()
     {
         int rand = Random.Range(0, 3);
         if (rand == 0)
@@ -29,6 +29,26 @@ public class CameraShake : MonoBehaviour
         {
             camAnim.SetTrigger("shake4");
             imageAnim.SetTrigger("flash4");
+        }
+    }
+    public void CamShake()
+    {
+        int rand = Random.Range(0, 3);
+        if (rand == 0)
+        {
+            camAnim.SetTrigger("shake1");
+        }
+        else if (rand == 1)
+        {
+            camAnim.SetTrigger("shake2");
+        }
+        else if (rand == 2)
+        {
+            camAnim.SetTrigger("shake3");
+        }
+        else if (rand == 3)
+        {
+            camAnim.SetTrigger("shake4");
         }
     }
 }

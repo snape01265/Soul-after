@@ -67,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
         int temp = 0;
         triggerCollider.enabled = false;
         hitSound.Play();
-        shake.CamShake();
+        shake.CamShakeWithImage();
         while(temp < numberOfFlashes)
         {
             mySprite.color = flashColor;
