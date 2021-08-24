@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public bool control;
-    public Quest quest;
     public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
@@ -20,16 +18,21 @@ public class Player : MonoBehaviour
     public GameObject walkZone;
     [NonSerialized]
     public bool ispaused = false;
+    [NonSerialized]
+    public bool inBattle = false;
+    [NonSerialized]
+    public Quest quest;
+    [NonSerialized]
+    public bool control;
 
-    private bool inBattle = true;
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
     private float minX = -8;
-    private float maxX = 8;
-    private float minY = -5;
-    private float maxY = 4;
+    private float maxX = 8.05f;
+    private float minY = -4.7f;
+    private float maxY = 3.65f;
 
     private readonly float speed = 80;
     private readonly float normalVol = 1f;
@@ -86,9 +89,18 @@ public class Player : MonoBehaviour
         {
             if (control)
             {
+
                 change = Vector3.zero;
                 change.x = Input.GetAxisRaw("Horizontal");
                 change.y = Input.GetAxisRaw("Vertical");
+                if (inBattle)
+                {
+                    Vector3 bounds = transform.position;
+                    bounds.x = Mathf.Clamp(bounds.x, minX, maxX);
+                    bounds.y = Mathf.Clamp(bounds.y, minY, maxY);
+
+                    transform.position = bounds;
+                }
                 UpdateAnimationAndMove();
             }
             if (rpgTalk != null)
