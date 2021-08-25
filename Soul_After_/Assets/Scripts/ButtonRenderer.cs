@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class ButtonRenderer : MonoBehaviour
 {
-    public BoolList buttonStates;
-    public BoolList boxOnBtn;
+    private SajaPuzzleBehavior saja;
     private GameObject BtnUp;
     private bool BtnState;
     private int BtnIdx;
@@ -14,9 +13,10 @@ public class ButtonRenderer : MonoBehaviour
 
     private void Start()
     {
+        saja = this.gameObject.GetComponentInParent<SajaPuzzleBehavior>();
+
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
         BtnIdx = int.Parse(a.ToString()) - 1;
-        BtnState = buttonStates.initialValue[BtnIdx];
         BtnUp = this.transform.Find("Button Up").gameObject;
     }
 
@@ -26,7 +26,7 @@ public class ButtonRenderer : MonoBehaviour
         // also change ButtonState accordingly
         if (collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
-            boxOnBtn.initialValue[BtnIdx] = true;
+            saja.ToggleBoxOnBtn(BtnIdx);
             if(BtnUp.activeSelf)
             {
                 ButtonDown();
@@ -39,7 +39,7 @@ public class ButtonRenderer : MonoBehaviour
     {
         if (collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
-            boxOnBtn.initialValue[BtnIdx] = false;
+            saja.ToggleBoxOnBtn(BtnIdx);
         }
     }
 
