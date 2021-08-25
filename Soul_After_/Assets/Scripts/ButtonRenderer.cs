@@ -5,29 +5,10 @@ using UnityEngine;
 
 public class ButtonRenderer : MonoBehaviour
 {
-    public BoolList buttonStates;
     public BoolList boxOnBtn;
     private GameObject BtnUp;
-    private bool BtnState;
     private int BtnIdx;
     public AudioSource _audio;
-
-    private void Start()
-    {
-        //Debug.Log("this is =" + this.gameObject.name);
-        char a = this.gameObject.name[this.gameObject.name.Length - 1];
-        //Debug.Log("char is =" + a.ToString());
-        BtnIdx = int.Parse(a.ToString()) - 1;
-        BtnState = buttonStates.initialValue[BtnIdx];
-        BtnUp = this.transform.Find("Button Up").gameObject;
-
-        if (BtnState)
-        {
-            // if true, disable Button Up sprite
-            ButtonDown();
-        }
-        else ButtonUp();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
