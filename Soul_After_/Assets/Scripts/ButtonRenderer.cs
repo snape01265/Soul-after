@@ -17,6 +17,7 @@ public class ButtonRenderer : MonoBehaviour
 
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
         BtnIdx = int.Parse(a.ToString()) - 1;
+        Debug.Log(BtnIdx);
         BtnUp = this.transform.Find("Button Up").gameObject;
     }
 
@@ -33,6 +34,7 @@ public class ButtonRenderer : MonoBehaviour
                 gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
             }
         }
+        Debug.Log(BtnIdx);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

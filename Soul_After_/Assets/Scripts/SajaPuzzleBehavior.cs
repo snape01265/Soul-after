@@ -82,7 +82,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!finished)
         {
             pressedStates[idx] = true;
-
+            Debug.Log(idx);
             switch (idx)
             {
                 case 0:
