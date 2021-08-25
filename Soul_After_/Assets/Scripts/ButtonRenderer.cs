@@ -12,7 +12,7 @@ public class ButtonRenderer : MonoBehaviour
     private int BtnIdx;
     public AudioSource _audio;
 
-    private void Start()
+    private void Awake()
     {
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
         BtnIdx = int.Parse(a.ToString()) - 1;
@@ -29,6 +29,7 @@ public class ButtonRenderer : MonoBehaviour
             boxOnBtn.initialValue[BtnIdx] = true;
             if(BtnUp.activeSelf)
             {
+                Debug.Log("Pressed.");
                 ButtonDown();
                 gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
             }

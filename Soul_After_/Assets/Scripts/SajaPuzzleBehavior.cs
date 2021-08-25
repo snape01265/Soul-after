@@ -82,11 +82,11 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!finished)
         {
             pressedStates.initialValue[idx] = true;
-
+            Debug.Log("Pressed Up!");
             switch (idx)
             {
                 case 0:
-                    {
+                    {                     
                         CrossFlip(1);
                         CrossFlip(3);
                         break;
