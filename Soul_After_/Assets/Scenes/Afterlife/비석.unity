@@ -461,7 +461,7 @@ MonoBehaviour:
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
-  cutscenePosition: 3
+  cutscenePosition: 1
   textSpeed: 50
   currentChar: 0
   variables:
@@ -478,6 +478,22 @@ MonoBehaviour:
     followOffset: {x: 0, y: 0, z: 0}
     animatorOverwrite: {fileID: 0}
   - character: {fileID: 11400000, guid: 37a0211f7da4d78469091b2efd4d1215, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: e07d3e5c3d24dde4d802a6f90f9773cc, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: 25243139c8c953e47bb31c5a9889ff1b, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: cf94c80f47747e44aabcf5b8ee66d63d, type: 2}
+    follow: {fileID: 0}
+    followOffset: {x: 0, y: 0, z: 0}
+    animatorOverwrite: {fileID: 0}
+  - character: {fileID: 11400000, guid: 3255fa9c7e8a842449175dc224fdbc5c, type: 2}
     follow: {fileID: 0}
     followOffset: {x: 0, y: 0, z: 0}
     animatorOverwrite: {fileID: 0}
@@ -24794,7 +24810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4751814179566881083, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_Sprite
@@ -29004,6 +29020,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -7346615205791164170, guid: c74ea7c4ed63d594d8560d51442630de, type: 2}
     value: {fileID: 14461902}
+  - key: {fileID: 458390489141701874, guid: c74ea7c4ed63d594d8560d51442630de, type: 2}
+    value: {fileID: 468747814}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &468747817
@@ -29035,6 +29053,7 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 8852b3c9ab60ce34887f0331ebea79db, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -29053,6 +29072,20 @@ MonoBehaviour:
         - m_Target: {fileID: 468747819}
           m_TargetAssemblyTypeName: DeactivateTalk, Assembly-CSharp
           m_MethodName: Deactivate
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 283513561}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -63426,30 +63459,6 @@ MonoBehaviour:
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 283513561}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: GiveBackControl
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 468747815}
-        m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
-        m_MethodName: StartCutscene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1766278447}
         m_TargetAssemblyTypeName: RoadBlock, Assembly-CSharp
         m_MethodName: QuestTrigger
@@ -63474,13 +63483,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 468747816}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happenOnlyOnce: 1
   alreadyHappened: 0
   triggerEnter: 1
   triggerExit: 0
   shouldStayOnScreen: 0
   forbidPlayIfRpgtalkIsPlaying: 1
-  timelineDirectorToPlay: {fileID: 468747816}
+  timelineDirectorToPlay: {fileID: 0}
   saveAlreadyHappened: 0
   autoPass: 0
   secondsAutoPass: 3
@@ -63661,6 +63682,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1150731069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150731064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousCutscene: 
+  watchedCutscene: 
+  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!1 &1178926837
 GameObject:
   m_ObjectHideFlags: 0
@@ -63672,6 +63708,7 @@ GameObject:
   - component: {fileID: 1178926838}
   - component: {fileID: 1178926841}
   - component: {fileID: 1178926840}
+  - component: {fileID: 1178926839}
   m_Layer: 0
   m_Name: RPGTalk Area
   m_TagString: Untagged
@@ -63693,6 +63730,20 @@ Transform:
   m_Father: {fileID: 670436392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1178926839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178926837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!114 &1178926840
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class CutsceneToScene : MonoBehaviour
 {
     public string sceneToLoad;
-    public Vector2 playerPosition;
     public StringValue lastScene;
+    public Vector2 playerPosition;
     public VectorValue playerStorage;
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;

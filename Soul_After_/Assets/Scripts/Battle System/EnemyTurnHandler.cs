@@ -13,6 +13,7 @@ public class EnemyTurnHandler : MonoBehaviour
     void Start()
     {
         FinishedTurn = false;
+        dropSound = GameObject.Find("SFX/CrashSFX").GetComponent<AudioSource>();
         level = GameObject.FindGameObjectWithTag("GameController").GetComponent<TurnHandler>().phaseCount;
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
         GetComponent<Animator>().SetInteger("Level", level);
