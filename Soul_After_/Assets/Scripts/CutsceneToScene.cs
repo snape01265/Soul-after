@@ -7,6 +7,7 @@ public class CutsceneToScene : MonoBehaviour
 {
     public string sceneToLoad;
     public Vector2 playerPosition;
+    public StringValue lastScene;
     public VectorValue playerStorage;
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
@@ -23,6 +24,7 @@ public class CutsceneToScene : MonoBehaviour
     private void OnEnable()
     {
         _audio.Play();
+        lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
     }

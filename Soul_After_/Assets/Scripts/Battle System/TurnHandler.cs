@@ -27,6 +27,7 @@ public class TurnHandler : MonoBehaviour
 
     void Start()
     {
+        anim = GameObject.Find("¾Æ¹öÁö Older").GetComponent<Animator>();
         anim.SetBool("Battle", true);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = true;
@@ -74,6 +75,7 @@ public class TurnHandler : MonoBehaviour
             {
                 isReading = true;
                 rpgTalk.NewTalk("success4_start", "success4_end", rpgTalk.txtToParse);
+                anim.SetBool("Battle", false);
                 rpgTalk.OnEndTalk += Won;
             }
         }
