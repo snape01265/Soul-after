@@ -172,8 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {fileID: 11400000, guid: c9e0d12e35e07264e82a72df119b3c3a, type: 2}
-  changedPosition: {x: 48, y: 17}
-  sceneChangePosition: {x: 48, y: 17}
+  changedPosition: {x: 48, y: 14.5}
+  sceneChangePosition: {x: 48, y: 14.5}
 --- !u!50 &12785205
 Rigidbody2D:
   serializedVersion: 4
@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 12785202}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9bbcfb84785385a45b7e8a1fe8127e3d, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -881,7 +881,6 @@ GameObject:
   - component: {fileID: 139900207}
   - component: {fileID: 139900211}
   - component: {fileID: 139900210}
-  - component: {fileID: 139900212}
   m_Layer: 0
   m_Name: RPGTalk Holder
   m_TagString: Untagged
@@ -1127,20 +1126,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &139900212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 139900206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0385d72fa46a499bb77554b7dc4ba79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveBetweenPlays: 1
-  erase: 0
 --- !u!1 &171977117 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6317998808120547055, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
@@ -3392,7 +3377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4071160177500624316, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4475376089747744869, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5198,7 +5183,7 @@ MonoBehaviour:
   fadeInPanel: {fileID: 0}
   fadeOutPanel: {fileID: 0}
   fadeWait: 0
-  cutsceneName: Cutscene 3-1
+  cutsceneName: Cutscene 3_1
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!61 &714714720
 BoxCollider2D:
@@ -8361,6 +8346,7 @@ GameObject:
   - component: {fileID: 1004257825}
   - component: {fileID: 1004257824}
   - component: {fileID: 1004257826}
+  - component: {fileID: 1004257827}
   m_Layer: 0
   m_Name: Suit On
   m_TagString: Untagged
@@ -8431,6 +8417,51 @@ MonoBehaviour:
   fadeWait: 0
   cutsceneName: Cutscene 3
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
+--- !u!114 &1004257827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004257823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
+    - {fileID: 11400000, guid: a9001a04adc48f141af652c04cdb8250, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1157790373}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1157790373}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1031350569
 GameObject:
   m_ObjectHideFlags: 0
