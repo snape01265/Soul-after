@@ -34,12 +34,15 @@ public class SajaPuzzleBehavior : MonoBehaviour
     private void Start()
     {
         buttons = GameObject.FindGameObjectsWithTag("PressableObject");
+        btnRenders = new List<ButtonRenderer>(6) { null, null, null, null, null, null };
         foreach (GameObject btn in buttons)
         {
             ButtonRenderer _btnRend = btn.GetComponent<ButtonRenderer>();
             if (_btnRend != null)
             {
-                btnRenders.Add(_btnRend);
+                char a = btn.name[btn.name.Length - 1];
+                int idx = int.Parse(a.ToString()) - 1;
+                btnRenders[idx] = _btnRend;
             }
         }
     }
@@ -82,7 +85,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!finished)
         {
             pressedStates[idx] = true;
-
+            Debug.Log(idx);
             switch (idx)
             {
                 case 0:
