@@ -6,18 +6,16 @@ using UnityEngine;
 public class ButtonRenderer : MonoBehaviour
 {
     private SajaPuzzleBehavior saja;
-    private GameObject BtnUp;
     private bool BtnState;
     private int BtnIdx;
     public AudioSource _audio;
-
+    private Animator anim;
     private void Awake()
     {
         saja = this.gameObject.GetComponentInParent<SajaPuzzleBehavior>();
-
+        anim = GetComponent<Animator>();
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
         BtnIdx = int.Parse(a.ToString()) - 1;
-        BtnUp = this.transform.Find("Button Up").gameObject;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +25,7 @@ public class ButtonRenderer : MonoBehaviour
         if (collision.GetComponent<Collider2D>().CompareTag($"MovableObject"))
         {
             saja.ToggleBoxOnBtn(BtnIdx);
-            if(BtnUp.activeSelf)
+            if(anim.GetBool("Pressed") == false)
             {
                 Debug.Log("Pressed.");
                 ButtonDown();
@@ -47,12 +45,12 @@ public class ButtonRenderer : MonoBehaviour
     public void ButtonUp()
     {
         _audio.Play();
-        BtnUp.SetActive(true);
+        anim.SetBool("Pressed", false);
     }
 
     public void ButtonDown()
     {
         _audio.Play();
-        BtnUp.SetActive(false);
+        anim.SetBool("Pressed", true);
     }
 }
