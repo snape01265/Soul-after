@@ -18281,6 +18281,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2225282683342224407, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
   m_PrefabInstance: {fileID: 992474878}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &992474881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992474880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activate: {fileID: 11400000, guid: c61a720e5a3ecdb46ab0373eb984eedf, type: 2}
+  NPC: {fileID: 992474880}
 --- !u!4 &992474883 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
@@ -29552,12 +29566,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 134af8be40cc68e4989ff72279500c69, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1883810321}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 992474881}
+          m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
+          m_MethodName: ObjectDisable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -30119,7 +30148,7 @@ Tilemap:
       - {fileID: 6051117842504900372, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: 1093894860130920132, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 6297030925397294674, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 34, y: 44, z: 0}
