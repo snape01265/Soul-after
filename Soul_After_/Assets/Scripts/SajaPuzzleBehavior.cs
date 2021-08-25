@@ -86,7 +86,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
             switch (idx)
             {
                 case 0:
-                    {
+                    {                     
                         CrossFlip(1);
                         CrossFlip(3);
                         break;
