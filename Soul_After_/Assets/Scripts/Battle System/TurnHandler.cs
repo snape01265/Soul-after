@@ -20,13 +20,15 @@ public class TurnHandler : MonoBehaviour
     public int phaseCount;
     public bool enemyActed;
     public int patternCount;
-
+    private Animator anim;
 
     private bool isReading;
     private GameObject enemyAtk;
 
     void Start()
     {
+        anim = GameObject.Find("¾Æ¹öÁö Older").GetComponent<Animator>();
+        anim.SetBool("Battle", true);
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().inBattle = true;
         state = BattleState.Start;
@@ -73,6 +75,7 @@ public class TurnHandler : MonoBehaviour
             {
                 isReading = true;
                 rpgTalk.NewTalk("success4_start", "success4_end", rpgTalk.txtToParse);
+                anim.SetBool("Battle", false);
                 rpgTalk.OnEndTalk += Won;
             }
         }

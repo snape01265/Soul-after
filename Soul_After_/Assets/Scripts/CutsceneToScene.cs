@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CutsceneToScene : MonoBehaviour
 {
     public string sceneToLoad;
+    public StringValue lastScene;
     public Vector2 playerPosition;
     public VectorValue playerStorage;
     public GameObject fadeInPanel;
@@ -23,6 +24,7 @@ public class CutsceneToScene : MonoBehaviour
     private void OnEnable()
     {
         _audio.Play();
+        lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
     }

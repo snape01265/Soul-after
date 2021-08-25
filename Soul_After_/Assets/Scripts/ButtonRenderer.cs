@@ -14,18 +14,10 @@ public class ButtonRenderer : MonoBehaviour
 
     private void Start()
     {
-        //Debug.Log("this is =" + this.gameObject.name);
         char a = this.gameObject.name[this.gameObject.name.Length - 1];
-        //Debug.Log("char is =" + a.ToString());
         BtnIdx = int.Parse(a.ToString()) - 1;
         BtnState = buttonStates.initialValue[BtnIdx];
         BtnUp = this.transform.Find("Button Up").gameObject;
-
-        if (BtnState)
-        {
-            // if true, disable Button Up sprite
-            ButtonDown();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

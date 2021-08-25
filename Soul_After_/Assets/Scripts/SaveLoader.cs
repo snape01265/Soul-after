@@ -24,7 +24,7 @@ public class SaveLoader : MonoBehaviour
     }
     public void LoadNextScene()
     {
-        StartCoroutine(FadeCo());
+        StartCoroutine(FadeCo()); 
     }
     public IEnumerator FadeCo()
     {
