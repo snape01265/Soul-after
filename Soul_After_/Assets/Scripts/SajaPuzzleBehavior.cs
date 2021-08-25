@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
-    public BoolList pressedStates;
+    [HideInInspector]
+    public List<bool> pressedStates;
+    [HideInInspector]
+    public List<bool> boxOnBtn;
+
     public VectorList birdPos;
-    public BoolList boxOnBtn;
     public BoolValue puzzleFin;
     private readonly List<bool> FinishedState = new List<bool>(6) { true, true, true, true, true, true };
     private bool finished = false;
@@ -17,15 +20,8 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void Awake()
     {
-        pressedStates.initialValue = new List<bool>(6) { false, false, false, false, false, false };
-        pressedStates.defaultValue = new List<bool>(6) { false, false, false, false, false, false };
-        boxOnBtn.initialValue = new List<bool>(6) { false, false, false, false, false, false };
-        boxOnBtn.defaultValue = new List<bool>(6) { false, false, false, false, false, false };
-
-        if (!pressedStates.initialValue.SequenceEqual(pressedStates.defaultValue))
-        {
-            pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
-        }
+        pressedStates = new List<bool>(6) { false, false, false, false, false, false };
+        boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
 
         if (!puzzleFin.initialValue)
         {
@@ -50,7 +46,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void CheckFinished()
     {
-        if (!finished && FinishedState.SequenceEqual(pressedStates.initialValue))
+        if (!finished && FinishedState.SequenceEqual(pressedStates))
         {
             // finish event
             Debug.Log("Event Finished!");
@@ -67,13 +63,13 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     public void ResetPuzzle()
     {
+        pressedStates = new List<bool>(6) { false, false, false, false, false, false };
+        boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
         finished = false;
-        pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
 
         GameObject.Find("등록시키고 싶은 새").transform.position = birdPos.defaultPos[0];
         GameObject.Find("멀뚱 멀뚱한 새").transform.position = birdPos.defaultPos[1];
         GameObject.Find("항상 까먹는 새").transform.position = birdPos.defaultPos[2];
-
 
         foreach (ButtonRenderer btnRend in btnRenders)
         {
@@ -85,8 +81,8 @@ public class SajaPuzzleBehavior : MonoBehaviour
     {
         if (!finished)
         {
-            pressedStates.initialValue[idx] = true;
-            Debug.Log("Pressed Up!");
+            pressedStates[idx] = true;
+
             switch (idx)
             {
                 case 0:
@@ -140,10 +136,20 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void CrossFlip(int idx)
     {
-        if (boxOnBtn.initialValue[idx] == false)
+        if (boxOnBtn[idx] == false)
         {
-            pressedStates.initialValue[idx] = false;
+            pressedStates[idx] = false;
             btnRenders[idx].ButtonUp();
         }
+    }
+
+    public void TogglePressedState(int idx)
+    {
+        pressedStates[idx] = !pressedStates[idx];
+    }
+
+    public void ToggleBoxOnBtn(int idx)
+    {
+        boxOnBtn[idx] = !boxOnBtn[idx];
     }
 }
