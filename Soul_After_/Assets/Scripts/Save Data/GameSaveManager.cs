@@ -34,7 +34,7 @@ public class GameSaveManager : MonoBehaviour
             string results = "";
             foreach (ScriptableObject scriptable in objToSave)
             {
-                results += JsonUtility.ToJson(scriptable) + "_";
+                results += JsonUtility.ToJson(scriptable) + "~";
                 Debug.Log(JsonUtility.ToJson(scriptable));
                 Debug.Log("results is " + results);
             }
@@ -62,7 +62,7 @@ public class GameSaveManager : MonoBehaviour
                 FileStream file = File.Open(Application.persistentDataPath +
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
-                string[] results = ((string)binary.Deserialize(file)).Split('_');
+                string[] results = ((string)binary.Deserialize(file)).Split('~');
                 for (int i = 0; i < objToSave.Count; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
@@ -95,7 +95,7 @@ public class GameSaveManager : MonoBehaviour
                     FileStream file = File.Open(Application.persistentDataPath +
                         string.Format("/Save{0}.dat", n), FileMode.Open);
                     BinaryFormatter binary = new BinaryFormatter();
-                    string[] results = ((string)binary.Deserialize(file)).Split('_');
+                    string[] results = ((string)binary.Deserialize(file)).Split('~');
                     StringValue saveTime = ScriptableObject.CreateInstance(typeof(StringValue)) as StringValue;
                     JsonUtility.FromJsonOverwrite(results[curTimeIdx], saveTime);
                     dateTimes.Add(DateTime.Parse(saveTime.initialValue));
@@ -125,7 +125,7 @@ public class GameSaveManager : MonoBehaviour
                 FileStream file = File.Open(Application.persistentDataPath +
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
-                string[] results = ((string)binary.Deserialize(file)).Split('_');
+                string[] results = ((string)binary.Deserialize(file)).Split('~');
                 for (int i = 0; i < objToSave.Count; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);

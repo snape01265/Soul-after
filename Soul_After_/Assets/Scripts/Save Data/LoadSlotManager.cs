@@ -29,7 +29,7 @@ public class LoadSlotManager : MonoBehaviour
                     FileStream file = File.Open(Application.persistentDataPath +
                         string.Format("/Save{0}.dat", n), FileMode.Open);
                     BinaryFormatter binary = new BinaryFormatter();
-                    string[] results = ((string)binary.Deserialize(file)).Split('_');
+                    string[] results = ((string)binary.Deserialize(file)).Split('~');
                     Array.Resize(ref results, results.Length - 1);
                     Debug.Log(results.Length);
                     Debug.Log(results[results.Length - 1]);

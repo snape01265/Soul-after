@@ -17,7 +17,11 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void Awake()
     {
+        pressedStates.initialValue = new List<bool>(6) { false, false, false, false, false, false };
+        pressedStates.defaultValue = new List<bool>(6) { false, false, false, false, false, false };
         boxOnBtn.initialValue = new List<bool>(6) { false, false, false, false, false, false };
+        boxOnBtn.defaultValue = new List<bool>(6) { false, false, false, false, false, false };
+
         if (!pressedStates.initialValue.SequenceEqual(pressedStates.defaultValue))
         {
             pressedStates.initialValue = new List<bool>(pressedStates.defaultValue);
