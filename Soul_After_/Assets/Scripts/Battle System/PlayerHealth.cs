@@ -69,7 +69,8 @@ public class PlayerHealth : MonoBehaviour
         SP += soul;
         if (SP >= needSP)
         {
-            levelClear = true;
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<TurnHandler>().patternCount += 1;
+            GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyTurnHandler>().FinishedTurn = true;
             SP = 0;
         }
         acqSound.Play();
