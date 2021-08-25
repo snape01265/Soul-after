@@ -26,6 +26,7 @@ public class ButtonRenderer : MonoBehaviour
             // if true, disable Button Up sprite
             ButtonDown();
         }
+        else ButtonUp();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
