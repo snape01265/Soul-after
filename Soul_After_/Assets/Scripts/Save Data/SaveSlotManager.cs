@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class SaveSlotManager : MonoBehaviour
 {
+    public StringValue curTime;
+
     private void OnEnable()
     {
         List<string> dateTimes = new List<string>();
@@ -58,11 +60,16 @@ public class SaveSlotManager : MonoBehaviour
 
     public void SaveInSlot(int slotNo)
     {
+        curTime.initialValue = DateTime.Now.ToString();
+
         bool result = GameObject.Find("GameSaveManager").GetComponent<GameSaveManager>().SaveFunc(slotNo);
 
         if (result)
         {
             Debug.Log("저장 성공!");
+            string loc = string.Format("Background/Save Slot/Slot {0}/DateTime", (slotNo + 1).ToString());
+            Debug.Log(loc);
+            this.transform.Find(loc).GetComponent<Text>().text = curTime.initialValue;
             gameObject.transform.Find("Background/Save Slot/Save Comp").gameObject.SetActive(true);
             gameObject.GetComponent<AudioSource>().Play();
         }
