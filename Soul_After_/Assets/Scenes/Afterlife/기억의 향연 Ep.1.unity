@@ -937,6 +937,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 488a696c50552d1448ba8f5558c407be, type: 2}
     - {fileID: 11400000, guid: 8852b3c9ab60ce34887f0331ebea79db, type: 2}
+    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -958,6 +959,20 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 52648249}
+          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
+          m_MethodName: AddCutscene
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1149,7 +1164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &141633246
 Transform:
   m_ObjectHideFlags: 0
@@ -1176,8 +1191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousCutscene: Cutscene 9-1
-  watchedCutscene: Cutscene 10
+  previousCutscene: Cutscene 10
+  watchedCutscene: Cutscene 10-1
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!114 &141633248
 MonoBehaviour:
@@ -1227,9 +1242,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  lineToStart: father2_start
-  lineToBreak: father2_end
-  txtToParse: {fileID: 0}
+  lineToStart: father2_1_start
+  lineToBreak: father2_1_end
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
@@ -1543,7 +1558,7 @@ MonoBehaviour:
         m_CallState: 2
   lineToStart: memory1_start
   lineToBreak: memory1_end
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
@@ -1758,6 +1773,7 @@ GameObject:
   - component: {fileID: 199037209}
   - component: {fileID: 199037210}
   - component: {fileID: 199037211}
+  - component: {fileID: 199037212}
   m_Layer: 0
   m_Name: Cutscene (Battle Prep)
   m_TagString: Untagged
@@ -1840,7 +1856,7 @@ MonoBehaviour:
   fadeInPanel: {fileID: 6626229727898054473, guid: 7e896ae3b7b09694193f5391c0d7f75c, type: 3}
   fadeOutPanel: {fileID: 8350721012333504612, guid: 4b1ca0a985a31144ba9592da358d193d, type: 3}
   fadeWait: 0
-  cutsceneName: Cutscene 9-1
+  cutsceneName: Cutscene 10
   cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!61 &199037210
 BoxCollider2D:
@@ -1889,6 +1905,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
     - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
     - {fileID: 11400000, guid: 488a696c50552d1448ba8f5558c407be, type: 2}
+    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1934,17 +1951,17 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1224125434}
-          m_TargetAssemblyTypeName: DisableTalk, Assembly-CSharp
-          m_MethodName: EnableIndexObject
-          m_Mode: 1
+        - m_Target: {fileID: 141633245}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
@@ -1988,6 +2005,35 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 199037209}
+          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
+          m_MethodName: AddCutscene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &199037212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199037206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousCutscene: Cutscene 9
+  watchedCutscene: Cutscene 10
+  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!1 &204883420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3732646352336015123, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
@@ -7128,7 +7174,7 @@ MonoBehaviour:
         m_CallState: 2
   lineToStart: memory3_start
   lineToBreak: memory3_end
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
@@ -7625,7 +7671,6 @@ GameObject:
   - component: {fileID: 405628399}
   - component: {fileID: 405628398}
   - component: {fileID: 405628397}
-  - component: {fileID: 405628400}
   m_Layer: 0
   m_Name: RPGTalk Area
   m_TagString: Untagged
@@ -7697,7 +7742,7 @@ MonoBehaviour:
         m_CallState: 2
   lineToStart: father_start
   lineToBreak: father_end
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
@@ -7774,21 +7819,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &405628400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405628395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3969c37d466ed2749a3fcccd192a93cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousCutscene: Cutscene 9
-  watchedCutscene: Cutscene 9-1
-  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!1 &436536060
 GameObject:
   m_ObjectHideFlags: 0
@@ -9945,7 +9975,8 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 3eee7eb5e46727a4aa371cdea1520738, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1174571432573445897, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
 --- !u!1 &740280798
 GameObject:
@@ -29430,7 +29461,7 @@ MonoBehaviour:
         m_CallState: 2
   lineToStart: memory5_start
   lineToBreak: memory5_end
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:
@@ -30771,7 +30802,7 @@ PlayableDirector:
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
-  m_InitialTime: 1
+  m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: -3859931380294019174, guid: d10b4106acf52e045bb387999f032067, type: 2}
     value: {fileID: 1344804386}
@@ -32393,7 +32424,7 @@ MonoBehaviour:
         m_CallState: 2
   lineToStart: memory6_start
   lineToBreak: memory6_end
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 7737a6d9c804f264b8c261215f3f5496, type: 3}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
       m_Calls:

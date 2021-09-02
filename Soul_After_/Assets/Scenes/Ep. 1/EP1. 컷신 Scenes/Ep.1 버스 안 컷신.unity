@@ -290,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154760678}
   - component: {fileID: 154760677}
+  - component: {fileID: 154760679}
   m_Layer: 0
   m_Name: Bus Cutscene
   m_TagString: Untagged
@@ -394,6 +395,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 52543709684468054, guid: 7112a3ea067581d47b64fa4311283f63, type: 2}
     value: {fileID: 174975640493686040}
+  - key: {fileID: 623572800824937425, guid: 7112a3ea067581d47b64fa4311283f63, type: 2}
+    value: {fileID: 154760676}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &154760678
@@ -410,6 +413,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &154760679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154760676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 562294800}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &157653205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1529,6 +1562,17 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 4486433108246338005, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
   m_PrefabInstance: {fileID: 492685904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &562294800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+  m_PrefabInstance: {fileID: 658367090}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e84bf7456b6b84fa91b7b272c2fbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &623823040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,11 +1700,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.43
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.54
+      value: 4.94
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1708,7 +1752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
@@ -1904,7 +1948,9 @@ MonoBehaviour:
   cutscenePosition: 16
   textSpeed: 50
   currentChar: 0
-  variables: []
+  variables:
+  - variableName: name
+    variableValue: 
   shouldUsePhotos: 0
   characters: []
   UIPhoto: {fileID: 0}

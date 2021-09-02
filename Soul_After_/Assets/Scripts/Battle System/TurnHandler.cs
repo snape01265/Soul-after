@@ -76,7 +76,8 @@ public class TurnHandler : MonoBehaviour
                 isReading = true;
                 rpgTalk.NewTalk("success4_start", "success4_end", rpgTalk.txtToParse);
                 anim.SetBool("Battle", false);
-                rpgTalk.OnEndTalk += Won;
+                GameObject.Find("AddCutscene").GetComponent<CutsceneEnter>().AddCutscene();
+                rpgTalk.OnEndTalk += Won;           
             }
         }
         else if (state == BattleState.EnemyTurn)
