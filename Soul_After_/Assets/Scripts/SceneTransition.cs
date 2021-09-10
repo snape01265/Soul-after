@@ -27,18 +27,16 @@ public class SceneTransition : MonoBehaviour
     {
         if(other.CompareTag("Player") && !other.isTrigger)
         {
-            _audio.Play();
-            lastScene.initialValue = sceneToLoad;
-            playerStorage.initialValue = playerPosition;
-            StartCoroutine(FadeCo());
-            GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
+            ChangeScene();
         }
     }
     public void ChangeScene()
     {
+        _audio.Play();
         lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
+        GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
     }
     public IEnumerator FadeCo()
     {
