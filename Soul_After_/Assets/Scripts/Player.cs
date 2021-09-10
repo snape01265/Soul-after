@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private Vector3 change;
     private Animator animator;
     private bool nameSet;
+
     private readonly float minX = -8;
     private readonly float maxX = 8.05f;
     private readonly float minY = -4.7f;
@@ -42,6 +43,8 @@ public class Player : MonoBehaviour
     public BoolValue nameSetValue;
     public StringValue nameSave;
     public AnimatorValue animatorValue;
+
+    private GameObject loadSlotMenu;
 
     private void Awake()
     {
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
+        loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
         nameSet = nameSetValue.initialValue;
     }
@@ -71,20 +75,28 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (menuSet.activeSelf)
+            if (!loadSlotMenu.activeSelf)
             {
-                menuSet.transform.Find("Sound Settings").gameObject.SetActive(true);
-                menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
-                menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
-                ResumeGame();
-                menuSet.SetActive(false);
+                if (menuSet.activeSelf)
+                {
+                    menuSet.transform.Find("Sound Settings").gameObject.SetActive(true);
+                    menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
+                    menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
+                    ResumeGame();
+                    menuSet.SetActive(false);
+                }
+                else
+                {
+                    PauseGame();
+                    menuSet.SetActive(true);
+                }
             }
             else
             {
-                PauseGame();
-                menuSet.SetActive(true);
+                loadSlotMenu.SetActive(false);
             }
-        }
+        } 
+
         if (!ispaused)
         {
             if (control)
