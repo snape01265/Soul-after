@@ -14,9 +14,9 @@ public class LoadSlotManager : MonoBehaviour
         string defaultTimeMsg = "No Save";
         string prefix = "- ";
 
-        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = prefix;
+        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text = prefix;
+        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text = prefix;
+        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text = prefix;
 
 
         for (int n = 0; n < 3; n++)
@@ -50,9 +50,9 @@ public class LoadSlotManager : MonoBehaviour
 
         Debug.Log(dateTimes.Count);
 
-        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text += dateTimes[0];
-        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text += dateTimes[1];
-        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text += dateTimes[2];
+        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text += dateTimes[0];
+        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text += dateTimes[1];
+        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text += dateTimes[2];
     }
 
     public void LoadInSlot(int slotNo)
