@@ -18,13 +18,21 @@ public class HeartRenderer : MonoBehaviour
 
     public void HPGain()
     {
-        _audio.Play();
+        if(_audio)
+        {
+            _audio.Play();
+        }
+
         anim.SetBool("Dmg", false);
     }
 
     public void HPLoss()
     {
-        _audio.Play();
+        if(_audio)
+        {
+            _audio.Play();
+        }
+        
         anim.SetBool("Dmg", true);
     }
 }
