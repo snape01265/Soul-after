@@ -21,7 +21,6 @@ public class MemoryAcq : MonoBehaviour
     {
         if(rb.CompareTag("Player"))
         {
-            playerHealth.AcquireSoul(soul);
             Destroy(this.gameObject);
         }
     }
