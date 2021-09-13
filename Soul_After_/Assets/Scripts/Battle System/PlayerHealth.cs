@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int HP;
+    [HideInInspector]
+    public List<bool> hpStates;
+    private List<HeartRenderer> heartRenderers;
+
+    public int hp;
     public int maxHP;
-    public int SP;
-    public int needSP;
     public bool levelClear;
-    public GameObject SPDisplay;
     public AudioSource hitSound;
     public AudioSource acqSound;
     public RPGTalk rpgTalk;
 
     private Gameover gameOver;
-    private Text text;
     private CameraShake shake;
     private IEnumerator currentIFrame;
-    private IEnumerator currentDamageConvo;
+    private GameObject[] objects;
 
     [Header("Invulnerability Frame")]
     public Color flashColor;
@@ -28,66 +29,65 @@ public class PlayerHealth : MonoBehaviour
     public int numberOfFlashes;
     public Collider2D triggerCollider;
     public SpriteRenderer mySprite;
+
     void Start()
     {
-        gameOver = GameObject.Find("GameOver").GetComponent<Gameover>();
-        text = SPDisplay.GetComponent<Text>();
-        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
+        hp = maxHP;
+        hpStates = new List<bool>(4) {true, true, true, true};
+        heartRenderers = new List<HeartRenderer>(4) { null, null, null, null };
+
+        if (GameObject.Find("GameOver"))
+        {
+            gameOver = GameObject.Find("GameOver").GetComponent<Gameover>();
+        }
+        if (GameObject.FindGameObjectWithTag("ScreenShake"))
+        {
+            shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
+        }
+
+        objects = GameObject.FindGameObjectsWithTag("HealthObj");
+        Debug.Log("obj len : " + objects.Length);
+        foreach (GameObject obj in objects)
+        {
+            HeartRenderer _hpRend = obj.GetComponent<HeartRenderer>();
+            if (_hpRend != null)
+            {
+                char a = obj.name[obj.name.Length - 1];
+                int idx = int.Parse(a.ToString()) - 1;
+                Debug.Log("idx : " + idx);
+                heartRenderers[idx] = _hpRend;
+            }
+        }
     }
-    void Update()
-    {
-        text.text = "SP: " + HP.ToString();
-    }
+
     public void TakeDamage(int dmg)
     {
-        HP -= dmg;
-        if (HP <= 0)
+        int oldhp = hp;
+        hp -= dmg;
+
+        RenderHp(oldhp, hp);
+
+        if (hp <= 0)
         {
-            Death();
             gameOver.EndGame();
         }
+
         if (currentIFrame != null)
         {
-        }
-        else
+        } else
         {
             StartCoroutine(IFrame());
             currentIFrame = IFrame();
         }
-        if (currentDamageConvo != null)
-        {
-        }
-        else
-        {
-            StartCoroutine(DamageConvo());
-            currentDamageConvo = DamageConvo();
-        }
+        
     }
 
-    public void AcquireSoul(int soul)
-    {
-        SP += soul;
-        if (SP >= needSP)
-        {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<TurnHandler>().patternCount += 1;
-            GameObject.FindGameObjectWithTag("Enemy").GetComponent<EnemyTurnHandler>().FinishedTurn = true;
-            SP = 0;
-        }
-        acqSound.Play();
-    }
-
-    void Death()
-    {
-        Debug.Log("PlayerDead");
-        TurnHandler th = GameObject.FindGameObjectWithTag("GameController").GetComponent<TurnHandler>();
-        th.Lost();
-    }
     IEnumerator IFrame()
     {
         int temp = 0;
         triggerCollider.enabled = false;
-        hitSound.Play();
-        shake.CamShakeWithImage();
+        // hitSound.Play();
+        // shake.CamShakeWithImage();
         while (temp < numberOfFlashes)
         {
             mySprite.color = flashColor;
@@ -99,26 +99,17 @@ public class PlayerHealth : MonoBehaviour
         currentIFrame = null;
         triggerCollider.enabled = true;
     }
-    IEnumerator DamageConvo()
+
+    private void RenderHp(int oldHp, int newHp)
     {
-        int rand = Random.Range(0, 3);
-        if (rand == 0)
+        if (oldHp > newHp)
         {
-            rpgTalk.NewTalk("hit1_start", "hit1_end", rpgTalk.txtToParse);
+            hpStates[newHp] = false;
+            foreach(bool st in hpStates)
+            {
+                Debug.Log(st);
+            }
+            heartRenderers[newHp].HPLoss();
         }
-        else if (rand == 1)
-        {
-            rpgTalk.NewTalk("hit2_start", "hit2_end", rpgTalk.txtToParse);
-        }
-        else if (rand == 2)
-        {
-            rpgTalk.NewTalk("hit3_start", "hit3_end", rpgTalk.txtToParse);
-        }
-        else if (rand == 3)
-        {
-            rpgTalk.NewTalk("hit4_start", "hit4_end", rpgTalk.txtToParse);
-        }
-        yield return new WaitForSeconds(3.5f);
-        currentDamageConvo = null;
     }
 }
