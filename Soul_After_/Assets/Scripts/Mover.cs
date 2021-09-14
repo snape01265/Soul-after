@@ -34,7 +34,8 @@ public class Mover : MonoBehaviour
 			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			UpdateAnimation();
+			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
+				UpdateAnimation();
 			prevPos = transform.position;
 		}
 	}

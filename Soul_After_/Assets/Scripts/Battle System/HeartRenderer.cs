@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class HeartRenderer : MonoBehaviour
 {
-    private bool hpState;
-    private int idx;
     public AudioSource _audio;
     private Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        char a = this.gameObject.name[this.gameObject.name.Length - 1];
-        idx = int.Parse(a.ToString()) - 1;
     }
 
     public void HPGain()
