@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SceneTransition : MonoBehaviour
     public float fadeWait;
     public StringValue lastScene;
     public AudioSource _audio;
+    public Text sceneName;
 
     void Awake()
     {
@@ -21,6 +23,7 @@ public class SceneTransition : MonoBehaviour
             GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
             Destroy(panel, 1);
         }
+        SceneName();
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -32,7 +35,10 @@ public class SceneTransition : MonoBehaviour
     }
     public void ChangeScene()
     {
-        _audio.Play();
+        if(_audio != null)
+        {
+            _audio.Play();
+        }
         lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
@@ -49,6 +55,15 @@ public class SceneTransition : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             yield return null;
+        }
+    }
+    public void SceneName()
+    {
+        //GameObject.Find("SceneNameText").GetComponent<Animator>().SetBool("FadeShort", true);
+        if (sceneName != null) 
+        {
+            var sn = sceneName.GetComponent<Animator>();
+            sn.SetBool("FadeShort", true);
         }
     }
 }
