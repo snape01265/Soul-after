@@ -51,6 +51,25 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     public void ResetPos()
     {
-        rectTransform.anchoredPosition = initRect;
+        Vector2 startPos = rectTransform.anchoredPosition;
+        StartCoroutine(SmoothMove(startPos));
+    }
+
+    public IEnumerator SmoothMove(Vector2 startPos)
+    {
+        float currentTime = 0;
+        float endTime = .3f;
+        float normalizedValue;
+
+        rectTransform.anchoredPosition = Vector2.Lerp(rectTransform.anchoredPosition, initRect, Time.deltaTime * .01f);
+
+        while (currentTime <= endTime)
+        {
+            currentTime += Time.deltaTime;
+            normalizedValue = currentTime / endTime;
+
+            rectTransform.anchoredPosition = Vector2.Lerp(startPos, initRect, normalizedValue);
+            yield return null;
+        }
     }
 }
