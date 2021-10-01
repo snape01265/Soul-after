@@ -6,11 +6,12 @@ public class PuzzleController : MonoBehaviour
 {
     [SerializeField] private Transform emptySpace;
     [SerializeField] private TileRenderer[] tiles;
-    private TileRenderer tileRenderer;
+    private Vector3 emptySpaceStart;
     private int emptySpaceIndex = 11;
     // Start is called before the first frame update
     void Start()
     {
+        emptySpaceStart = new Vector3(emptySpace.position.x, emptySpace.position.y, 0f);
     }
 
     // Update is called once per frame
@@ -69,7 +70,14 @@ public class PuzzleController : MonoBehaviour
     }
     public void ResetPuzzle()
     {
-        tileRenderer = GameObject.FindGameObjectWithTag("TileId").GetComponent<TileRenderer>();
-        tileRenderer.targetPosition = tileRenderer.startPosition;
+        foreach (var a in tiles)
+        {
+            if (a != null)
+            {
+                a.targetPosition = a.startPosition;
+                Debug.Log("Reset!");
+            }
+        }
+        emptySpace.position = emptySpaceStart;
     }
 }
