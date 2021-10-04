@@ -33,6 +33,7 @@ public class PuzzleController : MonoBehaviour
                     tiles[emptySpaceIndex] = tiles[tileIndex];
                     tiles[tileIndex] = null;
                     emptySpaceIndex = tileIndex;
+                    GetComponent<AudioSource>().Play();
                 }
             }
         }
