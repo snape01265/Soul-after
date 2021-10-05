@@ -103,7 +103,7 @@ public class RaceBehavior : MonoBehaviour
 
     private IEnumerator CountDown()
     {
-        int countDown = 5;
+        int countDown = 3;
         while (countDown > 0)
         {
             timer.text = countDown.ToString();

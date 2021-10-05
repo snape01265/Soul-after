@@ -5,15 +5,11 @@ using RPGTALK;
 
 public class MazeController : MonoBehaviour
 {
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        anim = GetComponent<Animator>();
+        anim.SetBool("Sigh", true);
     }
 }
