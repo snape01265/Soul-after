@@ -3437,7 +3437,6 @@ GameObject:
   - component: {fileID: 328434369}
   - component: {fileID: 328434368}
   - component: {fileID: 328434367}
-  - component: {fileID: 328434366}
   - component: {fileID: 328434365}
   m_Layer: 6
   m_Name: GomShik
@@ -3467,25 +3466,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &328434366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328434364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de337ed4a0f4e214d8dd2e6a5ff467ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  moveSpeed: 0
-  isWalking: 0
-  walkTime: 0
-  waitTime: 0
-  canMove: 0
-  walkZone: {fileID: 0}
 --- !u!95 &328434367
 Animator:
   serializedVersion: 3
@@ -3529,7 +3509,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!212 &328434369
 SpriteRenderer:
@@ -5530,7 +5510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af02b5d7648a4e8492f3b9fc160319d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rpgtalkTarget: {fileID: 0}
+  rpgtalkTarget: {fileID: 1736931332}
   shouldInteractWithButton: 1
   showWhenInteractionIsPossible: []
   interactionKey: 32
@@ -5540,7 +5520,7 @@ MonoBehaviour:
   callbackBeforeTalk:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 328434366}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NpcController, Assembly-CSharp
         m_MethodName: LookInDirection
         m_Mode: 1
@@ -9194,7 +9174,7 @@ MonoBehaviour:
   billboard: 1
   mainCamera: 1
   otherCamera: {fileID: 0}
-  txtToParse: {fileID: 0}
+  txtToParse: {fileID: 4900000, guid: 0c1d74d45b2638248bd9aed7866d7852, type: 3}
   enableQuickSkip: 1
   callback:
     m_PersistentCalls:
@@ -9219,8 +9199,8 @@ MonoBehaviour:
   enablePass: 1
   autoPass: 0
   secondsAutoPass: 3
-  lineToStart: 1
-  lineToBreak: -1
+  lineToStart: begin
+  lineToBreak: end
   wordWrap: 1
   maxCharInWidth: 50
   maxCharInHeight: 4
