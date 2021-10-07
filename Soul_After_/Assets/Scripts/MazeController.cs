@@ -6,7 +6,6 @@ using RPGTALK;
 public class MazeController : MonoBehaviour
 {
     private Animator anim;
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
