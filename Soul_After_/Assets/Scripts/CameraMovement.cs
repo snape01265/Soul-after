@@ -23,9 +23,7 @@ public class CameraMovement : MonoBehaviour
             targetPosition.x = Mathf.Clamp(targetPosition.x, minPosition.x, maxPosition.x);
             targetPosition.y = Mathf.Clamp(targetPosition.y, minPosition.y, maxPosition.y);
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing);
-
         }
-
     }
     public void DisableComponent()
     {

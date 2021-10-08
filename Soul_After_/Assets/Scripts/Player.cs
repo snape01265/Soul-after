@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     private readonly float minX = -8;
     private readonly float maxX = 8.05f;
     private readonly float minY = -4.7f;
-    private  readonly float maxY = 3.65f;
+    private readonly float maxY = 3.65f;
 
     private readonly float speed = 80;
     private readonly float normalVol = 1f;
