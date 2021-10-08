@@ -16,7 +16,6 @@ public class PlayerHealth : MonoBehaviour
     public bool levelClear;
     public AudioSource hitSound;
     public RPGTalk rpgTalk;
-    public GameObject camShake;
 
     private Gameover gameOver;
     private CameraShake shake;
@@ -60,7 +59,6 @@ public class PlayerHealth : MonoBehaviour
     {
         int oldhp = hp;
         hp -= dmg;
-        shake.camAnim.SetTrigger("shake1");
         RenderHp(oldhp, hp);
 
         if (hp <= 0 && gameOver)
