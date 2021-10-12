@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PuzzleController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PuzzleController : MonoBehaviour
         emptySpaceStart = new Vector3(emptySpace.position.x, emptySpace.position.y, 0f);
         myLight = GameObject.Find("Light Controller").GetComponent<Light2D>();
         resetBtn = GameObject.FindGameObjectWithTag("ResetBtn");
+        Scene scene = SceneManager.GetActiveScene();
     }
 
     // Update is called once per frame
@@ -36,7 +38,19 @@ public class PuzzleController : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
                 if (hit.collider != null)
                 {
-                    if (Vector2.Distance(emptySpace.position, hit.transform.position) < 4) //Change the distance value when receive the painting
+                    if (Vector2.Distance(emptySpace.position, hit.transform.position) < 3f) //Change the distance value when receive the painting
+                    {
+                        TileRenderer thisTile = hit.transform.GetComponent<TileRenderer>();
+                        Vector2 lastEmptySpacePosition = emptySpace.position;
+                        emptySpace.position = thisTile.targetPosition;
+                        thisTile.targetPosition = lastEmptySpacePosition;
+                        int tileIndex = findIndex(thisTile);
+                        tiles[emptySpaceIndex] = tiles[tileIndex];
+                        tiles[tileIndex] = null;
+                        emptySpaceIndex = tileIndex;
+                        GetComponent<AudioSource>().Play();
+                    }
+                    else if (Vector2.Distance(emptySpace.position, hit.transform.position) < 4f)
                     {
                         TileRenderer thisTile = hit.transform.GetComponent<TileRenderer>();
                         Vector2 lastEmptySpacePosition = emptySpace.position;
