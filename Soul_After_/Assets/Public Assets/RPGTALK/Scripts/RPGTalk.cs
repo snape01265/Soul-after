@@ -358,7 +358,10 @@ public class RPGTalk : MonoBehaviour {
 
         saveInstance = GetComponent<RPGTalkSaveInstance>();
 
-        ispaused = GameObject.Find("Player").GetComponent<Player>().ispaused;
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>())
+            ispaused = GameObject.Find("Player").GetComponent<Player>().ispaused;
+        else
+            ispaused = false;
     }
 
     //Change txtToParse to be the correct for other language
