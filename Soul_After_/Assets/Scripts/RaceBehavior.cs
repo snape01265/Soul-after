@@ -113,15 +113,13 @@ public class RaceBehavior : MonoBehaviour
         int countDown = 3;
         while (countDown > 0)
         {
-            //When Countdown starts, the text alpha value is set to 1.
             timer = GameObject.Find("Timer").GetComponent<Text>();
             var timerColor = timer.color;
             timerColor.a = 1f;
             timer.color = timerColor;
             timer.text = countDown.ToString();
             countDown -= 1;
-            //SFX should play when count down begins. But audio source restarts for some reasong (debugging needed)
-            yield return new WaitForSeconds(1.25f);
+            yield return new WaitForSeconds(1.3f);
         }
         timer.text = "GO!";
         yield return new WaitForSeconds(1.5f);
