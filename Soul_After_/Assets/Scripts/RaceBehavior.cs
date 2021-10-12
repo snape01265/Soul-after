@@ -121,7 +121,7 @@ public class RaceBehavior : MonoBehaviour
             timer.text = countDown.ToString();
             countDown -= 1;
             //SFX should play when count down begins. But audio source restarts for some reasong (debugging needed)
-            yield return new WaitForSeconds(1.22f);
+            yield return new WaitForSeconds(1);
         }
         timer.text = "GO!";
         //After "Go!" is shown on the screen, the text should disappear and the bgm should play. 
