@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PuzzleController : MonoBehaviour
 {
+    private float tileDistance;
     [SerializeField] private Transform emptySpace;
     [SerializeField] private TileRenderer[] tiles;
     public float lightIntensity;
@@ -17,14 +18,22 @@ public class PuzzleController : MonoBehaviour
     private Light2D myLight;
     private GameObject resetBtn;
     private int cases;
-
+    private string sceneName;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         emptySpaceStart = new Vector3(emptySpace.position.x, emptySpace.position.y, 0f);
         myLight = GameObject.Find("Light Controller").GetComponent<Light2D>();
         resetBtn = GameObject.FindGameObjectWithTag("ResetBtn");
-        Scene scene = SceneManager.GetActiveScene();
+        sceneName = SceneManager.GetActiveScene().name;
+        if(sceneName == "Ep.1 Puzzle_1")
+        {
+            tileDistance = 3f;
+        }
+        else
+        {
+            tileDistance = 4f;
+        }
     }
 
     // Update is called once per frame
@@ -38,19 +47,7 @@ public class PuzzleController : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
                 if (hit.collider != null)
                 {
-                    if (Vector2.Distance(emptySpace.position, hit.transform.position) < 3f) //Change the distance value when receive the painting
-                    {
-                        TileRenderer thisTile = hit.transform.GetComponent<TileRenderer>();
-                        Vector2 lastEmptySpacePosition = emptySpace.position;
-                        emptySpace.position = thisTile.targetPosition;
-                        thisTile.targetPosition = lastEmptySpacePosition;
-                        int tileIndex = findIndex(thisTile);
-                        tiles[emptySpaceIndex] = tiles[tileIndex];
-                        tiles[tileIndex] = null;
-                        emptySpaceIndex = tileIndex;
-                        GetComponent<AudioSource>().Play();
-                    }
-                    else if (Vector2.Distance(emptySpace.position, hit.transform.position) < 4f)
+                    if (Vector2.Distance(emptySpace.position, hit.transform.position) < tileDistance) //Change the distance value when receive the painting
                     {
                         TileRenderer thisTile = hit.transform.GetComponent<TileRenderer>();
                         Vector2 lastEmptySpacePosition = emptySpace.position;
