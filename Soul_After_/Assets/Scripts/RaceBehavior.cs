@@ -60,8 +60,7 @@ public class RaceBehavior : MonoBehaviour
 
     public void StartRace()
     {
-        
-        StartCoroutine("CountDown");
+        StartCoroutine(CountDown());
     }
 
     private void CheckRaceFinish()
