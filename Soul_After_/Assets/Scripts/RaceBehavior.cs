@@ -28,7 +28,7 @@ public class RaceBehavior : MonoBehaviour
 
     private Text timer;
     //Audio Source
-    public AudioSource countDownSFX;
+    private AudioSource countDownSFX;
     public AudioSource bgm;
 
     private void Awake()
@@ -121,7 +121,7 @@ public class RaceBehavior : MonoBehaviour
             timer.text = countDown.ToString();
             countDown -= 1;
             //SFX should play when count down begins. But audio source restarts for some reasong (debugging needed)
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.25f);
         }
         timer.text = "GO!";
         yield return new WaitForSeconds(1.5f);
