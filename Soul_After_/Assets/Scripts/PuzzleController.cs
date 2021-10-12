@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
@@ -26,7 +25,7 @@ public class PuzzleController : MonoBehaviour
         myLight = GameObject.Find("Light Controller").GetComponent<Light2D>();
         resetBtn = GameObject.FindGameObjectWithTag("ResetBtn");
         sceneName = SceneManager.GetActiveScene().name;
-        if(sceneName == "Ep.1 Puzzle_1")
+        if (sceneName == "Ep.1 Puzzle_1")
         {
             tileDistance = 3f;
         }
@@ -137,9 +136,9 @@ public class PuzzleController : MonoBehaviour
             if (a != null)
             {
                 a.targetPosition = a.startPosition;
-                Debug.Log("Reset!");
             }
         }
         emptySpace.position = emptySpaceStart;
+        Debug.Log("Reset!");
     }
 }
