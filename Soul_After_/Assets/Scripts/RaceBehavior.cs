@@ -28,7 +28,7 @@ public class RaceBehavior : MonoBehaviour
 
     private Text timer;
     //Audio Source
-    public AudioSource countDownSFX;
+    private AudioSource countDownSFX;
     public AudioSource bgm;
 
     private void Awake()
