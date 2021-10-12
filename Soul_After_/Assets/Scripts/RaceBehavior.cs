@@ -124,6 +124,8 @@ public class RaceBehavior : MonoBehaviour
             yield return new WaitForSeconds(1.25f);
         }
         timer.text = "GO!";
+        yield return new WaitForSeconds(1.5f);
+        timer.text = "";
         //After "Go!" is shown on the screen, the text should disappear and the bgm should play. 
         yield return raceStart = true;
         bgm.Play();
