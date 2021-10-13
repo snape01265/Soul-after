@@ -8,9 +8,9 @@ public class RaceBehavior : MonoBehaviour
 {
     private readonly float PLAYERSPEED = 2f;
     private readonly float BUFFER = 5f;
-    private readonly float BONUS = .1f;
-    private readonly float NORM = .08f;
-    private readonly float PENALTY = .07f;
+    private readonly float BONUS = .08f;
+    private readonly float NORM = .06f;
+    private readonly float PENALTY = .05f;
     private readonly float WINCOND = 100f;
 
     public Transform player;
