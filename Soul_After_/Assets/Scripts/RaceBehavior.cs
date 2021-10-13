@@ -27,6 +27,9 @@ public class RaceBehavior : MonoBehaviour
     private bool raceOver;
 
     private Text timer;
+    //Audio Source
+    public AudioSource countDownSFX;
+    public AudioSource bgm;
 
     private void Awake()
     {
@@ -36,8 +39,11 @@ public class RaceBehavior : MonoBehaviour
 
         playerTotal = 0;
         AITotal = 0;
-
+        //text's alpha value is set to 0 in the beginning.
         timer = GameObject.Find("Timer").GetComponent<Text>();
+        var timerColor = timer.color;
+        timerColor.a = 0f;
+        timer.color = timerColor;
     }
 
     private void Update()
@@ -54,7 +60,7 @@ public class RaceBehavior : MonoBehaviour
 
     public void StartRace()
     {
-        StartCoroutine("CountDown");
+        StartCoroutine(CountDown());
     }
 
     private void CheckRaceFinish()
@@ -103,14 +109,23 @@ public class RaceBehavior : MonoBehaviour
 
     private IEnumerator CountDown()
     {
+        countDownSFX.Play();
         int countDown = 3;
         while (countDown > 0)
         {
+            timer = GameObject.Find("Timer").GetComponent<Text>();
+            var timerColor = timer.color;
+            timerColor.a = 1f;
+            timer.color = timerColor;
             timer.text = countDown.ToString();
             countDown -= 1;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.3f);
         }
         timer.text = "GO!";
+        yield return new WaitForSeconds(1.5f);
+        timer.text = "";
+        //After "Go!" is shown on the screen, the text should disappear and the bgm should play. 
         yield return raceStart = true;
+        bgm.Play();
     }
 }
