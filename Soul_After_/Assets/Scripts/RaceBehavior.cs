@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class RaceBehavior : MonoBehaviour
 {
-    private readonly float PLAYERSPEED = 2f;
+    private readonly float PLAYERSPEED = 1.4f;
     private readonly float BUFFER = 5f;
     private readonly float BONUS = .12f;
     private readonly float NORM = .08f;
