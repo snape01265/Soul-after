@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class RaceBehavior : MonoBehaviour
 {
-    private readonly float PLAYERSPEED = 1.4f;
+    private readonly float PLAYERSPEED = 1f;
     private readonly float BUFFER = 5f;
-    private readonly float BONUS = .12f;
-    private readonly float NORM = .08f;
-    private readonly float PENALTY = .06f;
+    private readonly float BONUS = .07f;
+    private readonly float NORM = .05f;
+    private readonly float PENALTY = .04f;
     private readonly float WINCOND = 100f;
 
     public Transform player;
