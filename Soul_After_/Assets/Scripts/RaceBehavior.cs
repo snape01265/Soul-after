@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class RaceBehavior : MonoBehaviour
 {
-    private readonly float PLAYERSPEED = 2f;
+    private readonly float PLAYERSPEED = 1.4f;
     private readonly float BUFFER = 5f;
-    private readonly float BONUS = .08f;
-    private readonly float NORM = .06f;
-    private readonly float PENALTY = .05f;
+    private readonly float BONUS = .12f;
+    private readonly float NORM = .08f;
+    private readonly float PENALTY = .06f;
     private readonly float WINCOND = 100f;
 
     public Transform player;
@@ -52,7 +52,7 @@ public class RaceBehavior : MonoBehaviour
     {
         if (raceStart && !raceOver)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Horizontal"))
                 PlayerSwims();
             AISwims();
             RenderSwimmers();
