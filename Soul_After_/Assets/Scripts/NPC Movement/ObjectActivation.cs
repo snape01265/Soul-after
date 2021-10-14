@@ -6,7 +6,7 @@ public class ObjectActivation : MonoBehaviour
 {
     public BoolValue activate;
     public GameObject Object;
-    void Start()
+    void Awake()
     {
         ActivateObject();
     }
