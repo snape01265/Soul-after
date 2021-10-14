@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class RaceBehavior : MonoBehaviour
 {
-    private readonly float PLAYERSPEED = 2f;
+    private readonly float PLAYERSPEED = 1f;
     private readonly float BUFFER = 5f;
-    private readonly float BONUS = .1f;
-    private readonly float NORM = .08f;
-    private readonly float PENALTY = .05f;
+    private readonly float BONUS = .07f;
+    private readonly float NORM = .05f;
+    private readonly float PENALTY = .04f;
     private readonly float WINCOND = 100f;
 
     public Transform player;
@@ -26,13 +26,16 @@ public class RaceBehavior : MonoBehaviour
     private bool raceStart;
     private bool raceOver;
 
+    private SceneTransition sceneTransition;
     private Text timer;
     //Audio Source
     public AudioSource countDownSFX;
     public AudioSource bgm;
+    public BoolValue contestWon;
 
     private void Awake()
     {
+        contestWon.initialValue = false;
         raceStart = false;
         startPos = startObj.position.x;
         endPos = endObj.position.x;
@@ -44,13 +47,14 @@ public class RaceBehavior : MonoBehaviour
         var timerColor = timer.color;
         timerColor.a = 0f;
         timer.color = timerColor;
+        sceneTransition = GameObject.Find("Scene Transition").GetComponent<SceneTransition>();
     }
 
     private void Update()
     {
         if (raceStart && !raceOver)
         {
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Horizontal"))
                 PlayerSwims();
             AISwims();
             RenderSwimmers();
@@ -90,12 +94,16 @@ public class RaceBehavior : MonoBehaviour
     {
         Debug.Log("Player Lost!");
         raceOver = true;
+        StartCoroutine(BackToScene());
+
     }
 
     private void PlayerWins()
     {
         Debug.Log("Player Won!");
         raceOver = true;
+        contestWon.initialValue = true;
+        StartCoroutine(BackToScene());
     }
 
     private void RenderSwimmers()
@@ -127,5 +135,11 @@ public class RaceBehavior : MonoBehaviour
         //After "Go!" is shown on the screen, the text should disappear and the bgm should play. 
         yield return raceStart = true;
         bgm.Play();
+    }
+
+    private IEnumerator BackToScene()
+    {
+        yield return new WaitForSeconds(4f);
+        sceneTransition.ChangeScene();
     }
 }
