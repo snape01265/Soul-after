@@ -248,6 +248,11 @@ public class Player : MonoBehaviour
         mainClothes = animatorValue.initialAnimator;
         animator.runtimeAnimatorController = mainClothes as RuntimeAnimatorController;
     }
+    public void PlayerLookRight()
+    {
+        animator.SetFloat("Move X", 1);
+        animator.SetBool("Moving", false);
+    }
 
     public void QuestProgress0()
     {
@@ -315,4 +320,5 @@ public class Player : MonoBehaviour
             rpgarea.TogglePause();
         }
     }
+
 }
