@@ -8,15 +8,14 @@ public class PuzzleController : MonoBehaviour
     private float tileDistance;
     [SerializeField] private Transform emptySpace;
     [SerializeField] private TileRenderer[] tiles;
-    public float lightIntensity;
-    public float speed;
+    public float lightChangeDuration;
+    public float waitDuration;
     public bool puzzleFin;
 
     private Vector3 emptySpaceStart;
     private int emptySpaceIndex = 11;
     private Light2D myLight;
     private GameObject resetBtn;
-    private int cases;
     private string sceneName;
     // Start is called before the first frame update
     void Awake()
@@ -78,41 +77,59 @@ public class PuzzleController : MonoBehaviour
                         resetBtn.SetActive(false);
                         //퍼즐 완료 Sound Effect 추가
                     }
-                    StartCoroutine(Wait2Seconds());
-                    cases = 1;
+                    StartCoroutine(lightInAndOut(myLight, lightChangeDuration, waitDuration));
                 }
             }
         }
-        if (cases == 1 && puzzleFin)
+    }
+    IEnumerator lightControl(Light2D lightToFade, bool fadeIn, float duration)
+    {
+        float minLuminosity = 0;
+        float maxLuminosity = 5;
+        float counter = 0f;
+
+        float a, b;
+
+        if (fadeIn)
         {
-            myLight.intensity += speed * Mathf.Lerp(0, lightIntensity, Time.deltaTime);
-            StartCoroutine(Wait4Seconds());
-            foreach (GameObject tile in GameObject.FindGameObjectsWithTag("TileId"))
-            {
-                tile.SetActive(false);
-            }
+            a = minLuminosity;
+            b = maxLuminosity;
         }
-        else if (cases == 2 && puzzleFin)
+        else
         {
-            myLight.intensity -= 4 * speed * Mathf.Lerp(0, lightIntensity, Time.deltaTime);
-            GameObject.FindGameObjectWithTag("Finish").GetComponent<SpriteRenderer>().enabled = true;
-            StartCoroutine(Wait2Seconds());
-            cases = 3;
+            a = maxLuminosity;
+            b = minLuminosity;
         }
-        else if (cases == 3 && puzzleFin)
+
+        float currentIntensity = lightToFade.intensity;
+
+        while (counter < duration)
         {
-            myLight.intensity = 0;
-            GameObject.Find("Scene Transition").GetComponent<SceneTransition>().ChangeScene();
+            counter += Time.deltaTime;
+
+            lightToFade.intensity = Mathf.Lerp(a, b, counter / duration);
+
+            yield return null;
         }
     }
-    IEnumerator Wait4Seconds()
+
+    IEnumerator lightInAndOut(Light2D lightToFade, float duration, float waitTime)
     {
-        yield return new WaitForSeconds(4);
-        cases = 2;
-    }
-    IEnumerator Wait2Seconds()
-    {
-        yield return new WaitForSeconds(2);
+        WaitForSeconds waitSec = new WaitForSeconds(waitTime);
+
+        yield return lightControl(lightToFade, true, duration);
+
+        foreach (GameObject tile in GameObject.FindGameObjectsWithTag("TileId"))
+        {
+            tile.SetActive(false);
+        }
+        GameObject.FindGameObjectWithTag("Finish").GetComponent<SpriteRenderer>().enabled = true;
+
+        yield return lightControl(lightToFade, false, duration - 1f);
+
+        yield return waitSec;
+
+        GameObject.Find("Scene Transition").GetComponent<SceneTransition>().ChangeScene();
     }
 
     public int findIndex(TileRenderer tr)
