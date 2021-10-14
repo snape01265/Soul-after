@@ -251,7 +251,6 @@ public class Player : MonoBehaviour
     public void PlayerLookRight()
     {
         animator.SetFloat("Move X", 1);
-        animator.SetBool("Moving", false);
     }
 
     public void QuestProgress0()
