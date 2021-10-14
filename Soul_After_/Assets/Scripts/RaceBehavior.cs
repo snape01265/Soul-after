@@ -31,9 +31,11 @@ public class RaceBehavior : MonoBehaviour
     //Audio Source
     public AudioSource countDownSFX;
     public AudioSource bgm;
+    public BoolValue contestWon;
 
     private void Awake()
     {
+        contestWon.initialValue = false;
         raceStart = false;
         startPos = startObj.position.x;
         endPos = endObj.position.x;
@@ -93,12 +95,14 @@ public class RaceBehavior : MonoBehaviour
         Debug.Log("Player Lost!");
         raceOver = true;
         StartCoroutine(BackToScene());
+
     }
 
     private void PlayerWins()
     {
         Debug.Log("Player Won!");
         raceOver = true;
+        contestWon.initialValue = true;
         StartCoroutine(BackToScene());
     }
 
