@@ -16,7 +16,6 @@ public class PlayerHealth : MonoBehaviour
     public int maxHP;
     public bool levelClear;
     public AudioSource hitSound;
-    public RPGTalk rpgTalk;
 
     private CameraShake shake;
     private IEnumerator currentIFrame;
@@ -59,9 +58,11 @@ public class PlayerHealth : MonoBehaviour
         RenderHp(oldhp, hp);
 
         if (hp <= 0)
+        {
             GameObject.Find("GameOverCutscene").GetComponent<PlayableDirector>().Play();
-
-        if (currentIFrame == null)
+            mySprite.color = regularColor;
+        }
+        else if (currentIFrame == null)
         {
             StartCoroutine(IFrame());
             currentIFrame = IFrame();

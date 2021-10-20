@@ -8,22 +8,25 @@ public class EntranceChoice : MonoBehaviour
     public RPGTalk rpgTalk;
     public GameObject sceneTransition;
     public BoolValue passed;
-    // Start is called before the first frame update
     public void ChoiceMade()
     {
-        rpgTalk.OnMadeChoice += OnMadeChoice;      
+        rpgTalk.OnMadeChoice += OnMadeChoice;
     }
 
     void OnMadeChoice(string questionId, int choiceID)
     {
         if (choiceID == 0)
         {
-            rpgTalk.PlayNext();
-            sceneTransition.GetComponent<SceneTransition>().ChangeScene();
+            rpgTalk.NewTalk();
+            rpgTalk.OnEndTalk += sceneChange;
             if (passed != null)
             {
                 passed.initialValue = true;
             }
         }
+    }
+    void sceneChange()
+    {
+        sceneTransition.GetComponent<SceneTransition>().ChangeScene();
     }
 }

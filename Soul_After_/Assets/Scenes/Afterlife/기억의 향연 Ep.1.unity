@@ -10110,7 +10110,7 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  animatorWhenTalking: {fileID: 1588639574}
+  animatorWhenTalking: {fileID: 0}
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
@@ -28911,7 +28911,7 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  animatorWhenTalking: {fileID: 1588639574}
+  animatorWhenTalking: {fileID: 0}
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
@@ -30589,11 +30589,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4751814178920452608, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
   m_PrefabInstance: {fileID: 1588639568}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1588639574 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4486433108246338005, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
-  m_PrefabInstance: {fileID: 1588639568}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1588639575 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
@@ -30896,6 +30891,8 @@ GameObject:
   - component: {fileID: 1682943789}
   - component: {fileID: 1682943791}
   - component: {fileID: 1682943792}
+  - component: {fileID: 1682943794}
+  - component: {fileID: 1682943793}
   m_Layer: 0
   m_Name: "Cutscene (\uAE30\uC5B5\uC758 \uD5A5\uC5F0 \uC2DC\uC791\uC810)"
   m_TagString: Untagged
@@ -30934,6 +30931,8 @@ PlayableDirector:
     value: {fileID: 1804433073}
   - key: {fileID: 5642533512125110879, guid: d10b4106acf52e045bb387999f032067, type: 2}
     value: {fileID: 1804433074}
+  - key: {fileID: -7839605986176662463, guid: d10b4106acf52e045bb387999f032067, type: 2}
+    value: {fileID: 1682943788}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1682943790
@@ -30994,6 +30993,50 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &1682943793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682943788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 134af8be40cc68e4989ff72279500c69, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1682943794}
+          m_TargetAssemblyTypeName: ObjectActivation, Assembly-CSharp
+          m_MethodName: ObjectEnable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1682943794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682943788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activate: {fileID: 11400000, guid: 8b882e3e0acb8b44fbc7563f8d7e6bd7, type: 2}
+  Object: {fileID: 0}
 --- !u!1 &1710338059
 GameObject:
   m_ObjectHideFlags: 0
@@ -32988,7 +33031,7 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  animatorWhenTalking: {fileID: 1588639574}
+  animatorWhenTalking: {fileID: 0}
   actualAnimator: {fileID: 0}
   animatorBooleanName: talking
   animatorIntName: talker
