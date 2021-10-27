@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPGTALK;
 
-public class MazeController : MonoBehaviour
+public class FatherExpressionController : MonoBehaviour
 {
     private Animator anim;
     void Start()

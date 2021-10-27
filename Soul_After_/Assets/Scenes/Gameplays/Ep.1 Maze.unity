@@ -691,6 +691,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 986041347}
+        m_TargetAssemblyTypeName: SpriteFadeInOut, Assembly-CSharp
+        m_MethodName: SpriteFadeIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happenOnlyOnce: 1
   alreadyHappened: 0
   triggerEnter: 1
@@ -10884,6 +10896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Transition
       objectReference: {fileID: 0}
+    - target: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: sceneToLoad
       value: Ep.1 FindingMemory
@@ -12259,6 +12275,7 @@ GameObject:
   - component: {fileID: 986041344}
   - component: {fileID: 986041346}
   - component: {fileID: 986041345}
+  - component: {fileID: 986041347}
   m_Layer: 0
   m_Name: Door_1
   m_TagString: Untagged
@@ -15429,7 +15446,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0}
   m_Origin: {x: -111, y: -22, z: 0}
   m_Size: {x: 114, y: 50, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -15451,6 +15468,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &986041347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 986041343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253d07ebeef587147b2ef93dd8b3680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Obj: {fileID: 1092189723}
 --- !u!1 &1009328254
 GameObject:
   m_ObjectHideFlags: 0
@@ -15462,13 +15492,14 @@ GameObject:
   - component: {fileID: 1009328255}
   - component: {fileID: 1009328257}
   - component: {fileID: 1009328256}
+  - component: {fileID: 1009328258}
   m_Layer: 0
   m_Name: Door_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1009328255
 Transform:
   m_ObjectHideFlags: 0
@@ -18632,7 +18663,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Origin: {x: -111, y: -22, z: 0}
   m_Size: {x: 114, y: 50, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -18654,6 +18685,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1009328258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009328254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253d07ebeef587147b2ef93dd8b3680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Obj: {fileID: 1382073120}
 --- !u!1 &1020272652
 GameObject:
   m_ObjectHideFlags: 0
@@ -19177,6 +19221,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitSeconds: 3
   speedOut: 4
+--- !u!1 &1092189723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+  m_PrefabInstance: {fileID: 2061848593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1096087767
 GameObject:
   m_ObjectHideFlags: 0
@@ -20349,6 +20398,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
+--- !u!1 &1382073120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+  m_PrefabInstance: {fileID: 713096245}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1392374756
 GameObject:
   m_ObjectHideFlags: 0
@@ -39506,6 +39560,10 @@ PrefabInstance:
     - target: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_Name
       value: SceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: sceneToLoad
