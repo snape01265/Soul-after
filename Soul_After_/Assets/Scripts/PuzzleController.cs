@@ -72,6 +72,7 @@ public class PuzzleController : MonoBehaviour
                 if (correctTiles == tiles.Length - 1)
                 {
                     puzzleFin = true;
+                    GetComponent<ObjectActivation>().ObjectEnable();
                     if (resetBtn != null)
                     {
                         resetBtn.SetActive(false);

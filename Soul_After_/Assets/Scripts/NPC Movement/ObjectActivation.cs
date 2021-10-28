@@ -6,7 +6,7 @@ public class ObjectActivation : MonoBehaviour
 {
     public BoolValue activate;
     public GameObject Object;
-    void Start()
+    void Awake()
     {
         ActivateObject();
     }
@@ -16,7 +16,7 @@ public class ObjectActivation : MonoBehaviour
         {
             Object.SetActive(true);
         }
-        else if (!activate.initialValue)
+        else if (!activate.initialValue && Object != null)
         {
             Object.SetActive(false);
         }

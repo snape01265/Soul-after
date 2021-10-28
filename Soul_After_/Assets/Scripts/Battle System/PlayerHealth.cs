@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,9 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public int maxHP;
     public bool levelClear;
     public AudioSource hitSound;
-    public RPGTalk rpgTalk;
 
-    private Gameover gameOver;
     private CameraShake shake;
     private IEnumerator currentIFrame;
     private GameObject[] objects;
@@ -35,9 +34,6 @@ public class PlayerHealth : MonoBehaviour
         hp = maxHP;
         hpStates = Enumerable.Repeat<bool>(true, maxHP).ToList<bool>();
         heartRenderers = Enumerable.Repeat<HeartRenderer>(null, maxHP).ToList<HeartRenderer>();
-
-        if (GameObject.Find("GameOver"))
-            gameOver = GameObject.Find("GameOver").GetComponent<Gameover>();
 
         if (GameObject.FindGameObjectWithTag("ScreenShake"))
             shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<CameraShake>();
@@ -61,10 +57,12 @@ public class PlayerHealth : MonoBehaviour
         hp -= dmg;
         RenderHp(oldhp, hp);
 
-        if (hp <= 0 && gameOver)
-            gameOver.EndGame();
-
-        if (currentIFrame == null)
+        if (hp <= 0)
+        {
+            GameObject.Find("GameOverCutscene").GetComponent<PlayableDirector>().Play();
+            mySprite.color = regularColor;
+        }
+        else if (currentIFrame == null)
         {
             StartCoroutine(IFrame());
             currentIFrame = IFrame();
