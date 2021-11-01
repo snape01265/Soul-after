@@ -9,20 +9,12 @@ using UnityEngine;
 // 기능: 처음하기 기능, 각각 디폴트 값으로 초기화해줌
 public class SaveReset : MonoBehaviour
 {
-    public static SaveReset gameSave;
-    public List<ScriptableObject> objects;
+    public GameSaveManager GameSaveManager;
+    private List<ScriptableObject> objects;
 
-    private void Awake()
+    private void Start()
     {
-        if (gameSave == null)
-        {
-            gameSave = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-        DontDestroyOnLoad(this);
+        objects = GameSaveManager.objToSave;
     }
 
     public void ResetFunc()
