@@ -43,7 +43,7 @@ public class SpriteFadeInOut : MonoBehaviour
         Color targetColor = new Color(tm.color.r, tm.color.g, tm.color.b, 0);
 
         if (SceneTrans)
-            SceneTrans.GetComponent<BoxCollider2D>().enabled = true;
+            SceneTrans.GetComponent<BoxCollider2D>().enabled = false;
 
         while (1 - tm.color.a <= .01f)
         {
