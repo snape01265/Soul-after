@@ -260,40 +260,23 @@ name: (동물부서와 같이 일했던 )
 슬아: [expression=S_Smile2]꼭 잘하고 오세요 신입!
 슬아: [expression=S_Smile1]첫 임무인데 잘하시면 상사님이 아주 좋아하실 거에요!
 슬아: [expression=S_Normal]아... 그리고 아까 화낸건 미안해요!
-슬아: [expression=S_Smile2][question=1]그리고 이제 같이 일하게 될 사이인데 서로 소개나 할까요?
-[choice] 네! 슬아님은 어떤 삶을 살으셨나요? [newtalk start=introduction_Seulha_start break=introduction_Seulha_end]
-[choice] 지금은 좀 바빠서... 나중에 같이 얘기하죠!
+슬아: [expression=S_Smile2][question=1]그리고 이제 같이 일하게 될 사이인데 궁금한게 있나요?
+[choice] 인간부서에 대해서 설명해주세요! [newtalk start=humanDep_start break=humanDep_end]
+[choice] 강력부서에 대해서 설명해주세요! [newtalk start=polDep_start break=polDep_end]
+[choice] 동물부서에 대해서 설명해주세요! [newtalk start=aniDep_start break=aniDep_end]
+[choice] 지금은 바빠서 나중에 물어볼게요! [newtalk start=endConvo_start break=endConvo_end]
 [title=Seulha_end]
 
-[title=introduction_Seulha_start]
-슬아: [expression=S_Normal]음.... 그렇게 좋은 얘기는 아닌데....
-슬아: [expression=S_Smile1]저는 그냥 한국에서 살던 평범한 취준생이였어요!
-슬아: [expression=S_Normal]뭐.... 제가 서울에 있는 대학을 나왔긴 했는데 회사들이 다 저를 안 뽑아주더라구요....
-슬아: 물론 저도 취업하기 위해서 영어 공부도하고 자격증도 따면서 노력했지만....
-슬아: 현실의 벽은 생각보다 높았어요....
-슬아: [expression=S_Sad]......
-슬아: 그런데 더 슬펐던건....
-슬아: 세상에서 유일하게 제 편이라고 생각했던 부모님은 저에게 맨날 쓸모없다면서 윽박지를 뿐이였죠...
-슬아: 제가 살고 있는 세상에서 제 편은 아무도 없다고 생각이 드니깐 급격하게 우울해져서...
-슬아: 쉬운 길을 택했죠... 하하...
-슬아: [expression=S_Normal][question=2]그래도 여기서는 제가 그토록 하고 싶은 일을 할 수 있으니깐 나름 살만 하네요! 
-[choice] 힘든 삶이었겠네요. [newtalk start=empathy_start break=empathy_end]
-[choice] 현생에서 그딴 나약한 마음으로는 살 수 없어요! [newtalk start=forthright_start break=forthright_end]
-[title=introduction_Seulha_end]
-
-[title=empathy_start]
-슬아: [expression=S_Smile2]하하하! 고마워요! 공감해줘서!
-슬아: [expression=S_Normal]사실 아무도 저의 아픔을 알아주지 않아서 넌무 슬펐는데.
-슬아: 신입한테 위로를 받으니깐 뭔가 기분이 좋아지네요!
-슬아: [expression=S_Smile2]이번에 맡은 일도 잘하시길 바랄게요!
-[title=empathy_end]
-
-[title=forthright_start]
-슬아: [expression=S_Sad]나약하다... 현생에서 가장 많이 듣던 말 중 하나네요...
-슬아: 그래요. 저는 나약해요. 그게 죄인가요?
-슬아: 그나마 가지고 있는 능력으로 어떻게든 아등바등 살려고 노력했는데도 안되는 현실 속에서 저는 어떻게 해야 하나요?
-슬아: 남의 일이라고 그렇게 쉽게 말하지 마세요. 
-슬아: 일 바쁘실텐데 얼른 가봐요. 별로 말하고 싶지가 않네요.
-[title=forthright_end]
-
+[title=humanDep_start]
+슬아: 인간부서는 말 그대로 현생에서 죽은 인간의 영혼을 다음생으로 환생시키는 일을 담당한 부서에요!
+슬아: 아까도 들으셨겠지만 저희의 일은 망자가 가지고 있던 현생의 기억을 같이 돌아보고 그들의 자신의 삶을 긍정하도록 돕는거죠!
+슬아: 물론 사람마다 삶이 다른 만큼 좋은 삶은 산 사람은 삶을 긍정하는데 별 어려움이 없는데 반해...
+슬아: 아무래도 망자가 느끼기에 좋지 못한 삶을 살고 그 기억을 다시 돌아보고 긍정하는건 쉽지 않은 일이죠...
+슬아: 그래서 저희는 항상 어떻게 해야 망자들이 자신의 삶을 돌아볼 수 있도록 할 수 있을지 연구하는 일을 맡게된 것입니다!
+슬아: name님도 같이 일하시면서 많이 배우실 수 있을거에요!
+슬아: [question=2]혹시 더 궁금한게 있으신가요?
+[choice] 강력부서에 대해서 설명해주세요! [newtalk start=polDep_start break=polDep_end]
+[choice] 동물부서에 대해서 설명해주세요! [newtalk start=aniDep_start break=aniDep_end]
+[choice] 지금은 바빠서 나중에 물어볼게요! [newtalk start=endConvo_start break=endConvo_end]
+[title=humanDep_end]
 [title=end]
