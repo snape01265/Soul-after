@@ -66,4 +66,14 @@ public class SceneTransition : MonoBehaviour
             sn.SetBool("FadeShort", true);
         }
     }
+
+    public void SetplayerPositionX(float x)
+    {
+        playerPosition = new Vector2(x, playerPosition.y);
+    }
+
+    public void SetplayerPositionY(float y)
+    {
+        playerPosition = new Vector2(playerPosition.x, y);
+    }
 }

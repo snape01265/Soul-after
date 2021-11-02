@@ -302,7 +302,7 @@ MonoBehaviour:
   rpgtalkTarget: {fileID: 1380336179}
   shouldInteractWithButton: 1
   showWhenInteractionIsPossible: []
-  interactionKey: 0
+  interactionKey: 32
   interactionButton: 
   interactWithMouse: 0
   checkIfColliderHasTag: Player
@@ -314,7 +314,31 @@ MonoBehaviour:
   txtToParse: {fileID: 0}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1989392729}
+        m_TargetAssemblyTypeName: SpriteFadeInOut, Assembly-CSharp
+        m_MethodName: SpriteFadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1989392724}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happenOnlyOnce: 0
   alreadyHappened: 0
   triggerEnter: 1
@@ -399,7 +423,7 @@ MonoBehaviour:
   rpgtalkTarget: {fileID: 1380336179}
   shouldInteractWithButton: 1
   showWhenInteractionIsPossible: []
-  interactionKey: 0
+  interactionKey: 32
   interactionButton: 
   interactWithMouse: 0
   checkIfColliderHasTag: Player
@@ -411,7 +435,55 @@ MonoBehaviour:
   txtToParse: {fileID: 0}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: SetplayerPositionX
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -73.5
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: SetplayerPositionY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -15
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1565642601}
+        m_TargetAssemblyTypeName: FindingMemoryBehavior, Assembly-CSharp
+        m_MethodName: EnableMazeState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happenOnlyOnce: 0
   alreadyHappened: 0
   triggerEnter: 1
@@ -479,7 +551,7 @@ Transform:
   - {fileID: 784546797}
   - {fileID: 271984331}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &268012586
 GameObject:
@@ -512,7 +584,7 @@ Transform:
   - {fileID: 1250794933}
   - {fileID: 1220289466}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &271984330
 PrefabInstance:
@@ -543,7 +615,7 @@ PrefabInstance:
       objectReference: {fileID: 6626229727898054473, guid: 7e896ae3b7b09694193f5391c0d7f75c, type: 3}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: sceneToLoad
-      value: "\uAE30\uC5B5\uC758 \uD5A5\uC5F0 Ep.1"
+      value: Ep.1 Maze
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: playerPosition.x
@@ -605,6 +677,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
   m_PrefabInstance: {fileID: 271984330}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &271984332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+  m_PrefabInstance: {fileID: 271984330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda038c3113bbfd4886a66b84431bfe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &274238691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5204468332769847516, guid: bb9d250fcba3afa45926dfb48d65f1f9, type: 3}
@@ -13284,7 +13367,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &531388030
 GameObject:
@@ -13454,7 +13537,7 @@ Transform:
   m_Children:
   - {fileID: 1457812837}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &628035471
 MonoBehaviour:
@@ -13800,7 +13883,7 @@ Transform:
   - {fileID: 1748430153}
   - {fileID: 745481977}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074744402
 GameObject:
@@ -13971,7 +14054,7 @@ PrefabInstance:
       objectReference: {fileID: 1380336179}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14621,7 +14704,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380336177
 GameObject:
@@ -14825,7 +14908,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1399118083
 GameObject:
@@ -14993,7 +15076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15055,7 +15138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562890201031171731, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1562890201031171731, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15107,6 +15190,50 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 0c074250124f7de4aa25cc8206e49fde, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
+--- !u!1 &1565642600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565642602}
+  - component: {fileID: 1565642601}
+  m_Layer: 0
+  m_Name: FindingMemoryBehavior
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1565642601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565642600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf56392acd2903c47accc2ae2de65b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mazeState: {fileID: 11400000, guid: 04605eac5ca460f478e3d87b78faa8f2, type: 2}
+--- !u!4 &1565642602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565642600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.5322704, y: 6.132494, z: -171.4665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636825775
 GameObject:
   m_ObjectHideFlags: 0
@@ -15137,7 +15264,7 @@ Transform:
   - {fileID: 2074324303}
   - {fileID: 328641780}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741055599 stripped
 GameObject:
@@ -35915,7 +36042,7 @@ Transform:
   - {fileID: 90483251}
   - {fileID: 1074744404}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989392722
 GameObject:
@@ -35931,6 +36058,7 @@ GameObject:
   - component: {fileID: 1989392726}
   - component: {fileID: 1989392725}
   - component: {fileID: 1989392724}
+  - component: {fileID: 1989392729}
   m_Layer: 0
   m_Name: Debris
   m_TagString: Untagged
@@ -36266,6 +36394,19 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1989392729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989392722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 253d07ebeef587147b2ef93dd8b3680f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneTrans: {fileID: 0}
 --- !u!1001 &2074324302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36436,7 +36577,7 @@ MonoBehaviour:
   rpgtalkTarget: {fileID: 1380336179}
   shouldInteractWithButton: 1
   showWhenInteractionIsPossible: []
-  interactionKey: 0
+  interactionKey: 32
   interactionButton: 
   interactWithMouse: 0
   checkIfColliderHasTag: Player
@@ -36448,7 +36589,55 @@ MonoBehaviour:
   txtToParse: {fileID: 0}
   overwriteCallbackAfterTalk:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: SetplayerPositionX
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -33
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: SetplayerPositionY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 17
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1565642601}
+        m_TargetAssemblyTypeName: FindingMemoryBehavior, Assembly-CSharp
+        m_MethodName: EnableMazeState
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 271984332}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   happenOnlyOnce: 0
   alreadyHappened: 0
   triggerEnter: 1
