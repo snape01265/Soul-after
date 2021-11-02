@@ -45,7 +45,7 @@ public class SpriteFadeInOut : MonoBehaviour
         if (SceneTrans)
             SceneTrans.GetComponent<BoxCollider2D>().enabled = false;
 
-        while (1 - tm.color.a <= .01f)
+        while (1 - tm.color.a <= .99f)
         {
             tm.color = Color.Lerp(tm.color, targetColor, .05f);
             yield return null;
