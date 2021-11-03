@@ -7,6 +7,7 @@ using System.Linq;
 public class MazeBehavior : MonoBehaviour
 {
     public BoolList mazeState;
+    public PlayerHealth playerHealth;
     public GameObject Door1;
     public GameObject Door2;
     public GameObject Blocker1;
@@ -45,6 +46,11 @@ public class MazeBehavior : MonoBehaviour
             BadMemory2.SetActive(false);
             BadMemory3.SetActive(false);
             GoodMemory2.SetActive(true);
+        }
+        if (mazeState.initialValue.All<bool>(x => x == false))
+        {
+            playerHealth.CurHP.initialValue = playerHealth.CurHP.defaultValue;
+            playerHealth.RenderHp(0, (int) playerHealth.CurHP.initialValue);
         }
     }
 
