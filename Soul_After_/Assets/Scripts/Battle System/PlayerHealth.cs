@@ -12,7 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public List<bool> hpStates;
     private List<HeartRenderer> heartRenderers;
 
-    public int hp;
+    public FloatValue CurHP;
     public int maxHP;
     public bool levelClear;
     public AudioSource hitSound;
@@ -31,7 +31,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        hp = maxHP;
         hpStates = Enumerable.Repeat<bool>(true, maxHP).ToList<bool>();
         heartRenderers = Enumerable.Repeat<HeartRenderer>(null, maxHP).ToList<HeartRenderer>();
 
@@ -49,15 +48,20 @@ public class PlayerHealth : MonoBehaviour
                 heartRenderers.Insert(idx, _hpRend);
             }
         }
+
+        if ((int) CurHP.initialValue != maxHP)
+        {
+            RenderHp(maxHP, (int)CurHP.initialValue);
+        }
     }
 
     public void TakeDamage(int dmg)
     {
-        int oldhp = hp;
-        hp -= dmg;
-        RenderHp(oldhp, hp);
+        int oldhp = (int) CurHP.initialValue;
+        CurHP.initialValue -= dmg;
+        RenderHp(oldhp, (int) CurHP.initialValue);
 
-        if (hp <= 0)
+        if ((int) CurHP.initialValue <= 0)
         {
             GameObject.Find("GameOverCutscene").GetComponent<PlayableDirector>().Play();
             mySprite.color = regularColor;
@@ -107,16 +111,22 @@ public class PlayerHealth : MonoBehaviour
         triggerCollider.enabled = true;
     }
 
-    private void RenderHp(int oldHp, int newHp)
+    public void RenderHp(int oldHp, int newHp)
     {
         if (oldHp > newHp)
         {
-            hpStates[newHp] = false;
-            heartRenderers[newHp].HPLoss();
+            for (int i = oldHp - 1; i >= newHp; i--)
+            {
+                hpStates[i] = false;
+                heartRenderers[i].HPLoss();
+            }
         } else if (oldHp < newHp)
         {
-            hpStates[newHp] = true;
-            heartRenderers[newHp].HPGain();
+            for (int i = oldHp; i < newHp; i++)
+            {
+                hpStates[i] = true;
+                heartRenderers[i].HPGain();
+            }
         }
     }
 }

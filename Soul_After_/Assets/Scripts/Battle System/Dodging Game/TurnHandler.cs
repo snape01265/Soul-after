@@ -90,7 +90,7 @@ public class TurnHandler : MonoBehaviour
             }
             else
             {
-                if (playerHealth.hp <= 0)
+                if (playerHealth.CurHP.initialValue <= 0)
                 {
                     state = BattleState.Lost;
                 }
@@ -107,7 +107,7 @@ public class TurnHandler : MonoBehaviour
         else if (state == BattleState.Lost && !isReading)
         {
             Destroy(enemyAtk);
-            playerHealth.hp = playerHealth.maxHP;
+            playerHealth.CurHP.initialValue = playerHealth.maxHP;
             enemyActed = false;
             isReading = true;
             rpgTalk.NewTalk("fail_start", "fail_end", rpgTalk.txtToParse);

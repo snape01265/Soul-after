@@ -39,7 +39,6 @@ public class SceneTransition : MonoBehaviour
         {
             _audio.Play();
         }
-        lastScene.initialValue = sceneToLoad;
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
         GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
@@ -60,10 +59,25 @@ public class SceneTransition : MonoBehaviour
     public void SceneName()
     {
         //GameObject.Find("SceneNameText").GetComponent<Animator>().SetBool("FadeShort", true);
-        if (sceneName != null) 
+        if (sceneName != null)
         {
             var sn = sceneName.GetComponent<Animator>();
             sn.SetBool("FadeShort", true);
         }
+    }
+
+    public void SetplayerPositionX(float x)
+    {
+        playerPosition = new Vector2(x, playerPosition.y);
+    }
+
+    public void SetplayerPositionY(float y)
+    {
+        playerPosition = new Vector2(playerPosition.x, y);
+    }
+
+    public void SetsceneToLoad(string sceneName)
+    {
+        sceneToLoad = sceneName;
     }
 }
