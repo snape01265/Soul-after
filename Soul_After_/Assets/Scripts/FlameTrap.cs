@@ -11,12 +11,15 @@ public class FlameTrap : MonoBehaviour
 
     private readonly Vector3 NORMALFIRE = new Vector3(1f, 1f, 1f);
     private readonly Vector3 SMALLFIRE = new Vector3(.1f, .1f, .1f);
+    private readonly float BUFFER = .5f;
 
     private Light2D lightComp;
+    private CircleCollider2D circleCollider2D;
 
     private void Start()
     {
         lightComp = transform.Find("Point Light 2D").GetComponent<Light2D>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
 
         switch (patternType)
         {
@@ -50,8 +53,11 @@ public class FlameTrap : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(sec);
+            yield return new WaitForSeconds(sec - BUFFER);
+            circleCollider2D.enabled = true;
+            yield return new WaitForSeconds(BUFFER);
             Shrink();
+            circleCollider2D.enabled = false;
             yield return new WaitForSeconds(sec);
             Expand();
         }
@@ -62,9 +68,12 @@ public class FlameTrap : MonoBehaviour
         while (true)
         {
             Shrink();
+            circleCollider2D.enabled = false;
             yield return new WaitForSeconds(sec);
             Expand();
-            yield return new WaitForSeconds(sec);
+            yield return new WaitForSeconds(sec - BUFFER);
+            circleCollider2D.enabled = true;
+            yield return new WaitForSeconds(BUFFER);
         }
     }
 
@@ -88,9 +97,9 @@ public class FlameTrap : MonoBehaviour
                 yield return null;
             }
 
-            GetComponent<CircleCollider2D>().enabled = false;
+            circleCollider2D.enabled = false;
             yield return new WaitForSeconds(1f);
-            GetComponent<CircleCollider2D>().enabled = true;
+            circleCollider2D.enabled = true;
         }
     }
 
@@ -98,13 +107,11 @@ public class FlameTrap : MonoBehaviour
     {
         lightComp.pointLightOuterRadius = .1f;
         transform.localScale = SMALLFIRE;
-        GetComponent<CircleCollider2D>().enabled = false;
     }
 
     private void Expand()
     {
         lightComp.pointLightOuterRadius = 1f;
         transform.localScale = NORMALFIRE;
-        GetComponent<CircleCollider2D>().enabled = true;
     }
 }
