@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Linq;
 using UnityEngine;
 
 // 사용되는 Scene: Start Menu
@@ -40,8 +41,6 @@ public class SaveReset : MonoBehaviour
                     }
                 case "VectorList":
                     {
-                        VectorList ob = (VectorList)obj;
-                        ob.defaultPos = new List<Vector2>();
                         break;
                     }
                 case "BoolValue":
@@ -54,7 +53,8 @@ public class SaveReset : MonoBehaviour
                     {
                         BoolList ob = (BoolList)obj;
                         ob.initialValue = new List<bool>();
-                        ob.defaultValue = new List<bool>();
+                        foreach (bool b in ob.defaultValue)
+                            ob.initialValue.Add(b);
                         break;
                     }
                 case "AnimatorValue":
@@ -67,7 +67,8 @@ public class SaveReset : MonoBehaviour
                     {
                         CutsceneList ob = (CutsceneList)obj;
                         ob.initialValue = new List<string>();
-                        ob.defaultValue = new List<string>();
+                        foreach (string s in ob.defaultValue)
+                            ob.initialValue.Add(s);
                         break;
                     }
                 case "FloatValue":
