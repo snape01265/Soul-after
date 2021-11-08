@@ -10,13 +10,18 @@ public class SajaPuzzleBehavior : MonoBehaviour
     [HideInInspector]
     public List<bool> boxOnBtn;
 
-    public VectorList birdPos;
     public BoolValue puzzleFin;
-    private readonly List<bool> FinishedState = new List<bool>(6) { true, true, true, true, true, true };
+
+    private readonly Vector3 REGBIRDPOS = new Vector3(-5, 3, 0);
+    private readonly Vector3 DUMBIRDPOS = new Vector3(0, 3, 0);
+    private readonly Vector3 FORGETBIRDPOS = new Vector3(5, 3, 0);
+    private readonly List<bool> FINISHEDSTATE = new List<bool>(6) { true, true, true, true, true, true };
+
     private bool finished = false;
     private List<ButtonRenderer> btnRenders;
     private GameObject[] buttons;
     public AudioSource _audio;
+
 
     private void Awake()
     {
@@ -49,7 +54,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
     private void CheckFinished()
     {
-        if (!finished && FinishedState.SequenceEqual(pressedStates))
+        if (!finished && FINISHEDSTATE.SequenceEqual(pressedStates))
         {
             // finish event
             Debug.Log("Event Finished!");
@@ -70,9 +75,9 @@ public class SajaPuzzleBehavior : MonoBehaviour
         boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
         finished = false;
 
-        GameObject.Find("등록시키고 싶은 새").transform.position = birdPos.defaultPos[0];
-        GameObject.Find("멀뚱 멀뚱한 새").transform.position = birdPos.defaultPos[1];
-        GameObject.Find("항상 까먹는 새").transform.position = birdPos.defaultPos[2];
+        GameObject.Find("등록시키고 싶은 새").transform.position = REGBIRDPOS;
+        GameObject.Find("멀뚱 멀뚱한 새").transform.position = DUMBIRDPOS;
+        GameObject.Find("항상 까먹는 새").transform.position = FORGETBIRDPOS;
 
         foreach (ButtonRenderer btnRend in btnRenders)
         {
