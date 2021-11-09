@@ -6,17 +6,9 @@ using UnityEngine.SceneManagement;
 public class CutsceneTransition : MonoBehaviour
 {
     public string sceneToLoad;
-    public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
-    void Awake()
-    {
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, 1);
-        }
-    }
+
     private void OnEnable()
     {
         StartCoroutine(FadeCo());
