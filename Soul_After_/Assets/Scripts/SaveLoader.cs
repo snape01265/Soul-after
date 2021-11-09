@@ -9,19 +9,9 @@ public class SaveLoader : MonoBehaviour
 {
     public StringValue lastScene;
     public VectorValue playerStorage;
-    public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
 
-    void Awake()
-    {
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, 1);
-        }
-
-    }
     public void LoadNextScene()
     {
         Time.timeScale = 1f;
