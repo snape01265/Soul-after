@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeactivateTalk : MonoBehaviour
 {
     public string previousCutscene;
-    public string watchedCutscene;
+    public string thisCutscene;
     public CutsceneList cutsceneList;
 
     private void Start()
@@ -14,7 +14,7 @@ public class DeactivateTalk : MonoBehaviour
     }
     public void CheckCutscene()
     {
-        if (!cutsceneList.initialValue.Contains(watchedCutscene) && cutsceneList != null)
+        if (!cutsceneList.initialValue.Contains(thisCutscene) && cutsceneList != null)
         {
             if(GetComponent<Collider2D>() != null)
             {
