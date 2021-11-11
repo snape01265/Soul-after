@@ -9,7 +9,6 @@ public class SceneTransition : MonoBehaviour
     public string sceneToLoad;
     public Vector2 playerPosition;
     public VectorValue playerStorage;
-    public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
     public StringValue lastScene;
@@ -18,12 +17,11 @@ public class SceneTransition : MonoBehaviour
 
     void Awake()
     {
-        if(fadeInPanel != null)
+        if (sceneName != null)
         {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, 1);
+            var sn = sceneName.GetComponent<Animator>();
+            sn.SetBool("FadeShort", true);
         }
-        SceneName();
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -33,6 +31,7 @@ public class SceneTransition : MonoBehaviour
             ChangeScene();
         }
     }
+
     public void ChangeScene()
     {
         if(_audio != null)
@@ -43,6 +42,7 @@ public class SceneTransition : MonoBehaviour
         StartCoroutine(FadeCo());
         GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
     }
+
     public IEnumerator FadeCo()
     {
         if (fadeOutPanel != null)
@@ -54,15 +54,6 @@ public class SceneTransition : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             yield return null;
-        }
-    }
-    public void SceneName()
-    {
-        //GameObject.Find("SceneNameText").GetComponent<Animator>().SetBool("FadeShort", true);
-        if (sceneName != null)
-        {
-            var sn = sceneName.GetComponent<Animator>();
-            sn.SetBool("FadeShort", true);
         }
     }
 
