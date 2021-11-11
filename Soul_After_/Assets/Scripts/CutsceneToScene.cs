@@ -9,18 +9,10 @@ public class CutsceneToScene : MonoBehaviour
     public StringValue lastScene;
     public Vector2 playerPosition;
     public VectorValue playerStorage;
-    public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
     public float fadeWait;
     public AudioSource _audio;
-    void Awake()
-    {
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, 1);
-        }
-    }
+
     private void OnEnable()
     {
         _audio.Play();
