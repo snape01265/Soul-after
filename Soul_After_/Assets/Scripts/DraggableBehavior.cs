@@ -10,6 +10,7 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Vector2 initRect;
+    private CanvasGroupFadeInOut fadeInOut;
 
     [HideInInspector] public bool isCorrect = false;
     public int id;
@@ -19,6 +20,7 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         initRect = rectTransform.anchoredPosition;
+        fadeInOut = GetComponent<CanvasGroupFadeInOut>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -29,11 +31,11 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 0;
+        fadeInOut.CanvasGroupFadeOut();
         canvasGroup.blocksRaycasts = true;
         if(!isCorrect)
         {
-            canvasGroup.alpha = 1;
+            fadeInOut.CanvasGroupFadeIn();
             ResetPos();
         }
 

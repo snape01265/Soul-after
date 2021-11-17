@@ -14,6 +14,8 @@ public class NoteTrigger : MonoBehaviour
             if(bePressed)
             {
                 gameObject.SetActive(false);
+
+                GameManager.instance.NoteHit();
             }
         }
     }
@@ -27,9 +29,15 @@ public class NoteTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Flower")
+        if(gameObject.activeSelf)
         {
-            bePressed = false;
+            if (other.tag == "Flower")
+            {
+                bePressed = false;
+
+                GameManager.instance.NoteMissed();
+            }
+
         }
     }
 }
