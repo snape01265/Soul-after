@@ -30,31 +30,24 @@ public class FlowerPuzzleBehavior : MonoBehaviour
 
     public void CheckFinished()
     {
-        if (curId == FINID)
+        curId += 1;
+        switch (curId)
         {
-            curId += 1;
-            Debug.Log("Puzzle Finished!");
-        }
-        else 
-        {
-            curId += 1;
-            switch (curId)
-            {
-                case 2:
-                    break;
-                case 3:
-                    fadeInOut.CanvasGroupFadeInOther(Sun);
-                    break;
-                case 4:
-                    fadeInOut.CanvasGroupFadeOutOther(Fog);
-                    fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
-                    fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
-                    fadeInOut.CanvasGroupFadeInOther(BgSp);
-                    fadeInOut.CanvasGroupFadeOutOther(BgWt);
-                    fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
-                    fadeInOut.CanvasGroupFadeInOther(BranchCherry);
-                    break;
-            }
+            case 2:
+                break;
+            case 3:
+                fadeInOut.CanvasGroupFadeInOther(Sun);
+                break;
+            case 4:
+                fadeInOut.CanvasGroupFadeOutOther(Fog);
+                fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
+                fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
+                fadeInOut.CanvasGroupFadeInOther(BgSp);
+                fadeInOut.CanvasGroupFadeOutOther(BgWt);
+                fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
+                fadeInOut.CanvasGroupFadeInOther(BranchCherry);
+                StartCoroutine(WaitForEnd(5));
+                break;
         }
     }
 
@@ -70,5 +63,11 @@ public class FlowerPuzzleBehavior : MonoBehaviour
         {
             GetComponentInChildren<Slider>().value = 0;
         }
+    }
+
+    IEnumerator WaitForEnd(float t)
+    {
+        yield return new WaitForSeconds(t);
+        Debug.Log("Puzzle Finished!");
     }
 }
