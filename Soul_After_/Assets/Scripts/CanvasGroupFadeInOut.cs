@@ -7,7 +7,7 @@ public class CanvasGroupFadeInOut : MonoBehaviour
 {
     private CanvasGroup cg;
     public GameObject SceneTrans;
-    private readonly float INTENSITY = .5f;
+    private readonly float INTENSITY = .7f;
 
     private void Start()
     {
