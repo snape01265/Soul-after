@@ -42,6 +42,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
         switch (curId)
         {
             case 2:
+                // 이후 animator로 대체
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
                 break;
             case 3:
