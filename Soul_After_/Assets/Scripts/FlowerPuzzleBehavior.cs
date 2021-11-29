@@ -13,6 +13,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public int curId;
 
     public CanvasGroup Sun;
+    public CanvasGroup Clouds;
     public CanvasGroup MarigoldDead;
     public CanvasGroup MarigoldAlive;
     public CanvasGroup BranchSnow;
@@ -21,9 +22,14 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public CanvasGroup BgSp;
     public CanvasGroup BgWt;
 
+    public ParticleSystem SnowFall;
+    public ParticleSystem RainFall;
+
+    ParticleSystemController part;
+
     private void Awake()
     {
-
+        part = GetComponent<ParticleSystemController>();
         fadeInOut = GetComponent<CanvasGroupFadeInOut>();
         curId = INITID;
     }
@@ -37,15 +43,20 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 break;
             case 3:
                 fadeInOut.CanvasGroupFadeInOther(Sun);
-                break;
-            case 4:
                 fadeInOut.CanvasGroupFadeOutOther(Fog);
-                fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
-                fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
+                fadeInOut.CanvasGroupFadeOutOther(Clouds);
+                part.ParticleSystemFadeOut(SnowFall, 0, 4);
+                // 이하 dialogue (word 4, 5) 이후 일어나야 할 일들
+                part.ParticleSystemFadeIn(RainFall, 10, 4);
+                break;
+
+            case 4:
                 fadeInOut.CanvasGroupFadeInOther(BgSp);
                 fadeInOut.CanvasGroupFadeOutOther(BgWt);
                 fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
                 fadeInOut.CanvasGroupFadeInOther(BranchCherry);
+                fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
+                fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
                 StartCoroutine(WaitForEnd(5));
                 break;
         }
