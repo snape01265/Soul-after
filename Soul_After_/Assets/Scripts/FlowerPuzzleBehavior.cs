@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class FlowerPuzzleBehavior : MonoBehaviour
 {
-    private readonly int INITID = 1;
-    private readonly int FINID = 4;
-    private CanvasGroupFadeInOut fadeInOut;
-
     [HideInInspector]
     public int curId;
 
@@ -21,11 +17,17 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public CanvasGroup Fog;
     public CanvasGroup BgSp;
     public CanvasGroup BgWt;
+    public List<CanvasGroup> Seeds;
 
     public ParticleSystem SnowFall;
     public ParticleSystem RainFall;
 
-    ParticleSystemController part;
+    private ParticleSystemController part;
+    private CanvasGroupFadeInOut fadeInOut;
+
+    private readonly int INITID = 1;
+
+    private int seedNo = 0;
 
     private void Awake()
     {
@@ -36,12 +38,15 @@ public class FlowerPuzzleBehavior : MonoBehaviour
 
     public void CheckFinished()
     {
-        curId += 1;
+        curId++;
         switch (curId)
         {
             case 2:
+                fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
                 break;
             case 3:
+                break;
+            case 4:
                 fadeInOut.CanvasGroupFadeInOther(Sun);
                 fadeInOut.CanvasGroupFadeOutOther(Fog);
                 fadeInOut.CanvasGroupFadeOutOther(Clouds);
@@ -49,31 +54,24 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 // 이하 dialogue (word 4, 5) 이후 일어나야 할 일들
                 part.ParticleSystemFadeIn(RainFall, 10, 4);
                 break;
-
-            case 4:
+            case 5:
                 fadeInOut.CanvasGroupFadeInOther(BgSp);
                 fadeInOut.CanvasGroupFadeOutOther(BgWt);
                 fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
                 fadeInOut.CanvasGroupFadeInOther(BranchCherry);
-                fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
                 fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
                 StartCoroutine(WaitForEnd(5));
                 break;
         }
     }
 
-    public void CheckSlider()
+    public void ShowSeeds()
     {
-        if (curId == FINID)
+        if (seedNo < 3)
         {
-            CheckFinished();
-        } else if (curId == FINID + 1)
-        {
-            GetComponentInChildren<Slider>().value = 1;
-        } else
-        {
-            GetComponentInChildren<Slider>().value = 0;
+            fadeInOut.CanvasGroupFadeInOther(Seeds[seedNo]);
         }
+        seedNo++;
     }
 
     IEnumerator WaitForEnd(float t)

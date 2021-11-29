@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ParticleSystemController : MonoBehaviour
 {
-    private readonly float INTENSITY = 1f;
-
     public void ParticleSystemFadeIn(ParticleSystem pt, float maxRate = 10, float speed = 1)
     {
         StartCoroutine(ParticleFadeIn(pt, maxRate, speed));
