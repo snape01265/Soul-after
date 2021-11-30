@@ -9,6 +9,7 @@ public class SnowDigBehavior : MonoBehaviour, IDragHandler
     public int id;
     public AudioSource sfx;
     public CanvasGroupFadeInOut Ground;
+    public CanvasGroupFadeInOut Hole;
 
     private FlowerPuzzleBehavior FlowerPuzzle;
     private CanvasGroup snow;
@@ -23,14 +24,15 @@ public class SnowDigBehavior : MonoBehaviour, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!done)
+        if (!done && FlowerPuzzle.curId == id)
         {
-            if (snow.alpha > .1f && FlowerPuzzle.curId == id)
+            if (snow.alpha > .1f)
                 snow.alpha -= eventData.delta.sqrMagnitude * DRAGFORCE;
             else
             {
                 done = true;
                 Ground.CanvasGroupFadeIn();
+                Hole.CanvasGroupFadeIn();
                 FlowerPuzzle.CheckFinished();
                 GetComponent<Image>().raycastTarget = false;
                 if (sfx != null)

@@ -14,13 +14,15 @@ public class ClickTilEvent : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log(number);
-        number++;
-        EventPerClick.Invoke();
-        if (!done && number > ClickNumber)
+        if (!done)
         {
-            done = true;
-            Callback.Invoke();
+            number++;
+            EventPerClick.Invoke();
+            if (number > ClickNumber)
+            {
+                done = true;
+                Callback.Invoke();
+            }
         }
     }
 }

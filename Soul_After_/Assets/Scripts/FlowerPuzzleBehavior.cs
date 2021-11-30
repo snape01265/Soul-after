@@ -18,6 +18,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public CanvasGroup BgSp;
     public CanvasGroup BgWt;
     public List<CanvasGroup> Seeds;
+    public CanvasGroup Hole;
 
     public ParticleSystem SnowFall;
     public ParticleSystem RainFall;
@@ -28,6 +29,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     private readonly int INITID = 1;
 
     private int seedNo = 0;
+    private int plantNo = 0;
 
     private void Awake()
     {
@@ -43,11 +45,14 @@ public class FlowerPuzzleBehavior : MonoBehaviour
         {
             case 2:
                 // 이후 animator로 대체
+                MarigoldAlive.blocksRaycasts = false;
+                fadeInOut.CanvasGroupFadeOutOther(MarigoldAlive);
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
                 break;
             case 3:
                 break;
             case 4:
+                fadeInOut.CanvasGroupFadeOutOther(Hole);
                 fadeInOut.CanvasGroupFadeInOther(Sun);
                 fadeInOut.CanvasGroupFadeOutOther(Fog);
                 fadeInOut.CanvasGroupFadeOutOther(Clouds);
@@ -69,10 +74,17 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public void ShowSeeds()
     {
         if (seedNo < 3)
-        {
             fadeInOut.CanvasGroupFadeInOther(Seeds[seedNo]);
-        }
         seedNo++;
+        if (seedNo == 3)
+            CheckFinished();
+    }
+
+    public void PlantSeeds()
+    {
+        plantNo++;
+        if (plantNo == 3)
+            CheckFinished();
     }
 
     IEnumerator WaitForEnd(float t)

@@ -7,10 +7,12 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
 {
     [SerializeField] private Canvas canvas;
 
+    private FlowerPuzzleBehavior FlowerPuzzle;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Vector2 initRect;
     private CanvasGroupFadeInOut fadeInOut;
+    private bool draggable = false;
 
     [HideInInspector] public bool isCorrect = false;
     public int id;
@@ -21,34 +23,45 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
         canvasGroup = GetComponent<CanvasGroup>();
         initRect = rectTransform.anchoredPosition;
         fadeInOut = GetComponent<CanvasGroupFadeInOut>();
+        FlowerPuzzle = GetComponentInParent<FlowerPuzzleBehavior>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 0.7f;
-        canvasGroup.blocksRaycasts = false;
+        if (draggable)
+        {
+            canvasGroup.alpha = 0.7f;
+            canvasGroup.blocksRaycasts = false;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        fadeInOut.CanvasGroupFadeOut();
-        canvasGroup.blocksRaycasts = true;
-        if(!isCorrect)
+        if (draggable)
         {
-            fadeInOut.CanvasGroupFadeIn();
-            ResetPos();
+            if (isCorrect)
+            {
+                fadeInOut.CanvasGroupFadeOut();
+            }
+            else
+            {
+                ResetPos();
+                canvasGroup.blocksRaycasts = true;
+                fadeInOut.CanvasGroupFadeIn();
+            }
         }
-
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Pointer Down!");
+        if (id == FlowerPuzzle.curId)
+            draggable = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (draggable)
+            rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void ResetPos()
@@ -73,5 +86,7 @@ public class DraggableBehavior : MonoBehaviour, IPointerDownHandler, IBeginDragH
             rectTransform.anchoredPosition = Vector2.Lerp(startPos, initRect, normalizedValue);
             yield return null;
         }
+
+        draggable = false;
     }
 }
