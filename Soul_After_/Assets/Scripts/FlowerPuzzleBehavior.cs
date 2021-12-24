@@ -55,12 +55,13 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 fadeInOut.CanvasGroupFadeOutOther(Hole);
                 fadeInOut.CanvasGroupFadeInOther(Sun);
                 fadeInOut.CanvasGroupFadeOutOther(Fog);
-                fadeInOut.CanvasGroupFadeOutOther(Clouds);
+                break;
+            case 5:
                 part.ParticleSystemFadeOut(SnowFall, 0, 4);
                 // 이하 dialogue (word 4, 5) 이후 일어나야 할 일들
                 part.ParticleSystemFadeIn(RainFall, 10, 4);
                 break;
-            case 5:
+            case 6:
                 fadeInOut.CanvasGroupFadeInOther(BgSp);
                 fadeInOut.CanvasGroupFadeOutOther(BgWt);
                 fadeInOut.CanvasGroupFadeOutOther(BranchSnow);

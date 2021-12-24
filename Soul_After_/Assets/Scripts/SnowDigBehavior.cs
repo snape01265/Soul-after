@@ -9,11 +9,10 @@ public class SnowDigBehavior : MonoBehaviour, IDragHandler
     public int id;
     public AudioSource sfx;
     public CanvasGroupFadeInOut Ground;
-    public CanvasGroupFadeInOut Hole;
 
     private FlowerPuzzleBehavior FlowerPuzzle;
     private CanvasGroup snow;
-    private bool done = false;
+    public bool done = false;
     private readonly float DRAGFORCE = .001f;
 
     private void Awake()
@@ -31,8 +30,8 @@ public class SnowDigBehavior : MonoBehaviour, IDragHandler
             else
             {
                 done = true;
-                Ground.CanvasGroupFadeIn();
-                Hole.CanvasGroupFadeIn();
+                if (Ground)
+                    Ground.CanvasGroupFadeIn();
                 FlowerPuzzle.CheckFinished();
                 GetComponent<Image>().raycastTarget = false;
                 if (sfx != null)
