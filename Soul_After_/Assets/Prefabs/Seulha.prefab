@@ -1,141 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7672006298776686220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7672006298776686219}
-  - component: {fileID: 7672006298776686217}
-  - component: {fileID: 7672006298776686218}
-  - component: {fileID: 7672006298776686216}
-  m_Layer: 0
-  m_Name: RPGTalk Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7672006298776686219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672006298776686220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7672006299012660146}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &7672006298776686217
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672006298776686220}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.10848498}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2.78303}
-  m_EdgeRadius: 0
---- !u!114 &7672006298776686218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672006298776686220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0af02b5d7648a4e8492f3b9fc160319d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rpgtalkTarget: {fileID: 0}
-  shouldInteractWithButton: 1
-  showWhenInteractionIsPossible: []
-  interactionKey: 32
-  interactionButton: 
-  interactWithMouse: 0
-  checkIfColliderHasTag: Player
-  callbackBeforeTalk:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: CancelControl
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  lineToStart: Seulha_start
-  lineToBreak: Seulha_end
-  txtToParse: {fileID: 0}
-  overwriteCallbackAfterTalk:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: GiveBackControl
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  happenOnlyOnce: 0
-  alreadyHappened: 0
-  triggerEnter: 1
-  triggerExit: 0
-  shouldStayOnScreen: 0
-  forbidPlayIfRpgtalkIsPlaying: 1
-  timelineDirectorToPlay: {fileID: 0}
-  saveAlreadyHappened: 0
-  autoPass: 0
-  secondsAutoPass: 3
-  containInsideScreen: 0
---- !u!114 &7672006298776686216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672006298776686220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
-  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!1 &7672006299012660147
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +14,7 @@ GameObject:
   - component: {fileID: 7672006299012660145}
   - component: {fileID: 7672006299012660144}
   - component: {fileID: 2639098933629698279}
+  - component: {fileID: 1919506092559953148}
   m_Layer: 0
   m_Name: Seulha
   m_TagString: Untagged
@@ -167,8 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.97, y: 3.36, z: 2.5750666}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7672006298776686219}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,3 +161,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activate: {fileID: 11400000, guid: 8b882e3e0acb8b44fbc7563f8d7e6bd7, type: 2}
   Object: {fileID: 0}
+--- !u!114 &1919506092559953148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672006299012660147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: "\uC2AC\uC544"
+  persistentDataName: 
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 21300000, guid: 04128d4573eeaf94ebf947e80e03420e, type: 3}
+  barkUISettings:
+    barkUI: {fileID: 0}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
