@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class FlowerPuzzleBehavior : MonoBehaviour
 {
@@ -19,6 +20,13 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public CanvasGroup BgWt;
     public List<CanvasGroup> Seeds;
     public CanvasGroup Hole;
+
+    public Animation FlowerAnim;
+
+    public DialogueSystemTrigger Hint2;
+    public DialogueSystemTrigger Hint3;
+    public DialogueSystemTrigger Hint4;
+    public DialogueSystemTrigger Hint5;
 
     public ParticleSystem SnowFall;
     public ParticleSystem RainFall;
@@ -44,22 +52,28 @@ public class FlowerPuzzleBehavior : MonoBehaviour
         switch (curId)
         {
             case 2:
+                if (FlowerAnim)
+                    FlowerAnim.Play();
+
+                MarigoldDead.blocksRaycasts = false;
                 // 이후 animator로 대체
-                MarigoldAlive.blocksRaycasts = false;
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldAlive);
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
+                Hint2.OnUse();
                 break;
             case 3:
+                Hint3.OnUse();
                 break;
             case 4:
                 fadeInOut.CanvasGroupFadeOutOther(Hole);
                 fadeInOut.CanvasGroupFadeInOther(Sun);
                 fadeInOut.CanvasGroupFadeOutOther(Fog);
+                Hint4.OnUse();
                 break;
             case 5:
-                part.ParticleSystemFadeOut(SnowFall, 0, 4);
-                // 이하 dialogue (word 4, 5) 이후 일어나야 할 일들
-                part.ParticleSystemFadeIn(RainFall, 10, 4);
+                part.ParticleSystemFadeOut(SnowFall, 0, 6);
+                part.ParticleSystemFadeIn(RainFall, 10, 6);
+                Hint5.OnUse();
                 break;
             case 6:
                 fadeInOut.CanvasGroupFadeInOther(BgSp);
@@ -67,6 +81,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
                 fadeInOut.CanvasGroupFadeInOther(BranchCherry);
                 fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
+                RainFall.Stop();
                 StartCoroutine(WaitForEnd(5));
                 break;
         }
