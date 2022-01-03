@@ -12,7 +12,7 @@ public class SnowDigBehavior : MonoBehaviour, IDragHandler
 
     private FlowerPuzzleBehavior FlowerPuzzle;
     private CanvasGroup snow;
-    public bool done = false;
+    private bool done = false;
     private readonly float DRAGFORCE = .001f;
 
     private void Awake()
