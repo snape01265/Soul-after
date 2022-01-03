@@ -14,6 +14,10 @@ public class CutsceneEnter : MonoBehaviour
     public CutsceneList cutsceneList;
     void Start()
     {
+        if (cutsceneList.initialValue.Contains(cutsceneName))
+        {
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
         cutscene = GetComponent<PlayableDirector>();
     }
     public void OnTriggerEnter2D(Collider2D other)
@@ -48,6 +52,6 @@ public class CutsceneEnter : MonoBehaviour
             Destroy(fadeOut, fadeWait);
             yield return new WaitForSeconds(fadeWait);
         }
-        cutscene.Play();
+        //cutscene.Play();
     }
 }

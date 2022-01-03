@@ -1,15 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class DroppableBehavior : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public int id;
+    public UnityEvent callback;
+    public bool NeedsFadeIn = true;
+    public AudioSource sfx;
+
     private FlowerPuzzleBehavior FlowerPuzzle;
+    private CanvasGroup objCanvas;
+    private readonly float FADESPEED = .3f;
 
     private void Awake()
     {
+        objCanvas = GetComponent<CanvasGroup>();
         FlowerPuzzle = GetComponentInParent<FlowerPuzzleBehavior>();
     }
 
@@ -17,10 +26,13 @@ public class DroppableBehavior : MonoBehaviour, IDropHandler, IPointerEnterHandl
     {
         if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableBehavior>().id == id && FlowerPuzzle.curId == id)
         {
-            FlowerPuzzle.CheckFinished();
+            callback.Invoke();
+            if (NeedsFadeIn)
+                StartCoroutine(Fadein());
             eventData.pointerDrag.GetComponent<DraggableBehavior>().isCorrect = true;
-            GetComponent<CanvasGroup>().alpha = 1f;
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            if (sfx != null)
+                sfx.Play();
         }
         else eventData.pointerDrag.GetComponent<DraggableBehavior>().ResetPos();
     }
@@ -38,6 +50,15 @@ public class DroppableBehavior : MonoBehaviour, IDropHandler, IPointerEnterHandl
         if (eventData.pointerDrag != null && eventData.pointerDrag.GetComponent<DraggableBehavior>().id == id && FlowerPuzzle.curId == id)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().localScale = Vector3.one;
+        }
+    }
+
+    IEnumerator Fadein()
+    {
+        while (objCanvas.alpha < .99f)
+        {
+            objCanvas.alpha += Time.deltaTime * FADESPEED;
+            yield return null;
         }
     }
 }
