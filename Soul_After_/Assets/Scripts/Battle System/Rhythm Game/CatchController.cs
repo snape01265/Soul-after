@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CatchController : MonoBehaviour
 {
-    List<List<int>> lst = new List<List<int>>();
     [HideInInspector]
     public List<bool> hpStates;
     private List<HeartRenderer> heartRenderers;
@@ -13,19 +12,9 @@ public class CatchController : MonoBehaviour
     public int hp;
     public int maxHP;
     private GameObject[] objects;
-    /* public OnDestroyEvent[] OnDestroyEvents;
-    public UnityEngine.Events.UnityEvent OnAllObjectsDestroyed;*/
-
-    public GameObject player;
-    private Transform myTransform;
-    public Vector3 topPos;
-    public Vector3 centralPos;
-    public Vector3 bottomPos;
 
     void Start()
     {
-        myTransform = GetComponent<Transform>();
-        myTransform.position = centralPos;
         hp = maxHP;
         hpStates = Enumerable.Repeat<bool>(true, maxHP).ToList<bool>();
         heartRenderers = Enumerable.Repeat<HeartRenderer>(null, maxHP).ToList<HeartRenderer>();
@@ -41,12 +30,9 @@ public class CatchController : MonoBehaviour
                 heartRenderers.Insert(idx, _hpRend);
             }
         }
-
-        /* for (int i = 0; i < OnDestroyEvents.Length; ++i)
-            OnDestroyEvents[i].OnObjectDestroyed += OnObjectDestroyed;
     }
 
-    private void OnObjectDestroyed(GameObject destroyedObject)
+    /*private void OnObjectDestroyed(GameObject destroyedObject)
     {
         CheckAllObjectsAreDestroyed();
     }
@@ -59,21 +45,21 @@ public class CatchController : MonoBehaviour
         }
 
         if (OnAllObjectsDestroyed != null)
-            OnAllObjectsDestroyed.Invoke();*/
+            OnAllObjectsDestroyed.Invoke();
     }
 
     void Update()
     {
         float y = Input.GetAxisRaw("Vertical");
 
-        /* 가운데 고정 이동방식
+         가운데 고정 이동방식
         if (y > 0)
             player.transform.position = new Vector3(myTransform.position.x, 0.5f, myTransform.position.z);
         else if (y < 0)
             player.transform.position = new Vector3(myTransform.position.x, -3.5f, myTransform.position.z);
         else 
             player.transform.position = new Vector3(myTransform.position.x, -1.5f, myTransform.position.z);
-        */
+        
 
         var posToMove = DeterminePos(transform.position);
         if (posToMove != null)
@@ -100,14 +86,7 @@ public class CatchController : MonoBehaviour
                 return centralPos;
         }
         return null;
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Flower")
-        {
-            Destroy(other.gameObject);
-        }
-    }
+    }*/
     public void TakeDamage(int dmg)
     {
         int oldhp = hp;

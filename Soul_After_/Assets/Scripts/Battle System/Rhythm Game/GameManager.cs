@@ -9,11 +9,17 @@ public class GameManager : MonoBehaviour
     public bool startPlaying;
     public NoteSpeed noteSpeed;
     public static GameManager instance;
+    public Player player;
+    private CatchController cc;
+
     public int currentScore;
-    public int scoreValue = 2;
-    public int currentCombo;
-    public int comboTracker;
-    public int[] comboThresholds;
+    public int normalNoteValue;
+    public int goodNoteValue;
+    public int perfectNoteValue;
+
+    public int currentMultiplier;
+    public int multiplierTracker;
+    public int[] multiplierThresholds;
 
     public Text scoreText;
     public Text comboText;
@@ -21,8 +27,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        scoreText.text = "Score: 0";
-        currentCombo = 1;
+        scoreText.text = "Score: " + currentScore;
+        cc = player.GetComponent<CatchController>();
     }
 
     void Update()
@@ -37,35 +43,52 @@ public class GameManager : MonoBehaviour
                 audioSource.Play();
             }
         }
-        
+        else
+        {
+            if(!audioSource.isPlaying)
+            {
+                //대화 진행
+            }
+        }
     }
 
     public void NoteHit()
     {
-        Debug.Log("Hit");
-
-        if (currentCombo - 1 < comboThresholds.Length)
+        if (currentMultiplier - 1 < multiplierThresholds.Length)
         {
-            comboTracker++;
-
-            if (comboThresholds[currentCombo - 1] <= comboTracker)
+            multiplierTracker++;
+            if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
             {
-                comboTracker = 0;
-                currentCombo++;
+                currentMultiplier++;
+                cc.GetFlower(1);
             }
+            
         }
-        comboText.text = "Combo: x" + currentCombo;
-        currentScore += scoreValue * currentCombo;
+        comboText.text = "Combo: " + multiplierTracker;
         scoreText.text = "Score: " + currentScore;
     }
 
+    public void NormalHit()
+    {
+        currentScore += normalNoteValue * currentMultiplier;
+        NoteHit();
+    }
+    public void GoodHit()
+    {
+        currentScore += goodNoteValue * currentMultiplier;
+        NoteHit();
+    }
+    public void PerfectHit()
+    {
+        currentScore += perfectNoteValue * currentMultiplier;
+        NoteHit();
+    }
     public void NoteMissed()
     {
         Debug.Log("Note missed");
-
-        currentCombo = 1;
-        comboTracker = 0;
-
-        comboText.text = "Combo: x" + currentCombo;
+        currentMultiplier = 1;
+        multiplierTracker = 0;
+        cc.TakeDamage(1);
+        comboText.text = "Combo: " + multiplierTracker;
     }
 }
