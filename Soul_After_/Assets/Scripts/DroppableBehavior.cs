@@ -10,6 +10,8 @@ public class DroppableBehavior : MonoBehaviour, IDropHandler, IPointerEnterHandl
     public int id;
     public UnityEvent callback;
     public bool NeedsFadeIn = true;
+    public AudioSource sfx;
+
     private FlowerPuzzleBehavior FlowerPuzzle;
     private CanvasGroup objCanvas;
     private readonly float FADESPEED = .3f;
@@ -29,6 +31,8 @@ public class DroppableBehavior : MonoBehaviour, IDropHandler, IPointerEnterHandl
                 StartCoroutine(Fadein());
             eventData.pointerDrag.GetComponent<DraggableBehavior>().isCorrect = true;
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            if (sfx != null)
+                sfx.Play();
         }
         else eventData.pointerDrag.GetComponent<DraggableBehavior>().ResetPos();
     }

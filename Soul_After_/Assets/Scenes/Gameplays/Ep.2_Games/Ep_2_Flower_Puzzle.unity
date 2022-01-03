@@ -739,6 +739,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  sfxPerClick: {fileID: 0}
+  sfxAfterClick: {fileID: 0}
 --- !u!225 &334771657
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1313,7 +1315,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &905697391
+--- !u!1 &885580807
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1321,8 +1323,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 905697393}
-  - component: {fileID: 905697392}
+  - component: {fileID: 885580809}
+  - component: {fileID: 885580808}
   m_Layer: 0
   m_Name: Dialogue System Scene Events
   m_TagString: Untagged
@@ -1330,42 +1332,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &905697392
+--- !u!114 &885580808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905697391}
+  m_GameObject: {fileID: 885580807}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca55201633b97d3408f439eb84ecb249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueEntrySceneEvents:
-  - guid: c28e9407-4c64-4c5c-aac7-19894a8f10e4
-    onExecute:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1509164168}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!4 &905697393
+  dialogueEntrySceneEvents: []
+--- !u!4 &885580809
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905697391}
+  m_GameObject: {fileID: 885580807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -6763,7 +6749,6 @@ MonoBehaviour:
   id: 4
   sfx: {fileID: 0}
   Ground: {fileID: 0}
-  done: 0
 --- !u!1 &1247626562
 GameObject:
   m_ObjectHideFlags: 0
@@ -12545,6 +12530,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NeedsFadeIn: 0
+  sfx: {fileID: 0}
 --- !u!114 &1659694872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12728,7 +12714,6 @@ MonoBehaviour:
   id: 2
   sfx: {fileID: 0}
   Ground: {fileID: 803543259}
-  done: 0
 --- !u!225 &1749998151
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -12769,7 +12754,6 @@ MonoBehaviour:
   id: 2
   sfx: {fileID: 0}
   Ground: {fileID: 803543259}
-  done: 0
 --- !u!1 &1753261094
 GameObject:
   m_ObjectHideFlags: 0
@@ -12878,6 +12862,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NeedsFadeIn: 1
+  sfx: {fileID: 0}
 --- !u!225 &1753261099
 CanvasGroup:
   m_ObjectHideFlags: 0

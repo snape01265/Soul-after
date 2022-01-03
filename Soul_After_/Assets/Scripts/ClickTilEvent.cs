@@ -9,6 +9,9 @@ public class ClickTilEvent : MonoBehaviour, IPointerDownHandler
     public int ClickNumber;
     public UnityEvent EventPerClick;
     public UnityEvent Callback;
+    public AudioSource sfxPerClick;
+    public AudioSource sfxAfterClick;
+
     private int number = 0;
     private bool done = false;
 
@@ -16,10 +19,14 @@ public class ClickTilEvent : MonoBehaviour, IPointerDownHandler
     {
         if (!done)
         {
+            if (sfxPerClick != null)
+                sfxPerClick.Play();
             number++;
             EventPerClick.Invoke();
             if (number > ClickNumber)
             {
+                if (sfxAfterClick != null)
+                    sfxAfterClick.Play();
                 done = true;
                 Callback.Invoke();
             }
