@@ -34,6 +34,9 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public ParticleSystem SnowFall;
     public ParticleSystem RainFall;
 
+    //Audiosource
+    public AudioSource RainSFX;
+
     private ParticleSystemController part;
     private CanvasGroupFadeInOut fadeInOut;
 
@@ -86,6 +89,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 MarigoldAnim.SetTrigger("Grow");
                 DirtAnim.SetTrigger("Change");
                 RainFall.Stop();
+                RainSFX.Stop();
                 StartCoroutine(WaitForEnd(5));
                 break;
         }
