@@ -6,6 +6,7 @@ public class Mover : MonoBehaviour
 	public Waypoint[] wayPoints;
 	public float speed = 3f;
 	public bool isCircular;
+	public bool isOneWay = false;
 	public bool inReverse = true;
 
 	private Vector3 prevPos;
@@ -88,7 +89,17 @@ public class Mover : MonoBehaviour
 
 	private void NextWaypoint()
 	{
-		if (isCircular)
+		if (isOneWay)
+        {
+			currentIndex = (currentIndex + 1 >= wayPoints.Length) ? 0 : currentIndex + 1;
+			if (currentIndex == 0)
+            {
+				gameObject.transform.position = wayPoints[0].transform.position;
+				currentWaypoint = wayPoints[1];
+				return;
+            }
+		}
+		else if (isCircular)
 		{
 			if (!inReverse)
 			{
