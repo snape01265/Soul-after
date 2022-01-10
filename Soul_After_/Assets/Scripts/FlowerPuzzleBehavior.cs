@@ -22,6 +22,9 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     public CanvasGroup Hole;
 
     public Animation FlowerAnim;
+    //Flower and dirt Animator for Marigold Alive
+    public Animator MarigoldAnim;
+    public Animator DirtAnim;
 
     public DialogueSystemTrigger Hint2;
     public DialogueSystemTrigger Hint3;
@@ -30,6 +33,9 @@ public class FlowerPuzzleBehavior : MonoBehaviour
 
     public ParticleSystem SnowFall;
     public ParticleSystem RainFall;
+
+    //Audiosource
+    public AudioSource RainSFX;
 
     private ParticleSystemController part;
     private CanvasGroupFadeInOut fadeInOut;
@@ -72,7 +78,6 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 break;
             case 5:
                 part.ParticleSystemFadeOut(SnowFall, 0, 6);
-                part.ParticleSystemFadeIn(RainFall, 10, 6);
                 Hint5.OnUse();
                 break;
             case 6:
@@ -81,7 +86,10 @@ public class FlowerPuzzleBehavior : MonoBehaviour
                 fadeInOut.CanvasGroupFadeOutOther(BranchSnow);
                 fadeInOut.CanvasGroupFadeInOther(BranchCherry);
                 fadeInOut.CanvasGroupFadeInOther(MarigoldAlive);
+                MarigoldAnim.SetTrigger("Grow");
+                DirtAnim.SetTrigger("Change");
                 RainFall.Stop();
+                RainSFX.Stop();
                 StartCoroutine(WaitForEnd(5));
                 break;
         }
@@ -107,5 +115,11 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(t);
         Debug.Log("Puzzle Finished!");
+    }
+
+    //Rain particle stop method
+    public void RainFadeOut()
+    {
+        part.ParticleSystemFadeIn(RainFall, 10, 6);
     }
 }
