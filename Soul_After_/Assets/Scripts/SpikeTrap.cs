@@ -104,12 +104,12 @@ public class SpikeTrap : MonoBehaviour
     private void Shrink()
     {
         lightComp.pointLightOuterRadius = .1f;
-        transform.localScale = SMALLFIRE;
+        //transform.localScale = SMALLFIRE;
     }
 
     private void Expand()
     {
         lightComp.pointLightOuterRadius = 1f;
-        transform.localScale = NORMALFIRE;
+        //transform.localScale = NORMALFIRE;
     }
 }
