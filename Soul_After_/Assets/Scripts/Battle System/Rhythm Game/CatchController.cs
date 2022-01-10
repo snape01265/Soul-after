@@ -31,62 +31,6 @@ public class CatchController : MonoBehaviour
             }
         }
     }
-
-    /*private void OnObjectDestroyed(GameObject destroyedObject)
-    {
-        CheckAllObjectsAreDestroyed();
-    }
-    private void CheckAllObjectsAreDestroyed()
-    {
-        for (int i = 0; i < OnDestroyEvents.Length; ++i)
-        {
-            if (OnDestroyEvents[i] != null || OnDestroyEvents[i].gameObject != null)
-                return;
-        }
-
-        if (OnAllObjectsDestroyed != null)
-            OnAllObjectsDestroyed.Invoke();
-    }
-
-    void Update()
-    {
-        float y = Input.GetAxisRaw("Vertical");
-
-         가운데 고정 이동방식
-        if (y > 0)
-            player.transform.position = new Vector3(myTransform.position.x, 0.5f, myTransform.position.z);
-        else if (y < 0)
-            player.transform.position = new Vector3(myTransform.position.x, -3.5f, myTransform.position.z);
-        else 
-            player.transform.position = new Vector3(myTransform.position.x, -1.5f, myTransform.position.z);
-        
-
-        var posToMove = DeterminePos(transform.position);
-        if (posToMove != null)
-            transform.position = (Vector3)posToMove;
-    }
-    private Vector3? DeterminePos(Vector3 pos)
-    {
-        if (Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            if (transform.position == topPos)
-                return topPos;
-            if (transform.position == centralPos)
-                return topPos;
-            if (transform.position == bottomPos)
-                return centralPos;
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            if (transform.position == bottomPos)
-                return bottomPos;
-            if (transform.position == centralPos)
-                return bottomPos;
-            if (transform.position == topPos)
-                return centralPos;
-        }
-        return null;
-    }*/
     public void TakeDamage(int dmg)
     {
         int oldhp = hp;

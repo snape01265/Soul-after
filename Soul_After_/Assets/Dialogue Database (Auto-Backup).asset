@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935899b62f48ae5498594680ed17d133, type: 3}
-  m_Name: Dialogue Database
+  m_Name: Dialogue Database (Auto-Backup)
   m_EditorClassIdentifier: 
   version: 
   author: 
@@ -557,6 +557,34 @@ MonoBehaviour:
       typeString: CustomFieldType_Number
     - title: Description
       value: State of the FlowerPuzzle
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 4
+    fields:
+    - title: Name
+      value: SongDone
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: True
+      type: 2
+      typeString: CustomFieldType_Boolean
+    - title: Description
+      value: State of RhythmGame
+      type: 0
+      typeString: CustomFieldType_Text
+  - id: 5
+    fields:
+    - title: Name
+      value: DialogueState
+      type: 0
+      typeString: CustomFieldType_Text
+    - title: Initial Value
+      value: 0
+      type: 1
+      typeString: CustomFieldType_Number
+    - title: Description
+      value: State of Dialogue
       type: 0
       typeString: CustomFieldType_Text
   conversations:
@@ -21834,11 +21862,11 @@ MonoBehaviour:
     - title: Title
       value: Ep.2_RhythmGame_Conversations
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Description
       value: 
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Actor
       value: 2
       type: 5
@@ -21917,6 +21945,12 @@ MonoBehaviour:
         destinationDialogueID: 79
         isConnector: 0
         priority: 2
+      - originConversationID: 14
+        originDialogueID: 0
+        destinationConversationID: 14
+        destinationDialogueID: 85
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -21924,7 +21958,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1
+        x: 2.0638428
         y: 171
         width: 160
         height: 30
@@ -21986,14 +22020,15 @@ MonoBehaviour:
         destinationDialogueID: 80
         isConnector: 0
         priority: 2
-      conditionsString: 
+      conditionsString: Variable["SongDone"] == true and (Variable["DialogueState"]
+        == 0)
       userScript: 
       onExecute:
         m_PersistentCalls:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 173.00002
+        x: 172.93619
         y: 113
         width: 160
         height: 30
@@ -22282,11 +22317,11 @@ MonoBehaviour:
       - title: Title
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Description
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Actor
         value: 2
         type: 5
@@ -22298,11 +22333,11 @@ MonoBehaviour:
       - title: Menu Text
         value: 
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\uC790! \uC774\uC81C \uC2DC\uC791\uD574\uBCFC\uAE4C\uC694?"
         type: 0
-        typeString: 
+        typeString: CustomFieldType_Text
       - title: Sequence
         value: '//Intermission
 
@@ -22318,6 +22353,126 @@ MonoBehaviour:
           required
           Timeline(speed, Ep.2_Timeline_9-2, 1)@Message(Continued); // Resume timeline
           on continue'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: fe606fdf-6f78-4ff5-8145-defc62d1b62e
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 14
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 'Variable["SongDone"] = false;
+
+        Variable["DialogueState"]
+        = 1'
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1134.7412
+        y: 120.13489
+        width: 160
+        height: 30
+    - id: 85
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: Song Cleared
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 14
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 14
+        originDialogueID: 85
+        destinationConversationID: 14
+        destinationDialogueID: 86
+        isConnector: 0
+        priority: 2
+      conditionsString: Variable["DialogueState"] == 1 and (Variable["SongDone"]
+        == true)
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 234.1489
+        y: 179.48936
+        width: 160
+        height: 30
+    - id: 86
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 2
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: End Convo
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: 5cbefa3f-f0bc-4879-b9e4-b7d4ebececa8
         type: 0
         typeString: 
       conversationID: 14
@@ -22335,13 +22490,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1135.8049
-        y: 124.39021
+        x: 421.06378
+        y: 177.65958
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 40.544594}
-    canvasZoom: 0.73000026
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 0.94000006
   - id: 15
     fields:
     - title: Title
@@ -24368,8 +24523,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 122.85707, y: 0}
-    canvasZoom: 0.7000003
+    canvasScrollPosition: {x: 154.25507, y: 0}
+    canvasZoom: 0.94000006
   - id: 16
     fields:
     - title: Title
@@ -25941,7 +26096,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 188.40352, y: 50.30249}
+    canvasScrollPosition: {x: 0, y: 6.1855774}
     canvasZoom: 0.97
   - id: 17
     fields:

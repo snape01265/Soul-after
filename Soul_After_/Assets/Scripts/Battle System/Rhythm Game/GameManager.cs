@@ -2,93 +2,108 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Melanchall.DryWetMidi.Core;
+using Melanchall.DryWetMidi.Interaction;
+using System.IO;
+using UnityEngine.Networking;
+using PixelCrushers.DialogueSystem;
+
 
 public class GameManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public bool startPlaying;
-    public NoteSpeed noteSpeed;
     public static GameManager instance;
-    public Player player;
-    private CatchController cc;
+    public AudioSource audioSource;
+    public Lane[] lanes;
+    public float songDelayInSeconds;
+    public int inputDelayInMilliseconds;
+    public double perfectMarginOfError;
+    public double goodMarginOfError;
+    public double badMarginOfError;
+    public string fileLocation;
+    public static MidiFile midiFile;
+    public Transform player;
+    public Transform seulha;
 
-    public int currentScore;
-    public int normalNoteValue;
-    public int goodNoteValue;
-    public int perfectNoteValue;
+    public float noteTime;
+    public float noteSpawnX;
+    public float noteTapX;
+    public float noteDespawnX
+    {
+        get
+        {
+            return noteTapX - (noteSpawnX - noteTapX);
+        }
+    }
 
-    public int currentMultiplier;
-    public int multiplierTracker;
-    public int[] multiplierThresholds;
-
-    public Text scoreText;
-    public Text comboText;
-
+    [System.Obsolete]
     void Start()
     {
         instance = this;
-        scoreText.text = "Score: " + currentScore;
-        cc = player.GetComponent<CatchController>();
-    }
-
-    void Update()
-    {
-        if(!startPlaying)
+        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
-            if(Input.anyKeyDown)
-            {
-                startPlaying = true;
-                noteSpeed.hasStarted = true;
-
-                audioSource.Play();
-            }
+            StartCoroutine(ReadFromWebsite());
         }
         else
         {
-            if(!audioSource.isPlaying)
-            {
-                //대화 진행
-            }
+            ReadFromFile();
         }
     }
 
-    public void NoteHit()
+    [System.Obsolete]
+    private IEnumerator ReadFromWebsite()
     {
-        if (currentMultiplier - 1 < multiplierThresholds.Length)
+        using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation))
         {
-            multiplierTracker++;
-            if (multiplierThresholds[currentMultiplier - 1] <= multiplierTracker)
+            yield return www.SendWebRequest();
+            if (www.isNetworkError || www.isHttpError)
             {
-                currentMultiplier++;
-                cc.GetFlower(1);
+                Debug.LogError(www.error);
             }
-            
+            else
+            {
+                byte[] results = www.downloadHandler.data;
+                using (var stream = new MemoryStream(results))
+                {
+                    midiFile = MidiFile.Read(stream);
+                    GetDataFromMidi();
+                }
+            }
         }
-        comboText.text = "Combo: " + multiplierTracker;
-        scoreText.text = "Score: " + currentScore;
     }
+    private void ReadFromFile()
+    {
+        midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
+    }
+    public void StartRhythmGame()
+    {
+        GetDataFromMidi();
+    }
+    private void GetDataFromMidi()
+    {
+        var notes = midiFile.GetNotes();
+        var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
+        notes.CopyTo(array, 0);
 
-    public void NormalHit()
-    {
-        currentScore += normalNoteValue * currentMultiplier;
-        NoteHit();
+        foreach (var lane in lanes) lane.SetTimeStamps(array);
+
+        Invoke(nameof(StartSong), songDelayInSeconds);
     }
-    public void GoodHit()
+    public void StartSong()
     {
-        currentScore += goodNoteValue * currentMultiplier;
-        NoteHit();
+        audioSource.Play();
     }
-    public void PerfectHit()
+    public void StartDialogue()
     {
-        currentScore += perfectNoteValue * currentMultiplier;
-        NoteHit();
+        PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2_RhythmGame_Conversations", player, seulha);
     }
-    public void NoteMissed()
+    public void ChangeSong()
     {
-        Debug.Log("Note missed");
-        currentMultiplier = 1;
-        multiplierTracker = 0;
-        cc.TakeDamage(1);
-        comboText.text = "Combo: " + multiplierTracker;
+        fileLocation = "keys_of_moon_white_petals.mid";
+        ReadFromFile();
+        GetDataFromMidi();
+    }
+    public static double GetAudioSourceTime()
+    {
+        return (double)instance.audioSource.timeSamples / instance.audioSource.clip.frequency;
     }
 }
