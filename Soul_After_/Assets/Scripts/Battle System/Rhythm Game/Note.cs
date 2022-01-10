@@ -40,25 +40,4 @@ public class Note : MonoBehaviour
     {
         Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
     }
-    /* private void OnTriggerEnter2D(Collider2D other)
-     {
-         if(other.tag == "Flower")
-         {
-             bePressed = true;
-         }
-     }
-
-     private void OnTriggerExit2D(Collider2D other)
-     {
-         if(gameObject.activeSelf)
-         {
-             if (other.tag == "Flower")
-             {
-                 bePressed = false;
-
-                 GameManager.instance.NoteMissed();
-                 Instantiate(missEffect, transform.position, missEffect.transform.rotation);
-             }
-         }
-     }*/
 }

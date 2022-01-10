@@ -37,11 +37,9 @@ public class CatchController : MonoBehaviour
         hp -= dmg;
         RenderHp(oldhp, hp);
     }
-    public void GetFlower(int dmg)
+    public void Heal(int dmg)
     {
-        int oldhp = hp;
-        hp += dmg;
-        RenderHp(oldhp, hp);
+
     }
     private void RenderHp(int oldHp, int newHp)
     {
