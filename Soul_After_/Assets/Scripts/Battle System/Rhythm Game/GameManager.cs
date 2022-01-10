@@ -6,6 +6,7 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
+using PixelCrushers.DialogueSystem;
 
 
 public class GameManager : MonoBehaviour
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     public double badMarginOfError;
     public string fileLocation;
     public static MidiFile midiFile;
+    public Transform player;
+    public Transform seulha;
 
     public float noteTime;
     public float noteSpawnX;
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     void Start()
     {
         instance = this;
@@ -45,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [System.Obsolete]
     private IEnumerator ReadFromWebsite()
     {
         using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation))
@@ -68,6 +73,9 @@ public class GameManager : MonoBehaviour
     private void ReadFromFile()
     {
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
+    }
+    public void StartRhythmGame()
+    {
         GetDataFromMidi();
     }
     private void GetDataFromMidi()
@@ -83,6 +91,16 @@ public class GameManager : MonoBehaviour
     public void StartSong()
     {
         audioSource.Play();
+    }
+    public void StartDialogue()
+    {
+        PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2_RhythmGame_Conversations", player, seulha);
+    }
+    public void ChangeSong()
+    {
+        fileLocation = "keys_of_moon_white_petals.mid";
+        ReadFromFile();
+        GetDataFromMidi();
     }
     public static double GetAudioSourceTime()
     {

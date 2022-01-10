@@ -8,11 +8,13 @@ public class Lane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode keyToPress;
     public GameObject notePrefab;
+    public GameManager gameManager;
     List<Note> notes = new List<Note>();
     public List<double> timeStamps = new List<double>();
 
     int spawnIndex = 0;
     int inputIndex = 0;
+    int count = 0;
 
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -54,6 +56,7 @@ public class Lane : MonoBehaviour
                     notes[inputIndex].gameObject.GetComponent<Note>().PerfectHit();
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    count++;
                 }
                 else if (Mathf.Abs((float)(audioTime - timeStamp)) < goodMarginOfError)
                 {
@@ -61,6 +64,7 @@ public class Lane : MonoBehaviour
                     notes[inputIndex].gameObject.GetComponent<Note>().GoodHit();
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    count++;
                 }
                 else if (Mathf.Abs((float)(audioTime - timeStamp)) < badMarginOfError)
                 {
@@ -68,6 +72,7 @@ public class Lane : MonoBehaviour
                     notes[inputIndex].gameObject.GetComponent<Note>().BadHit();
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
+                    count++;
                 }
                 else
                 {
@@ -79,7 +84,12 @@ public class Lane : MonoBehaviour
                 ScoreManager.Miss();
                 print($"Missed");
                 inputIndex++;
+                count++;
             }
+        }
+        else if (timeStamps.Count == inputIndex)
+        {
+            gameManager.ChangeSong();
         }
     }
 }
