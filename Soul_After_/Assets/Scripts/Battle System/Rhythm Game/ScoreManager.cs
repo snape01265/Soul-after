@@ -49,7 +49,7 @@ public class ScoreManager : MonoBehaviour
             if (multiplierThresholds[currentMultiplier - 1] <= comboScore)
             {
                 currentMultiplier++;
-                cc.GetFlower(1);
+                cc.Heal(1);
             }
         }
     }
