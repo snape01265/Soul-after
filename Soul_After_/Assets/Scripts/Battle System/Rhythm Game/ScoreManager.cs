@@ -9,7 +9,10 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshPro scoreText;
     public Player player;
     public int[] multiplierThresholdsContainer;
+    public GameManager gameManager;
 
+    static int count;
+    static int maxCount = 383;
     static CatchController cc;
     static int currentScore;
     static int comboScore;
@@ -52,16 +55,29 @@ public class ScoreManager : MonoBehaviour
                 cc.Heal(1);
             }
         }
+        count += 1;
+        Debug.Log(count);
+
     }
     public static void Miss()
     {
         comboScore = 0; 
         currentMultiplier = 1;
         cc.TakeDamage(1);
+        count += 1;
+        Debug.Log(count);
     }
     void Update()
     {
         comboText.text = comboScore.ToString();
         scoreText.text = currentScore.ToString();
+        if (count == 6)
+        {
+            gameManager.ChangeBG();
+        }
+        if (count == maxCount)
+        {
+            gameManager.StartDialogue();
+        }
     }
 }

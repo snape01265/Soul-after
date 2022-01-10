@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public static MidiFile midiFile;
     public Transform player;
     public Transform seulha;
+    public Image firstBG;
+    public Image secondBG;
+    public Image snowImage;
 
     public float noteTime;
     public float noteSpawnX;
@@ -96,11 +99,25 @@ public class GameManager : MonoBehaviour
     {
         PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2_RhythmGame_Conversations", player, seulha);
     }
-    public void ChangeSong()
+    public void ChangeBG()
     {
-        fileLocation = "keys_of_moon_white_petals.mid";
-        ReadFromFile();
-        GetDataFromMidi();
+        StartCoroutine(FadeTo(0.0f, 3.0f, firstBG));
+        StartCoroutine(FadeTo(0.0f, 3.0f, snowImage));
+        firstBG.enabled = false;
+        snowImage.enabled = false;
+        secondBG.enabled = true;
+        StartCoroutine(FadeTo(1.0f, 3.0f, secondBG));
+    }
+
+    IEnumerator FadeTo(float alphaValue, float time, Image image)
+    {
+        float initialValue = image.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / time)
+        {
+            Color newColor = new Color(1, 1, 1, Mathf.Lerp(initialValue, alphaValue, time));
+            image.color = newColor;
+            yield return new WaitForEndOfFrame();
+        }
     }
     public static double GetAudioSourceTime()
     {
