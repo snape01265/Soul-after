@@ -40,6 +40,7 @@ public class FlameTrap : MonoBehaviour
                 }
             case 4:
                 {
+                    Shrink();
                     break;
                 }
             case 5:
@@ -103,13 +104,13 @@ public class FlameTrap : MonoBehaviour
         }
     }
 
-    private void Shrink()
+    public void Shrink()
     {
         lightComp.pointLightOuterRadius = .1f;
         transform.localScale = SMALLFIRE;
     }
 
-    private void Expand()
+    public void Expand()
     {
         lightComp.pointLightOuterRadius = 1f;
         transform.localScale = NORMALFIRE;
