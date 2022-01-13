@@ -10,6 +10,7 @@ public class SpikeTrap : MonoBehaviour
     public float scale;
 
     private readonly float BUFFER = .5f;
+    private readonly float ANIMDUR = .5f;
 
     private BoxCollider2D Collider2D;
     private Animator Animator;
@@ -17,11 +18,13 @@ public class SpikeTrap : MonoBehaviour
     private void Start()
     {
         Collider2D = GetComponent<BoxCollider2D>();
+        Animator = GetComponent<Animator>();
 
         switch (patternType)
         {
             case 0:
                 {
+                    Animator.SetBool("Up", true);
                     break;
                 }
             case 1:
@@ -53,9 +56,13 @@ public class SpikeTrap : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(sec - BUFFER);
+            yield return new WaitForSeconds(sec - BUFFER - ANIMDUR * 2);
+            Animator.SetBool("Up", true);
+            yield return new WaitForSeconds(ANIMDUR);
             Collider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
+            Animator.SetBool("Up", false);
+            yield return new WaitForSeconds(ANIMDUR);
             Collider2D.enabled = false;
             yield return new WaitForSeconds(sec);
         }
@@ -65,9 +72,13 @@ public class SpikeTrap : MonoBehaviour
     {
         while (true)
         {
+            Animator.SetBool("Up", false);
+            yield return new WaitForSeconds(ANIMDUR);
             Collider2D.enabled = false;
             yield return new WaitForSeconds(sec);
-            yield return new WaitForSeconds(sec - BUFFER);
+            yield return new WaitForSeconds(sec - BUFFER - ANIMDUR * 2);
+            Animator.SetBool("Up", true);
+            yield return new WaitForSeconds(ANIMDUR);
             Collider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
         }
