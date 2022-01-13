@@ -55,6 +55,27 @@ public class Flameshot : MonoBehaviour
 		isWaiting = false;
 	}
 
+	public void FireFlamesDuration(float time)
+    {
+		IEnumerator FlipAfterDuration(float time)
+		{
+			yield return new WaitForSeconds(time);
+			isWaiting = true;
+			sprite.enabled = false;
+			collider.enabled = false;
+			light.enabled = false;
+		}
+
+		transform.position = Boss.transform.position;
+		sprite.enabled = true;
+		collider.enabled = true;
+		light.enabled = true;
+		currentWaypoint = wayPoints[0];
+		isWaiting = false;
+
+		StartCoroutine(FlipAfterDuration(time));
+	}
+
 	private void MoveTowardsWaypoint()
 	{
 		Vector3 currentPosition = this.transform.position;
@@ -88,4 +109,6 @@ public class Flameshot : MonoBehaviour
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
 		anim.SetFloat("Move Y", myRigidbody.velocity.y);
 	}
+
+
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Ep3_Dungeon_Phase_2 : MonoBehaviour
+public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 {
 	public GameObject FlameGen;
 	public Waypoint[] wayPoints;
@@ -110,6 +110,7 @@ public class Ep3_Dungeon_Phase_2 : MonoBehaviour
 		currentIndex = (!inReverse) ? currentIndex + 1 : currentIndex - 1;
 		currentWaypoint = wayPoints[currentIndex];
 	}
+
 	void UpdateAnimation()
 	{
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
