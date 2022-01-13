@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
+public class Ep3_Dungeon_Phase_3_P1 : MonoBehaviour
 {
     public GameObject[] LavaFloors;
     public AudioSource sfx;
@@ -12,7 +12,7 @@ public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
     {
         if (sfx)
             sfx.Play();
-        StartCoroutine(RowOfFloors());
+        StartCoroutine(ColOfFloors());
     }
 
     private void OnDisable()
@@ -21,9 +21,8 @@ public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
             g.SetActive(false);
     }
 
-    IEnumerator RowOfFloors()
+    IEnumerator ColOfFloors()
     {
-
         bool first = true;
 
         while (true)
@@ -38,11 +37,18 @@ public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
                     sfx.Play();
             }
 
-            for (int i = 0; i< LavaFloors.Length; i++)
+            for (int i = LavaFloors.Length - 1; i >= 0; i--)
             {
-                LavaFloors[i].GetComponent<RowFlame>().EnableRow();
+                for (int j = 0; j < LavaFloors.Length; j++)
+                {
+                    if (j != i)
+                        LavaFloors[j].GetComponent<RowFlame>().EnableRow();
+                }
+
                 yield return new WaitForSeconds(Duration);
-                LavaFloors[i].GetComponent<RowFlame>().DisableRow();
+
+                for (int j = 0; j < LavaFloors.Length; j++)
+                    LavaFloors[j].GetComponent<RowFlame>().DisableRow();        
             }
         }
     }
