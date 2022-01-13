@@ -5,6 +5,7 @@ using UnityEngine;
 public class RowFlame : MonoBehaviour
 {
     public GameObject[] Lavas;
+    public float Speed;
 
     public void EnableRow()
     {
@@ -15,6 +16,7 @@ public class RowFlame : MonoBehaviour
     {
         foreach (GameObject g in Lavas)
         {
+            g.GetComponent<CircleCollider2D>().enabled = false;
             g.GetComponent<FlameTrap>().Shrink();
         }
     }
@@ -23,8 +25,9 @@ public class RowFlame : MonoBehaviour
     {
         for (int i = 0; i<Lavas.Length; i++)
         {
+            Lavas[i].GetComponent<CircleCollider2D>().enabled = true;
             Lavas[i].GetComponent<FlameTrap>().Expand();
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(Speed);
         }
     }
 }
