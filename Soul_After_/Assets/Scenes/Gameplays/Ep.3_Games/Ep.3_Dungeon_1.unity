@@ -524,7 +524,6 @@ GameObject:
   - component: {fileID: 41163550}
   - component: {fileID: 41163549}
   - component: {fileID: 41163551}
-  - component: {fileID: 41163552}
   - component: {fileID: 41163553}
   m_Layer: 0
   m_Name: Weakness_P1_1
@@ -695,35 +694,6 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
---- !u!114 &41163552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41163547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &41163553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,7 +2135,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &225524218
 CompositeCollider2D:
@@ -4835,7 +4805,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &282173070
 CompositeCollider2D:
@@ -5485,7 +5455,6 @@ GameObject:
   - component: {fileID: 299810436}
   - component: {fileID: 299810435}
   - component: {fileID: 299810438}
-  - component: {fileID: 299810437}
   - component: {fileID: 299810439}
   m_Layer: 0
   m_Name: Weakness_P1_2
@@ -5585,35 +5554,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &299810437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299810433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &299810438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5790,26 +5730,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 335144022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &335144025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5824,7 +5760,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 4
     questConditions:
     - questName: Phase_1
       questState: 2
@@ -5839,7 +5776,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Weakness"] = 5
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -29990,6 +29927,7 @@ GameObject:
   - component: {fileID: 348657943}
   - component: {fileID: 348657944}
   - component: {fileID: 348657947}
+  - component: {fileID: 348657948}
   m_Layer: 0
   m_Name: Phase_3_Boss_P1
   m_TagString: Untagged
@@ -30025,7 +29963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 5
     questConditions:
     - questName: 
       questState: 0
@@ -30039,7 +29978,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Weakness"] = 6
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -30182,6 +30121,31 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &348657947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348657941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &348657948
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31124,7 +31088,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &468481678
 CompositeCollider2D:
@@ -33431,6 +33395,7 @@ GameObject:
   - component: {fileID: 552677718}
   - component: {fileID: 552677717}
   - component: {fileID: 552677716}
+  - component: {fileID: 552677720}
   m_Layer: 0
   m_Name: Weakness_P3_1
   m_TagString: Untagged
@@ -33495,7 +33460,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 6
     questConditions:
     - questName: Phase_1
       questState: 2
@@ -33510,7 +33476,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Weakness"] = 7
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -33629,6 +33595,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &552677720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552677714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &558210195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34817,8 +34808,8 @@ MonoBehaviour:
   condition:
     luaConditions: []
     questConditions:
-    - questName: 
-      questState: 0
+    - questName: Phase_1
+      questState: 2
     acceptedTags:
     - Player
     acceptedGameObjects: []
@@ -37736,7 +37727,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &1107816988
 CompositeCollider2D:
@@ -47164,7 +47155,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &1114618309
 CompositeCollider2D:
@@ -48622,7 +48613,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &1204882074
 CompositeCollider2D:
@@ -49616,7 +49607,6 @@ Transform:
   - {fileID: 1108121833}
   - {fileID: 225944056}
   - {fileID: 507834126}
-  - {fileID: 1044655862}
   - {fileID: 1787453489}
   - {fileID: 282173069}
   - {fileID: 225524217}
@@ -50378,10 +50368,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 3
     questConditions:
-    - questName: 
-      questState: 0
+    - questName: Phase_1
+      questState: 2
     acceptedTags: []
     acceptedGameObjects: []
     luaWizardIndex: -1
@@ -50392,7 +50383,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Weakness"] = 4
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -53193,10 +53184,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 2
     questConditions:
-    - questName: 
-      questState: 0
+    - questName: Phase_1
+      questState: 2
     acceptedTags: []
     acceptedGameObjects: []
     luaWizardIndex: -1
@@ -53207,7 +53199,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Weakness"] = 3
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -54867,8 +54859,8 @@ MonoBehaviour:
     luaWizardIndex: -1
     lastEvaluationValue: 0
   setQuestState: 1
-  questName: 
-  questState: 0
+  questName: Phase_1
+  questState: 2
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
@@ -55094,7 +55086,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1240663674}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &1787453490
 TilemapRenderer:
@@ -57383,6 +57375,7 @@ GameObject:
   - component: {fileID: 2032992175}
   - component: {fileID: 2032992174}
   - component: {fileID: 2032992173}
+  - component: {fileID: 2032992177}
   m_Layer: 0
   m_Name: Weakness_P3_2
   m_TagString: Untagged
@@ -57447,7 +57440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Weakness"] == 7
     questConditions:
     - questName: Phase_1
       questState: 2
@@ -57457,8 +57451,8 @@ MonoBehaviour:
     luaWizardIndex: -1
     lastEvaluationValue: 0
   setQuestState: 1
-  questName: 
-  questState: 0
+  questName: Phase_1
+  questState: 4
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
@@ -57581,6 +57575,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2032992177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032992171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &2047118256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6563492059519798976, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
