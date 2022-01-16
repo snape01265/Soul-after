@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 2050224933}
   - component: {fileID: 2050224934}
   - component: {fileID: 2050224935}
+  - component: {fileID: 4464851557140506176}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -251,19 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e84bf7456b6b84fa91b7b272c2fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  control: 1
-  quest:
-    isActive: 0
-    goal:
-      goalType: 0
-      goalValue: 0
-      currentValue: 0
-      npcTalked: 
-      obj0Talked: 0
-      obj1Talked: 0
-      obj2Talked: 0
-      obj3Talked: 0
   road: {fileID: 0}
   menuSet: {fileID: 0}
   askWho: {fileID: 0}
@@ -274,6 +262,7 @@ MonoBehaviour:
   changeClothes: {fileID: 22100000, guid: d176b470a0f723e4b92fde831775b7b9, type: 2}
   mainClothes: {fileID: 22100000, guid: d176b470a0f723e4b92fde831775b7b9, type: 2}
   timeline: {fileID: 0}
+  walkZone: {fileID: 0}
   startingPosition: {fileID: 11400000, guid: 8dcdb5a268bbbbb4783d0e3872262ec5, type: 2}
   nameSetValue: {fileID: 11400000, guid: 690c05c100adcf24791b04fbf241b430, type: 2}
   nameSave: {fileID: 11400000, guid: 51449aa72365d3e43a2b3ecce8800eaa, type: 2}
@@ -366,3 +355,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contextClue: {fileID: 136914539}
+--- !u!114 &4464851557140506176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3468686249737713403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963d6358c55a0f44d8de57bee560f184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useDefaultGUI: 1
+  guiSkin: {fileID: 0}
+  guiStyleName: label
+  alignment: 1
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  textStyle: 1
+  textStyleColor: {r: 0, g: 0, b: 0, a: 1}
+  defaultUseMessage: (spacebar to interact)
+  useKey: 32
+  useButton: Fire2
+  enableTouch: 0
+  touchArea:
+    origin: 0
+    alignment: 0
+    x:
+      scale: 0
+      value: 0
+    y:
+      scale: 0
+      value: 0
+    width:
+      scale: 0
+      value: 0
+    height:
+      scale: 0
+      value: 0
+    minPixelWidth: 0
+    minPixelHeight: 0
+  broadcastToChildren: 1
+  actorTransform: {fileID: 0}
+  onSelectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeselectedUsable:
+    m_PersistentCalls:
+      m_Calls: []
