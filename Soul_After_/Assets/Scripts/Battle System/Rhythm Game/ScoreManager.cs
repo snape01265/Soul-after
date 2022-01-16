@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public Player player;
     public int[] multiplierThresholdsContainer;
     public GameManager gameManager;
+    private bool bgChange = false;
 
     static int count;
     static int maxCount = 383;
@@ -71,9 +72,10 @@ public class ScoreManager : MonoBehaviour
     {
         comboText.text = comboScore.ToString();
         scoreText.text = currentScore.ToString();
-        if (count == 6)
+        if (count == 6 && !bgChange)
         {
             gameManager.ChangeBG();
+            bgChange = true;
         }
         if (count == maxCount)
         {

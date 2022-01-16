@@ -7,6 +7,7 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.Experimental.Rendering.Universal;
 
 
 public class GameManager : MonoBehaviour
@@ -101,23 +102,53 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeBG()
     {
-        StartCoroutine(FadeTo(0.0f, 3.0f, firstBG));
-        StartCoroutine(FadeTo(0.0f, 3.0f, snowImage));
-        firstBG.enabled = false;
-        snowImage.enabled = false;
-        secondBG.enabled = true;
-        StartCoroutine(FadeTo(1.0f, 3.0f, secondBG));
+        Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
+
+        StartCoroutine(Fade(true, firstBG, 1));
+        StartCoroutine(Fade(true, snowImage, 1));
+        GameObject.Find("SnowParticles").SetActive(false);
+        StartCoroutine(Fade(false, secondBG, 1));
+        StartCoroutine(FadeLight(false, sunlight, 1));
     }
 
-    IEnumerator FadeTo(float alphaValue, float time, Image image)
+    IEnumerator Fade(bool fadeAway, Image image, float t)
     {
-        float initialValue = image.color.a;
-        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / time)
+        if (fadeAway)
         {
-            Color newColor = new Color(1, 1, 1, Mathf.Lerp(initialValue, alphaValue, time));
-            image.color = newColor;
-            yield return new WaitForEndOfFrame();
+            for (float i = 1; i >= 0; i -= Time.deltaTime / t)
+            {
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
         }
+        else
+        {
+            for (float i = 0; i <= 1; i += Time.deltaTime / t)
+            {
+                image.color = new Color(1, 1, 1, i);
+                yield return null;
+            }
+        }
+    }
+    IEnumerator FadeLight(bool fadeAway, Light2D light, float t)
+    {
+        if(fadeAway)
+        {
+            for (float i = 1; i >= 0; i -= Time.deltaTime / t)
+            {
+                light.intensity = i;
+                yield return null;
+            }
+        }
+        else
+        {
+            for (float i = 0; i <= 1; i += Time.deltaTime / t)
+            {
+                light.intensity = i;
+                yield return null;
+            }
+        }
+        yield return null;
     }
     public static double GetAudioSourceTime()
     {
