@@ -72,7 +72,7 @@ public class ScoreManager : MonoBehaviour
     {
         comboText.text = comboScore.ToString();
         scoreText.text = currentScore.ToString();
-        if (count == 6 && !bgChange)
+        if (count == 3 && !bgChange)
         {
             gameManager.ChangeBG();
             bgChange = true;

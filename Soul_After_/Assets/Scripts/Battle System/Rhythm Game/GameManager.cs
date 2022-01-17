@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Image firstBG;
     public Image secondBG;
     public Image snowImage;
+    public float bgSpeed;
 
     public float noteTime;
     public float noteSpawnX;
@@ -102,20 +103,25 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeBG()
     {
-        Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
-
-        StartCoroutine(Fade(true, firstBG, 1));
-        StartCoroutine(Fade(true, snowImage, 1));
-        GameObject.Find("SnowParticles").SetActive(false);
-        StartCoroutine(Fade(false, secondBG, 1));
-        StartCoroutine(FadeLight(false, sunlight, 1));
+        IEnumerator BackgroundTransition()
+        {
+            Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
+            StartCoroutine(Fade(true, firstBG, bgSpeed));
+            StartCoroutine(Fade(true, snowImage, bgSpeed));
+            GameObject.Find("SnowParticles").SetActive(false);
+            yield return new WaitForSeconds(5);
+            StartCoroutine(Fade(false, secondBG, bgSpeed));
+            StartCoroutine(FadeLight(false, sunlight, bgSpeed));
+            yield return null;
+        }
+        StartCoroutine(BackgroundTransition());
     }
 
     IEnumerator Fade(bool fadeAway, Image image, float t)
     {
         if (fadeAway)
         {
-            for (float i = 1; i >= 0; i -= Time.deltaTime / t)
+            for (float i = 0.5f; i >= 0; i -= Time.deltaTime / t)
             {
                 image.color = new Color(1, 1, 1, i);
                 yield return null;
@@ -123,7 +129,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            for (float i = 0; i <= 1; i += Time.deltaTime / t)
+            for (float i = 0; i <= 0.5f; i += Time.deltaTime / t)
             {
                 image.color = new Color(1, 1, 1, i);
                 yield return null;
@@ -134,7 +140,7 @@ public class GameManager : MonoBehaviour
     {
         if(fadeAway)
         {
-            for (float i = 1; i >= 0; i -= Time.deltaTime / t)
+            for (float i = 0.5f; i >= 0; i -= Time.deltaTime / t)
             {
                 light.intensity = i;
                 yield return null;
@@ -142,7 +148,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            for (float i = 0; i <= 1; i += Time.deltaTime / t)
+            for (float i = 0; i <= 0.5f; i += Time.deltaTime / t)
             {
                 light.intensity = i;
                 yield return null;
