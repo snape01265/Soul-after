@@ -8,6 +8,7 @@ public class Mover : MonoBehaviour
 	public bool isCircular;
 	public bool isOneWay = false;
 	public bool inReverse = true;
+	public AudioSource OneWaySFX;
 
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
@@ -94,6 +95,8 @@ public class Mover : MonoBehaviour
 			currentIndex = (currentIndex + 1 >= wayPoints.Length) ? 0 : currentIndex + 1;
 			if (currentIndex == 0)
             {
+				if (OneWaySFX)
+					OneWaySFX.Play();
 				gameObject.transform.position = wayPoints[0].transform.position;
 				currentWaypoint = wayPoints[1];
 				return;
