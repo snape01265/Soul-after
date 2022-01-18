@@ -10,6 +10,7 @@ public class Lane : MonoBehaviour
     public GameObject notePrefab;
     List<Note> notes = new List<Note>();
     public List<double> timeStamps = new List<double>();
+    private bool keyAvailable = true;
 
     int spawnIndex = 0;
     int inputIndex = 0;
@@ -46,7 +47,7 @@ public class Lane : MonoBehaviour
             double badMarginOfError = GameManager.instance.badMarginOfError;
             double audioTime = GameManager.GetAudioSourceTime() - (GameManager.instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(keyToPress))
+            if (Input.GetKeyDown(keyToPress) && keyAvailable)
             {
                 if (Mathf.Abs((float)(audioTime - timeStamp)) < perfectMarginOfError)
                 {
@@ -72,6 +73,8 @@ public class Lane : MonoBehaviour
                 else
                 {
                     Debug.Log("OutOfRange");
+                    StartCoroutine(DisableKeys());
+
                 }
             }
             if(timeStamp + badMarginOfError <= audioTime)
@@ -81,5 +84,13 @@ public class Lane : MonoBehaviour
                 inputIndex++;
             }
         }
+    }
+
+    IEnumerator DisableKeys()
+    {
+        keyAvailable = false;
+        //play some indicator
+        yield return new WaitForSeconds(0.5f);
+        keyAvailable = true;
     }
 }
