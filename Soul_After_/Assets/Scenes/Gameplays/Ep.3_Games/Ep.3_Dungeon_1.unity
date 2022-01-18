@@ -9833,6 +9833,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 5
+    - Variable["TimelinePlayed"] == 5
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -9847,7 +9848,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelinePlayed"] = Variable["TimelinePlayed"] + 1
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -9885,13 +9886,13 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 930777103}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -55111,6 +55112,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 5
+    - Variable["TimelineToPlay"] == 7
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -55124,7 +55126,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["Weakness"] = Variable["Weakness"] + 1
+  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+
+    Variable["TimelineToPlay"]
+    = Variable["TimelineToPlay"] + 1;'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -55161,7 +55166,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 441318562}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -56115,6 +56132,10 @@ Transform:
   - {fileID: 148409925}
   - {fileID: 930777102}
   - {fileID: 739397580}
+  - {fileID: 441318561}
+  - {fileID: 741429043}
+  - {fileID: 1862390175}
+  - {fileID: 1665634686}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56265,6 +56286,66 @@ MonoBehaviour:
   - {fileID: 18567538}
   - {fileID: 180398594}
   Speed: 0.4
+--- !u!1 &441318560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 441318561}
+  - component: {fileID: 441318562}
+  m_Layer: 0
+  m_Name: Timeline_7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &441318561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441318560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422512015}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &441318562
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441318560}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3212740195742357071, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6495466974989584792, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6681437925026914472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9221572951746096878, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3088263612031229472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 1604373071}
+  - key: {fileID: -4679583198040673391, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &442367963
 GameObject:
   m_ObjectHideFlags: 0
@@ -59313,6 +59394,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 6
+    - Variable["TimelineToPlay"] == 8
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -59327,7 +59409,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["Weakness"] = Variable["Weakness"] + 1
+  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+
+    Variable["TimelineToPlay"]
+    = Variable["TimelineToPlay"] + 1'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -59364,7 +59449,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 741429044}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -60965,6 +61062,66 @@ PlayableDirector:
     value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
+--- !u!1 &741429042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741429043}
+  - component: {fileID: 741429044}
+  m_Layer: 0
+  m_Name: Timeline_8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741429043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741429042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422512015}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &741429044
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741429042}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3212740195742357071, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6495466974989584792, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6681437925026914472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9221572951746096878, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3088263612031229472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 1604373071}
+  - key: {fileID: -4679583198040673391, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &761428473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61295,6 +61452,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 3
+    - Variable["TimelineToPlay"] == 3
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -61309,7 +61467,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["Weakness"] = Variable["Weakness"] + 1
+  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;;
+
+    Variable["TimelineToPlay"]
+    = Variable["TimelineToPlay"] + 1'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -61346,7 +61507,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 536909600}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -85236,6 +85409,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 4
+    - Variable["TimelineToPlay"] == 4
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -85249,7 +85423,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["Weakness"] = Variable["Weakness"] + 1
+  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+
+    Variable["TimelineToPlay"]
+    = Variable["TimelineToPlay"] + 1'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -85287,13 +85464,13 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 148409926}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -88900,6 +89077,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 2
+    - Variable["TimelineToPlay"] == 2
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -88914,7 +89092,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["Weakness"] = 3
+  luaCode: 'Variable["Weakness"] = 3;;
+
+    Variable["TimelineToPlay"] = Variable["TimelineToPlay"]
+    + 1'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -88956,6 +89137,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 228046010}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -91015,6 +91208,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
   m_PrefabInstance: {fileID: 1664601058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1665634685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1665634686}
+  - component: {fileID: 1665634687}
+  m_Layer: 0
+  m_Name: Timeline_10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1665634686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665634685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422512015}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1665634687
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1665634685}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3212740195742357071, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6495466974989584792, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6681437925026914472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9221572951746096878, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3088263612031229472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 1604373071}
+  - key: {fileID: -4679583198040673391, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1671542571
 GameObject:
   m_ObjectHideFlags: 0
@@ -92372,7 +92625,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 8
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["TimelineToPlay"] == 1
     questConditions:
     - questName: DungeonQuest_1
       questState: 1
@@ -92387,7 +92641,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelineToPlay"] = Variable["TimelineToPlay"] + 1
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -96652,6 +96906,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 5
+    - Variable["TimelineToPlay"] == 6
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -96666,7 +96921,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelineToPlay"] = Variable["TimelineToPlay"] + 1
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -96703,7 +96958,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739397581}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -97121,6 +97388,66 @@ Transform:
   m_Father: {fileID: 1497830298}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1862390174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1862390175}
+  - component: {fileID: 1862390176}
+  m_Layer: 0
+  m_Name: Timeline_9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1862390175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862390174}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422512015}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1862390176
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862390174}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3212740195742357071, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6495466974989584792, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6681437925026914472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9221572951746096878, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3088263612031229472, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 1604373071}
+  - key: {fileID: -4679583198040673391, guid: 5162db5a0fd2e974782da6bcba4c8af3, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1866513251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98475,6 +98802,7 @@ MonoBehaviour:
   condition:
     luaConditions:
     - Variable["Weakness"] == 7
+    - Variable["TimelineToPlay"] == 9
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -98527,13 +98855,13 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1862390176}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -99333,7 +99661,7 @@ MonoBehaviour:
   trigger: 8
   condition:
     luaConditions:
-    - Variable["TimelinePlayed"] == 0
+    - Variable["TimelineToPlay"] == 0
     questConditions: []
     acceptedTags:
     - Player
