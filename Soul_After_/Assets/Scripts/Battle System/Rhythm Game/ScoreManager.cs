@@ -54,6 +54,8 @@ public class ScoreManager : MonoBehaviour
             {
                 currentMultiplier++;
                 cc.Heal(1);
+                Debug.Log("1HP healed");
+                // if hp = 5, do nothing
             }
         }
         count += 1;
@@ -72,7 +74,7 @@ public class ScoreManager : MonoBehaviour
     {
         comboText.text = comboScore.ToString();
         scoreText.text = currentScore.ToString();
-        if (count == 3 && !bgChange)
+        if (count == 115 && !bgChange)
         {
             gameManager.ChangeBG();
             bgChange = true;
