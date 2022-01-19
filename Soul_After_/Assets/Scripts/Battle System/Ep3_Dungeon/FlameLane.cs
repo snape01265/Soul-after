@@ -15,10 +15,8 @@ public class FlameLane : MonoBehaviour
             yield return new WaitForSeconds(flameIntervalTime);
         }
     }
-
     public void FireLane()
     {
         StartCoroutine(ShootFlame());
-
     }
 }
