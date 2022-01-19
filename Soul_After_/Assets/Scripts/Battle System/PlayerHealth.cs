@@ -134,14 +134,21 @@ public class PlayerHealth : MonoBehaviour
         if (shake)
             shake.CamShake();
 
-        while (temp < numberOfFlashes)
+        if (ShieldBroken)
         {
-            mySprite.color = flashColor;
-            yield return new WaitForSeconds(flashDuration);
-            mySprite.color = regularColor;
-            yield return new WaitForSeconds(flashDuration);
-            temp++;
+            yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
+        } else
+        {
+            while (temp < numberOfFlashes)
+            {
+                mySprite.color = flashColor;
+                yield return new WaitForSeconds(flashDuration);
+                mySprite.color = regularColor;
+                yield return new WaitForSeconds(flashDuration);
+                temp++;
+            }
         }
+
         currentIFrame = null;
         triggerCollider.enabled = true;
     }
