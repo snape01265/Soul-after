@@ -1,24 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 {
-    public GameObject[] LavaFloors;
-    public AudioSource sfx;
-    public float Duration;
-    public Waypoint[] wayPoints;
-    public float speed = 3f;
-    public bool inReverse = true;
+	public GameObject FlameGen;
+	public Waypoint[] wayPoints;
+	public float speed = 3f;
+	public bool inReverse = true;
+	public GameObject[] lanes;
 
-    private Vector3 prevPos;
-    private Rigidbody2D myRigidbody;
-    private Animator anim;
-    private Waypoint currentWaypoint;
-    private int currentIndex = 0;
-    private bool isWaiting = false;
-    private float speedStorage = 0;
-
+	private Vector3 prevPos;
+	private Rigidbody2D myRigidbody;
+	private Animator anim;
+	private Waypoint currentWaypoint;
+	private int currentIndex = 0;
+	private bool isWaiting = false;
+	private float speedStorage = 0;
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -27,6 +26,15 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 		{
 			currentWaypoint = wayPoints[0];
 		}
+	}
+	private void OnEnable()
+	{
+		FlameGen.SetActive(true);
+	}
+
+	private void OnDisable()
+	{
+		FlameGen.SetActive(false);
 	}
 
 	void FixedUpdate()
@@ -69,7 +77,8 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 		}
 		else
 		{
-			StartCoroutine(ColOfFloors());
+			lanes[currentIndex * 2].GetComponent<FlameLane>().FireLane();
+			lanes[currentIndex * 2 + 1].GetComponent<FlameLane>().FireLane();
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
@@ -90,6 +99,7 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 		}
 	}
 
+
 	private void NextWaypoint()
 	{
 		if ((!inReverse && currentIndex + 1 >= wayPoints.Length) || (inReverse && currentIndex == 0))
@@ -105,36 +115,4 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
 		anim.SetFloat("Move Y", myRigidbody.velocity.y);
 	}
-
-    IEnumerator ColOfFloors()
-    {
-        bool first = true;
-
-        while (true)
-        {
-            if (first)
-                first = !first;
-            else
-            {
-                yield return new WaitForSeconds(1.5f);
-
-                if (sfx)
-                    sfx.Play();
-            }
-
-            for (int i = LavaFloors.Length - 1; i >= 0; i--)
-            {
-                for (int j = 0; j < LavaFloors.Length; j++)
-                {
-                    if (j != i)
-                        LavaFloors[j].GetComponent<RowFlame>().EnableRow();
-                }
-
-                yield return new WaitForSeconds(Duration);
-
-                for (int j = 0; j < LavaFloors.Length; j++)
-                    LavaFloors[j].GetComponent<RowFlame>().DisableRow();
-            }
-        }
-    }
 }
