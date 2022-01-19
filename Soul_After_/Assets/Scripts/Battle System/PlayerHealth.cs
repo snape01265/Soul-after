@@ -29,6 +29,13 @@ public class PlayerHealth : MonoBehaviour
     public Collider2D triggerCollider;
     public SpriteRenderer mySprite;
 
+    [Header("Shield")]
+    public bool ShieldEnabled = false;
+    public int CD;
+    public Animator ShieldAnim;
+
+    private bool ShieldBroken = false;
+
     void Start()
     {
         hpStates = Enumerable.Repeat<bool>(true, maxHP).ToList<bool>();
@@ -57,9 +64,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        int oldhp = (int) CurHP.initialValue;
-        CurHP.initialValue -= dmg;
-        RenderHp(oldhp, (int) CurHP.initialValue);
+        int oldhp = (int)CurHP.initialValue;
+        if (ShieldEnabled && !ShieldBroken)
+        {
+            ShieldBroken = true;
+            StartCoroutine(FlipAfter(CD));
+        }
+        else
+        {
+            CurHP.initialValue -= dmg;
+            RenderHp(oldhp, (int)CurHP.initialValue);
+        }
 
         if ((int) CurHP.initialValue <= 0)
         {
@@ -88,6 +103,26 @@ public class PlayerHealth : MonoBehaviour
         newHeart.GetComponent<RectTransform>().position = lastHeart.GetComponent<RectTransform>().position + new Vector3(25f, 0, 0);
     }
 
+    public void RenderHp(int oldHp, int newHp)
+    {
+        if (oldHp > newHp)
+        {
+            for (int i = oldHp - 1; i >= newHp; i--)
+            {
+                hpStates[i] = false;
+                heartRenderers[i].HPLoss();
+            }
+        }
+        else if (oldHp < newHp)
+        {
+            for (int i = oldHp; i < newHp; i++)
+            {
+                hpStates[i] = true;
+                heartRenderers[i].HPGain();
+            }
+        }
+    }
+
     IEnumerator IFrame()
     {
         int temp = 0;
@@ -110,23 +145,10 @@ public class PlayerHealth : MonoBehaviour
         currentIFrame = null;
         triggerCollider.enabled = true;
     }
-
-    public void RenderHp(int oldHp, int newHp)
+    
+    IEnumerator FlipAfter(int Time)
     {
-        if (oldHp > newHp)
-        {
-            for (int i = oldHp - 1; i >= newHp; i--)
-            {
-                hpStates[i] = false;
-                heartRenderers[i].HPLoss();
-            }
-        } else if (oldHp < newHp)
-        {
-            for (int i = oldHp; i < newHp; i++)
-            {
-                hpStates[i] = true;
-                heartRenderers[i].HPGain();
-            }
-        }
+        yield return new WaitForSeconds(Time);
+        ShieldBroken = false;
     }
 }
