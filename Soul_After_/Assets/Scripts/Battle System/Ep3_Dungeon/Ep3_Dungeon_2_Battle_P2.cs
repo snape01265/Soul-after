@@ -9,9 +9,7 @@ public class Ep3_Dungeon_2_Battle_P2 : MonoBehaviour
 	public Waypoint[] wayPoints;
 	public float speed = 3f;
 	public bool inReverse = true;
-
-	public UnityEvent ActionOnWaypoint;
-	public GameObject lava;
+	public GameObject[] lanes;
 
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
@@ -79,7 +77,7 @@ public class Ep3_Dungeon_2_Battle_P2 : MonoBehaviour
 		}
 		else
 		{
-			ActionOnWaypoint.Invoke();
+			lanes[currentIndex].GetComponent<FlameLane>().FireLane();
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
@@ -100,20 +98,7 @@ public class Ep3_Dungeon_2_Battle_P2 : MonoBehaviour
 		}
 	}
 
-	IEnumerator RowAttack()
-	{
-		bool first = true;
-		while (true)
-		{
-			if (first)
-				first = !first;
-			else
-			{
-				yield return new WaitForSeconds(1.5f);
-				lava.GetComponent<RowFlame>().DisableRow();
-			}
-		}
-	}
+
 	private void NextWaypoint()
 	{
 		if ((!inReverse && currentIndex + 1 >= wayPoints.Length) || (inReverse && currentIndex == 0))
