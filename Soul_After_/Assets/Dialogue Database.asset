@@ -804,7 +804,7 @@ MonoBehaviour:
   - id: 1
     fields:
     - title: Name
-      value: Phase_1
+      value: DungeonQuest_1
       type: 0
       typeString: CustomFieldType_Text
     - title: Pictures
@@ -812,7 +812,7 @@ MonoBehaviour:
       type: 3
       typeString: CustomFieldType_Files
     - title: Description
-      value: 
+      value: First quest in dungeon game system 1
       type: 0
       typeString: CustomFieldType_Text
     - title: Success Description
@@ -1034,15 +1034,15 @@ MonoBehaviour:
   - id: 2
     fields:
     - title: Name
-      value: CutscenePlayed
+      value: TimelineToPlay
       type: 0
       typeString: 
     - title: Initial Value
-      value: False
-      type: 2
-      typeString: CustomFieldType_Boolean
+      value: 0
+      type: 1
+      typeString: CustomFieldType_Number
     - title: Description
-      value: True when a certain cutscene is played
+      value: Number of timelines played
       type: 0
       typeString: 
   - id: 3
@@ -61355,6 +61355,36 @@ MonoBehaviour:
         destinationDialogueID: 73
         isConnector: 0
         priority: 2
+      - originConversationID: 41
+        originDialogueID: 0
+        destinationConversationID: 41
+        destinationDialogueID: 75
+        isConnector: 0
+        priority: 2
+      - originConversationID: 41
+        originDialogueID: 0
+        destinationConversationID: 41
+        destinationDialogueID: 78
+        isConnector: 0
+        priority: 2
+      - originConversationID: 41
+        originDialogueID: 0
+        destinationConversationID: 41
+        destinationDialogueID: 81
+        isConnector: 0
+        priority: 2
+      - originConversationID: 41
+        originDialogueID: 0
+        destinationConversationID: 41
+        destinationDialogueID: 82
+        isConnector: 0
+        priority: 2
+      - originConversationID: 41
+        originDialogueID: 0
+        destinationConversationID: 41
+        destinationDialogueID: 83
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -61394,7 +61424,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61453,7 +61493,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61510,7 +61560,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61567,7 +61627,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61618,7 +61688,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61676,7 +61756,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -61732,7 +61822,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_0, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_0, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62278,13 +62378,23 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\uC790. \uC774\uACF3\uC5D0\uC11C \uD53C\uD574\uC790\uAC00 \uC5B4\uB290\uC815\uB3C4
-          \uAFC8\uC744 \uC774\uB8E8\uAE30 \uC704\uD574\uC11C \uC131\uCDE8\uD55C \uAE30\uC5B5\uC744
+        value: "\uC790. \uC774\uACF3\uC5D0\uC11C \uD53C\uD574\uC790\uAC00 \uAFC8\uC744
+          \uC774\uB8E8\uAE30 \uC704\uD574\uC11C \uC131\uCDE8\uD55C \uAE30\uC5B5\uC744
           \uCC3E\uC544\uC11C \uC790\uC874\uAC10\uC5D0\uAC8C \uAC16\uB2E4\uC918\uBCF4\uC790\uAD6C. "
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_1, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_1, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62333,7 +62443,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62358,7 +62478,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 662.956
-        y: 96.86812
+        y: 98.36067
         width: 160
         height: 30
     - id: 19
@@ -62390,7 +62510,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62415,7 +62545,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 666.9032
-        y: 150.54941
+        y: 152.04196
         width: 160
         height: 30
     - id: 20
@@ -62446,7 +62576,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62471,7 +62611,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 663.60645
-        y: 213.18675
+        y: 214.6793
         width: 160
         height: 30
     - id: 21
@@ -62502,7 +62642,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62552,7 +62702,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62609,7 +62769,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62665,7 +62835,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62721,7 +62901,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62777,7 +62967,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62827,7 +63027,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_2, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_2, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62876,7 +63086,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62900,8 +63120,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1245.4307
-        y: 106.43614
+        x: 1211.1023
+        y: 104.94362
         width: 160
         height: 30
     - id: 29
@@ -62933,7 +63153,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -62957,8 +63187,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1249.378
-        y: 163.41412
+        x: 1215.0497
+        y: 161.9216
         width: 160
         height: 30
     - id: 30
@@ -62989,7 +63219,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63013,8 +63253,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1249.3779
-        y: 222.75478
+        x: 1215.0496
+        y: 221.26225
         width: 160
         height: 30
     - id: 31
@@ -63046,7 +63286,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63070,8 +63320,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1251.5758
-        y: 279.89764
+        x: 1217.2474
+        y: 278.4051
         width: 160
         height: 30
     - id: 32
@@ -63103,7 +63353,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63127,8 +63387,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1250.4768
-        y: 337.04047
+        x: 1216.1484
+        y: 335.5479
         width: 160
         height: 30
     - id: 33
@@ -63161,7 +63421,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: //Idle Down
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63185,8 +63455,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1249.378
-        y: 400.77676
+        x: 1215.0497
+        y: 397.7917
         width: 160
         height: 30
     - id: 34
@@ -63219,7 +63489,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63243,8 +63523,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1247.1426
-        y: 461.25366
+        x: 1212.8142
+        y: 458.26855
         width: 160
         height: 30
     - id: 35
@@ -63276,7 +63556,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63300,8 +63590,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1247.1428
-        y: 553.66125
+        x: 1212.8145
+        y: 550.67615
         width: 160
         height: 30
     - id: 36
@@ -63333,7 +63623,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: //Idle Down
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63357,8 +63657,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1247.1802
-        y: 607.4325
+        x: 1212.8518
+        y: 604.4474
         width: 160
         height: 30
     - id: 37
@@ -63389,7 +63689,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -63407,8 +63717,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1249.6028
-        y: 709.443
+        x: 1215.2744
+        y: 706.4579
         width: 160
         height: 30
     - id: 38
@@ -63462,8 +63772,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1437.0916
-        y: 107.846695
+        x: 1535.5989
+        y: 112.32431
         width: 160
         height: 30
     - id: 39
@@ -63511,8 +63821,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1436.6436
-        y: 221.96758
+        x: 1521.7179
+        y: 226.4452
         width: 160
         height: 30
     - id: 40
@@ -63566,8 +63876,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1435.5446
-        y: 163.7258
+        x: 1520.6189
+        y: 168.20343
         width: 160
         height: 30
     - id: 41
@@ -63987,7 +64297,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: //Idle Down
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -64011,8 +64331,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1249.49
-        y: 662.41504
+        x: 1215.1616
+        y: 659.42993
         width: 160
         height: 30
     - id: 49
@@ -64045,7 +64365,17 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Sequence
-        value: 
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_3, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_3, 1)@Message(Continued); // Resume timeline on
+          continue'
         type: 0
         typeString: 
       conversationID: 41
@@ -64069,8 +64399,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1245.4178
-        y: 508.63135
+        x: 1211.0895
+        y: 505.64624
         width: 160
         height: 30
     - id: 50
@@ -65379,7 +65709,7 @@ MonoBehaviour:
       - originConversationID: 41
         originDialogueID: 73
         destinationConversationID: 41
-        destinationDialogueID: 74
+        destinationDialogueID: 85
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -65416,8 +65746,9 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: "\uC55E\uC73C\uB85C \uAC00\uC790\uAD6C! \uADF8\uC758 \uAE30\uC5B5\uC744
-          \uB9C8\uC800 \uBD10\uC57C\uD558\uB2C8\uAE50!"
+        value: "\uC55E\uC73C\uB85C \uAC00\uC790\uAD6C! \uC774 \uC544\uC774\uC758
+          \uAE30\uC5B5\uC744 \uB9C8\uC800 \uBD10\uC57C\uC54C \uC218 \uC788\uC744
+          \uAC83 \uAC19\uC544!"
         type: 0
         typeString: 
       - title: Sequence
@@ -65439,13 +65770,677 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 2878.4468
-        y: 173.9129
+        x: 2884.1614
+        y: 288.1986
+        width: 160
+        height: 30
+    - id: 75
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "'\uCC54\uD53C\uC5B8'\uC774 \uC61B\uB0A0\uC5D0 \uB178\uB825\uC73C\uB85C
+          \uB9C8\uC2A4\uD130 \uB7AD\uD06C\uB97C \uB2EC\uC131\uD55C \uAE30\uC5B5\uC774\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 75
+        destinationConversationID: 41
+        destinationDialogueID: 76
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 50.81288
+        y: 682.22064
+        width: 160
+        height: 30
+    - id: 76
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uCE5C\uAD6C\uB4E4 \uC911\uC5D0\uC11C \uAC00\uC7A5 \uC2E4\uB825\uC774
+          \uC88B\uC9C0 \uC54A\uC558\uB358 \uADF8\uB4E4\uC744 \uC774\uAE30\uAE30 \uC704\uD574\uC11C
+          \uC5C4\uCCAD\uB09C \uB178\uB825\uC744 \uC3DF\uC544\uBD99\uB294\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 76
+        destinationConversationID: 41
+        destinationDialogueID: 77
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 49.260754
+        y: 740.8253
+        width: 160
+        height: 30
+    - id: 77
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uC218\uB9CE\uC740 \uC5F0\uC2B5\uACFC \uC5F0\uAD6C\uB97C \uAC70\uB4ED\uD55C
+          \uADF8\uB294 \uACB0\uAD6D \uC790\uC2E0\uC774 \uC0B4\uACE0 \uC788\uB294
+          \uC9C0\uC5ED\uC5D0\uC11C 1\uC704\uB97C \uD558\uACE0 \uB9C8\uC2A4\uD130
+          \uB7AD\uD06C\uB97C \uB2EC\uC131\uD588\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 49.40187
+        y: 806.8139
+        width: 160
+        height: 30
+    - id: 78
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uC790\uC2E0\uC758 \uC6B0\uC0C1\uC778 \uD504\uB85C\uAC8C\uC774\uBA38
+          '\uAD6C\uB0A8'\uC758 \uC778\uD130\uBDF0\uB97C \uBCF8 \uAE30\uC5B5\uC774\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 78
+        destinationConversationID: 41
+        destinationDialogueID: 79
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 277.21765
+        y: 679.89044
+        width: 160
+        height: 30
+    - id: 79
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uADF8 \uC5ED\uC2DC \uC7AC\uB2A5\uC774 \uC544\uB2CC \uB178\uB825\uC73C\uB85C
+          \uB9AC\uADF8 \uACB0\uC2B9\uAE4C\uC9C0 \uAC00\uAC8C\uB41C \uB178\uB825\uD30C\uC600\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 79
+        destinationConversationID: 41
+        destinationDialogueID: 80
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 281.08154
+        y: 744.5644
+        width: 160
+        height: 30
+    - id: 80
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uADF8\uAC00 \uB9D0\uD558\uB294 \uAC83\uCC98\uB7FC \uB178\uB825\uC744
+          \uC808\uB300 \uBC30\uC2E0\uD558\uC9C0 \uC54A\uC744 \uAC83\uC774\uB2E4. "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 271.87106
+        y: 807.7223
+        width: 160
+        height: 30
+    - id: 81
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "(\uAC00\uC2DC \uC870\uC2EC! \uB9E4\uC6B0 \uB0A0\uCE74\uB85C\uC6C0!)"
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 507.69055
+        y: 684.36237
+        width: 160
+        height: 30
+    - id: 82
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 10
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "(\uCE90\uB17C\uBCFC \uC870\uC2EC! \uB9E4\uC6B0 \uB728\uAC70\uC6C0!)"
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 722.6158
+        y: 684.3624
+        width: 160
+        height: 30
+    - id: 83
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 33
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\uD06C\uC73D! \uC81C\uAE38! \uD558\uC9C0\uB9CC \uC544\uC9C1 \uB05D\uB098\uC9C0
+          \uC54A\uC558\uB2E4! \uB2E4\uC74C \uACF5\uACA9\uC740 \uC27D\uC9C0 \uC54A\uC744\uAC70\uC57C!"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_4, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_4, 1)@Message(Continued); // Resume timeline on
+          continue'
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 83
+        destinationConversationID: 41
+        destinationDialogueID: 84
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1379.3317
+        y: 108.24326
+        width: 160
+        height: 30
+    - id: 84
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 34
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\uC88B\uC558\uC5B4! \uC774\uC81C \uC5EC\uAE30\uB85C \uC640\uC11C
+          \uC774 \uAC10\uC625\uC744 \uC5F4\uC5B4\uC918!"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_4, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_4, 1)@Message(Continued); // Resume timeline on
+          continue'
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 1382.686
+        y: 183.58199
+        width: 160
+        height: 30
+    - id: 85
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 20
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uC790\uC2E0\uC774 \uC6D0\uD558\uB294 \uAFC8\uC744 \uC774\uB8E8\uAE30
+          \uC704\uD574\uC11C \uC774\uB7EC\uD55C \uAC10\uC815\uB4E4\uC744 \uADF9\uBCF5\uD574\uC57C
+          \uD558\uB294\uAC74 \uC27D\uC9C0 \uC54A\uC558\uACA0\uC9C0."
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 85
+        destinationConversationID: 41
+        destinationDialogueID: 86
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 2879.9563
+        y: 177.14282
+        width: 160
+        height: 30
+    - id: 86
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 20
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uD760.... \uADF8\uB7F0\uB370 \uC8C4\uC778\uC740 \uC774 \uC544\uC774\uC5D0\uAC8C
+          \uBB34\uC2A8 \uC9D3\uC744 \uC800\uC9C0\uB978\uAC70\uC9C0? "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 
+        type: 0
+        typeString: 
+      conversationID: 41
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 41
+        originDialogueID: 86
+        destinationConversationID: 41
+        destinationDialogueID: 74
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 2884.242
+        y: 237.14279
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 1221.7378, y: 0}
-    canvasZoom: 0.46000046
+    canvasScrollPosition: {x: 2315.671, y: 1.4285889}
+    canvasZoom: 0.7000002
   syncInfo:
     syncActors: 0
     syncItems: 0
@@ -65460,5 +66455,6 @@ MonoBehaviour:
     Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Failure
     Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"State","value":"unassigned","type":0,"typeString":"CustomFieldType_QuestState"},{"title":"Is
     Item","value":"False","type":2,"typeString":"CustomFieldType_Boolean"}],"locationFields":[{"title":"Name","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"}],"variableFields":[{"title":"Name","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Initial
-    Value","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"}],"conversationFields":[{"title":"Title","value":"","type":0,"typeString":""},{"title":"Description","value":"","type":0,"typeString":""},{"title":"Actor","value":"0","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"0","type":5,"typeString":"CustomFieldType_Actor"}],"dialogueEntryFields":[{"title":"Title","value":"","type":0,"typeString":""},{"title":"Description","value":"","type":0,"typeString":""},{"title":"Actor","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Menu
-    Text","value":"","type":0,"typeString":""},{"title":"Dialogue Text","value":"","type":0,"typeString":""},{"title":"Sequence","value":"","type":0,"typeString":""}],"actorPrimaryFieldTitles":[],"itemPrimaryFieldTitles":[],"questPrimaryFieldTitles":[],"locationPrimaryFieldTitles":[],"variablePrimaryFieldTitles":[],"conversationPrimaryFieldTitles":[],"dialogueEntryPrimaryFieldTitles":[],"npcLineColor":{"r":1.0,"g":0.0,"b":0.0,"a":1.0},"pcLineColor":{"r":0.0,"g":0.0,"b":1.0,"a":1.0},"repeatLineColor":{"r":0.5,"g":0.5,"b":0.5,"a":1.0}}'
+    Value","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"}],"conversationFields":[{"title":"Title","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Actor","value":"0","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"0","type":5,"typeString":"CustomFieldType_Actor"}],"dialogueEntryFields":[{"title":"Title","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Description","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Actor","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Conversant","value":"","type":5,"typeString":"CustomFieldType_Actor"},{"title":"Menu
+    Text","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Dialogue
+    Text","value":"","type":0,"typeString":"CustomFieldType_Text"},{"title":"Sequence","value":"","type":0,"typeString":"CustomFieldType_Text"}],"actorPrimaryFieldTitles":[],"itemPrimaryFieldTitles":[],"questPrimaryFieldTitles":[],"locationPrimaryFieldTitles":[],"variablePrimaryFieldTitles":[],"conversationPrimaryFieldTitles":[],"dialogueEntryPrimaryFieldTitles":[],"npcLineColor":{"r":1.0,"g":0.0,"b":0.0,"a":1.0},"pcLineColor":{"r":0.0,"g":0.0,"b":1.0,"a":1.0},"repeatLineColor":{"r":0.5,"g":0.5,"b":0.5,"a":1.0}}'
