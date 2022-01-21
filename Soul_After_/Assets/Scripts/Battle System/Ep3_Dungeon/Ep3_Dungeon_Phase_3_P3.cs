@@ -32,7 +32,6 @@ public class Ep3_Dungeon_Phase_3_P3 : MonoBehaviour
             if (first)
             {
                 first = !first;
-                // Flames[0].transform.position = new Vector3(-7, 0);
             }
             else
             {

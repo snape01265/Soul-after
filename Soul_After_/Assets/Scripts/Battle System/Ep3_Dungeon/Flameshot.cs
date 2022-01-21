@@ -29,6 +29,8 @@ public class Flameshot : MonoBehaviour
 		sprite.enabled = false;
 		collider.enabled = false;
 		light.enabled = false;
+
+		FireFlamesDuration(1f);
 	}
 
 	void FixedUpdate()
