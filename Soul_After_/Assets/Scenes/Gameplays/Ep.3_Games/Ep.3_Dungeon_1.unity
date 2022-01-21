@@ -755,7 +755,6 @@ GameObject:
   - component: {fileID: 41163549}
   - component: {fileID: 41163551}
   - component: {fileID: 41163554}
-  - component: {fileID: 41163552}
   - component: {fileID: 41163553}
   - component: {fileID: 41163555}
   - component: {fileID: 41163556}
@@ -933,35 +932,6 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
---- !u!114 &41163552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41163547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &41163553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9491,10 +9461,10 @@ GameObject:
   - component: {fileID: 299810436}
   - component: {fileID: 299810435}
   - component: {fileID: 299810438}
-  - component: {fileID: 299810437}
   - component: {fileID: 299810439}
   - component: {fileID: 299810440}
   - component: {fileID: 299810441}
+  - component: {fileID: 299810437}
   m_Layer: 0
   m_Name: Weakness_P1_2
   m_TagString: Untagged
@@ -9602,26 +9572,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 299810433}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!114 &299810438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9970,8 +9925,9 @@ GameObject:
   - component: {fileID: 335144027}
   - component: {fileID: 335144026}
   - component: {fileID: 335144025}
-  - component: {fileID: 335144024}
   - component: {fileID: 335144028}
+  - component: {fileID: 335144029}
+  - component: {fileID: 335144024}
   m_Layer: 0
   m_Name: Weakness_P2
   m_TagString: Untagged
@@ -10002,26 +9958,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 335144022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!114 &335144025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10037,8 +9978,8 @@ MonoBehaviour:
   trigger: 32
   condition:
     luaConditions:
+    - Variable["TimelineToPlay"] == 5
     - Variable["Weakness"] == 5
-    - Variable["TimelinePlayed"] == 5
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -10053,7 +9994,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelinePlayed"] = 6;
+  luaCode: 'Variable["TimelineToPlay"] = 6;
+
+    Variable["Weakness"] = 6'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -10234,6 +10177,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &335144029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335144022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &340619120
 GameObject:
   m_ObjectHideFlags: 0
@@ -55495,6 +55463,7 @@ GameObject:
   - component: {fileID: 348657944}
   - component: {fileID: 348657947}
   - component: {fileID: 348657948}
+  - component: {fileID: 348657949}
   m_Layer: 0
   m_Name: Phase_3_Boss_P1
   m_TagString: Untagged
@@ -55531,7 +55500,7 @@ MonoBehaviour:
   trigger: 32
   condition:
     luaConditions:
-    - Variable["Weakness"] == 5
+    - Variable["Weakness"] == 7
     - Variable["TimelineToPlay"] == 7
     questConditions:
     - questName: DungeonQuest_1
@@ -55546,10 +55515,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+  luaCode: 'Variable["TimelineToPlay"] = 8;
 
-    Variable["TimelineToPlay"]
-    = 8;'
+    Variable["Weakness"] = 8'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -55755,6 +55723,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &348657949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348657941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!1 &359454921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6563492059519798976, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -59333,8 +59315,9 @@ GameObject:
   - component: {fileID: 552677719}
   - component: {fileID: 552677718}
   - component: {fileID: 552677717}
-  - component: {fileID: 552677716}
   - component: {fileID: 552677720}
+  - component: {fileID: 552677721}
+  - component: {fileID: 552677716}
   m_Layer: 0
   m_Name: Weakness_P3_1
   m_TagString: Untagged
@@ -59365,26 +59348,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 552677714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!114 &552677717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59400,7 +59368,7 @@ MonoBehaviour:
   trigger: 32
   condition:
     luaConditions:
-    - Variable["Weakness"] == 6
+    - Variable["Weakness"] == 8
     - Variable["TimelineToPlay"] == 8
     questConditions:
     - questName: DungeonQuest_1
@@ -59416,10 +59384,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+  luaCode: 'Variable["TimelineToPlay"] = 9;
 
-    Variable["TimelineToPlay"]
-    = 9;'
+    Variable["Weakness"] = 9'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -59576,6 +59543,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &552677721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552677714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &558210195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65577,9 +65569,25 @@ CompositeCollider2D:
       - X: -20000000
         Y: 950000000
       - X: -20000000
-        Y: 970000000
+        Y: 969999900
+      - X: -20000041
+        Y: 969999900
+      - X: -20000100
+        Y: 969999959
+      - X: -20000100
+        Y: 990000041
+      - X: -20000041
+        Y: 990000100
+      - X: 20000041
+        Y: 990000100
+      - X: 20000100
+        Y: 990000041
+      - X: 20000100
+        Y: 969999959
+      - X: 20000041
+        Y: 969999900
       - X: 20000000
-        Y: 970000000
+        Y: 969999900
       - X: 20000000
         Y: 660000000
       - X: -20000000
@@ -65707,6 +65715,20 @@ CompositeCollider2D:
       - X: -20000000
         Y: 770000000
     - - X: -170000000
+        Y: -70000000
+      - X: -100000000
+        Y: -70000000
+      - X: -100000000
+        Y: -40000000
+      - X: -170000000
+        Y: -40000000
+      - X: -170000000
+        Y: -60000000
+      - X: -340000000
+        Y: -60000000
+      - X: -340000000
+        Y: 20000000
+      - X: -170000000
         Y: 20000000
       - X: -170000000
         Y: 0
@@ -65968,20 +65990,6 @@ CompositeCollider2D:
         Y: -90000000
       - X: -170000000
         Y: -90000000
-      - X: -170000000
-        Y: -70000000
-      - X: -100000000
-        Y: -70000000
-      - X: -100000000
-        Y: -40000000
-      - X: -170000000
-        Y: -40000000
-      - X: -170000000
-        Y: -60000000
-      - X: -340000000
-        Y: -60000000
-      - X: -340000000
-        Y: 20000000
     - - X: -20000000
         Y: 90000000
       - X: -20000000
@@ -66209,8 +66217,8 @@ CompositeCollider2D:
       - {x: -2.5, y: 96.99997}
       - {x: -2.499971, y: 95}
       - {x: -2, y: 95.00003}
-      - {x: -1.9999707, y: 97}
-      - {x: 2, y: 96.99997}
+      - {x: -1.9999748, y: 99.000015}
+      - {x: 2.00001, y: 98.99998}
       - {x: 1.9999707, y: 66}
       - {x: -2, y: 66.00003}
       - {x: -2.0000293, y: 76.5625}
@@ -76803,46 +76811,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -2, y: 97, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: 97, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 97, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 1, y: 97, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 2, y: 97, z: 0}
     second:
       serializedVersion: 2
@@ -76994,46 +76962,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: -3, y: 98, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -2, y: 98, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: 98, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: 98, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 9
-      m_TileSpriteIndex: 9
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 1, y: 98, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 9
@@ -80423,7 +80351,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 4ffa9b108de860b48a058e6789a2469f, type: 2}
   - m_RefCount: 153
     m_Data: {fileID: 11400000, guid: f9e526c9a5b17b54a932b137d26bb9ca, type: 2}
-  - m_RefCount: 363
+  - m_RefCount: 355
     m_Data: {fileID: 11400000, guid: bbcf4e42f2e827140935d4554839e5c2, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 5585fa261e20aa542b4224b029bb249d, type: 2}
@@ -80500,7 +80428,7 @@ Tilemap:
     m_Data: {fileID: 3814160243213279374, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   - m_RefCount: 153
     m_Data: {fileID: 206702834575656856, guid: c4a3c74453f3506459c35887c588e100, type: 3}
-  - m_RefCount: 363
+  - m_RefCount: 355
     m_Data: {fileID: 5944427560926644306, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -601651290148323354, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
@@ -80559,7 +80487,7 @@ Tilemap:
   - m_RefCount: 5
     m_Data: {fileID: 299263487006236579, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1386
+  - m_RefCount: 1378
     m_Data:
       e00: 1
       e01: 0
@@ -80614,7 +80542,7 @@ Tilemap:
       e32: 7.33e-43
       e33: 7.36e-43
   m_TileColorArray:
-  - m_RefCount: 1386
+  - m_RefCount: 1378
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -83945,6 +83873,7 @@ GameObject:
   - component: {fileID: 1331030209}
   - component: {fileID: 1331030210}
   - component: {fileID: 1331030211}
+  - component: {fileID: 1331030212}
   m_Layer: 0
   m_Name: Phase_2_Boss_P1
   m_TagString: Untagged
@@ -83996,10 +83925,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
+  luaCode: 'Variable["Weakness"] = 5;
 
-    Variable["TimelineToPlay"]
-    = 5;'
+    Variable["TimelineToPlay"] = 5;'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -84316,6 +84244,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1331030212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331030201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!1 &1337205633
 GameObject:
   m_ObjectHideFlags: 0
@@ -95679,7 +95621,7 @@ MonoBehaviour:
   trigger: 8
   condition:
     luaConditions:
-    - Variable["Weakness"] == 5
+    - Variable["Weakness"] == 6
     - Variable["TimelineToPlay"] == 6
     questConditions:
     - questName: DungeonQuest_1
@@ -95695,7 +95637,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 7;
+  luaCode: 'Variable["Weakness"] = 7;
+
+    Variable["TimelineToPlay"] = 7'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -97696,8 +97640,9 @@ GameObject:
   - component: {fileID: 2032992176}
   - component: {fileID: 2032992175}
   - component: {fileID: 2032992174}
-  - component: {fileID: 2032992173}
   - component: {fileID: 2032992177}
+  - component: {fileID: 2032992178}
+  - component: {fileID: 2032992173}
   m_Layer: 0
   m_Name: Weakness_P3_2
   m_TagString: Untagged
@@ -97728,26 +97673,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2032992171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b871c74662c23945bf35b97caee462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementOn: 0
-  variable: Weakness
-  increment: 1
-  min: 0
-  max: 2
-  alertMessage: 
-  alertDuration: 0
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  onIncrement:
-    m_PersistentCalls:
-      m_Calls: []
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!114 &2032992174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97763,8 +97693,7 @@ MonoBehaviour:
   trigger: 32
   condition:
     luaConditions:
-    - Variable["Weakness"] == 7
-    - Variable["TimelineToPlay"] == 9
+    - (Variable["Weakness"] == 9) and (Variable["TimelineToPlay"] == 9)
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -97948,6 +97877,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &2032992178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032992171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b80ab5b659c646ba9338870d14625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideName: 
+  overrideUseMessage: 
+  maxUseDistance: 5
+  events:
+    onSelect:
+      m_PersistentCalls:
+        m_Calls: []
+    onDeselect:
+      m_PersistentCalls:
+        m_Calls: []
+    onUse:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &2042405772
 GameObject:
   m_ObjectHideFlags: 0
