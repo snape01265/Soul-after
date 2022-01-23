@@ -10,6 +10,7 @@ public class Ep3_Dungeon_2_Battle_P2 : MonoBehaviour
 	public float speed = 3f;
 	public bool inReverse = true;
 	public GameObject[] lanes;
+	public AudioSource sfx;
 
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
@@ -77,6 +78,8 @@ public class Ep3_Dungeon_2_Battle_P2 : MonoBehaviour
 		}
 		else
 		{
+			if (sfx)
+				sfx.Play();
 			lanes[currentIndex].GetComponent<FlameLane>().FireLane();
 			if (currentWaypoint.waitSeconds > 0)
 			{

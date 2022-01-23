@@ -8,26 +8,28 @@ public class Flameshot : MonoBehaviour
 	public GameObject Boss;
 	public Waypoint[] wayPoints;
 	public float speed = 3f;
+	public int damage;
+	public PlayerHealth playerHealth;
 
 	private SpriteRenderer sprite;
-	private CircleCollider2D collider;
+	private CircleCollider2D circleCollider;
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
 	private Animator anim;
-	private Light2D light;
+	private new Light2D light;
 	private Waypoint currentWaypoint;
 	private bool isWaiting = false;
 
 	void Start()
 	{
 		sprite = GetComponent<SpriteRenderer>();
-		collider = GetComponent<CircleCollider2D>();
+		circleCollider = GetComponent<CircleCollider2D>();
 		anim = GetComponent<Animator>();
 		myRigidbody = GetComponent<Rigidbody2D>();
 		light = transform.Find("Point Light 2D").GetComponent<Light2D>();
 
 		sprite.enabled = false;
-		collider.enabled = false;
+		circleCollider.enabled = false;
 		light.enabled = false;
 	}
 
@@ -49,7 +51,7 @@ public class Flameshot : MonoBehaviour
     {
 		transform.position = Boss.transform.position;
 		sprite.enabled = true;
-		collider.enabled = true;
+		circleCollider.enabled = true;
 		light.enabled = true;
 		currentWaypoint = wayPoints[0];
 		isWaiting = false;
@@ -62,13 +64,13 @@ public class Flameshot : MonoBehaviour
 			yield return new WaitForSeconds(time);
 			isWaiting = true;
 			sprite.enabled = false;
-			collider.enabled = false;
+			circleCollider.enabled = false;
 			light.enabled = false;
 		}
 
 		transform.position = Boss.transform.position;
 		sprite.enabled = true;
-		collider.enabled = true;
+		circleCollider.enabled = true;
 		light.enabled = true;
 		currentWaypoint = wayPoints[0];
 		isWaiting = false;
@@ -98,13 +100,27 @@ public class Flameshot : MonoBehaviour
 		else
 		{
 			sprite.enabled = false;
-			collider.enabled = false;
+			circleCollider.enabled = false;
 			light.enabled = false;
 			isWaiting = true;
 		}
 	}
 
-	void UpdateAnimation()
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+			sprite.enabled = false;
+			circleCollider.enabled = false;
+			light.enabled = false;
+			isWaiting = true;
+		}
+		else if (other.gameObject.CompareTag("Player"))
+        {
+			playerHealth.TakeDamage(damage);
+        }
+    }
+    void UpdateAnimation()
 	{
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
 		anim.SetFloat("Move Y", myRigidbody.velocity.y);
