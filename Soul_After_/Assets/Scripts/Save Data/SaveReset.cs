@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 // 사용되는 Scene: Start Menu
 // 기능: 처음하기 기능, 각각 디폴트 값으로 초기화해줌
@@ -20,6 +21,8 @@ public class SaveReset : MonoBehaviour
 
     public void ResetFunc()
     {
+        PixelCrushers.DialogueSystem.DialogueManager.ResetDatabase(DatabaseResetOptions.KeepAllLoaded);
+
         foreach (ScriptableObject obj in objects)
         {
             string type = obj.GetType().ToString();

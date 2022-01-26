@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class GameSaveManager : MonoBehaviour
 {
@@ -33,11 +34,9 @@ public class GameSaveManager : MonoBehaviour
 
             string results = "";
             foreach (ScriptableObject scriptable in objToSave)
-            {
                 results += JsonUtility.ToJson(scriptable) + "~";
-                Debug.Log(JsonUtility.ToJson(scriptable));
-                Debug.Log("results is " + results);
-            }
+
+            results += PersistentDataManager.GetSaveData() + "~";
 
             binary.Serialize(file, results);
 
@@ -63,10 +62,11 @@ public class GameSaveManager : MonoBehaviour
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
                 string[] results = ((string)binary.Deserialize(file)).Split('~');
-                for (int i = 0; i < objToSave.Count; i++)
+                for (int i = 0; i < objToSave.Count-1; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
+                PersistentDataManager.ApplySaveData(objToSave[objToSave.Count - 1].ToString());
                 file.Close();
                 return true;
             }
@@ -126,10 +126,11 @@ public class GameSaveManager : MonoBehaviour
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
                 string[] results = ((string)binary.Deserialize(file)).Split('~');
-                for (int i = 0; i < objToSave.Count; i++)
+                for (int i = 0; i < objToSave.Count - 1; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
+                PersistentDataManager.ApplySaveData(objToSave[objToSave.Count - 1].ToString());
                 file.Close();
             }
         }
