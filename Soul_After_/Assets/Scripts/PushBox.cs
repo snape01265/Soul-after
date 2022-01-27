@@ -16,6 +16,7 @@ public class PushBox : MonoBehaviour
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
+    private bool pushing = false;
     private Vector2 touchedPoint;
     private Vector3 targetPos;
 
@@ -28,8 +29,9 @@ public class PushBox : MonoBehaviour
 
     private void Update()
     {
-        if (boxTouched && Input.GetButtonDown("Jump"))
+        if (boxTouched && !pushing && Input.GetButtonDown("Jump"))
         {
+            pushing = true;
             if (touchedPoint.y == 1)
             {
                 PushedPos = 1;
@@ -52,20 +54,24 @@ public class PushBox : MonoBehaviour
 
     private void FixedUpdate()
     {
-        while (Vector3.Distance(targetPos, transform.position) > .1f)
-            transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f);
-        transform.position = targetPos;
+        transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f);
+        if (Vector3.Distance(transform.position, targetPos ) <= .03f)
+        {
+            transform.position = targetPos;
+            pushing = false;
+        }
     }
 
     public void DestCalcUp()
     {
-        DestCalcNode.transform.position = transform.position + Vector3.up;
+        DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.up);
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-                DestCalcNode.transform.position += Vector3.up;
+
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
             }
             else
             {
@@ -77,13 +83,13 @@ public class PushBox : MonoBehaviour
 
     public void DestCalcDown()
     {
-        DestCalcNode.transform.position = transform.position + Vector3.down;
+        DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.down);
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-                DestCalcNode.transform.position += Vector3.down;
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.down);
             }
             else
             {
@@ -95,13 +101,13 @@ public class PushBox : MonoBehaviour
 
     public void DestCalcRight()
     {
-        DestCalcNode.transform.position = transform.position + Vector3.right;
+        DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.right);
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-                DestCalcNode.transform.position += Vector3.right;
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
             }
             else
             {
@@ -113,13 +119,13 @@ public class PushBox : MonoBehaviour
 
     public void DestCalcLeft()
     {
-        DestCalcNode.transform.position = transform.position + Vector3.left;
+        DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.left);
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-                DestCalcNode.transform.position += Vector3.left;
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);
             }
             else
             {
