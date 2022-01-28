@@ -9,6 +9,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	public Waypoint[] wayPoints;
 	public float speed = 3f;
 	public bool inReverse = true;
+	public AudioSource sfx;
 
 	public UnityEvent ActionOnWaypoint;
 
@@ -78,6 +79,8 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		}
 		else
 		{
+			if (sfx)
+				sfx.Play();
 			ActionOnWaypoint.Invoke();
 			if (currentWaypoint.waitSeconds > 0)
 			{

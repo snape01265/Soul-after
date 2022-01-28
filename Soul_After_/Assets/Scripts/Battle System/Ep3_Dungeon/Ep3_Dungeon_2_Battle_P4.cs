@@ -10,6 +10,7 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 	public float speed = 3f;
 	public bool inReverse = true;
 	public GameObject[] lanes;
+	public AudioSource sfx;
 
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
@@ -30,6 +31,7 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 	private void OnEnable()
 	{
 		FlameGen.SetActive(true);
+		//transform.position.Set();
 	}
 
 	private void OnDisable()
@@ -77,6 +79,8 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 		}
 		else
 		{
+			if (sfx)
+				sfx.Play();
 			lanes[currentIndex * 2].GetComponent<FlameLane>().FireLane();
 			lanes[currentIndex * 2 + 1].GetComponent<FlameLane>().FireLane();
 			if (currentWaypoint.waitSeconds > 0)
