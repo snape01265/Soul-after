@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
+    private Player player;
 
+    private void Start()
+    {
+        
+    }
 }

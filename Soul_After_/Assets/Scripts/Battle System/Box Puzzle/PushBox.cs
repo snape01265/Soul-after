@@ -70,7 +70,6 @@ public class PushBox : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
             }
             else
@@ -78,6 +77,7 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+
         }
     }
 
@@ -96,15 +96,18 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+
         }
     }
 
     public void DestCalcRight()
     {
         DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.right);
+
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
@@ -120,9 +123,11 @@ public class PushBox : MonoBehaviour
     public void DestCalcLeft()
     {
         DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.left);
+
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);
