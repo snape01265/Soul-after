@@ -144,11 +144,11 @@ public class PushBox : MonoBehaviour
 
     public void PushToDest(Vector3 Dest)
     {
-        targetPos = Dest;
         if (!teled)
         {
-
+            LastLoc = transform.position;
         }
+        targetPos = Dest;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
