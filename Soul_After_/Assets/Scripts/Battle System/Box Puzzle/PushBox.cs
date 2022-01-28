@@ -76,6 +76,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.up);
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -100,6 +101,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.down);
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -126,6 +128,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.right);
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -151,6 +154,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.left);
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
