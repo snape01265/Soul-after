@@ -13,12 +13,14 @@ public class PushBox : MonoBehaviour
     public Vector3 LastLoc;
     [HideInInspector]
     public bool teled = false;
+    [HideInInspector]
+    public Vector3 targetPos;
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
     private bool pushing = false;
     private Vector2 touchedPoint;
-    private Vector3 targetPos;
+    
 
     void Start()
     {
@@ -163,6 +165,10 @@ public class PushBox : MonoBehaviour
     public void PushToDest(Vector3 Dest)
     {
         targetPos = Dest;
+        if (!teled)
+        {
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
