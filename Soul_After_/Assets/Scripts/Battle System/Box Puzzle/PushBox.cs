@@ -15,10 +15,11 @@ public class PushBox : MonoBehaviour
     public bool teled = false;
     [HideInInspector]
     public Vector3 targetPos;
+    [HideInInspector]
+    public bool pushing = false;
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
-    private bool pushing = false;
     private Vector2 touchedPoint;
     
 
