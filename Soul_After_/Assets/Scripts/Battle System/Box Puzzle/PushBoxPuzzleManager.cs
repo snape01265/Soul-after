@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
-    private Transform playerLoc;
-    private Transform boxLoc;
+    public KeyCode keyForMirror;
+    public int turnCount;
+
+    private PushBox box;
+    private GameObject player;
+    private GameObject mainCamera;
     private bool isMirrorWorld = false;
+    private bool isAvailable = true;
 
     private void Start()
     {
-        playerLoc = GameObject.FindGameObjectWithTag("Player").transform;
-        boxLoc = GameObject.FindGameObjectWithTag("PushBox").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
+        box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if(Input.GetButtonDown("F"))
+        if (Input.GetKeyDown(keyForMirror) && isAvailable && !box.pushing)
         {
             if(!isMirrorWorld)
             {
@@ -27,24 +33,36 @@ public class PushBoxPuzzleManager : MonoBehaviour
                 MirrorActivate(isMirrorWorld);
             }
         }
+        if (turnCount == 0)
+        {
+            Debug.Log("failed");
+        }
     }
     public void MirrorActivate(bool mirrorWorld)
     {
         StartCoroutine(MirrorWorldTransition());
         if (mirrorWorld == false)
         {
-            playerLoc.transform.position.Set(playerLoc.transform.position.x + 22, playerLoc.transform.position.y, playerLoc.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x + 22, player.transform.position.y, player.transform.position.z);
+            box.targetPos = new Vector3(box.transform.position.x + 22, box.transform.position.y, box.transform.position.z);
+            box.transform.position = new Vector3(box.transform.position.x + 22, box.transform.position.y, box.transform.position.z);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 22, mainCamera.transform.position.y, mainCamera.transform.position.z);
             isMirrorWorld = true;
         }
         else
         {
-            playerLoc.transform.position.Set(playerLoc.transform.position.x - 22, playerLoc.transform.position.y, playerLoc.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x - 22, player.transform.position.y, player.transform.position.z);
+            box.targetPos = new Vector3(box.transform.position.x - 22, box.transform.position.y, box.transform.position.z);
+            box.transform.position = new Vector3(box.transform.position.x - 22, box.transform.position.y, box.transform.position.z);
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 22, mainCamera.transform.position.y, mainCamera.transform.position.z);
             isMirrorWorld = false;
         }
     }
     IEnumerator MirrorWorldTransition()
     {
+        isAvailable = false;
         //Play some glowing animation
+        isAvailable = true;
         yield return null;
     }
 }
