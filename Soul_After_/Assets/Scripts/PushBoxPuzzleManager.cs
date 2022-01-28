@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
-
+    public GameObject[] PortalPairs;
 }
