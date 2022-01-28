@@ -16,7 +16,7 @@ public class PortalActive : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PushBox"))
         {
-            Tele();
+            Invoke("Tele", .5f);
         }
     }
 
