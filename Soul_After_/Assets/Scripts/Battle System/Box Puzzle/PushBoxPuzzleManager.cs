@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
-    private Player player;
+    private Transform playerLoc;
 
     private void Start()
     {
-        
+        playerLoc = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    public void MirrorActivate()
+    {
+
     }
 }
