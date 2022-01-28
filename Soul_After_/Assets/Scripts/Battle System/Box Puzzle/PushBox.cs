@@ -70,9 +70,15 @@ public class PushBox : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
+            {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.up);
+                PushToDest(DestCalcNode.transform.position);
+                return;
             }
             else
             {
@@ -89,9 +95,15 @@ public class PushBox : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.down);
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
+            {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.down);
+                PushToDest(DestCalcNode.transform.position);
+                return;
             }
             else
             {
@@ -110,9 +122,15 @@ public class PushBox : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
+            {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.right);
+                PushToDest(DestCalcNode.transform.position);
+                return;
             }
             else
             {
@@ -130,9 +148,15 @@ public class PushBox : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
+            {
+                DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.left);
+                PushToDest(DestCalcNode.transform.position);
+                return;
             }
             else
             {
