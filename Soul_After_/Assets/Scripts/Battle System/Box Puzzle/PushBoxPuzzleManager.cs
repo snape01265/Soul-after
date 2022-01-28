@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
+    public int turnCount;
 
     private PushBox box;
     private GameObject player;
@@ -31,6 +32,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
             {
                 MirrorActivate(isMirrorWorld);
             }
+        }
+        if (turnCount == 0)
+        {
+            Debug.Log("failed");
         }
     }
     public void MirrorActivate(bool mirrorWorld)
