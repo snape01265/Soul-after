@@ -14,7 +14,7 @@ public class PortalActive : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("PushBox"))
+        if (!pushBox.teled && collision.gameObject.CompareTag("PushBox"))
         {
             Invoke("Tele", .5f);
         }
