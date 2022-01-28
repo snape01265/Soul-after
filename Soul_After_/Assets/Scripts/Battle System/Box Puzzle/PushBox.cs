@@ -13,12 +13,14 @@ public class PushBox : MonoBehaviour
     public Vector3 LastLoc;
     [HideInInspector]
     public bool teled = false;
+    [HideInInspector]
+    public Vector3 targetPos;
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
     private bool pushing = false;
     private Vector2 touchedPoint;
-    private Vector3 targetPos;
+    
 
     void Start()
     {
@@ -70,7 +72,6 @@ public class PushBox : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
-
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
             }
             else
@@ -78,6 +79,7 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+
         }
     }
 
@@ -96,15 +98,18 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+
         }
     }
 
     public void DestCalcRight()
     {
         DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.right);
+
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
@@ -120,9 +125,11 @@ public class PushBox : MonoBehaviour
     public void DestCalcLeft()
     {
         DestCalcNode.transform.position = Vector3Int.RoundToInt(transform.position + Vector3.left);
+
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);
@@ -138,6 +145,10 @@ public class PushBox : MonoBehaviour
     public void PushToDest(Vector3 Dest)
     {
         targetPos = Dest;
+        if (!teled)
+        {
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
