@@ -21,14 +21,15 @@ public class PushBox : MonoBehaviour
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
-    private Vector2 touchedPoint;
-    
+    private Vector2 touchedPoint;    
 
     void Start()
     {
-        targetPos = transform.position;
-        DestCalcNode = transform.Find("DestCalcNode").gameObject;
+        /*targetPos = transform.position;
         LastLoc = transform.position;
+        puzzleManager.startingBoxPos = transform.position;
+        puzzleManager.startingPlayerPos = transform.Find("Player").position;*/
+        DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
 
     private void Update()
@@ -87,6 +88,12 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
             else
             {
                 PushToDest(DestCalcNode.transform.position);
@@ -113,6 +120,12 @@ public class PushBox : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.down);
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -149,7 +162,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
             {
-                Debug.Log("Fin");
+                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -183,6 +196,12 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
             else
             {
                 PushToDest(DestCalcNode.transform.position);
@@ -200,7 +219,6 @@ public class PushBox : MonoBehaviour
         targetPos = Dest;
         pushing = true;
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))

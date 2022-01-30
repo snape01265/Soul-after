@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class FinTile : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private PushBoxPuzzleManager box;
     void Start()
     {
-        
+        box = GameObject.Find("PushBoxPuzzleManager").GetComponent<PushBoxPuzzleManager>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        
+        if (other.collider.CompareTag("PushBox"))
+        {
+            box.goalReached = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("PushBox"))
+        {
+            box.goalReached = false;
+        }
     }
 }
