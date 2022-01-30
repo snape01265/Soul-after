@@ -21,14 +21,12 @@ public class PushBox : MonoBehaviour
 
     private GameObject DestCalcNode;
     private bool boxTouched = false;
-    private Vector2 touchedPoint;
-    
+    private Vector2 touchedPoint;    
 
     void Start()
     {
-        targetPos = transform.position;
+        puzzleManager.SetPosition();
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
-        LastLoc = transform.position;
     }
 
     private void Update()
@@ -200,7 +198,6 @@ public class PushBox : MonoBehaviour
         targetPos = Dest;
         pushing = true;
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
