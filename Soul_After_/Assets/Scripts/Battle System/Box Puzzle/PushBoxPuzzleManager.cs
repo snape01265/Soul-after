@@ -7,21 +7,22 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public KeyCode keyForMirror;
     public int turnCount;
     public int puzzleNum;
+    public bool goalReached = false;
 
     private PushBox box;
     private GameObject player;
     private GameObject mainCamera;
     private bool isMirrorWorld = false;
     private bool isAvailable = true;
-    private bool goalReached = false;
-    private Vector3 startingBoxPos;
-    private Vector3 startingPlayerPos;
+    public Vector3 startingBoxPos;
+    public Vector3 startingPlayerPos;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        SetPosition();
     }
 
     private void Update()
@@ -52,15 +53,17 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount >= 0 && goalReached)
+        else if (turnCount >= 0 && goalReached && !box.pushing)
         {
             switch (puzzleNum)
             {
                 case 1:
-                    nextPuzzle(puzzleNum);
+                    nextPuzzle("Start2");
+                    goalReached = false;
                     break;
                 case 2:
-                    nextPuzzle(puzzleNum);
+                    nextPuzzle("Start3");
+                    goalReached = false;
                     break;
             }
         }
@@ -94,9 +97,9 @@ public class PushBoxPuzzleManager : MonoBehaviour
             isMirrorWorld = false;
         }
     }
-    private void nextPuzzle(int puzzleNumber)
+    private void nextPuzzle(string startNumber)
     {
-        GameObject start = GameObject.Find("StartTile" + puzzleNum);
+        GameObject start = GameObject.Find(startNumber);
         float startX = start.transform.position.x;
         float startY = start.transform.position.y;
         float startZ = start.transform.position.z;
@@ -105,13 +108,16 @@ public class PushBoxPuzzleManager : MonoBehaviour
         box.targetPos = new Vector3(startX, startY, startZ);
         box.transform.position = new Vector3(startX, startY, startZ);
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        puzzleNum += 1;
+        Reset(9);
+        SetPosition();
     }
     public void SetPosition()
     {
         box.targetPos = box.transform.position;
         box.LastLoc = box.transform.position;
         startingBoxPos = box.transform.position;
-        startingPlayerPos = transform.Find("Player").position;
+        startingPlayerPos = player.transform.position;
     }
     IEnumerator Reset(int turnLimit)
     {
@@ -119,6 +125,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
         box.PushToDest(startingBoxPos);
         turnCount = turnLimit;
+        if(isMirrorWorld)
+        {
+            mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 22, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        }
         //Play reset animation
         isAvailable = true;
         yield return null;

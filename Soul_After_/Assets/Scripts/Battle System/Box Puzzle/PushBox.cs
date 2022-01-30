@@ -25,7 +25,10 @@ public class PushBox : MonoBehaviour
 
     void Start()
     {
-        puzzleManager.SetPosition();
+        /*targetPos = transform.position;
+        LastLoc = transform.position;
+        puzzleManager.startingBoxPos = transform.position;
+        puzzleManager.startingPlayerPos = transform.Find("Player").position;*/
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
 
@@ -85,6 +88,12 @@ public class PushBox : MonoBehaviour
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
             else
             {
                 PushToDest(DestCalcNode.transform.position);
@@ -111,6 +120,12 @@ public class PushBox : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.down);
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -147,7 +162,7 @@ public class PushBox : MonoBehaviour
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
             {
-                Debug.Log("Fin");
+                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -178,6 +193,12 @@ public class PushBox : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.left);
+                PushToDest(DestCalcNode.transform.position);
+                return;
+            }
+            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
+            {
+                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
