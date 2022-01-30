@@ -14113,7 +14113,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.2_Timeline_6, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move X, 1, SpringGirl_Ep.2);
+
+          AnimatorBool(Work_1,
+          true, listener);'
         type: 0
         typeString: 
       conversationID: 10
@@ -14137,7 +14142,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 189
+        x: 190.3158
         y: 94
         width: 160
         height: 30
@@ -14152,11 +14157,11 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Actor
-        value: 8
+        value: 5
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 5
+        value: 8
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -14180,7 +14185,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.2_Timeline_6, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorBool(Work_1, false, speaker);
+
+          AnimatorFloat(Move
+          X, -1, speaker);'
         type: 0
         typeString: 
       conversationID: 10
@@ -15417,7 +15427,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 36.84204}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.7600002
   - id: 11
     fields:
