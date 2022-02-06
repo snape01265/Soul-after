@@ -126,8 +126,8 @@ public class PushBoxPuzzleManager : MonoBehaviour
         box.transform.position = new Vector3(startX, startY, startZ);
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
         puzzleNum += 1;
-        Reset(9);
         SetPosition();
+        turnCount = 0;
     }
     public void SetPosition()
     {
