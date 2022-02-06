@@ -180,8 +180,8 @@ public class Player : MonoBehaviour
         {
             MoveCharacter();
             // Animation change
-            animator.SetFloat("Move X", change.x);
-            animator.SetFloat("Move Y", change.y);
+            animator.SetFloat("Move_X", change.x);
+            animator.SetFloat("Move_Y", change.y);
             animator.SetBool("Moving", true);
         }
         else
@@ -250,19 +250,19 @@ public class Player : MonoBehaviour
     }
     public void PlayerLookRight()
     {
-        animator.SetFloat("Move X", 1);
+        animator.SetFloat("Move_X", 1);
     }
     public void PlayerLookUp()
     {
-        animator.SetFloat("Move Y", 1);
+        animator.SetFloat("Move_Y", 1);
     }
     public void PlayerLookLeft()
     {
-        animator.SetFloat("Move X", -1);
+        animator.SetFloat("Move_X", -1);
     }
     public void PlayerLookDown()
     {
-        animator.SetFloat("Move Y", -1);
+        animator.SetFloat("Move_Y", -1);
     }
     public void QuestProgress0()
     {
