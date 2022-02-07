@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
+    public KeyCode keyForReset;
     public int turnCount;
     public int puzzleNum;
     public bool goalReached = false;
@@ -38,7 +39,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                 MirrorActivate(isMirrorWorld);
             }
         }
-        if (turnCount == 0)
+        else if (Input.GetKeyDown(keyForReset) && isAvailable && !box.pushing)
         {
             switch (puzzleNum)
             {
@@ -53,6 +54,22 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
+        else if (turnCount == 0)
+        {
+            switch (puzzleNum)
+            {
+                case 1:
+                    StartCoroutine(Reset(12));
+                    break;
+                case 2:
+                    StartCoroutine(Reset(9));
+                    break;
+                case 3:
+                    StartCoroutine(Reset(2));
+                    break;
+            }
+        }
+
         else if (turnCount >= 0 && goalReached && !box.pushing)
         {
             switch (puzzleNum)
@@ -109,8 +126,8 @@ public class PushBoxPuzzleManager : MonoBehaviour
         box.transform.position = new Vector3(startX, startY, startZ);
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
         puzzleNum += 1;
-        Reset(9);
         SetPosition();
+        turnCount = 0;
     }
     public void SetPosition()
     {
