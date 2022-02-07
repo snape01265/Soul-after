@@ -8788,7 +8788,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 79.451965, y: 34.24652}
+    canvasScrollPosition: {x: 297.26007, y: 0}
     canvasZoom: 0.7300004
   - id: 8
     fields:
@@ -15656,7 +15656,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.2_Timeline_6_3, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_Y, 1, SpringGirl_Ep.2);
+
+          AnimatorFloat(Move_X,
+          0, SpringGirl_Ep.2);'
         type: 0
         typeString: 
       conversationID: 10
@@ -15845,7 +15850,10 @@ MonoBehaviour:
           Timeline(speed, Ep.2_Timeline_6_3, 1)@Message(Continued); // Resume timeline
           on continue
 
-          AnimatorFloat(Move_X, 1, SpringGirl_Ep.2);'
+          AnimatorFloat(Move_X, 1, SpringGirl_Ep.2);
+
+          AnimatorFloat(Move_X,
+          1, Sister_Ep.2);'
         type: 0
         typeString: 
       conversationID: 10
