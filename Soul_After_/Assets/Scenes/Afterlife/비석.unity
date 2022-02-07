@@ -29651,14 +29651,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 652613319}
-  - component: {fileID: 652613323}
   - component: {fileID: 652613324}
   - component: {fileID: 652613322}
   - component: {fileID: 652613321}
   - component: {fileID: 652613320}
-  - component: {fileID: 652613325}
   m_Layer: 0
-  m_Name: Ep.2_Timeline_2
+  m_Name: Ep.2_Timeline_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29837,24 +29835,6 @@ PlayableDirector:
     value: {fileID: 1695905293}
   m_ExposedReferences:
     m_References: []
---- !u!114 &652613323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652613318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbdbde2950e345459204f56423aca3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutscene: {fileID: 652613322}
-  fadeInPanel: {fileID: 0}
-  fadeOutPanel: {fileID: 0}
-  fadeWait: 0
-  cutsceneName: Ep.2_Meeting_the_Dead_Start
-  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!114 &652613324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29869,7 +29849,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 8
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["TimelineToPlay"] == 1
+    - Variable["Episode"] == 2
     questConditions: []
     acceptedTags:
     - Player
@@ -29882,7 +29864,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelineToPlay"] = 2
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -29948,20 +29930,6 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
---- !u!114 &652613325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652613318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activate: {fileID: 11400000, guid: 9ba72f4b70fc0014695d7a7180fe61e7, type: 2}
-  Object: {fileID: 652613318}
 --- !u!4 &653606745 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5709664908284384843, guid: 859cb3339e4a2af4f884fb2eb419b2c4, type: 3}

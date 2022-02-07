@@ -133,17 +133,16 @@ GameObject:
   m_Component:
   - component: {fileID: 83951373}
   - component: {fileID: 83951374}
-  - component: {fileID: 83951377}
   - component: {fileID: 83951376}
-  - component: {fileID: 83951375}
   - component: {fileID: 83951378}
+  - component: {fileID: 83951379}
   m_Layer: 0
-  m_Name: Ep.2_Timeline_1
+  m_Name: Ep.2_Timeline_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &83951373
 Transform:
   m_ObjectHideFlags: 0
@@ -192,20 +191,6 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - bf72a63271ea7ea4dbfb35e190040ea2: {fileID: 0}
---- !u!114 &83951375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83951372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activate: {fileID: 11400000, guid: 7dd9307ea71a0c842bcf4e0a8214acb1, type: 2}
-  Object: {fileID: 83951372}
 --- !u!114 &83951376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,24 +278,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &83951377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83951372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbdbde2950e345459204f56423aca3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutscene: {fileID: 83951374}
-  fadeInPanel: {fileID: 6626229727898054473, guid: 7e896ae3b7b09694193f5391c0d7f75c, type: 3}
-  fadeOutPanel: {fileID: 8350721012333504612, guid: 4b1ca0a985a31144ba9592da358d193d, type: 3}
-  fadeWait: 0.75
-  cutsceneName: Ep.2_Start
-  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!61 &83951378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -337,6 +304,89 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &83951379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83951372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 8
+  condition:
+    luaConditions:
+    - Variable["Episode"] == 2
+    - Variable["TimelineToPlay"] == 0
+    questConditions: []
+    acceptedTags:
+    - Player
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: Variable["TimelineToPlay"] = 1
+  sequence: 
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: 
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: -1
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 83951374}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!1 &143864162
 GameObject:
   m_ObjectHideFlags: 0
@@ -9248,7 +9298,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &903335353
 Transform:
   m_ObjectHideFlags: 0
@@ -10390,6 +10440,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -521528459
       objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713400, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Name
       value: Player
