@@ -63,6 +63,7 @@ public class PushBox : MonoBehaviour
         {
             transform.position = targetPos;
             pushing = false;
+            teled = false;
             puzzleManager.turnCount -= 1;
         }
     }

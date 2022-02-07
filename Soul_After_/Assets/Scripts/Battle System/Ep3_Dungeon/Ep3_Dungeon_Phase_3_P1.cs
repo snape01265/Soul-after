@@ -31,8 +31,6 @@ public class Ep3_Dungeon_Phase_3_P1 : MonoBehaviour
                 first = !first;
             else
             {
-                yield return new WaitForSeconds(1.5f);
-
                 if (sfx)
                     sfx.Play();
             }
