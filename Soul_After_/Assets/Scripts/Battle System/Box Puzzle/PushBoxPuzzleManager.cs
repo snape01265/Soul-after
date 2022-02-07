@@ -6,17 +6,22 @@ public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
+    [HideInInspector]
     public int turnCount;
+    [HideInInspector]
     public int puzzleNum;
+    [HideInInspector]
     public bool goalReached = false;
+    [HideInInspector]
+    public Vector3 startingBoxPos;
+    [HideInInspector]
+    public Vector3 startingPlayerPos;
 
     private PushBox box;
     private GameObject player;
     private GameObject mainCamera;
     private bool isMirrorWorld = false;
     private bool isAvailable = true;
-    public Vector3 startingBoxPos;
-    public Vector3 startingPlayerPos;
 
     private void Start()
     {
