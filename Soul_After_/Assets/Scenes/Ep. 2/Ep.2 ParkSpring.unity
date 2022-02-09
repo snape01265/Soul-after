@@ -62954,7 +62954,6 @@ GameObject:
   - component: {fileID: 1967576291}
   - component: {fileID: 1967576293}
   - component: {fileID: 1967576295}
-  - component: {fileID: 1967576294}
   m_Layer: 0
   m_Name: Ep.2_Timeline_9
   m_TagString: Untagged
@@ -63079,32 +63078,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!61 &1967576294
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967576290}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &1967576295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63117,10 +63090,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 32
+  trigger: 64
   condition:
     luaConditions:
-    - (Variable["TimelineToPlay"] == 9) and (Variable["Episode"] == 2)
+    - (Variable["TimelineToPlay"] == 12) and (Variable["Episode"] == 2)
     questConditions: []
     acceptedTags:
     - Player
@@ -63133,7 +63106,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 10
+  luaCode: Variable["TimelineToPlay"] = 13
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -63170,7 +63143,19 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1967576291}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -63525,8 +63510,7 @@ MonoBehaviour:
   trigger: 64
   condition:
     luaConditions:
-    - Variable["TimelineToPlay"] == 2
-    - Variable["Episode"] == 2
+    - (Variable["TimelineToPlay"] == 3) and (Variable["Episode"] == 2)
     questConditions: []
     acceptedTags:
     - 
@@ -63539,7 +63523,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 3
+  luaCode: Variable["TimelineToPlay"] = 4
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
