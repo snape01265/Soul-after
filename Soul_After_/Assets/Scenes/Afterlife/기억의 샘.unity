@@ -1200,7 +1200,6 @@ GameObject:
   m_Component:
   - component: {fileID: 393560317}
   - component: {fileID: 393560321}
-  - component: {fileID: 393560320}
   - component: {fileID: 393560319}
   - component: {fileID: 393560318}
   m_Layer: 0
@@ -1264,7 +1263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 8
   condition:
-    luaConditions: []
+    luaConditions:
+    - (Variable["TimelineToPlay"] == 14) and (Variable["Episode"] == 2)
     questConditions: []
     acceptedTags:
     - Player
@@ -1277,7 +1277,9 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: 'Variable["Episode"] = 3;
+
+    Variable["TimelineToPlay"] = 0'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -1327,40 +1329,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1883810321}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: CancelControl
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
---- !u!114 &393560320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393560316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cbdbde2950e345459204f56423aca3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cutscene: {fileID: 393560321}
-  fadeInPanel: {fileID: 0}
-  fadeOutPanel: {fileID: 0}
-  fadeWait: 0
-  cutsceneName: Ep.2_Timeline_11
-  cutsceneList: {fileID: 11400000, guid: 223d48ad983a8974d8b4881bee8063c8, type: 2}
 --- !u!320 &393560321
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -31337,7 +31309,7 @@ GameObject:
   - component: {fileID: 1740600811}
   - component: {fileID: 1740600815}
   m_Layer: 0
-  m_Name: (Cutscene) Enter the memory
+  m_Name: Ep.1_Timeline_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31461,12 +31433,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1779739309}
   m_Layer: 0
-  m_Name: Cutscenes
+  m_Name: Timeline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1779739309
 Transform:
   m_ObjectHideFlags: 0
@@ -32005,7 +31977,7 @@ Tilemap:
       - {fileID: 6051117842504900372, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: 1093894860130920132, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 6297030925397294674, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 34, y: 44, z: 0}
@@ -32101,7 +32073,7 @@ Tilemap:
       - {fileID: 1750455274573958327, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -151359969788263723, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -1577847706117351362, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: 45, z: 0}
@@ -32149,7 +32121,7 @@ Tilemap:
       - {fileID: 1750455274573958327, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -151359969788263723, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -1577847706117351362, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 45, z: 0}
@@ -32197,7 +32169,7 @@ Tilemap:
       - {fileID: 5790863745007741779, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -2931505492576615889, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 6196129516834912340, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 37, y: 46, z: 0}
@@ -32209,7 +32181,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 38, y: 46, z: 0}
@@ -32233,7 +32205,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 46, z: 0}
@@ -32317,7 +32289,7 @@ Tilemap:
       - {fileID: 8637314396306506500, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -4184391810017940519, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 7990245446788948047, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 47, z: 0}
