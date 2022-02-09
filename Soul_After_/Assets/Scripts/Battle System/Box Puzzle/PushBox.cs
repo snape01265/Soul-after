@@ -39,6 +39,7 @@ public class PushBox : MonoBehaviour
     {
         if (boxTouched && !pushing && Input.GetButtonDown("Jump"))
         {
+            teled = false;
             iceTouched = false;
             if (touchedPoint.y == 1)
             {
