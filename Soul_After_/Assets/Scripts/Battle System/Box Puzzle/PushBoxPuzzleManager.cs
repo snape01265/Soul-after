@@ -9,6 +9,8 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public int turnCount;
     public int puzzleNum;
     public bool goalReached = false;
+    public AudioSource ResetSFX;
+    public AudioSource MirrorSFX;
 
     private PushBox box;
     private GameObject player;
@@ -30,7 +32,8 @@ public class PushBoxPuzzleManager : MonoBehaviour
     {
         if (Input.GetKeyDown(keyForMirror) && isAvailable && !box.pushing)
         {
-            if(!isMirrorWorld)
+            MirrorSFX.Play();
+            if (!isMirrorWorld)
             {
                 MirrorActivate(isMirrorWorld);
             }
@@ -41,6 +44,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(keyForReset) && isAvailable && !box.pushing)
         {
+            ResetSFX.Play();
             switch (puzzleNum)
             {
                 case 1:
@@ -114,6 +118,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
             isMirrorWorld = false;
         }
     }
+
     private void nextPuzzle(string startNumber)
     {
         GameObject start = GameObject.Find(startNumber);

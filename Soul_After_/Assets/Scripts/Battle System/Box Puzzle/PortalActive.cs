@@ -5,6 +5,8 @@ using UnityEngine;
 public class PortalActive : MonoBehaviour
 {
     public Transform PortalBuddy;
+    public AudioSource PortalSFX;
+
     private PushBox pushBox;
 
     private void Start()
@@ -22,6 +24,7 @@ public class PortalActive : MonoBehaviour
 
     private void Tele()
     {
+        PortalSFX.Play();
         pushBox.teled = true;
         pushBox.targetPos = PortalBuddy.transform.position;
         pushBox.transform.position = PortalBuddy.position;
