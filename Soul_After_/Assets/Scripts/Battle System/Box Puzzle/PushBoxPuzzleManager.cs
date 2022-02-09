@@ -6,7 +6,6 @@ public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
-    [HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum;
