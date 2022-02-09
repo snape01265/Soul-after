@@ -12,6 +12,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public int puzzleNum;
     [HideInInspector]
     public bool goalReached = false;
+    [HideInInspector]
+    public Vector3 startingBoxPos;
+    [HideInInspector]
+    public Vector3 startingPlayerPos;
     public AudioSource ResetSFX;
     public AudioSource MirrorSFX;
 
