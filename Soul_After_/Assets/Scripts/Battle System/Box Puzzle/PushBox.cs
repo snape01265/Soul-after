@@ -6,6 +6,8 @@ public class PushBox : MonoBehaviour
 {
     public Transform playerPos;
     public PushBoxPuzzleManager puzzleManager;
+    public AudioSource IceTileSFX;
+    public AudioSource NormSFX;
 
     [HideInInspector]
     // 1 : UP, 2 : RIGHT, 3 : LEFT, 4 : DOWN 
@@ -20,6 +22,7 @@ public class PushBox : MonoBehaviour
     public bool pushing = false;
 
     private GameObject DestCalcNode;
+    private bool iceTouched;
     private bool boxTouched = false;
     private Vector2 touchedPoint;    
 
@@ -36,6 +39,7 @@ public class PushBox : MonoBehaviour
     {
         if (boxTouched && !pushing && Input.GetButtonDown("Jump"))
         {
+            iceTouched = false;
             if (touchedPoint.y == 1)
             {
                 PushedPos = 1;
@@ -79,8 +83,11 @@ public class PushBox : MonoBehaviour
             {
                 return;
             }
-            first = false; if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            first = false;
+
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
+                iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
@@ -114,8 +121,11 @@ public class PushBox : MonoBehaviour
             {
                 return;
             }
-            first = false; if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            first = false;
+
+            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
+                iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.down);
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
@@ -151,8 +161,10 @@ public class PushBox : MonoBehaviour
                 return;
             }
             first = false;
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
+                iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
@@ -186,9 +198,11 @@ public class PushBox : MonoBehaviour
             {
                 return;
             }
-            first = false; 
+            first = false;
+
             if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
             {
+                iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);
             }
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
@@ -213,6 +227,11 @@ public class PushBox : MonoBehaviour
 
     public void PushToDest(Vector3 Dest)
     {
+        if (iceTouched)
+            IceTileSFX.Play();
+        else
+            NormSFX.Play();
+
         if (!teled)
         {
             LastLoc = transform.position;
@@ -220,6 +239,7 @@ public class PushBox : MonoBehaviour
         targetPos = Dest;
         pushing = true;
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
