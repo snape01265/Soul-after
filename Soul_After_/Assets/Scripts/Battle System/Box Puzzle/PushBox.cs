@@ -28,10 +28,11 @@ public class PushBox : MonoBehaviour
 
     void Start()
     {
-        /*targetPos = transform.position;
+        /*
         LastLoc = transform.position;
         puzzleManager.startingBoxPos = transform.position;
         puzzleManager.startingPlayerPos = transform.Find("Player").position;*/
+        targetPos = transform.position;
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
 
@@ -228,7 +229,7 @@ public class PushBox : MonoBehaviour
 
     public void PushToDest(Vector3 Dest)
     {
-        if (iceTouched)
+        if (iceTouched && IceTileSFX)
             IceTileSFX.Play();
         else
             NormSFX.Play();
