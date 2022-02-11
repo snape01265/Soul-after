@@ -17,7 +17,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     [HideInInspector]
     public Vector3 startingPlayerPos;
     [HideInInspector]
-    public Animator anim;
+    public Fadein fade;
     public AudioSource resetSFX;
     public AudioSource mirrorSFX;
     public int fadeDuration;
@@ -30,7 +30,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
 
     private void Start()
     {
-        anim = GameObject.Find("MirrorEffect").GetComponent<Animator>();
+        fade = GameObject.Find("Fadein").GetComponent<Fadein>();
         player = GameObject.FindGameObjectWithTag("Player");
         box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -129,7 +129,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     {
         isAvailable = false;
         player.GetComponent<Player>().control = false;
-        anim.SetTrigger("Mirror");
+        fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
         box.PushToDest(startingBoxPos);
@@ -157,7 +157,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         float camZ = mainCamera.transform.position.z;
         isAvailable = false;
         player.GetComponent<Player>().control = false;
-        anim.SetTrigger("Mirror");
+        fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         if (mirrorWorld == false)
         {

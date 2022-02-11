@@ -6,6 +6,8 @@ public class Fadein : MonoBehaviour
 {
     public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
+    public GameObject fadeFromWhite;
+    public GameObject fadeToWhite;
 
     private Transform player;
     private Vector3 pos = Vector3.zero;
@@ -58,15 +60,15 @@ public class Fadein : MonoBehaviour
     }
     private IEnumerator FIOStatic(float time)
     {
-        if (fadeOutPanel != null)
+        if (fadeToWhite != null)
         {
-            GameObject panel = Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
+            GameObject panel = Instantiate(fadeToWhite, Vector3.zero, Quaternion.identity);
             Destroy(panel, time);
             yield return new WaitForSeconds(time);
         }
-        if (fadeInPanel != null)
+        if (fadeFromWhite != null)
         {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
+            GameObject panel = Instantiate(fadeFromWhite, Vector3.zero, Quaternion.identity);
             Destroy(panel, time);
         }
     }
