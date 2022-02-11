@@ -6,8 +6,8 @@ public class PushBox : MonoBehaviour
 {
     public Transform playerPos;
     public PushBoxPuzzleManager puzzleManager;
-    public AudioSource IceTileSFX;
-    public AudioSource NormSFX;
+    public AudioSource iceTileSFX;
+    public AudioSource normSFX;
 
     [HideInInspector]
     // 1 : UP, 2 : RIGHT, 3 : LEFT, 4 : DOWN 
@@ -229,10 +229,10 @@ public class PushBox : MonoBehaviour
 
     public void PushToDest(Vector3 Dest)
     {
-        if (iceTouched && IceTileSFX)
-            IceTileSFX.Play();
+        if (iceTouched && iceTileSFX)
+            iceTileSFX.Play();
         else
-            NormSFX.Play();
+            normSFX.Play();
 
         if (!teled)
         {

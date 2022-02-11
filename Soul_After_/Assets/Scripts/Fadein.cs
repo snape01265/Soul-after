@@ -26,6 +26,11 @@ public class Fadein : MonoBehaviour
         StartCoroutine(FIO(Time));
     }
 
+    public void FadeInOutStatic(float Time)
+    {
+        StartCoroutine(FIOStatic(Time));
+    }
+
     public void SetPosX(float XPos)
     {
         pos = new Vector3(XPos, pos.y, pos.z);
@@ -49,6 +54,20 @@ public class Fadein : MonoBehaviour
         {
             GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
             Destroy(panel, 1);
+        }
+    }
+    private IEnumerator FIOStatic(float time)
+    {
+        if (fadeOutPanel != null)
+        {
+            GameObject panel = Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
+            Destroy(panel, time);
+            yield return new WaitForSeconds(time);
+        }
+        if (fadeInPanel != null)
+        {
+            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
+            Destroy(panel, time);
         }
     }
 }
