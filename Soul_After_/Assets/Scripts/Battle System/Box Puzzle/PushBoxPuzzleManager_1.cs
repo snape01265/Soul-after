@@ -10,7 +10,10 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public bool goalReached = false;
     public AudioSource ResetSFX;
     public Vector3 startingPlayerPos;
+    [HideInInspector]
+    public int goalCount;
 
+    private readonly int[] goalCounts = new int[] {3, 3, 1};
     private List<Vector3> startingBoxPos = new List<Vector3>();
     private List<PushBox> box = new List<PushBox>();
     private GameObject player;
@@ -27,8 +30,8 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             box.Add(pushbox.GetComponent<PushBox>());
             startingBoxPos.Add(pushbox.transform.position);
         }
-
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        goalCount = goalCounts[0];
         SetPosition();
     }
 
@@ -43,6 +46,9 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             }
             isPushing = false;
         }
+
+        if (goalCount <= 0)
+            goalReached = true;
 
         if (Input.GetKeyDown(keyForReset) && isAvailable && !isPushing)
         {
@@ -79,10 +85,12 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             {
                 case 1:
                     nextPuzzle("Start2");
+                    goalCount = goalCounts[1];
                     goalReached = false;
                     break;
                 case 2:
                     nextPuzzle("Start3");
+                    goalCount = goalCounts[2];
                     goalReached = false;
                     break;
             }
