@@ -10,9 +10,12 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public bool goalReached = false;
     public AudioSource ResetSFX;
     public Vector3 startingPlayerPos;
+    [HideInInspector]
+    public int goalCount;
 
+    private readonly int[] goalCounts = new int[] {3, 3, 1};
     private List<Vector3> startingBoxPos = new List<Vector3>();
-    private List<PushBox> box = new List<PushBox>();
+    private List<BoxPush_1> box = new List<BoxPush_1>();
     private GameObject player;
     private GameObject mainCamera;
     private bool isAvailable = true;
@@ -24,17 +27,17 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         GameObject[] pushboxes = GameObject.FindGameObjectsWithTag("PushBox");
         foreach(GameObject pushbox in pushboxes)
         {
-            box.Add(pushbox.GetComponent<PushBox>());
+            box.Add(pushbox.GetComponent<BoxPush_1>());
             startingBoxPos.Add(pushbox.transform.position);
         }
-
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        goalCount = goalCounts[0];
         SetPosition();
     }
 
     private void Update()
     {
-        foreach(PushBox pb in box)
+        foreach(BoxPush_1 pb in box)
         {
             if (pb.pushing)
             {
@@ -43,6 +46,9 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             }
             isPushing = false;
         }
+
+        if (goalCount <= 0)
+            goalReached = true;
 
         if (Input.GetKeyDown(keyForReset) && isAvailable && !isPushing)
         {
@@ -59,7 +65,24 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     StartCoroutine(Reset(2));
                     break;
             }
-        } else if (turnCount == 0)
+        }
+        else if (turnCount >= 0 && goalReached && !isPushing)
+        {
+            switch (puzzleNum)
+            {
+                case 1:
+                    nextPuzzle("Start2");
+                    goalCount = goalCounts[1];
+                    goalReached = false;
+                    break;
+                case 2:
+                    nextPuzzle("Start3");
+                    goalCount = goalCounts[2];
+                    goalReached = false;
+                    break;
+            }
+        }
+        else if (turnCount == 0)
         {
             switch (puzzleNum)
             {
@@ -73,20 +96,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     StartCoroutine(Reset(2));
                     break;
             }
-        } else if (turnCount >= 0 && goalReached && !isPushing)
-        {
-            switch (puzzleNum)
-            {
-                case 1:
-                    nextPuzzle("Start2");
-                    goalReached = false;
-                    break;
-                case 2:
-                    nextPuzzle("Start3");
-                    goalReached = false;
-                    break;
-            }
-        }
+        } 
     }
 
     private void nextPuzzle(string startNumber)
@@ -105,7 +115,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
     public void SetPosition()
     {
-        foreach(PushBox pb in box)
+        foreach(BoxPush_1 pb in box)
         {
             pb.targetPos = pb.transform.position;
             pb.LastLoc = pb.transform.position;
