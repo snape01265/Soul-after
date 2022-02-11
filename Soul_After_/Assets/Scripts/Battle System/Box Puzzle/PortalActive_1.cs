@@ -7,14 +7,14 @@ public class PortalActive_1 : MonoBehaviour
     public Transform PortalBuddy;
     public AudioSource PortalSFX;
 
-    private PushBox_1 pushBox;
-    private List<PushBox_1> pushBoxes = new List<PushBox_1>();
+    private BoxPush_1 pushBox;
+    private List<BoxPush_1> pushBoxes = new List<BoxPush_1>();
 
     private void Start()
     {
         foreach(GameObject pushBox in GameObject.FindGameObjectsWithTag("PushBox"))
         {
-            pushBoxes.Add(pushBox.GetComponent<PushBox_1>());
+            pushBoxes.Add(pushBox.GetComponent<BoxPush_1>());
         }
     }
 
@@ -22,11 +22,11 @@ public class PortalActive_1 : MonoBehaviour
     {
         if (!pushBox.teled && collision.gameObject.CompareTag("PushBox"))
         {
-            StartCoroutine(Tele(collision.gameObject.GetComponent<PushBox_1>()));
+            StartCoroutine(Tele(collision.gameObject.GetComponent<BoxPush_1>()));
         }
     }
 
-    IEnumerator Tele(PushBox_1 pushBox)
+    IEnumerator Tele(BoxPush_1 pushBox)
     {
         PortalSFX.Play();
         pushBox.teled = true;

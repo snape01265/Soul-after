@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushBox_1 : MonoBehaviour
+public class BoxPush_1 : MonoBehaviour
 {
     public Transform playerPos;
     public PushBoxPuzzleManager_1 puzzleManager;
