@@ -138,7 +138,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 22, mainCamera.transform.position.y, mainCamera.transform.position.z);
             isMirrorWorld = false;
         }
-        yield return new WaitForSeconds(fadeDuration - fadeDuration/2);
+        yield return new WaitForSeconds(fadeDuration - fadeDuration/2 + 1);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         turnCount = turnLimit;
@@ -175,7 +175,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
             mainCamera.transform.position = new Vector3(camX - 22, camY, camZ);
             isMirrorWorld = false;
         }
-        yield return new WaitForSeconds(fadeDuration - fadeDuration/2);
+        yield return new WaitForSeconds(fadeDuration - fadeDuration/2 + 1);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         yield return null;
