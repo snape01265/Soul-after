@@ -5,7 +5,7 @@ using UnityEngine;
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
     public KeyCode keyForReset;
-    //[HideInInspector]
+    [HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
@@ -77,6 +77,22 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
+        else if (turnCount == 0 && !isReset && !isPushing)
+        {
+            isReset = true;
+            switch (puzzleNum)
+            {
+                case 1:
+                    StartCoroutine(Reset(18));
+                    break;
+                case 2:
+                    StartCoroutine(Reset(27));
+                    break;
+                case 3:
+                    StartCoroutine(Reset(2));
+                    break;
+            }
+        }
         else if (turnCount >= 0 && goalReached && !isPushing)
         {
             switch (puzzleNum)
@@ -93,22 +109,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset)
-        {
-            isReset = true;
-            switch (puzzleNum)
-            {
-                case 1:
-                    StartCoroutine(Reset(18));
-                    break;
-                case 2:
-                    StartCoroutine(Reset(27));
-                    break;
-                case 3:
-                    StartCoroutine(Reset(2));
-                    break;
-            }
-        } 
     }
 
     private void nextPuzzle(string startNumber)

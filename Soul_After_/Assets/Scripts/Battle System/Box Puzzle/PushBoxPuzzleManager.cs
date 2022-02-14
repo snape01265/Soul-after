@@ -6,7 +6,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
-    //[HideInInspector]
+    [HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
@@ -70,7 +70,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset)
+        else if (turnCount == 0 && !isReset && !box.pushing)
         {
             isReset = true;
             switch (puzzleNum)
