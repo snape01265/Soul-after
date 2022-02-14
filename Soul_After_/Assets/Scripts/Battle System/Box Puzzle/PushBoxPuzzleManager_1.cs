@@ -5,13 +5,22 @@ using UnityEngine;
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
     public KeyCode keyForReset;
+    //[HideInInspector]
     public int turnCount;
-    public int puzzleNum;
+    [HideInInspector]
+    public int puzzleNum = 1;
+
     public bool goalReached = false;
     public AudioSource ResetSFX;
+    [HideInInspector]
     public Vector3 startingPlayerPos;
     [HideInInspector]
     public int goalCount;
+    [HideInInspector]
+    public Fadein fade;
+    public float fadeDuration;
+    [HideInInspector]
+    public bool isReset = false;
 
     private readonly int[] goalCounts = new int[] {3, 3, 1};
     private List<Vector3> startingBoxPos = new List<Vector3>();
@@ -19,10 +28,11 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     private GameObject player;
     private GameObject mainCamera;
     private bool isAvailable = true;
-    private bool isPushing = false;
+    public bool isPushing = false;
 
     private void Start()
     {
+        fade = GameObject.Find("Fadein").GetComponent<Fadein>();
         player = GameObject.FindGameObjectWithTag("Player");
         GameObject[] pushboxes = GameObject.FindGameObjectsWithTag("PushBox");
         foreach(GameObject pushbox in pushboxes)
@@ -50,9 +60,10 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         if (goalCount <= 0)
             goalReached = true;
 
-        if (Input.GetKeyDown(keyForReset) && isAvailable && !isPushing)
+        if (Input.GetKeyDown(keyForReset) && isAvailable && !isPushing && !isReset)
         {
             ResetSFX.Play();
+            isReset = true;
             switch (puzzleNum)
             {
                 case 1:
@@ -82,8 +93,9 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0)
+        else if (turnCount == 0 && !isReset)
         {
+            isReset = true;
             switch (puzzleNum)
             {
                 case 1:
@@ -126,17 +138,22 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     IEnumerator Reset(int turnLimit)
     {
         isAvailable = false;
+
+        player.GetComponent<Player>().control = false;
+        fade.FadeInOutStatic(fadeDuration);
+        yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
-        for(int i = 0; i < box.Count; i++)
+        for (int i = 0; i < box.Count; i++)
         {
             box[i].targetPos = box[i].transform.position;
             box[i].LastLoc = box[i].transform.position;
             box[i].PushToDest(startingBoxPos[i]);
         }
-
-        turnCount = turnLimit;
-        //Play reset animation
+        yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
+        player.GetComponent<Player>().control = true;
         isAvailable = true;
+        turnCount = turnLimit;
+        isReset = false;
         yield return null;
     }
 }

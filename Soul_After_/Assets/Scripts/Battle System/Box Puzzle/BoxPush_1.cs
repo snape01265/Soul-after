@@ -69,6 +69,7 @@ public class BoxPush_1 : MonoBehaviour
             transform.position = targetPos;
             pushing = false;
             teled = false;
+            if (!puzzleManager.isReset)
             puzzleManager.turnCount -= 1;
         }
     }

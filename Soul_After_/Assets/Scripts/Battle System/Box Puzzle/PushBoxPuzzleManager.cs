@@ -6,10 +6,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
-    [HideInInspector]
+    //[HideInInspector]
     public int turnCount;
     [HideInInspector]
-    public int puzzleNum;
+    public int puzzleNum = 1;
     [HideInInspector]
     public bool goalReached = false;
     [HideInInspector]
@@ -21,6 +21,8 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public AudioSource resetSFX;
     public AudioSource mirrorSFX;
     public float fadeDuration;
+    [HideInInspector]
+    public bool isReset = false;
 
     private PushBox box;
     private GameObject player;
@@ -51,9 +53,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
                 MirrorActivate(isMirrorWorld);
             }
         }
-        else if (Input.GetKeyDown(keyForReset) && isAvailable && !box.pushing)
+        else if (Input.GetKeyDown(keyForReset) && isAvailable && !box.pushing && !isReset)
         {
             resetSFX.Play();
+            isReset = true;
             switch (puzzleNum)
             {
                 case 1:
@@ -67,8 +70,9 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0)
+        else if (turnCount == 0 && !isReset)
         {
+            isReset = true;
             switch (puzzleNum)
             {
                 case 1:
@@ -82,7 +86,6 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-
         else if (turnCount >= 0 && goalReached && !box.pushing)
         {
             switch (puzzleNum)
@@ -142,6 +145,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         turnCount = turnLimit;
+        isReset = false;
         yield return null;
     }
     IEnumerator MirrorWorldTransition(bool mirrorWorld)
