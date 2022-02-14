@@ -138,15 +138,14 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     IEnumerator Reset(int turnLimit)
     {
         isAvailable = false;
-
         player.GetComponent<Player>().control = false;
         fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
         for (int i = 0; i < box.Count; i++)
         {
-            box[i].targetPos = box[i].transform.position;
-            box[i].LastLoc = box[i].transform.position;
+            //box[i].targetPos = box[i].transform.position;
+            //box[i].LastLoc = box[i].transform.position;
             box[i].PushToDest(startingBoxPos[i]);
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
