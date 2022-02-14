@@ -64,6 +64,8 @@ public class BoxPush_1 : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f);
+        if (puzzleManager.isReset)
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
         if (Vector3.Distance(transform.position, targetPos) <= .03f && pushing)
         {
             transform.position = targetPos;
