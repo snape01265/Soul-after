@@ -49,19 +49,20 @@ public class PortalCircuitSwitch : MonoBehaviour
         if (isStartingPair)
         {
             isStartingPair = false;
-            PortalPairs[0].SetActive(false);
-            PortalPairs[1].SetActive(false);
-            PortalPairs[2].SetActive(true);
-            PortalPairs[3].SetActive(true);
-
+            for (int i = 0; i < PortalPairs.Length; i += 2)
+            {
+                PortalPairs[i].SetActive(true);
+                PortalPairs[i + 1].SetActive(false);
+            }
         }
         else
         {
             isStartingPair = true;
-            PortalPairs[0].SetActive(true);
-            PortalPairs[1].SetActive(true);
-            PortalPairs[2].SetActive(false);
-            PortalPairs[3].SetActive(false);
+            for (int i = 0; i < PortalPairs.Length; i += 2)
+            {
+                PortalPairs[i].SetActive(false);
+                PortalPairs[i + 1].SetActive(true);
+            }
         }
     }
 }
