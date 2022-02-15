@@ -90,11 +90,11 @@ public class PushBoxPuzzleManager : MonoBehaviour
             switch (puzzleNum)
             {
                 case 1:
-                    nextPuzzle("Start2");
+                    StartCoroutine(nextPuzzle("Start2", 8));
                     goalReached = false;
                     break;
                 case 2:
-                    nextPuzzle("Start3");
+                    StartCoroutine(nextPuzzle("Start3", 4));
                     goalReached = false;
                     break;
             }
@@ -105,28 +105,28 @@ public class PushBoxPuzzleManager : MonoBehaviour
         StartCoroutine(MirrorWorldTransition(mirrorWorld));
     }
 
-    private void nextPuzzle(string startNumber)
+    IEnumerator nextPuzzle(string startNumber, int turnLimit)
     {
         GameObject start = GameObject.Find(startNumber);
         float startX = start.transform.position.x;
         float startY = start.transform.position.y;
         float startZ = start.transform.position.z;
 
+        isAvailable = false;
+        player.GetComponent<Player>().control = false;
+        fade.FadeInOutStatic(fadeDuration);
+        yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startX - 1, startY, startZ);
         box.targetPos = new Vector3(startX, startY, startZ);
         box.transform.position = new Vector3(startX, startY, startZ);
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
         puzzleNum += 1;
         SetPosition();
-        switch (puzzleNum)
-        {
-            case 2:
-                StartCoroutine(Reset(8));
-                break;
-            case 3:
-                StartCoroutine(Reset(4));
-                break;
-        }
+        yield return new WaitForSeconds(fadeDuration - 0.5f);
+        isAvailable = true;
+        player.GetComponent<Player>().control = true;
+        turnCount = turnLimit;
+        yield return null;
     }
     public void SetPosition()
     {
@@ -142,13 +142,14 @@ public class PushBoxPuzzleManager : MonoBehaviour
         fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
-        box.PushToDest(startingBoxPos);
-        if(isMirrorWorld)
+        box.targetPos = startingBoxPos;
+        box.transform.position = startingBoxPos;
+        if (isMirrorWorld)
         {
             mainCamera.transform.position = new Vector3(mainCamera.transform.position.x - 22, mainCamera.transform.position.y, mainCamera.transform.position.z);
             isMirrorWorld = false;
         }
-        yield return new WaitForSeconds(fadeDuration - (fadeDuration/2) + 1);
+        yield return new WaitForSeconds(fadeDuration - 0.5f);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         turnCount = turnLimit;
@@ -195,7 +196,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
             }
             isMirrorWorld = false;
         }
-        yield return new WaitForSeconds(fadeDuration - (fadeDuration/2) + 1);
+        yield return new WaitForSeconds(fadeDuration - 0.5f);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         yield return null;
