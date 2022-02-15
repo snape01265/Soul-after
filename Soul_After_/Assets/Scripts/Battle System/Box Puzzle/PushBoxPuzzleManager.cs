@@ -6,7 +6,6 @@ public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
-    [HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
@@ -60,13 +59,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
             switch (puzzleNum)
             {
                 case 1:
-                    StartCoroutine(Reset(12));
+                    StartCoroutine(Reset(13));
                     break;
                 case 2:
-                    StartCoroutine(Reset(9));
+                    StartCoroutine(Reset(8));
                     break;
                 case 3:
-                    StartCoroutine(Reset(2));
+                    StartCoroutine(Reset(4));
                     break;
             }
         }
@@ -76,13 +75,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
             switch (puzzleNum)
             {
                 case 1:
-                    StartCoroutine(Reset(12));
+                    StartCoroutine(Reset(13));
                     break;
                 case 2:
-                    StartCoroutine(Reset(9));
+                    StartCoroutine(Reset(8));
                     break;
                 case 3:
-                    StartCoroutine(Reset(2));
+                    StartCoroutine(Reset(4));
                     break;
             }
         }
@@ -119,7 +118,15 @@ public class PushBoxPuzzleManager : MonoBehaviour
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
         puzzleNum += 1;
         SetPosition();
-        turnCount = 0;
+        switch (puzzleNum)
+        {
+            case 2:
+                StartCoroutine(Reset(8));
+                break;
+            case 3:
+                StartCoroutine(Reset(4));
+                break;
+        }
     }
     public void SetPosition()
     {
@@ -150,6 +157,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     }
     IEnumerator MirrorWorldTransition(bool mirrorWorld)
     {
+        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.position);
         float playerX = player.transform.position.x;
         float playerY = player.transform.position.y;
         float playerZ = player.transform.position.z;
@@ -169,6 +177,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
             box.targetPos = new Vector3(boxX + 22, boxY, boxZ);
             box.transform.position = new Vector3(boxX + 22, boxY, boxZ);
             mainCamera.transform.position = new Vector3(camX + 22, camY, camZ);
+            if (hit.collider != null && hit.transform.gameObject.GetComponent<PortalActive>())
+            {
+                player.transform.position = new Vector3(hit.transform.gameObject.transform.position.x + 23, hit.transform.gameObject.transform.position.y, playerZ);
+            }
             isMirrorWorld = true;
         }
         else
@@ -177,6 +189,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
             box.targetPos = new Vector3(boxX - 22, boxY, boxZ);
             box.transform.position = new Vector3(boxX - 22, boxY, boxZ);
             mainCamera.transform.position = new Vector3(camX - 22, camY, camZ);
+            if (hit.collider != null && hit.transform.gameObject.GetComponent<PortalActive>())
+            {
+                player.transform.position = new Vector3(hit.transform.gameObject.transform.position.x - 21, hit.transform.gameObject.transform.position.y, playerZ);
+            }
             isMirrorWorld = false;
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration/2) + 1);
