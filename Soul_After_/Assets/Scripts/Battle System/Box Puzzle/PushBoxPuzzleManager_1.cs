@@ -119,21 +119,18 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         float startZ = start.transform.position.z;
 
         puzzleNum += 1;
-        SetPosition();
         switch (puzzleNum)
         {
             case 1:
-                StartCoroutine(Reset(18));
+                StartCoroutine(NextLevel(18, startX, startY, startZ));
                 break;
             case 2:
-                StartCoroutine(Reset(27));
+                StartCoroutine(NextLevel(27, startX, startY, startZ));
                 break;
             case 3:
-                StartCoroutine(Reset(2));
+                StartCoroutine(NextLevel(2, startX, startY, startZ));
                 break;
         }
-        player.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
     }
 
     public void SetPosition()
@@ -163,6 +160,30 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         turnCount = turnLimit;
+        isReset = false;
+        yield return null;
+    }
+
+    IEnumerator NextLevel(int turnLimit, float startX, float startY, float startZ)
+    {
+        isAvailable = false;
+        player.GetComponent<Player>().control = false;
+        fade.FadeInOutStatic(fadeDuration);
+        yield return new WaitForSeconds(0.5f);
+        player.transform.position = new Vector3(startX, startY, startZ);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
+
+        for (int i = 0; i < box.Count; i++)
+        {
+            //box[i].targetPos = box[i].transform.position;
+            //box[i].LastLoc = box[i].transform.position;
+            box[i].PushToDest(startingBoxPos[i]);
+        }
+        yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
+        player.GetComponent<Player>().control = true;
+        isAvailable = true;
+        turnCount = turnLimit;
+        SetPosition();
         isReset = false;
         yield return null;
     }
