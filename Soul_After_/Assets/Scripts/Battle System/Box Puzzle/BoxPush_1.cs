@@ -25,6 +25,7 @@ public class BoxPush_1 : MonoBehaviour
     private bool iceTouched;
     private bool boxTouched = false;
     private Vector2 touchedPoint;
+    private ContactPoint2D[] con2Ds = new ContactPoint2D[6];
 
     void Start()
     {
@@ -222,10 +223,23 @@ public class BoxPush_1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && Player.GetComponent<BoxCollider2D>().GetContacts(new Collider2D[4]) < 2)
+        if (collision.collider.CompareTag("Player"))
         {
-            boxTouched = true;
-            touchedPoint = collision.GetContact(0).normal;
+            int boxCount = 0;
+            con2Ds = new ContactPoint2D[6];
+            Player.GetComponent<BoxCollider2D>().GetContacts(con2Ds);
+            foreach(ContactPoint2D con in con2Ds)
+            {
+                if(con.collider != null && con.collider.CompareTag("PushBox"))
+                {
+                    boxCount++;
+                }
+            }
+            if(boxCount <= 2)
+            {
+                boxTouched = true;
+                touchedPoint = collision.GetContact(0).normal;
+            }        
         }
     }
 
