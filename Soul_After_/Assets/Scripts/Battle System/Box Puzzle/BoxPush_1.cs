@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxPush_1 : MonoBehaviour
 {
-    public Transform playerPos;
+    public GameObject Player;
     public PushBoxPuzzleManager_1 puzzleManager;
     public AudioSource IceTileSFX;
     public AudioSource NormSFX;
@@ -72,7 +72,7 @@ public class BoxPush_1 : MonoBehaviour
             pushing = false;
             teled = false;
             if (!puzzleManager.isReset)
-            puzzleManager.turnCount -= 1;
+                puzzleManager.turnCount -= 1;
         }
     }
 
@@ -83,7 +83,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -115,7 +115,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -148,7 +148,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -180,7 +180,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -222,7 +222,7 @@ public class BoxPush_1 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && Player.GetComponent<BoxCollider2D>().GetContacts(new Collider2D[4]) < 2)
         {
             boxTouched = true;
             touchedPoint = collision.GetContact(0).normal;

@@ -118,11 +118,22 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         float startY = start.transform.position.y;
         float startZ = start.transform.position.z;
 
-        player.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
         puzzleNum += 1;
         SetPosition();
-        turnCount = 0;
+        switch (puzzleNum)
+        {
+            case 1:
+                StartCoroutine(Reset(18));
+                break;
+            case 2:
+                StartCoroutine(Reset(27));
+                break;
+            case 3:
+                StartCoroutine(Reset(2));
+                break;
+        }
+        player.transform.position = new Vector3(startX, startY, startZ);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
     }
 
     public void SetPosition()
