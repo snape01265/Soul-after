@@ -5,6 +5,7 @@ using UnityEngine;
 public class PortalCircuitSwitch : MonoBehaviour
 {
     public GameObject[] PortalPairs;
+    public AudioSource switchSFX;
 
     private Animator anim;
     private bool pressed = false;
@@ -21,6 +22,8 @@ public class PortalCircuitSwitch : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && gameObject.GetComponent<Collider2D>().IsTouching(playerCol))
         {
+            if (switchSFX != null)
+                switchSFX.Play();
             pressed = true;
         }
     }

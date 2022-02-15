@@ -14,7 +14,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource ResetSFX;
     [HideInInspector]
     public Vector3 startingPlayerPos;
-    [HideInInspector]
     public int goalCount;
     [HideInInspector]
     public Fadein fade;
