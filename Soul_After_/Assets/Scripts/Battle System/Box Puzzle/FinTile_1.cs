@@ -10,18 +10,18 @@ public class FinTile_1 : MonoBehaviour
     {
         box = GameObject.Find("PushBoxPuzzleManager").GetComponent<PushBoxPuzzleManager_1>();
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+   
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.collider.CompareTag("PushBox"))
+        if (other.CompareTag("PushBox"))
         {
             box.goalCount -= 1;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.collider.CompareTag("PushBox"))
+        if (other.CompareTag("PushBox"))
         {
             box.goalCount += 1;
         }

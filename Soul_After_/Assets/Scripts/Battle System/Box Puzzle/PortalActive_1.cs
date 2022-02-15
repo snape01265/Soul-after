@@ -7,7 +7,6 @@ public class PortalActive_1 : MonoBehaviour
     public Transform PortalBuddy;
     public AudioSource PortalSFX;
 
-    private BoxPush_1 pushBox;
     private List<BoxPush_1> pushBoxes = new List<BoxPush_1>();
 
     private void Start()
@@ -20,7 +19,7 @@ public class PortalActive_1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!pushBox.teled && collision.gameObject.CompareTag("PushBox"))
+        if (collision.gameObject.CompareTag("PushBox") && !collision.gameObject.GetComponent<BoxPush_1>().teled)
         {
             StartCoroutine(Tele(collision.gameObject.GetComponent<BoxPush_1>()));
         }
