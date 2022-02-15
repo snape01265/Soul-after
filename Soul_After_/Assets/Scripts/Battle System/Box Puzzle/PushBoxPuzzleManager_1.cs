@@ -5,7 +5,7 @@ using UnityEngine;
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
     public KeyCode keyForReset;
-    [HideInInspector]
+    //[HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
@@ -14,6 +14,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource ResetSFX;
     [HideInInspector]
     public Vector3 startingPlayerPos;
+    //[HideInInspector]
     public int goalCount;
     [HideInInspector]
     public Fadein fade;
@@ -118,7 +119,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         float startZ = start.transform.position.z;
 
         player.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
         puzzleNum += 1;
         SetPosition();
         turnCount = 0;
