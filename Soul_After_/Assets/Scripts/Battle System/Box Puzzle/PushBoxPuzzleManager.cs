@@ -65,7 +65,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     StartCoroutine(Reset(8));
                     break;
                 case 3:
-                    StartCoroutine(Reset(4));
+                    StartCoroutine(Reset(3));
                     break;
             }
         }
@@ -81,7 +81,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     StartCoroutine(Reset(8));
                     break;
                 case 3:
-                    StartCoroutine(Reset(4));
+                    StartCoroutine(Reset(3));
                     break;
             }
         }
@@ -94,7 +94,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     goalReached = false;
                     break;
                 case 2:
-                    StartCoroutine(nextPuzzle("Start3", 4));
+                    StartCoroutine(nextPuzzle("Start3", 3));
                     goalReached = false;
                     break;
             }
