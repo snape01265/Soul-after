@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxPush_1 : MonoBehaviour
 {
-    public Transform playerPos;
+    public GameObject Player;
     public PushBoxPuzzleManager_1 puzzleManager;
     public AudioSource IceTileSFX;
     public AudioSource NormSFX;
@@ -25,6 +25,7 @@ public class BoxPush_1 : MonoBehaviour
     private bool iceTouched;
     private bool boxTouched = false;
     private Vector2 touchedPoint;
+    private ContactPoint2D[] con2Ds = new ContactPoint2D[6];
 
     void Start()
     {
@@ -72,7 +73,7 @@ public class BoxPush_1 : MonoBehaviour
             pushing = false;
             teled = false;
             if (!puzzleManager.isReset)
-            puzzleManager.turnCount -= 1;
+                puzzleManager.turnCount -= 1;
         }
     }
 
@@ -83,7 +84,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -97,12 +98,6 @@ public class BoxPush_1 : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.up);
-                PushToDest(DestCalcNode.transform.position);
-                return;
-            }
-            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
-            {
-                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -121,7 +116,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -135,12 +130,6 @@ public class BoxPush_1 : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.down);
-                PushToDest(DestCalcNode.transform.position);
-                return;
-            }
-            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
-            {
-                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -160,7 +149,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -174,12 +163,6 @@ public class BoxPush_1 : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.right);
-                PushToDest(DestCalcNode.transform.position);
-                return;
-            }
-            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
-            {
-                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -198,7 +181,7 @@ public class BoxPush_1 : MonoBehaviour
         while (true)
         {
             RaycastHit2D hit = Physics2D.Raycast(DestCalcNode.transform.position, DestCalcNode.transform.forward);
-            if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>() && first)
+            if (first && hit.collider != null && (hit.transform.gameObject.GetComponent<WallTile>() || hit.transform.gameObject.GetComponent<BoxPush_1>()))
             {
                 return;
             }
@@ -212,12 +195,6 @@ public class BoxPush_1 : MonoBehaviour
             else if (hit.collider != null && hit.transform.gameObject.GetComponent<WallTile>())
             {
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position - Vector3.left);
-                PushToDest(DestCalcNode.transform.position);
-                return;
-            }
-            else if (hit.collider != null && hit.transform.gameObject.GetComponent<FinTile>())
-            {
-                puzzleManager.goalReached = true;
                 PushToDest(DestCalcNode.transform.position);
                 return;
             }
@@ -248,8 +225,21 @@ public class BoxPush_1 : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            boxTouched = true;
-            touchedPoint = collision.GetContact(0).normal;
+            int boxCount = 0;
+            con2Ds = new ContactPoint2D[6];
+            Player.GetComponent<BoxCollider2D>().GetContacts(con2Ds);
+            foreach(ContactPoint2D con in con2Ds)
+            {
+                if(con.collider != null && con.collider.CompareTag("PushBox"))
+                {
+                    boxCount++;
+                }
+            }
+            if(boxCount <= 2)
+            {
+                boxTouched = true;
+                touchedPoint = collision.GetContact(0).normal;
+            }        
         }
     }
 
