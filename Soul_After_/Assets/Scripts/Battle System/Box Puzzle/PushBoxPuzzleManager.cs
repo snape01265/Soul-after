@@ -9,7 +9,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
-    [HideInInspector]
+    //[HideInInspector]
     public bool goalReached = false;
     [HideInInspector]
     public Vector3 startingBoxPos;
