@@ -19,6 +19,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public Fadein fade;
     public AudioSource resetSFX;
     public AudioSource mirrorSFX;
+    public AudioSource clearSFX;
     public float fadeDuration;
     [HideInInspector]
     public bool isReset = false;
@@ -71,6 +72,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         }
         else if (turnCount == 0 && !isReset && !box.pushing)
         {
+            resetSFX.Play();
             isReset = true;
             switch (puzzleNum)
             {
@@ -87,6 +89,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         }
         else if (turnCount >= 0 && goalReached && !box.pushing)
         {
+            clearSFX.Play();
             switch (puzzleNum)
             {
                 case 1:
