@@ -208,7 +208,7 @@ public class BoxPush_1 : MonoBehaviour
 
     public void PushToDest(Vector3 Dest)
     {
-        if (!puzzleManager.goalReached)
+        if (puzzleManager.isPushing)
         {
             if (iceTouched && IceTileSFX)
                 IceTileSFX.Play();
