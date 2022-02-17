@@ -15,13 +15,15 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource NextStageSFX;
     [HideInInspector]
     public Vector3 startingPlayerPos;
-    //[HideInInspector]
+    [HideInInspector]
     public int goalCount;
     [HideInInspector]
     public Fadein fade;
     public float fadeDuration;
     [HideInInspector]
     public bool isReset = false;
+    [HideInInspector]
+    public bool isPushing = false;
 
     private readonly int[] goalCounts = new int[] {3, 3, 1};
     private List<Vector3> startingBoxPos = new List<Vector3>();
@@ -29,7 +31,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     private GameObject player;
     private GameObject mainCamera;
     private bool isAvailable = true;
-    public bool isPushing = false;
 
     private void Start()
     {
@@ -96,6 +97,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         }
         else if (turnCount >= 0 && goalReached && !isPushing)
         {
+            goalReached = false;
             switch (puzzleNum)
             {
                 case 1:
@@ -185,7 +187,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         isAvailable = true;
         turnCount = turnLimit;
         SetPosition();
-        goalReached = false;
         isReset = false;
         yield return null;
     }
