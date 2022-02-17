@@ -5,7 +5,8 @@ using UnityEngine;
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
     public KeyCode keyForReset;
-    //[HideInInspector]
+    public FloatValue StageNo;
+    [HideInInspector]
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
@@ -43,7 +44,19 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             startingBoxPos.Add(pushbox.transform.position);
         }
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        goalCount = goalCounts[0];
+        puzzleNum = (int) StageNo.initialValue;
+        goalCount = goalCounts[puzzleNum];
+        switch (puzzleNum)
+        {
+            case 1:
+                nextPuzzle("Start2", 2);
+                goalCount = goalCounts[1];
+                break;
+            case 2:
+                nextPuzzle("Start3", 3);
+                goalCount = goalCounts[2];
+                break;
+        }
         SetPosition();
     }
 
@@ -103,33 +116,38 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                 case 1:
                     nextPuzzle("Start2");
                     goalCount = goalCounts[1];
+                    StageNo.initialValue = 1;
                     break;
                 case 2:
                     nextPuzzle("Start3");
                     goalCount = goalCounts[2];
+                    StageNo.initialValue = 2;
                     break;
             }
         }
     }
 
-    private void nextPuzzle(string startNumber)
+    private void nextPuzzle(string startNumber, int PuzzleNumber = -1)
     {
         GameObject start = GameObject.Find(startNumber);
         float startX = start.transform.position.x;
         float startY = start.transform.position.y;
         float startZ = start.transform.position.z;
+        if (PuzzleNumber == -1)
+            puzzleNum += 1;
+        else
+            puzzleNum = PuzzleNumber;
 
-        puzzleNum += 1;
         switch (puzzleNum)
         {
             case 1:
-                StartCoroutine(NextLevel(18, startX, startY, startZ));
+                StartCoroutine(NextLevel(18, startX, startY, startZ, 0));
                 break;
             case 2:
-                StartCoroutine(NextLevel(27, startX, startY, startZ));
+                StartCoroutine(NextLevel(27, startX, startY, startZ, 1));
                 break;
             case 3:
-                StartCoroutine(NextLevel(2, startX, startY, startZ));
+                StartCoroutine(NextLevel(2, startX, startY, startZ, 2));
                 break;
         }
     }
@@ -165,7 +183,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator NextLevel(int turnLimit, float startX, float startY, float startZ)
+    IEnumerator NextLevel(int turnLimit, float startX, float startY, float startZ, int CamMulti)
     {
         if (NextStageSFX != null)
             NextStageSFX.Play();
@@ -174,7 +192,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + 30, mainCamera.transform.position.z);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + (30 * CamMulti), mainCamera.transform.position.z);
 
         for (int i = 0; i < box.Count; i++)
         {
