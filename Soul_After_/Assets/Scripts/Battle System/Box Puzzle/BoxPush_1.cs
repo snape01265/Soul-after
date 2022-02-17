@@ -64,10 +64,10 @@ public class BoxPush_1 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.05f);
+        transform.position = Vector3.Lerp(transform.position, targetPos, 0.03f);
         if (puzzleManager.isReset)
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
-        if (Vector3.Distance(transform.position, targetPos) <= .03f && pushing)
+        if (Vector3.Distance(transform.position, targetPos) <= .01f && pushing)
         {
             transform.position = targetPos;
             pushing = false;
@@ -90,7 +90,7 @@ public class BoxPush_1 : MonoBehaviour
             }
             first = false;
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && (hit.transform.gameObject.GetComponent<PortalActive>() || hit.transform.gameObject.GetComponent<IceTile>()))
             {
                 iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.up);
@@ -122,7 +122,7 @@ public class BoxPush_1 : MonoBehaviour
             }
             first = false;
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && (hit.transform.gameObject.GetComponent<PortalActive>() || hit.transform.gameObject.GetComponent<IceTile>()))
             {
                 iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.down);
@@ -155,7 +155,7 @@ public class BoxPush_1 : MonoBehaviour
             }
             first = false;
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && (hit.transform.gameObject.GetComponent<PortalActive>() || hit.transform.gameObject.GetComponent<IceTile>()))
             {
                 iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.right);
@@ -187,7 +187,7 @@ public class BoxPush_1 : MonoBehaviour
             }
             first = false;
 
-            if (hit.collider != null && !hit.transform.gameObject.GetComponent<PortalActive>() && !hit.transform.gameObject.GetComponent<WallTile>() && hit.transform.gameObject.GetComponent<IceTile>())
+            if (hit.collider != null && (hit.transform.gameObject.GetComponent<PortalActive>() || hit.transform.gameObject.GetComponent<IceTile>()))
             {
                 iceTouched = true;
                 DestCalcNode.transform.position = Vector3Int.RoundToInt(DestCalcNode.transform.position + Vector3.left);

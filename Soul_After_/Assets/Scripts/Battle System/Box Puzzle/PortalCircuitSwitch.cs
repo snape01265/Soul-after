@@ -20,28 +20,29 @@ public class PortalCircuitSwitch : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump") && gameObject.GetComponent<Collider2D>().IsTouching(playerCol))
+        if (pressed && Input.GetButtonDown("Jump"))
         {
             if (switchSFX != null)
                 switchSFX.Play();
+            CircuitChange();
+            if (anim.GetBool("Flicked") == false)
+                anim.SetBool("Flicked", true);
+            else if (anim.GetBool("Flicked") == true)
+                anim.SetBool("Flicked", false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
             pressed = true;
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (other.GetComponent<Collider2D>().CompareTag("Player"))
-        {
-            if (pressed)
-            {
-                pressed = false;
-                CircuitChange();
-                if (anim.GetBool("Flicked") == false)
-                    anim.SetBool("Flicked", true);
-                else if (anim.GetBool("Flicked") == true)
-                    anim.SetBool("Flicked", false);
-            }
-        }
+        pressed = false;
     }
 
     private void CircuitChange()

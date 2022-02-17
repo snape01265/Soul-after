@@ -27,11 +27,13 @@ public class PortalActive_1 : MonoBehaviour
 
     IEnumerator Tele(BoxPush_1 pushBox)
     {
+        yield return new WaitForSeconds(.2f);
         PortalSFX.Play();
         pushBox.teled = true;
-        pushBox.targetPos = PortalBuddy.transform.position;
         pushBox.transform.position = PortalBuddy.position;
+        pushBox.targetPos = PortalBuddy.transform.position;
         int pushPos = 5 - pushBox.PushedPos;
+        pushBox.PushedPos = pushPos;
         switch (pushPos)
         {
             case 1:
@@ -47,6 +49,7 @@ public class PortalActive_1 : MonoBehaviour
                 pushBox.DestCalcDown();
                 break;
         }
-        yield return null;
+        yield return new WaitForSeconds(.2f);
+        pushBox.teled = false;
     }
 }
