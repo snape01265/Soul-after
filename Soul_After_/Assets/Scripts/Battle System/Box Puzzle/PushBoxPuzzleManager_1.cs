@@ -12,6 +12,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
     public bool goalReached = false;
     public AudioSource ResetSFX;
+    public AudioSource NextStageSFX;
     [HideInInspector]
     public Vector3 startingPlayerPos;
     //[HideInInspector]
@@ -100,12 +101,10 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                 case 1:
                     nextPuzzle("Start2");
                     goalCount = goalCounts[1];
-                    goalReached = false;
                     break;
                 case 2:
                     nextPuzzle("Start3");
                     goalCount = goalCounts[2];
-                    goalReached = false;
                     break;
             }
         }
@@ -166,6 +165,8 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
     IEnumerator NextLevel(int turnLimit, float startX, float startY, float startZ)
     {
+        if (NextStageSFX != null)
+            NextStageSFX.Play();
         isAvailable = false;
         player.GetComponent<Player>().control = false;
         fade.FadeInOutStatic(fadeDuration);
@@ -184,6 +185,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         isAvailable = true;
         turnCount = turnLimit;
         SetPosition();
+        goalReached = false;
         isReset = false;
         yield return null;
     }
