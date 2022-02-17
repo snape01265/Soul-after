@@ -13,6 +13,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
     public bool goalReached = false;
     public AudioSource ResetSFX;
+    public AudioSource OutofCountSFX;
     public AudioSource NextStageSFX;
     [HideInInspector]
     public Vector3 startingPlayerPos;
@@ -94,6 +95,8 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         }
         else if (turnCount == 0 && !isReset && !isPushing)
         {
+            if(OutofCountSFX)
+                OutofCountSFX.Play();
             isReset = true;
             switch (puzzleNum)
             {
