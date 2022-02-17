@@ -8,7 +8,7 @@ public class PortalCircuitSwitch : MonoBehaviour
     public AudioSource switchSFX;
 
     private Animator anim;
-    private bool pressed = false;
+    private bool isRange = false;
     private Collider2D playerCol;
     private bool isStartingPair = true;
 
@@ -20,7 +20,7 @@ public class PortalCircuitSwitch : MonoBehaviour
 
     private void Update()
     {
-        if (pressed && Input.GetButtonDown("Jump"))
+        if (isRange && Input.GetButtonDown("Jump"))
         {
             if (switchSFX != null)
                 switchSFX.Play();
@@ -36,13 +36,13 @@ public class PortalCircuitSwitch : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            pressed = true;
+            isRange = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        pressed = false;
+        isRange = false;
     }
 
     private void CircuitChange()
@@ -52,8 +52,8 @@ public class PortalCircuitSwitch : MonoBehaviour
             isStartingPair = false;
             for (int i = 0; i < PortalPairs.Length; i += 2)
             {
-                PortalPairs[i].SetActive(true);
-                PortalPairs[i + 1].SetActive(false);
+                PortalPairs[i].SetActive(false);
+                PortalPairs[i + 1].SetActive(true);
             }
         }
         else
@@ -61,8 +61,8 @@ public class PortalCircuitSwitch : MonoBehaviour
             isStartingPair = true;
             for (int i = 0; i < PortalPairs.Length; i += 2)
             {
-                PortalPairs[i].SetActive(false);
-                PortalPairs[i + 1].SetActive(true);
+                PortalPairs[i].SetActive(true);
+                PortalPairs[i + 1].SetActive(false);
             }
         }
     }
