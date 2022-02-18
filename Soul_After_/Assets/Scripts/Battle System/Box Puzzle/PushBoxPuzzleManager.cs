@@ -9,7 +9,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
-    //[HideInInspector]
+    [HideInInspector]
     public bool goalReached = false;
     [HideInInspector]
     public Vector3 startingBoxPos;
@@ -36,7 +36,18 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        SetPosition();
+        switch (puzzleNum)
+        {
+            case 1:
+                StartCoroutine(nextPuzzle("Start1", 13));
+                break;
+            case 2:
+                StartCoroutine(nextPuzzle("Start2", 8));
+                break;
+            case 3:
+                StartCoroutine(nextPuzzle("Start3", 3));
+                break;
+        }
     }
 
     private void Update()
@@ -95,10 +106,15 @@ public class PushBoxPuzzleManager : MonoBehaviour
                 case 1:
                     StartCoroutine(nextPuzzle("Start2", 8));
                     goalReached = false;
+                    puzzleNum += 1;
                     break;
                 case 2:
                     StartCoroutine(nextPuzzle("Start3", 3));
                     goalReached = false;
+                    puzzleNum += 1;
+                    break;
+                case 3:
+                    Debug.Log("puzzles cleared");
                     break;
             }
         }
@@ -122,8 +138,18 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player.transform.position = new Vector3(startX - 1, startY, startZ);
         box.targetPos = new Vector3(startX, startY, startZ);
         box.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x + 50, mainCamera.transform.position.y, mainCamera.transform.position.z);
-        puzzleNum += 1;
+        switch (puzzleNum)
+        {
+            case 1:
+                mainCamera.transform.position = new Vector3(3f, -0.5f, -10f);
+                break;
+            case 2:
+                mainCamera.transform.position = new Vector3(53f, -0.5f, -10f);
+                break;
+            case 3:
+                mainCamera.transform.position = new Vector3(103f, -0.5f, -10f);
+                break;
+        }
         SetPosition();
         yield return new WaitForSeconds(fadeDuration - 0.5f);
         isAvailable = true;
