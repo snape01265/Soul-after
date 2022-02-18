@@ -118,6 +118,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
                 case 2:
                     Debug.Log("puzzles cleared");
+                    goalReached = false;
                     break;
             }
         }
@@ -191,6 +192,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     IEnumerator MirrorWorldTransition(bool mirrorWorld)
     {
         RaycastHit2D hit = Physics2D.Raycast(player.transform.position, player.transform.position);
+        RaycastHit2D boxHit = Physics2D.Raycast(player.transform.position, player.transform.position);
         float playerX = player.transform.position.x;
         float playerY = player.transform.position.y;
         float playerZ = player.transform.position.z;
