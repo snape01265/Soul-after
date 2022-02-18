@@ -39,6 +39,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         puzzleNum = (int) puzzleSave.initialValue;
+        clearSFX.Play();
         switch (puzzleNum)
         {
             case 0:
