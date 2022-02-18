@@ -8,7 +8,9 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public KeyCode keyForReset;
     public int turnCount;
     [HideInInspector]
-    public int puzzleNum = 1;
+    public FloatValue puzzleSave;
+    [HideInInspector]
+    public int puzzleNum;
     [HideInInspector]
     public bool goalReached = false;
     [HideInInspector]
@@ -36,15 +38,16 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         box = GameObject.FindGameObjectWithTag("PushBox").GetComponent<PushBox>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        puzzleNum = (int) puzzleSave.initialValue;
         switch (puzzleNum)
         {
-            case 1:
+            case 0:
                 StartCoroutine(nextPuzzle("Start1", 13));
                 break;
-            case 2:
+            case 1:
                 StartCoroutine(nextPuzzle("Start2", 8));
                 break;
-            case 3:
+            case 2:
                 StartCoroutine(nextPuzzle("Start3", 3));
                 break;
         }
@@ -70,13 +73,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
             isReset = true;
             switch (puzzleNum)
             {
-                case 1:
+                case 0:
                     StartCoroutine(Reset(13));
                     break;
-                case 2:
+                case 1:
                     StartCoroutine(Reset(8));
                     break;
-                case 3:
+                case 2:
                     StartCoroutine(Reset(3));
                     break;
             }
@@ -87,13 +90,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
             isReset = true;
             switch (puzzleNum)
             {
-                case 1:
+                case 0:
                     StartCoroutine(Reset(13));
                     break;
-                case 2:
+                case 1:
                     StartCoroutine(Reset(8));
                     break;
-                case 3:
+                case 2:
                     StartCoroutine(Reset(3));
                     break;
             }
@@ -103,17 +106,17 @@ public class PushBoxPuzzleManager : MonoBehaviour
             clearSFX.Play();
             switch (puzzleNum)
             {
-                case 1:
+                case 0:
                     StartCoroutine(nextPuzzle("Start2", 8));
                     goalReached = false;
                     puzzleNum += 1;
                     break;
-                case 2:
+                case 1:
                     StartCoroutine(nextPuzzle("Start3", 3));
                     goalReached = false;
                     puzzleNum += 1;
                     break;
-                case 3:
+                case 2:
                     Debug.Log("puzzles cleared");
                     break;
             }
@@ -140,13 +143,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
         box.transform.position = new Vector3(startX, startY, startZ);
         switch (puzzleNum)
         {
-            case 1:
+            case 0:
                 mainCamera.transform.position = new Vector3(3f, -0.5f, -10f);
                 break;
-            case 2:
+            case 1:
                 mainCamera.transform.position = new Vector3(53f, -0.5f, -10f);
                 break;
-            case 3:
+            case 2:
                 mainCamera.transform.position = new Vector3(103f, -0.5f, -10f);
                 break;
         }
