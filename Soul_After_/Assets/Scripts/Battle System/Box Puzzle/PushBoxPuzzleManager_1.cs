@@ -33,6 +33,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     private GameObject player;
     private GameObject mainCamera;
     private bool isAvailable = true;
+    private bool isTranstioning = false;
 
     private void Start()
     {
@@ -97,7 +98,25 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset && !isPushing)
+        else if (turnCount >= 0 && goalReached && !isPushing)
+        {
+            goalReached = false;
+            isTranstioning = true;
+            switch (puzzleNum)
+            {
+                case 1:
+                    nextPuzzle("Start2");
+                    goalCount = goalCounts[1];
+                    StageNo.initialValue = 1;
+                    break;
+                case 2:
+                    nextPuzzle("Start3");
+                    goalCount = goalCounts[2];
+                    StageNo.initialValue = 2;
+                    break;
+            }
+        }
+        else if (turnCount == 0 && !isReset && !isPushing && !isTranstioning)
         {
             if(OutofCountSFX)
                 OutofCountSFX.Play();
@@ -112,23 +131,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
                 case 3:
                     StartCoroutine(Reset(2));
-                    break;
-            }
-        }
-        else if (turnCount >= 0 && goalReached && !isPushing)
-        {
-            goalReached = false;
-            switch (puzzleNum)
-            {
-                case 1:
-                    nextPuzzle("Start2");
-                    goalCount = goalCounts[1];
-                    StageNo.initialValue = 1;
-                    break;
-                case 2:
-                    nextPuzzle("Start3");
-                    goalCount = goalCounts[2];
-                    StageNo.initialValue = 2;
                     break;
             }
         }
@@ -213,6 +215,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         turnCount = turnLimit;
         SetPosition();
         isReset = false;
+        isTranstioning = false;
         yield return null;
     }
 }
