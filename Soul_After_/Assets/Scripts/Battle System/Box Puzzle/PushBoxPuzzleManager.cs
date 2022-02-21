@@ -104,6 +104,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     puzzleNum += 1;
                     break;
                 case 2:
+                    fade.FadeInOutStatic(fadeDuration);
                     LastTimeline.Play();
                     goalReached = false;
                     break;
