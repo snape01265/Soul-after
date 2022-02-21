@@ -85,26 +85,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset && !box.pushing && !goalReached)
-        {
-            resetSFX.Play();
-            isReset = true;
-            switch (puzzleNum)
-            {
-                case 0:
-                    StartCoroutine(Reset(13));
-                    break;
-                case 1:
-                    StartCoroutine(Reset(8));
-                    break;
-                case 2:
-                    StartCoroutine(Reset(3));
-                    break;
-            }
-        }
         else if (turnCount >= 0 && goalReached && !box.pushing)
         {
             clearSFX.Play();
+            isReset = true;
             switch (puzzleNum)
             {
                 case 0:
@@ -120,6 +104,23 @@ public class PushBoxPuzzleManager : MonoBehaviour
                 case 2:
                     Debug.Log("puzzles cleared");
                     goalReached = false;
+                    break;
+            }
+        }
+        else if (turnCount == 0 && !isReset && !box.pushing && !goalReached)
+        {
+            resetSFX.Play();
+            isReset = true;
+            switch (puzzleNum)
+            {
+                case 0:
+                    StartCoroutine(Reset(13));
+                    break;
+                case 1:
+                    StartCoroutine(Reset(8));
+                    break;
+                case 2:
+                    StartCoroutine(Reset(3));
                     break;
             }
         }
@@ -157,6 +158,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         }
         SetPosition();
         yield return new WaitForSeconds(fadeDuration - 0.5f);
+        isReset = false;
         isAvailable = true;
         player.GetComponent<Player>().control = true;
         turnCount = turnLimit;
