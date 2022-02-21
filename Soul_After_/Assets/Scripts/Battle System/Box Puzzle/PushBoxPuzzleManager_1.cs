@@ -49,6 +49,10 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         goalCount = goalCounts[puzzleNum];
         switch (puzzleNum)
         {
+            case 0:
+                nextPuzzle("Start1", 1);
+                goalCount = goalCounts[1];
+                break;
             case 1:
                 nextPuzzle("Start2", 2);
                 goalCount = goalCounts[1];
