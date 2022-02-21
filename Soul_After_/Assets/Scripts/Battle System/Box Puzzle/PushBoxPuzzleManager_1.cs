@@ -15,7 +15,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource ResetSFX;
     public AudioSource OutofCountSFX;
     public AudioSource NextStageSFX;
-    public PlayableDirector NextPuzzleTransition;
+    public PlayableDirector LastTimeline;
     [HideInInspector]
     public Vector3 startingPlayerPos;
     [HideInInspector]
@@ -117,7 +117,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
                 case 3:
                     fade.FadeInOutStatic(fadeDuration);
-                    NextPuzzleTransition.Play();
+                    LastTimeline.Play();
                     break;
             }
         }
