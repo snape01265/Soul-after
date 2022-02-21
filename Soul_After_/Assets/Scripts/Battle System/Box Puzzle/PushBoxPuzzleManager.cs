@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public Vector3 startingPlayerPos;
     [HideInInspector]
     public Fadein fade;
+    public PlayableDirector LastTimeline;
     public AudioSource resetSFX;
     public AudioSource mirrorSFX;
     public AudioSource clearSFX;
@@ -102,7 +104,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     puzzleNum += 1;
                     break;
                 case 2:
-                    Debug.Log("puzzles cleared");
+                    LastTimeline.Play();
                     goalReached = false;
                     break;
             }
