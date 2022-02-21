@@ -85,7 +85,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset && !box.pushing)
+        else if (turnCount == 0 && !isReset && !box.pushing && !goalReached)
         {
             resetSFX.Play();
             isReset = true;
