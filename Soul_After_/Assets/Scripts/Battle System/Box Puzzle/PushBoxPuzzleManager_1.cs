@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public int turnCount;
     [HideInInspector]
     public int puzzleNum = 1;
-
     public bool goalReached = false;
     public AudioSource ResetSFX;
     public AudioSource OutofCountSFX;
     public AudioSource NextStageSFX;
+    public PlayableDirector NextPuzzleTransition;
     [HideInInspector]
     public Vector3 startingPlayerPos;
     [HideInInspector]
@@ -113,6 +114,10 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     nextPuzzle("Start3");
                     goalCount = goalCounts[2];
                     StageNo.initialValue = 2;
+                    break;
+                case 3:
+                    fade.FadeInOutStatic(fadeDuration);
+                    NextPuzzleTransition.Play();
                     break;
             }
         }
