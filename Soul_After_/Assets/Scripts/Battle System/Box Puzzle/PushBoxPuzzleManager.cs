@@ -8,7 +8,6 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
     public int turnCount;
-    [HideInInspector]
     public FloatValue puzzleSave;
     [HideInInspector]
     public int puzzleNum;
