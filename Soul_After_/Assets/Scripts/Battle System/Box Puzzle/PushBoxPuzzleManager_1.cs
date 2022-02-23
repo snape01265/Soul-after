@@ -2,13 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
     public KeyCode keyForReset;
     public FloatValue StageNo;
     [HideInInspector]
-    public int turnCount;
+    public int TurnCount {
+        get
+        {
+            return turnCount;
+        }
+        set
+        {
+            turnCount = value;
+            SetCounter(value);
+        }
+    }
+    private int turnCount = 1;
     [HideInInspector]
     public int puzzleNum = 1;
     public bool goalReached = false;
@@ -16,6 +28,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource OutofCountSFX;
     public AudioSource NextStageSFX;
     public PlayableDirector LastTimeline;
+    public Text CounterTxt;
     [HideInInspector]
     public Vector3 startingPlayerPos;
     [HideInInspector]
@@ -99,7 +112,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount >= 0 && goalReached && !isPushing)
+        else if (TurnCount >= 0 && goalReached && !isPushing)
         {
             goalReached = false;
             isTranstioning = true;
@@ -121,7 +134,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset && !isPushing && !isTranstioning)
+        else if (TurnCount == 0 && !isReset && !isPushing && !isTranstioning)
         {
             if(OutofCountSFX)
                 OutofCountSFX.Play();
@@ -176,6 +189,11 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         startingPlayerPos = player.transform.position;
     }
 
+    public void SetCounter(int count)
+    {
+        CounterTxt.text = "≥≤¿∫ ≈œ : " + count.ToString();
+    }
+
     IEnumerator Reset(int turnLimit)
     {
         isAvailable = false;
@@ -192,7 +210,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
-        turnCount = turnLimit;
+        TurnCount = turnLimit;
         isReset = false;
         yield return null;
     }
@@ -206,7 +224,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         fade.FadeInOutStatic(fadeDuration);
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startX, startY, startZ);
-        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y + (30 * CamMulti), mainCamera.transform.position.z);
+        mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, 1 + (30 * CamMulti), mainCamera.transform.position.z);
 
         for (int i = 0; i < box.Count; i++)
         {
@@ -217,7 +235,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
-        turnCount = turnLimit;
+        TurnCount = turnLimit;
         SetPosition();
         isReset = false;
         isTranstioning = false;

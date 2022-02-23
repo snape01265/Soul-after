@@ -73,7 +73,7 @@ public class BoxPush_1 : MonoBehaviour
             pushing = false;
             teled = false;
             if (!puzzleManager.isReset)
-                puzzleManager.turnCount -= 1;
+                puzzleManager.TurnCount -= 1;
         }
     }
 
