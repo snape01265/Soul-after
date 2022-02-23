@@ -160,6 +160,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
         }
         SetPosition();
         yield return new WaitForSeconds(fadeDuration - 0.5f);
+        if(isMirrorWorld)
+        {
+            isMirrorWorld = false;
+        }
         isReset = false;
         isAvailable = true;
         player.GetComponent<Player>().control = true;
