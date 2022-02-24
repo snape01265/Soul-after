@@ -37,7 +37,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public Fadein fade;
     public float fadeDuration;
     [HideInInspector]
-    public bool isReset = false;
+    public bool isAvailable = true;
     [HideInInspector]
     public bool isPushing = false;
 
@@ -46,8 +46,9 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     private List<BoxPush_1> box = new List<BoxPush_1>();
     private GameObject player;
     private GameObject mainCamera;
-    private bool isAvailable = true;
+    private bool isReset = false;
     private bool isTranstioning = false;
+    private bool puzzleFinished = false;
 
     private void Start()
     {
@@ -82,6 +83,11 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
     private void Update()
     {
+        if (puzzleFinished)
+        {
+            return;
+        }
+
         foreach(BoxPush_1 pb in box)
         {
             if (pb.pushing)
@@ -129,6 +135,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     StageNo.initialValue = 2;
                     break;
                 case 3:
+                    puzzleFinished = true;
                     fade.FadeInOutStatic(fadeDuration);
                     LastTimeline.Play();
                     break;
