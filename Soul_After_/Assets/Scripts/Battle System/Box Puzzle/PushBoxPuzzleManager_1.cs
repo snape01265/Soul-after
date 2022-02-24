@@ -212,7 +212,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         {
             //box[i].targetPos = box[i].transform.position;
             //box[i].LastLoc = box[i].transform.position;
-            box[i].PushToDest(startingBoxPos[i]);
+            box[i].PushToDest(startingBoxPos[i], false);
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
         player.GetComponent<Player>().control = true;
@@ -237,7 +237,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         {
             //box[i].targetPos = box[i].transform.position;
             //box[i].LastLoc = box[i].transform.position;
-            box[i].PushToDest(startingBoxPos[i]);
+            box[i].PushToDest(startingBoxPos[i], false);
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
         player.GetComponent<Player>().control = true;

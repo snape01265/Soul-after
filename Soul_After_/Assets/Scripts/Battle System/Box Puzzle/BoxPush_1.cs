@@ -211,13 +211,16 @@ public class BoxPush_1 : MonoBehaviour
         }
     }
 
-    public void PushToDest(Vector3 Dest)
+    public void PushToDest(Vector3 Dest, bool isSFX = true)
     {
-        if (iceTouched && IceTileSFX)
-            IceTileSFX.Play();
-        else
-            NormSFX.Play();
-
+        if (isSFX)
+        {
+            if (iceTouched && IceTileSFX)
+                IceTileSFX.Play();
+            else
+                NormSFX.Play();
+        }
+        
         if (!teled)
         {
             LastLoc = transform.position;
