@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     private readonly float minY = -4.7f;
     private readonly float maxY = 3.65f;
 
-    private readonly float speed = 80;
+    private readonly float speed = 20;
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .25f;
 
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         nameSet = nameSetValue.initialValue;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetButtonDown("Cancel"))
         {
