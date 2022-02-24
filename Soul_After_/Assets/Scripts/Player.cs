@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         nameSet = nameSetValue.initialValue;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetButtonDown("Cancel"))
         {
