@@ -7,7 +7,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 {
 	public GameObject FlameGen;
 	public Waypoint[] wayPoints;
-	public float speed = 3f;
+	public float speed = 6f;
 	public bool inReverse = true;
 
 	public UnityEvent ActionOnWaypoint;
