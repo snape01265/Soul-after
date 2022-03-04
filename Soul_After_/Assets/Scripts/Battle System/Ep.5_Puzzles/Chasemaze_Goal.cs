@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Invismaze_Goal : MonoBehaviour
+public class Chasemaze_Goal : MonoBehaviour
 {
-    public InvismazePuzzleManager PuzzleManager;
+    public ChasemazePuzzleManager PuzzleManager;
     private bool _isGoal = false;
 
     private void OnTriggerEnter2D(Collider2D collision)

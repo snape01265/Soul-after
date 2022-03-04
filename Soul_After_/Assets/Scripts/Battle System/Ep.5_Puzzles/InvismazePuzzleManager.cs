@@ -45,7 +45,7 @@ public class InvismazePuzzleManager : MonoBehaviour
 
     public void FinPuzzle()
     {
-        Progress.initialValue[1] = true;
+        Progress.initialValue[0] = true;
         StartCoroutine(TeletoHub());
     }
 
