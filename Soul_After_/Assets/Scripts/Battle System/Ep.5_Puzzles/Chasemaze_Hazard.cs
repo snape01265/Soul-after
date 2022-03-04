@@ -9,22 +9,22 @@ public class Chasemaze_Hazard : MonoBehaviour
 
     [HideInInspector]
     public bool isMoving = false;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D Rigidbody;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
         if (isMoving)
         {
-            rigidbody.velocity = new Vector2(HazardSpeed, 0);
+            Rigidbody.velocity = new Vector2(HazardSpeed, 0);
         }
         else
         {
-            rigidbody.velocity = Vector2.zero;
+            Rigidbody.velocity = Vector2.zero;
         }
     }
 }
