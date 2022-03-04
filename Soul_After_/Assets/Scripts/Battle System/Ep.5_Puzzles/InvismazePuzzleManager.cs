@@ -5,57 +5,81 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class InvismazePuzzleManager : MonoBehaviour
 {
+    public GameObject Puzzle_1;
+    public GameObject Puzzle_2;
+    public GameObject Puzzle_3;
     public Player Player;
+    public BoolList Progress;
+    public Transform HubPos;
     public Transform StartPos;
     public Fadein Fadein;
+    public float BeforeFadeinDuration;
     public float FadeinDuration;
     public float LightsOutDuration;
     public Light2D Light;
 
-    private void Start()
+    public void InitPuzzle()
     {
-        Player.transform.position = StartPos.position;
-
         int mapNo = (int) Random.Range(0, 2);
 
         switch (mapNo)
         {
             case 0:
+                Puzzle_1.SetActive(true);
                 break;
             case 1:
+                Puzzle_2.SetActive(true);
                 break;
             case 2:
+                Puzzle_3.SetActive(true);
                 break;
         }
+
+        TeletoStart();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TeletoStart()
     {
-        if (collision.CompareTag("Player"))
-        {
-            StartCoroutine(TeletoStart(FadeinDuration));
-        }
+        StartCoroutine(TeletoStartPos());
     }
 
-    public void LightsOut()
+    public void FinPuzzle()
     {
-        StartCoroutine(LightsOut(LightsOutDuration));
+        Progress.initialValue[0] = true;
+        StartCoroutine(TeletoHub());
     }
 
-    IEnumerator LightsOut(float duration)
+    private void LightsOut()
     {
+        StartCoroutine(LightsFade());
+    }
+
+    IEnumerator LightsFade()
+    {
+        Light.intensity = 1;
+        yield return new WaitForSeconds(BeforeFadeinDuration);
         while (Light.intensity >= .01f)
         {
-            Light.intensity = Mathf.Lerp(Light.intensity, 0, duration);
+            Light.intensity = Mathf.Lerp(Light.intensity, 0, LightsOutDuration);
         }
         yield return null;
     }
 
-    IEnumerator TeletoStart(float duration)
+    IEnumerator TeletoStartPos()
     {
-        Fadein.FadeInOutStatic(duration);
-        yield return new WaitForSeconds(duration/2);
+        Fadein.FadeInOutStatic(FadeinDuration);
+        yield return new WaitForSeconds(FadeinDuration / 2);
         Player.transform.position = StartPos.position;
+        yield return null;
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        LightsOut();
+    }
+
+    IEnumerator TeletoHub()
+    {
+        Fadein.FadeInOutStatic(FadeinDuration);
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        Player.transform.position = HubPos.position;
         yield return null;
     }
 }
