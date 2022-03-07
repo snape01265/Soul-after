@@ -5,6 +5,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 
 public class FlameTrap : MonoBehaviour
 {
+    public AudioSource FlameSFX;
     public int patternType;
     public float interval;
     public float scale;
@@ -113,6 +114,8 @@ public class FlameTrap : MonoBehaviour
 
     public void Expand()
     {
+        if (FlameSFX)
+            FlameSFX.Play();
         lightComp.pointLightOuterRadius = 1f;
         transform.localScale = NormFire;
     }

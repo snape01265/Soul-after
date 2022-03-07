@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class ChasemazePuzzleManager : MonoBehaviour
 {
-    public Player Player;
     public Chasemaze_Hazard Hazard;
+    public Player Player;
     public BoolList Progress;
     public Transform HubPos;
     public Transform StartPos;
     public Fadein Fadein;
+    [Header("Puzzle Settings")]
     public float ChaseStartTime;
     public float FadeinDuration;
 
     public void InitPuzzle()
     {
         StartCoroutine(StartChase());
+        Player.gameObject.GetComponent<PlayerHealth>().RestoreHealth();
     }
 
     public void FinPuzzle()

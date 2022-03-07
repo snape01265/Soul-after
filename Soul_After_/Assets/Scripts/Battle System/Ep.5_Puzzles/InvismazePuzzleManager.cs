@@ -13,10 +13,12 @@ public class InvismazePuzzleManager : MonoBehaviour
     public Transform HubPos;
     public Transform StartPos;
     public Fadein Fadein;
+    public Light2D Light;
+    [Header("Puzzle Settings")]
     public float BeforeFadeinDuration;
     public float FadeinDuration;
     public float LightsOutDuration;
-    public Light2D Light;
+
 
     public void InitPuzzle()
     {
@@ -35,6 +37,7 @@ public class InvismazePuzzleManager : MonoBehaviour
                 break;
         }
 
+        Player.gameObject.GetComponent<PlayerHealth>().RestoreHealth();
         TeletoStart();
     }
 
