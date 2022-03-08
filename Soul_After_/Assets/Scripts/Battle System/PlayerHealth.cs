@@ -36,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
 
     private bool ShieldBroken = false;
     private bool ShieldCD = false;
+    private readonly float RECHARGEANIMTIME = 1f;
 
     void Start()
     {
@@ -145,6 +146,7 @@ public class PlayerHealth : MonoBehaviour
         if (ShieldBroken)
         {
             ShieldBroken = false;
+            ShieldAnim.SetBool("Broken", true);
             yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
         } else
         {
@@ -164,7 +166,9 @@ public class PlayerHealth : MonoBehaviour
     
     IEnumerator FlipAfter(int Time)
     {
-        yield return new WaitForSeconds(Time);
+        yield return new WaitForSeconds(Time - RECHARGEANIMTIME);
+        ShieldAnim.SetBool("Broken", false);
+        yield return new WaitForSeconds(RECHARGEANIMTIME);
         ShieldCD = false;
     }
 }
