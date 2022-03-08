@@ -3,61 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
+public class Boss_Phase1 : StateMachineBehaviour
 {
-	public GameObject FlameGen;
-	public Waypoint[] wayPoints;
-	public float speed = 3f;
+    public Waypoint[] wayPoints;
+    public float speed = 1f;
 	public bool inReverse = true;
-	public AudioSource sfx;
-
 	public UnityEvent ActionOnWaypoint;
 
-	private Vector3 prevPos;
+	private BossHP bossHP;
 	private Rigidbody2D myRigidbody;
-	private Animator anim;
-	private Waypoint currentWaypoint;
-	private int currentIndex = 0;
+	private Transform transform;
+    private Waypoint currentWaypoint;
+	private Vector3 prevPos;
 	private bool isWaiting = false;
 	private float speedStorage = 0;
-	void Start()
-	{
-		anim = GetComponent<Animator>();
-		myRigidbody = GetComponent<Rigidbody2D>();
-		if (wayPoints.Length > 0)
-		{
-			currentWaypoint = wayPoints[0];
-		}
-	}
-	private void OnEnable()
-	{
-		FlameGen.SetActive(true);
-	}
+	private int currentIndex = 0;
+	private Animator anim;
 
-	private void OnDisable()
-	{
-		FlameGen.SetActive(false);
-	}
+	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        myRigidbody = animator.GetComponent<Rigidbody2D>();
+		transform = animator.GetComponent<Transform>();
+		anim = animator.GetComponent<Animator>();
+		bossHP = animator.GetComponent<BossHP>();
+        if (wayPoints.Length > 0)
+        {
+            currentWaypoint = wayPoints[0];
+        }
+    }
 
-	void FixedUpdate()
-	{
-		if (currentWaypoint != null && !isWaiting)
-		{
-			MoveTowardsWaypoint();
-/*			float xvelocity = (transform.position.x - prevPos.x);
-			float yvelocity = (transform.position.y - prevPos.y);
-			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();*/
-			prevPos = transform.position;
-		}
-	}
-
-	public void Pause()
-	{
-		isWaiting = !isWaiting;
-	}
-
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (currentWaypoint != null && !isWaiting)
+        {
+            MoveTowardsWaypoint();
+            float xvelocity = (transform.position.x - prevPos.x);
+            float yvelocity = (transform.position.y - prevPos.y);
+            myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
+            prevPos = transform.position;
+        }
+    }
 	private void MoveTowardsWaypoint()
 	{
 		Vector3 currentPosition = this.transform.position;
@@ -66,7 +51,6 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 
 		if (Vector3.Distance(currentPosition, targetPosition) > .1f)
 		{
-
 			Vector3 directionOfTravel = targetPosition - currentPosition;
 			directionOfTravel.Normalize();
 
@@ -79,13 +63,9 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		}
 		else
 		{
-			if (sfx)
-				sfx.Play();
 			ActionOnWaypoint.Invoke();
 			if (currentWaypoint.waitSeconds > 0)
 			{
-				Pause();
-				Invoke("Pause", currentWaypoint.waitSeconds);
 			}
 
 			if (currentWaypoint.speedOut > 0)
@@ -111,10 +91,16 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		currentIndex = (!inReverse) ? currentIndex + 1 : currentIndex - 1;
 		currentWaypoint = wayPoints[currentIndex];
 	}
-
-	void UpdateAnimation()
+	public void Pause()
 	{
-		anim.SetFloat("Move X", myRigidbody.velocity.x);
-		anim.SetFloat("Move Y", myRigidbody.velocity.y);
+		isWaiting = !isWaiting;
+	}
+
+	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+		if(bossHP)
+        {
+			anim.SetInteger("Phase", 2);
+		}
 	}
 }

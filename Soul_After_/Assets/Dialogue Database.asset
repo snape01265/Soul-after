@@ -30141,7 +30141,9 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_1, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_X, 1, Player_Past);'
         type: 0
         typeString: 
       conversationID: 22
@@ -30165,7 +30167,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 31
         y: 100
         width: 160
         height: 30
@@ -30497,7 +30499,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 24}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 1
   - id: 23
     fields:
@@ -30637,7 +30639,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_2, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_X, 1, Player_Past);
+
+          AnimatorFloat(Move_X,
+          -1, Victim);'
         type: 0
         typeString: 
       conversationID: 23
@@ -31265,8 +31272,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 181.70723}
-    canvasZoom: 0.8200002
+    canvasScrollPosition: {x: 0, y: 147.25275}
+    canvasZoom: 0.9100001
   - id: 24
     fields:
     - title: Title
@@ -72700,8 +72707,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 588.223, y: 0}
-    canvasZoom: 0.7000003
+    canvasScrollPosition: {x: 88.58856, y: 0}
+    canvasZoom: 0.73000026
   - id: 43
     fields:
     - title: Title
