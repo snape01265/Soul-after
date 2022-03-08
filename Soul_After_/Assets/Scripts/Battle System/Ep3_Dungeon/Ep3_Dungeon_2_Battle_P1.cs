@@ -44,11 +44,11 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-			float xvelocity = (transform.position.x - prevPos.x);
+/*			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
 			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();
+				UpdateAnimation();*/
 			prevPos = transform.position;
 		}
 	}
