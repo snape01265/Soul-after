@@ -142,9 +142,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (ShieldBroken)
         {
-            yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
-        } else
-        {
             while (temp < numberOfFlashes)
             {
                 mySprite.color = flashColor;
@@ -153,6 +150,11 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(flashDuration);
                 temp++;
             }
+        } 
+        else
+        {
+            //ShieldAnim.Play("Shiled Animation");
+            yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
         }
 
         currentIFrame = null;

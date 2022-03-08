@@ -20,6 +20,7 @@ public class Flameshot : MonoBehaviour
 	private Light2D Light;
 	private Waypoint currentWaypoint;
 	private bool isWaiting = false;
+	private bool damaged = false;
 
 	void Start()
 	{
@@ -41,11 +42,11 @@ public class Flameshot : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-			float xvelocity = (transform.position.x - prevPos.x);
+/*			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
 			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();
+				UpdateAnimation();*/
 			prevPos = transform.position;
 		}
 	}
@@ -122,12 +123,19 @@ public class Flameshot : MonoBehaviour
 			Light.enabled = false;
 			isWaiting = true;
 		}
-		else if (other.gameObject.CompareTag("Player"))
+		else if (other.gameObject.CompareTag("Player") && !damaged)
         {
+			damaged = true;
 			playerHealth.TakeDamage(damage);
-        }
+			StartCoroutine(WaitForDmg());
+		}
     }
-    void UpdateAnimation()
+	private IEnumerator WaitForDmg()
+	{
+		yield return new WaitForSeconds(.5f);
+		damaged = false;
+	}
+	void UpdateAnimation()
 	{
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
 		anim.SetFloat("Move Y", myRigidbody.velocity.y);
