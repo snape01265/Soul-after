@@ -30141,7 +30141,9 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_1, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_X, 1, Player_Past);'
         type: 0
         typeString: 
       conversationID: 22
@@ -30165,7 +30167,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 30
+        x: 31
         y: 100
         width: 160
         height: 30
@@ -30497,7 +30499,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 24}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 1
   - id: 23
     fields:
@@ -30637,7 +30639,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_2, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_X, 1, Player_Past);
+
+          AnimatorFloat(Move_X,
+          -1, Victim);'
         type: 0
         typeString: 
       conversationID: 23
@@ -31265,8 +31272,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 181.70723}
-    canvasZoom: 0.8200002
+    canvasScrollPosition: {x: 0, y: 147.25275}
+    canvasZoom: 0.9100001
   - id: 24
     fields:
     - title: Title
@@ -69144,6 +69151,18 @@ MonoBehaviour:
         destinationDialogueID: 4
         isConnector: 0
         priority: 2
+      - originConversationID: 42
+        originDialogueID: 0
+        destinationConversationID: 42
+        destinationDialogueID: 8
+        isConnector: 0
+        priority: 2
+      - originConversationID: 42
+        originDialogueID: 0
+        destinationConversationID: 42
+        destinationDialogueID: 20
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -69319,9 +69338,7 @@ MonoBehaviour:
           Timeline(speed, Timeline_1, 1)@Message(Continued); // Resume timeline on
           continue
 
-          Fade(stay, 1, #FFFFFF);
-
-          Fade(in, .5, #FFFFFF);'
+          Fade(stay, 1, #FFFFFF);'
         type: 0
         typeString: CustomFieldType_Text
       - title: EventGuid
@@ -69410,7 +69427,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 218.39038
-        y: 174.29193
+        y: 172.2511
         width: 160
         height: 30
     - id: 5
@@ -69598,7 +69615,7 @@ MonoBehaviour:
       - originConversationID: 42
         originDialogueID: 7
         destinationConversationID: 42
-        destinationDialogueID: 8
+        destinationDialogueID: 60
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -69674,8 +69691,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 384.2654
-        y: 92.77054
+        x: 449.5715
+        y: 107.056244
         width: 160
         height: 30
     - id: 9
@@ -69741,8 +69758,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 449.8971
-        y: 154.55473
+        x: 447.8563
+        y: 156.59557
         width: 160
         height: 30
     - id: 10
@@ -69902,8 +69919,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\uADF8\uB7EC\uB2C8 \uB108\uD76C\uB4E4\uC774 \uB0A0 \uB2E8\uC8C4\uD560
-          \uC790\uACA9\uC740 \uC5C6\uC5B4!"
+        value: "\uB0B4\uAC00 \uC774\uB807\uAC8C \uB41C \uAC74... \uADF8 \uC0C8\uB07C\uB4E4
+          \uB54C\uBB38\uC774\uC57C!!! \uADF8\uB7EC\uB2C8 \uB108\uD76C\uB4E4\uC774
+          \uB0A0 \uB2E8\uC8C4\uD560 \uC790\uACA9\uC740 \uC5C6\uC5B4!!"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -70285,9 +70303,15 @@ MonoBehaviour:
 
           required
           Timeline(speed, Timeline_6, 1)@Message(Continued); // Resume timeline on
-          continue'
+          continue
+
+          Fade(stay, 1, #FFFFFF);'
         type: 0
         typeString: CustomFieldType_Text
+      - title: EventGuid
+        value: 17fcae1d-6ed7-4769-91ee-cd3082a3a716
+        type: 0
+        typeString: 
       conversationID: 42
       isRoot: 0
       isGroup: 0
@@ -70295,13 +70319,7 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 42
-        originDialogueID: 19
-        destinationConversationID: 42
-        destinationDialogueID: 20
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
       userScript: 
       onExecute:
@@ -72629,9 +72647,68 @@ MonoBehaviour:
         y: 523.7212
         width: 160
         height: 30
+    - id: 60
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Description
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Actor
+        value: 18
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 1
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Dialogue Text
+        value: "\uB354\uC774\uC0C1 \uCAD3\uC544\uC624\uC9C0\uB9C8!!"
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Sequence
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Timeline_1, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Timeline_1, 1)@Message(Continued); // Resume timeline on
+          continue'
+        type: 0
+        typeString: CustomFieldType_Text
+      conversationID: 42
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks: []
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 213.87735
+        y: 393.8772
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 0, y: 0}
-    canvasZoom: 0.49000046
+    canvasScrollPosition: {x: 588.223, y: 0}
+    canvasZoom: 0.7000003
   - id: 43
     fields:
     - title: Title
