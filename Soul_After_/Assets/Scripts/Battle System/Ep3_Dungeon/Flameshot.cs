@@ -10,13 +10,14 @@ public class Flameshot : MonoBehaviour
 	public float speed = 3f;
 	public int damage;
 	public PlayerHealth playerHealth;
+	public AudioSource ShotSFX;
 
 	private SpriteRenderer sprite;
 	private CircleCollider2D circleCollider;
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
 	private Animator anim;
-	private new Light2D light;
+	private Light2D Light;
 	private Waypoint currentWaypoint;
 	private bool isWaiting = false;
 
@@ -26,11 +27,11 @@ public class Flameshot : MonoBehaviour
 		circleCollider = GetComponent<CircleCollider2D>();
 		anim = GetComponent<Animator>();
 		myRigidbody = GetComponent<Rigidbody2D>();
-		light = transform.Find("Point Light 2D").GetComponent<Light2D>();
+		Light = transform.Find("Point Light 2D").GetComponent<Light2D>();
 
 		sprite.enabled = false;
 		circleCollider.enabled = false;
-		light.enabled = false;
+		Light.enabled = false;
 
 		FireFlamesDuration(1f);
 	}
@@ -51,29 +52,33 @@ public class Flameshot : MonoBehaviour
 
 	public void FireFlames()
     {
+		if (ShotSFX)
+			ShotSFX.Play();
 		transform.position = Boss.transform.position;
 		sprite.enabled = true;
 		circleCollider.enabled = true;
-		light.enabled = true;
+		Light.enabled = true;
 		currentWaypoint = wayPoints[0];
 		isWaiting = false;
 	}
 
 	public void FireFlamesDuration(float time)
     {
+		if (ShotSFX)
+			ShotSFX.Play();
 		IEnumerator FlipAfterDuration(float time)
 		{
 			yield return new WaitForSeconds(time);
 			isWaiting = true;
 			sprite.enabled = false;
 			circleCollider.enabled = false;
-			light.enabled = false;
+			Light.enabled = false;
 		}
 
 		transform.position = Boss.transform.position;
 		sprite.enabled = true;
 		circleCollider.enabled = true;
-		light.enabled = true;
+		Light.enabled = true;
 		currentWaypoint = wayPoints[0];
 		isWaiting = false;
 
@@ -103,7 +108,7 @@ public class Flameshot : MonoBehaviour
 		{
 			sprite.enabled = false;
 			circleCollider.enabled = false;
-			light.enabled = false;
+			Light.enabled = false;
 			isWaiting = true;
 		}
 	}
@@ -114,7 +119,7 @@ public class Flameshot : MonoBehaviour
         {
 			sprite.enabled = false;
 			circleCollider.enabled = false;
-			light.enabled = false;
+			Light.enabled = false;
 			isWaiting = true;
 		}
 		else if (other.gameObject.CompareTag("Player"))

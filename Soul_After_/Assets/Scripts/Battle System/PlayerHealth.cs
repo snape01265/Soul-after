@@ -88,6 +88,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void RestoreHealth()
+    {
+        RenderHp((int)CurHP.initialValue, maxHP);
+        CurHP.initialValue = maxHP;
+    }
+
     public void AddHeart()
     {
         string lastHeartName = "Heart_" + maxHP.ToString();
