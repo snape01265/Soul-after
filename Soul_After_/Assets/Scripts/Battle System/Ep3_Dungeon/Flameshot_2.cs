@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class Flameshot : MonoBehaviour
+public class Flameshot_2 : MonoBehaviour
 {
 	public GameObject Boss;
 	public Waypoint[] wayPoints;
@@ -33,8 +33,6 @@ public class Flameshot : MonoBehaviour
 		sprite.enabled = false;
 		circleCollider.enabled = false;
 		Light.enabled = false;
-
-		FireFlamesDuration(1f);
 	}
 
 	void FixedUpdate()
@@ -42,17 +40,12 @@ public class Flameshot : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-/*			float xvelocity = (transform.position.x - prevPos.x);
-			float yvelocity = (transform.position.y - prevPos.y);
-			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();*/
 			prevPos = transform.position;
 		}
 	}
 
 	public void FireFlames()
-    {
+	{
 		if (ShotSFX)
 			ShotSFX.Play();
 		transform.position = Boss.transform.position;
@@ -64,7 +57,7 @@ public class Flameshot : MonoBehaviour
 	}
 
 	public void FireFlamesDuration(float time)
-    {
+	{
 		if (ShotSFX)
 			ShotSFX.Play();
 		IEnumerator FlipAfterDuration(float time)
@@ -114,22 +107,22 @@ public class Flameshot : MonoBehaviour
 		}
 	}
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Wall"))
-        {
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+		if (other.gameObject.CompareTag("Wall"))
+		{
 			sprite.enabled = false;
 			circleCollider.enabled = false;
 			Light.enabled = false;
 			isWaiting = true;
 		}
 		else if (other.gameObject.CompareTag("Player") && !damaged)
-        {
+		{
 			damaged = true;
 			playerHealth.TakeDamage(damage);
 			StartCoroutine(WaitForDmg());
 		}
-    }
+	}
 	private IEnumerator WaitForDmg()
 	{
 		yield return new WaitForSeconds(.5f);
