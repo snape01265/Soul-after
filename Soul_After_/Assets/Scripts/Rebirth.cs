@@ -14,7 +14,6 @@ public class Rebirth : MonoBehaviour
     private void Start()
     {
         Volume volume = GetComponent<Volume>();
-
         volume.sharedProfile.TryGet<Bloom>(out bloom);
     }
 
