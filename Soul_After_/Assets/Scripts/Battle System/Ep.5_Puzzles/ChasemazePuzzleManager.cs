@@ -9,6 +9,7 @@ public class ChasemazePuzzleManager : MonoBehaviour
     public BoolList Progress;
     public Transform HubPos;
     public Transform StartPos;
+    public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
     [Header("Puzzle Settings")]
     public float ChaseStartTime;
@@ -24,6 +25,7 @@ public class ChasemazePuzzleManager : MonoBehaviour
     {
         Hazard.isMoving = false;
         Progress.initialValue[1] = true;
+        SelectionDoorManager.TrackProgress();
         StartCoroutine(TeletoHub());
     }
 

@@ -9,6 +9,7 @@ public class SimonPuzzleManager : MonoBehaviour
     public BoolList Progress;
     public Transform HubPos;
     public Transform StartPos;
+    public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
     [Header("Puzzle Settings")]
     public int PuzzlePatterns = 9;
@@ -16,6 +17,8 @@ public class SimonPuzzleManager : MonoBehaviour
     public float PuzzleStartTime;
     public float PatternDuration;
     public float PatternBreakTime;
+    [Header("Lightbulb Settings")]
+    public SimonPuzzle_Lightbulb[] Lightbulbs;
     public float LightsTime = 1;
     public float LightsTurnOff = 1;
     [HideInInspector]
@@ -41,8 +44,32 @@ public class SimonPuzzleManager : MonoBehaviour
     private PlayerHealth health;
     private int currentStage;
     private int[] puzzleAnswer;
-    
-    private readonly int[] DIFFICULTIES = { 1, 1, 1, 2, 2, 2, 3, 3, 3 };
+
+    public enum COLORS
+    {
+        Red     = 0,
+        Green   = 1,
+        Blue    = 2,
+        Yellow  = 3
+    }
+    private enum DIF
+    {
+        Easy    = 1,
+        Medium  = 2,
+        Hard    = 3
+    }
+    private enum ANSLENGTH
+    {
+        Easy = 3,
+        Medium = 4,
+        Hard = 5
+    }
+
+    private readonly int[] DIFFICULTIES = {
+                                            (int)DIF.Easy, (int)DIF.Easy, (int)DIF.Easy,
+                                            (int)DIF.Medium, (int)DIF.Medium, (int)DIF.Medium,
+                                            (int)DIF.Hard, (int)DIF.Hard, (int)DIF.Hard
+                                          };
     private readonly int DMG = 1;
 
     private void Start()
@@ -61,11 +88,9 @@ public class SimonPuzzleManager : MonoBehaviour
     {
         Progress.initialValue[2] = true;
         StartCoroutine(TeletoHub());
+        SelectionDoorManager.TrackProgress();
     }
 
-    // dif = 1 : Easy
-    // dif = 2 : Medium
-    // dif = 3 : Hard
     private int[] MakeAnswer(int dif)
     {
         List<int> ans = new List<int>();
@@ -74,20 +99,20 @@ public class SimonPuzzleManager : MonoBehaviour
         {
             case 1:
                 {
-                    for(int i = 0; i < 3; i++)
-                        ans.Add(Random.Range(0, 3));
+                    for(int i = 0; i < (int)ANSLENGTH.Easy; i++)
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
                     break;
                 }
             case 2:
                 {
-                    for (int i = 0; i < 4; i++)
-                        ans.Add(Random.Range(0, 3));
+                    for (int i = 0; i < (int)ANSLENGTH.Medium; i++)
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
                     break;
                 }
             case 3:
                 {
-                    for (int i = 0; i < 5; i++)
-                        ans.Add(Random.Range(0, 3));
+                    for (int i = 0; i < (int)ANSLENGTH.Hard; i++)
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
                     break;
                 }
         }
@@ -97,6 +122,9 @@ public class SimonPuzzleManager : MonoBehaviour
 
     private void CheckMatching(List<int> inputPat)
     {
+        if (inputPat == new List<int>())
+            return;
+
         if (inputPat.Last() == puzzleAnswer[inputPat.Count - 1] && inputPat.Count == puzzleAnswer.Length)
         {
             StopCoroutine(StartPattern());
@@ -114,6 +142,7 @@ public class SimonPuzzleManager : MonoBehaviour
 
     IEnumerator StartPattern()
     {
+        UserInput = new List<int>();
         if (PuzzlePatterns - 1 < currentStage)
         {
             FinPuzzle();
@@ -142,7 +171,6 @@ public class SimonPuzzleManager : MonoBehaviour
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
         Player.transform.position = StartPos.position;
-        yield return null;
         yield return new WaitForSeconds(FadeinDuration / 2);
         yield return new WaitForSeconds(PuzzleStartTime);
         StartCoroutine(StartPattern());
@@ -150,7 +178,18 @@ public class SimonPuzzleManager : MonoBehaviour
 
     IEnumerator RenderLights(int[] ans)
     {
-        yield return new WaitForSeconds(5);
+        int idx = 0;
+        foreach(int color in ans)
+        {
+            Lightbulbs[idx].TurnOnToColor(color);
+            yield return new WaitForSeconds(LightsTime);
+            idx++;
+        }
+        yield return new WaitForSeconds(LightsTurnOff);
+        foreach (SimonPuzzle_Lightbulb lightbulb in Lightbulbs)
+        {
+            lightbulb.TurnOff();
+        }
     }
 
     IEnumerator TeletoHub()

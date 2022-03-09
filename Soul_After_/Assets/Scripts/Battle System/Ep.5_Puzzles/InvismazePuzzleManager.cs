@@ -12,6 +12,7 @@ public class InvismazePuzzleManager : MonoBehaviour
     public BoolList Progress;
     public Transform HubPos;
     public Transform StartPos;
+    public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
     public Light2D Light;
     [Header("Puzzle Settings")]
@@ -49,6 +50,7 @@ public class InvismazePuzzleManager : MonoBehaviour
     public void FinPuzzle()
     {
         Progress.initialValue[0] = true;
+        SelectionDoorManager.TrackProgress();
         StartCoroutine(TeletoHub());
     }
 
