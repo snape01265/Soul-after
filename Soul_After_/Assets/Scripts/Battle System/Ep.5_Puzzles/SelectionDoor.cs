@@ -6,7 +6,7 @@ public class SelectionDoor : MonoBehaviour
 {
     public SelectionDoorManager DoorManager;
     public SelectionDoorManager.DOORTYPE DoorType;
-
+    private bool isTriggered = false;
     public void FinishedPuzzle()
     {
         gameObject.SetActive(false);
@@ -14,8 +14,9 @@ public class SelectionDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!isTriggered && collision.CompareTag("Player"))
         {
+            isTriggered = true;
             switch (DoorType)
             {
                 case SelectionDoorManager.DOORTYPE.InvisPuzzle:
@@ -29,5 +30,10 @@ public class SelectionDoor : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isTriggered = false;
     }
 }

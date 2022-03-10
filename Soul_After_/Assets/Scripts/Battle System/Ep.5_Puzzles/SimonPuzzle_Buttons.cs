@@ -21,11 +21,12 @@ public class SimonPuzzle_Buttons : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") && !pressed)
+        if(Manager.isInputable && collision.CompareTag("Player") && !pressed)
         {
             pressed = true;
             StartCoroutine(Flashing());
             Manager.UserInput.Add((int)InputColor);
+            Manager.CheckMatching(Manager.UserInput);
         }
     }
 

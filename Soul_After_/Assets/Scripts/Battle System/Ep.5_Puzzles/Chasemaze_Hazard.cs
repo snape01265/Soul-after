@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Chasemaze_Hazard : MonoBehaviour
 {
-    public Transform Hazard;
     public float HazardSpeed;
 
     [HideInInspector]
