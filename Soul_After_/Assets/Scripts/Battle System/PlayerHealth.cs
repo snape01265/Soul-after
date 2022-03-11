@@ -35,6 +35,8 @@ public class PlayerHealth : MonoBehaviour
     public Animator ShieldAnim;
 
     private bool ShieldBroken = false;
+    private bool ShieldCD = false;
+    private readonly float RECHARGEANIMTIME = 1f;
 
     void Start()
     {
@@ -65,9 +67,10 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         int oldhp = (int)CurHP.initialValue;
-        if (ShieldEnabled && !ShieldBroken)
+        if (ShieldEnabled && !ShieldBroken && !ShieldCD)
         {
             ShieldBroken = true;
+            ShieldCD = true;
             StartCoroutine(FlipAfter(CD));
         }
         else
@@ -142,6 +145,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (ShieldBroken)
         {
+            ShieldBroken = false;
+            ShieldAnim.SetBool("Broken", true);
+            yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
+        } else
+        {
             while (temp < numberOfFlashes)
             {
                 mySprite.color = flashColor;
@@ -150,11 +158,6 @@ public class PlayerHealth : MonoBehaviour
                 yield return new WaitForSeconds(flashDuration);
                 temp++;
             }
-        } 
-        else
-        {
-            //ShieldAnim.Play("Shiled Animation");
-            yield return new WaitForSeconds(numberOfFlashes * flashDuration * 2);
         }
 
         currentIFrame = null;
@@ -163,7 +166,9 @@ public class PlayerHealth : MonoBehaviour
     
     IEnumerator FlipAfter(int Time)
     {
-        yield return new WaitForSeconds(Time);
-        ShieldBroken = false;
+        yield return new WaitForSeconds(Time - RECHARGEANIMTIME);
+        ShieldAnim.SetBool("Broken", false);
+        yield return new WaitForSeconds(RECHARGEANIMTIME);
+        ShieldCD = false;
     }
 }

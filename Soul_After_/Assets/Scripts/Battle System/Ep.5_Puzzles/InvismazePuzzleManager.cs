@@ -12,6 +12,7 @@ public class InvismazePuzzleManager : MonoBehaviour
     public BoolList Progress;
     public Transform HubPos;
     public Transform StartPos;
+    public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
     public Light2D Light;
     [Header("Puzzle Settings")]
@@ -19,6 +20,15 @@ public class InvismazePuzzleManager : MonoBehaviour
     public float FadeinDuration;
     public float LightsOutDuration;
 
+    private Light2D playerLight;
+
+    private void Start()
+    {
+        Player.transform.Find("Point Light 2D").gameObject.SetActive(true);
+        playerLight = Player.transform.Find("Point Light 2D").GetComponent<Light2D>();
+        playerLight.pointLightOuterRadius = 2;
+        playerLight.intensity = 0;
+    }
 
     public void InitPuzzle()
     {
@@ -49,6 +59,7 @@ public class InvismazePuzzleManager : MonoBehaviour
     public void FinPuzzle()
     {
         Progress.initialValue[0] = true;
+        SelectionDoorManager.TrackProgress();
         StartCoroutine(TeletoHub());
     }
 
@@ -59,12 +70,18 @@ public class InvismazePuzzleManager : MonoBehaviour
 
     IEnumerator LightsFade()
     {
+        Player.CancelControl();
+        float time = 0;
         Light.intensity = 1;
         yield return new WaitForSeconds(BeforeFadeinDuration);
         while (Light.intensity >= .01f)
         {
-            Light.intensity = Mathf.Lerp(Light.intensity, 0, LightsOutDuration);
+            time += Time.deltaTime;
+            Light.intensity = Mathf.Lerp(1, 0, time / LightsOutDuration);
+            playerLight.intensity = Mathf.Lerp(0, 0.3f, time / LightsOutDuration);
+            yield return new WaitForEndOfFrame();
         }
+        Player.GiveBackControl();
         yield return null;
     }
 
