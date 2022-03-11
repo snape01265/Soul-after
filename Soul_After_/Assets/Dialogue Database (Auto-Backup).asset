@@ -1192,7 +1192,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     - title: Initial Value
-      value: 7
+      value: 0
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -42472,7 +42472,9 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_Y, 1, Victim_Main);'
         type: 0
         typeString: 
       conversationID: 32
@@ -42534,7 +42536,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_Y, 1, Coach_Main);
+
+          AnimatorFloat(Move_Y,
+          1, Victim_Main);'
         type: 0
         typeString: 
       conversationID: 32
@@ -42788,8 +42795,7 @@ MonoBehaviour:
         typeString: 
       - title: Dialogue Text
         value: "\uBB50\uAE34 \uBB50\uC57C! \uB124 \uC120\uC218 \uC778\uC0DD \uB9DD\uCE58\uAC8C
-          \uD558\uB294 \uACC4\uC57D\uC11C\uC9C0! \uB2E8\uC7A5\uB2D8! \uC774\uAC70
-          \uACC4\uC57D\uC11C \uC798\uBABB \uAC00\uC838\uC624\uC2E0\uAC70 \uC544\uB2C8\uC5D0\uC694? "
+          \uD558\uB294 \uACC4\uC57D\uC11C\uC9C0! "
         type: 0
         typeString: 
       - title: Sequence
@@ -42803,7 +42809,9 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_Y, -1, Coach_Main);'
         type: 0
         typeString: 
       conversationID: 32
@@ -42817,7 +42825,7 @@ MonoBehaviour:
       - originConversationID: 32
         originDialogueID: 51
         destinationConversationID: 32
-        destinationDialogueID: 52
+        destinationDialogueID: 80
         isConnector: 0
         priority: 2
       conditionsString: 
@@ -42893,8 +42901,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 241
-        y: 395
+        x: 242.49255
+        y: 453.20898
         width: 160
         height: 30
     - id: 53
@@ -42953,8 +42961,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 242
-        y: 444
+        x: 244.98508
+        y: 509.67157
         width: 160
         height: 30
     - id: 54
@@ -44003,7 +44011,10 @@ MonoBehaviour:
           Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
           on continue
 
-          AnimatorFloat(Move_X, 1, Coach_Main);'
+          AnimatorFloat(Move_X, 1, Coach_Main);
+
+          AnimatorFloat(Move_Y,
+          0, Coach_Main);'
         type: 0
         typeString: 
       conversationID: 32
@@ -44399,7 +44410,9 @@ MonoBehaviour:
 
           required
           Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
-          on continue'
+          on continue
+
+          AnimatorFloat(Move_Y, -1, Coach_Main);'
         type: 0
         typeString: 
       conversationID: 32
@@ -44424,7 +44437,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 651.343
-        y: 104.47751
+        y: 105.97003
         width: 160
         height: 30
     - id: 76
@@ -44681,8 +44694,76 @@ MonoBehaviour:
         y: 408.95502
         width: 160
         height: 30
+    - id: 80
+      fields:
+      - title: Title
+        value: 
+        type: 0
+        typeString: 
+      - title: Description
+        value: 
+        type: 0
+        typeString: 
+      - title: Actor
+        value: 22
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Conversant
+        value: 17
+        type: 5
+        typeString: CustomFieldType_Actor
+      - title: Menu Text
+        value: 
+        type: 0
+        typeString: 
+      - title: Dialogue Text
+        value: "\uB2E8\uC7A5\uB2D8! \uC774\uAC70 \uACC4\uC57D\uC11C \uC798\uBABB
+          \uAC00\uC838\uC624\uC2E0\uAC70 \uC544\uB2C8\uC5D0\uC694? "
+        type: 0
+        typeString: 
+      - title: Sequence
+        value: 'SetContinueMode(false); // Remove continue button
+
+          Timeline(speed, 
+          Ep.3_Timeline_11, 0); // Pause timeline (use speed to pause)
+
+          SetContinueMode(true)@Message(Typed)
+          // Active continue button upon special message ''Typed''
+
+          required
+          Timeline(speed, Ep.3_Timeline_11, 1)@Message(Continued); // Resume timeline
+          on continue
+
+          AnimatorFloat(Move_Y, 1, Coach_Main);'
+        type: 0
+        typeString: 
+      conversationID: 32
+      isRoot: 0
+      isGroup: 0
+      nodeColor: 
+      delaySimStatus: 0
+      falseConditionAction: Block
+      conditionPriority: 2
+      outgoingLinks:
+      - originConversationID: 32
+        originDialogueID: 80
+        destinationConversationID: 32
+        destinationDialogueID: 52
+        isConnector: 0
+        priority: 2
+      conditionsString: 
+      userScript: 
+      onExecute:
+        m_PersistentCalls:
+          m_Calls: []
+      canvasRect:
+        serializedVersion: 2
+        x: 240.89537
+        y: 395.52213
+        width: 160
+        height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 143.28351, y: 0}
+    canvasScrollPosition: {x: 37.313416, y: 0}
     canvasZoom: 0.6700003
   - id: 33
     fields:
@@ -46495,7 +46576,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 55.696167, y: 6.3291016}
+    canvasScrollPosition: {x: 141.7721, y: 8.860748}
     canvasZoom: 0.7900002
   - id: 34
     fields:
