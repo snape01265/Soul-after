@@ -5,22 +5,25 @@ using Cinemachine;
 
 public class Turret : MonoBehaviour
 {
+    public float rotationSpeed;
     [HideInInspector]
     public CinemachineVirtualCamera playerCam;
     [HideInInspector]
     public CinemachineVirtualCamera turretCam;
 
-    private bool playerInRange = false;
     private GameObject playerPosition;
+    private bool playerInRange = false;
     private bool onTurret = false;
     private Player player;
     private Animator playerAnim;
+    private Transform turretTransform;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerPosition = GameObject.FindGameObjectWithTag("Player");
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        turretTransform = GetComponent<SpriteRenderer>().transform;
     }
     private void Update()
     {
@@ -31,10 +34,9 @@ public class Turret : MonoBehaviour
             player.CancelControl();
             playerAnim.SetFloat("Move_X", 0);
             playerAnim.SetFloat("Move_Y", 1);
-            playerAnim.SetBool("Moving", false);
-            onTurret = true;
             playerCam.Priority = 0;
             turretCam.Priority = 1;
+            onTurret = true;
         }
         else if (Input.GetKeyDown(KeyCode.F) && onTurret)
         {
@@ -42,6 +44,17 @@ public class Turret : MonoBehaviour
             playerCam.Priority = 1;
             turretCam.Priority = 0;
             onTurret = false;
+        }
+        if (onTurret)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                turretTransform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                turretTransform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
+            }
         }
     }
     private void OnDisable()
