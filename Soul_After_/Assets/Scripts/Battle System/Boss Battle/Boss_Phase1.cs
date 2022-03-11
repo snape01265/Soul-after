@@ -95,12 +95,8 @@ public class Boss_Phase1 : StateMachineBehaviour
 	{
 		isWaiting = !isWaiting;
 	}
-
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	public void Resume()
     {
-		if(bossHP)
-        {
-			anim.SetInteger("Phase", 2);
-		}
-	}
+		isWaiting = true;
+    }
 }
