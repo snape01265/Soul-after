@@ -22,28 +22,13 @@ public class SimonPuzzleManager : MonoBehaviour
     public float LightsTime = 1;
     public float LightsTurnOff = 1;
     [HideInInspector]
-    public List<int> UserInput
-    {
-        get
-        {
-            return userInput;
-        }
-        set
-        {
-            if (isInputable)
-            {
-                userInput = value;
-                CheckMatching(value);
-            }
-        }
-    }
-    private List<int> userInput;
+    public List<int> UserInput = new List<int>();
     [HideInInspector]
     public bool isInputable = false;
 
     private PlayerHealth health;
-    private int currentStage;
-    private int[] puzzleAnswer;
+    public int currentStage;
+    public int[] puzzleAnswer;
 
     public enum COLORS
     {
@@ -120,29 +105,34 @@ public class SimonPuzzleManager : MonoBehaviour
         return ans.ToArray();
     }
 
-    private void CheckMatching(List<int> inputPat)
+    public void CheckMatching(List<int> inputPat)
     {
-        if (inputPat == new List<int>())
-            return;
-
         if (inputPat.Last() == puzzleAnswer[inputPat.Count - 1] && inputPat.Count == puzzleAnswer.Length)
         {
-            StopCoroutine(StartPattern());
+            Debug.Log("Correct");
+            StopAllCoroutines();
+            isInputable = false;
+            UserInput = new List<int>();
             StartCoroutine(TakeABreak());
         }
         else if (inputPat.Last() == puzzleAnswer[inputPat.Count - 1])
+        {
+            Debug.Log("Correct for now");
             return;
+        }
         else
         {
+            Debug.Log("incorrect");
             health.TakeDamage(DMG);
-            StopCoroutine(StartPattern());
+            StopAllCoroutines();
+            isInputable = false;
+            UserInput = new List<int>();
             StartCoroutine(TakeABreak());
         }
     }
 
     IEnumerator StartPattern()
     {
-        UserInput = new List<int>();
         if (PuzzlePatterns - 1 < currentStage)
         {
             FinPuzzle();
@@ -150,20 +140,17 @@ public class SimonPuzzleManager : MonoBehaviour
         }
 
         puzzleAnswer = MakeAnswer(DIFFICULTIES[currentStage]);
-        var renderLights = StartCoroutine(RenderLights(puzzleAnswer));
-        while (renderLights != null)
-        {
-            yield return null;
-        }
+        yield return StartCoroutine(RenderLights(puzzleAnswer));
 
         currentStage++;
+        Debug.Log(currentStage);
         isInputable = true;
         yield return new WaitForSeconds(PatternDuration);
         isInputable = false;
         health.TakeDamage(DMG);
-
+        UserInput = new List<int>();
         yield return new WaitForSeconds(PatternBreakTime);
-        StartCoroutine(StartPattern());
+        yield return StartCoroutine(StartPattern());
     }
 
     IEnumerator StartPuzzle()
@@ -173,7 +160,7 @@ public class SimonPuzzleManager : MonoBehaviour
         Player.transform.position = StartPos.position;
         yield return new WaitForSeconds(FadeinDuration / 2);
         yield return new WaitForSeconds(PuzzleStartTime);
-        StartCoroutine(StartPattern());
+        yield return StartCoroutine(StartPattern());
     }
 
     IEnumerator RenderLights(int[] ans)
@@ -190,6 +177,7 @@ public class SimonPuzzleManager : MonoBehaviour
         {
             lightbulb.TurnOff();
         }
+        yield return null;
     }
 
     IEnumerator TeletoHub()
@@ -203,6 +191,6 @@ public class SimonPuzzleManager : MonoBehaviour
     IEnumerator TakeABreak()
     {
         yield return new WaitForSeconds(PatternBreakTime);
-        StartCoroutine(StartPattern());
+        yield return StartCoroutine(StartPattern());
     }
 }

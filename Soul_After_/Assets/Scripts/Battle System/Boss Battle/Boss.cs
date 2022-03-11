@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    public float stunDuration;
+    [HideInInspector]
+    public Boss_Phase1 bossMovement;
+    //[HideInInspector]
+    public GameObject turrets;
+    [HideInInspector]
+    public Animator anim;
+
     void Start()
     {
-        
+        anim = this.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Stun()
     {
-        
+        StartCoroutine(BossStun());
+    }
+    IEnumerator BossStun()
+    {
+        anim.SetBool("Stunned", true);
+        //bossMovement.Pause();
+        turrets.SetActive(true);
+        yield return new WaitForSeconds(stunDuration);
+        anim.SetBool("Stunned", false);
+        //bossMovement.Resume();
+        turrets.SetActive(false);
     }
 }
