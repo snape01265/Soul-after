@@ -16,7 +16,6 @@ public class Boss : MonoBehaviour
     void Start()
     {
         anim = this.GetComponent<Animator>();
-        bossMovement = anim.GetComponent<Boss_Phase1>();
     }
 
     public void Stun()
@@ -26,11 +25,11 @@ public class Boss : MonoBehaviour
     IEnumerator BossStun()
     {
         anim.SetBool("Stunned", true);
-        bossMovement.Pause();
+        //bossMovement.Pause();
         turrets.SetActive(true);
         yield return new WaitForSeconds(stunDuration);
         anim.SetBool("Stunned", false);
-        bossMovement.Resume();
+        //bossMovement.Resume();
         turrets.SetActive(false);
     }
 }
