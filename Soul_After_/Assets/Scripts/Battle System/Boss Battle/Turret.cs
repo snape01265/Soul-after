@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Cinemachine;
 
 public class Turret : MonoBehaviour
 {
     public float rotationSpeed;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public bool cooldown;
     [HideInInspector]
     public CinemachineVirtualCamera playerCam;
     [HideInInspector]
@@ -47,7 +51,11 @@ public class Turret : MonoBehaviour
         }
         if (onTurret)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.Space) && !cooldown)
+            {
+                FireBullet();
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 turretTransform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
             }
@@ -55,7 +63,17 @@ public class Turret : MonoBehaviour
             {
                 turretTransform.Rotate(-Vector3.forward * rotationSpeed * Time.deltaTime);
             }
+            float minRotation = -75;
+            float maxRotation = 75;
+            Vector3 currentRotation = transform.localRotation.eulerAngles;
+            currentRotation.z = (currentRotation.z > 180) ? currentRotation.z - 360 : currentRotation.z;
+            currentRotation.z = Mathf.Clamp(currentRotation.z, minRotation, maxRotation);
+            transform.localRotation = Quaternion.Euler(currentRotation);
         }
+    }
+    private void FireBullet()
+    {
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
     }
     private void OnDisable()
     {
