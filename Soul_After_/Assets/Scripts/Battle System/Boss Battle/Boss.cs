@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
     public float stunDuration;
     [HideInInspector]
     public Boss_Phase1 bossMovement;
-    //[HideInInspector]
+    [HideInInspector]
     public GameObject turrets;
     [HideInInspector]
     public Animator anim;

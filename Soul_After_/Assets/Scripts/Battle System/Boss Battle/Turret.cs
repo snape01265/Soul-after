@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
     [HideInInspector]
     public CinemachineVirtualCamera turretCam;
 
+    private Quaternion originalRotation;
     private GameObject playerPosition;
     private bool playerInRange = false;
     private bool onTurret = false;
@@ -28,6 +29,7 @@ public class Turret : MonoBehaviour
         playerPosition = GameObject.FindGameObjectWithTag("Player");
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         turretTransform = GetComponent<SpriteRenderer>().transform;
+        originalRotation = transform.rotation;
     }
     private void Update()
     {
@@ -84,6 +86,7 @@ public class Turret : MonoBehaviour
             turretCam.Priority = 0;
             onTurret = false;
         }
+        transform.rotation = originalRotation;
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
