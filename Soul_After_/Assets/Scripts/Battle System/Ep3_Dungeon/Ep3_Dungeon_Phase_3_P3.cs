@@ -9,8 +9,11 @@ public class Ep3_Dungeon_Phase_3_P3 : MonoBehaviour
     public AudioSource sfx;
     public float Duration;
 
+    private Animator bossAnim;
+
     private void OnEnable()
     {
+        bossAnim = GetComponent<Animator>();
         if (sfx)
             sfx.Play();
         StartCoroutine(ColOfFloors());
@@ -26,12 +29,13 @@ public class Ep3_Dungeon_Phase_3_P3 : MonoBehaviour
     {
         bool first = true;
         int idx = 0;
-
         while (true)
         {
             if (first)
             {
-                first = !first;
+                first = false;
+                if (bossAnim != null)
+                    bossAnim.SetTrigger("Attack");
             }
             else
             {
@@ -39,6 +43,9 @@ public class Ep3_Dungeon_Phase_3_P3 : MonoBehaviour
 
                 if (sfx)
                     sfx.Play();
+
+                if (bossAnim != null)
+                    bossAnim.SetTrigger("Attack");
             }
 
             for (int j = 0; j < Flames.Length; j++)
