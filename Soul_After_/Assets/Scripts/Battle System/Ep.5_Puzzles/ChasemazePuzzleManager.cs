@@ -17,11 +17,12 @@ public class ChasemazePuzzleManager : MonoBehaviour
     public CinemachineVirtualCamera ChaseCam;
     [Header("Puzzle Settings")]
     public float FadeinDuration;
-    private Chasemaze_Hazard[] hazard;
+    private List<Chasemaze_Hazard> hazard;
 
     public void InitPuzzle()
     {
-        hazard = GetComponents<Chasemaze_Hazard>();
+        hazard = new List<Chasemaze_Hazard>(GetComponentsInChildren<Chasemaze_Hazard>());
+        hazard.Add(ChaseCam.GetComponent<Chasemaze_Hazard>());
         StartCoroutine(TeleToStartPos());
         Player.gameObject.GetComponent<PlayerHealth>().RestoreHealth();
     }
