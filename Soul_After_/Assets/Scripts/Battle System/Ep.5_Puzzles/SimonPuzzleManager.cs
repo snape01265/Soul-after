@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using Cinemachine;
 using System.Linq;
 
 public class SimonPuzzleManager : MonoBehaviour
@@ -11,10 +13,12 @@ public class SimonPuzzleManager : MonoBehaviour
     public Transform StartPos;
     public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
+    public PlayableDirector StartTimeline;
+    public PlayableDirector EndTimeline;
+    public CinemachineVirtualCamera SimonCam;
     [Header("Puzzle Settings")]
     public int PuzzlePatterns = 9;
     public float FadeinDuration;
-    public float PuzzleStartTime;
     public float PatternDuration;
     public float PatternBreakTime;
     [Header("Lightbulb Settings")]
@@ -65,7 +69,7 @@ public class SimonPuzzleManager : MonoBehaviour
     public void InitPuzzle()
     {
         currentStage = 0;
-        StartCoroutine(StartPuzzle());
+        StartCoroutine(TeletoStartPos());
         health.RestoreHealth();
     }
 
@@ -74,6 +78,16 @@ public class SimonPuzzleManager : MonoBehaviour
         Progress.initialValue[2] = true;
         StartCoroutine(TeletoHub());
         SelectionDoorManager.TrackProgress();
+    }
+
+    public void StartPuzzle()
+    {
+        StartCoroutine(StartPattern());
+    }
+
+    private void EndPuzzle()
+    {
+        EndTimeline.Play();
     }
 
     private int[] MakeAnswer(int dif)
@@ -135,7 +149,7 @@ public class SimonPuzzleManager : MonoBehaviour
     {
         if (PuzzlePatterns - 1 < currentStage)
         {
-            FinPuzzle();
+            EndPuzzle();
             yield break;
         }
 
@@ -153,14 +167,16 @@ public class SimonPuzzleManager : MonoBehaviour
         yield return StartCoroutine(StartPattern());
     }
 
-    IEnumerator StartPuzzle()
+    IEnumerator TeletoStartPos()
     {
+        Player.CancelControl();
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
+        SimonCam.enabled = true;
         Player.transform.position = StartPos.position;
         yield return new WaitForSeconds(FadeinDuration / 2);
-        yield return new WaitForSeconds(PuzzleStartTime);
-        yield return StartCoroutine(StartPattern());
+        Player.GiveBackControl();
+        StartTimeline.Play();
     }
 
     IEnumerator RenderLights(int[] ans)
@@ -184,6 +200,7 @@ public class SimonPuzzleManager : MonoBehaviour
     {
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
+        SimonCam.enabled = false;
         Player.transform.position = HubPos.position;
         yield return null;
     }

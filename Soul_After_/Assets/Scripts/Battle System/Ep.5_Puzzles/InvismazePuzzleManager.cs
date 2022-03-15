@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Playables;
+using Cinemachine;
 
 public class InvismazePuzzleManager : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class InvismazePuzzleManager : MonoBehaviour
     public Transform StartPos;
     public SelectionDoorManager SelectionDoorManager;
     public Fadein Fadein;
+    public PlayableDirector StartTimeline;
+    public PlayableDirector EndTimeline;
     public Light2D Light;
+    public CinemachineVirtualCamera InvisCam;
     [Header("Puzzle Settings")]
     public float BeforeFadeinDuration;
     public float FadeinDuration;
@@ -48,12 +53,12 @@ public class InvismazePuzzleManager : MonoBehaviour
         }
 
         Player.gameObject.GetComponent<PlayerHealth>().RestoreHealth();
-        TeletoStart();
+        StartCoroutine(TeleToStartPos());
     }
 
-    public void TeletoStart()
+    public void ReturnToStart()
     {
-        StartCoroutine(TeletoStartPos());
+        StartCoroutine(ReturnToStartPos());
     }
 
     public void FinPuzzle()
@@ -63,9 +68,14 @@ public class InvismazePuzzleManager : MonoBehaviour
         StartCoroutine(TeletoHub());
     }
 
-    private void LightsOut()
+    public void StartPuzzle()
     {
         StartCoroutine(LightsFade());
+    }
+
+    public void EndPuzzle()
+    {
+        EndTimeline.Play();
     }
 
     IEnumerator LightsFade()
@@ -82,23 +92,35 @@ public class InvismazePuzzleManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         Player.GiveBackControl();
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 
-    IEnumerator TeletoStartPos()
+    IEnumerator TeleToStartPos()
     {
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
+        InvisCam.enabled = true;
         Player.transform.position = StartPos.position;
-        yield return null;
         yield return new WaitForSeconds(FadeinDuration / 2);
-        LightsOut();
+        StartTimeline.Play();
+    }
+
+    IEnumerator ReturnToStartPos()
+    {
+        Player.CancelControl();
+        Fadein.FadeInOutStatic(FadeinDuration);
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        Player.transform.position = StartPos.position;
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        Player.GiveBackControl();
+        yield return StartCoroutine(LightsFade());
     }
 
     IEnumerator TeletoHub()
     {
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
+        InvisCam.enabled = false;
         Player.transform.position = HubPos.position;
         yield return null;
     }

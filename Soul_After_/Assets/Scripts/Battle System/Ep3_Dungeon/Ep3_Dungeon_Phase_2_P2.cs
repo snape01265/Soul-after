@@ -8,8 +8,11 @@ public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
     public AudioSource sfx;
     public float Duration;
 
+    private Animator bossAnim;
+
     private void OnEnable()
     {
+        bossAnim = GetComponent<Animator>();
         if (sfx)
             sfx.Play();
         StartCoroutine(RowOfFloors());
@@ -23,19 +26,25 @@ public class Ep3_Dungeon_Phase_2_P2 : MonoBehaviour
 
     IEnumerator RowOfFloors()
     {
-
+  
         bool first = true;
 
         while (true)
         {
             if (first)
-                first = !first;
+            {
+                first = false;
+                if (bossAnim != null)
+                    bossAnim.SetTrigger("Attack");
+            }
             else
             {
                 yield return new WaitForSeconds(1.5f);
 
                 if (sfx)
                     sfx.Play();
+                if (bossAnim != null)
+                    bossAnim.SetTrigger("Attack");
             }
 
             for (int i = 0; i< LavaFloors.Length; i++)

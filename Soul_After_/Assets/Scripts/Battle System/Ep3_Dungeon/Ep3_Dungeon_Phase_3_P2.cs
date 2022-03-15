@@ -9,8 +9,11 @@ public class Ep3_Dungeon_Phase_3_P2 : MonoBehaviour
 	public float ActionTime;
     public AudioSource sfx;
 
-    private void Start()
+    private Animator bossAnim;
+
+    private void OnEnable()
     {
+        bossAnim = GetComponent<Animator>();
         StartCoroutine(FirePattern());
     }
 
@@ -18,6 +21,9 @@ public class Ep3_Dungeon_Phase_3_P2 : MonoBehaviour
     {
         while (true)
         {
+            if (bossAnim != null)
+                bossAnim.SetTrigger("Attack");
+
             if (sfx)
                 sfx.Play();
             ActionPerTime.Invoke();

@@ -14,7 +14,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 
 	private Vector3 prevPos;
 	private Rigidbody2D myRigidbody;
-	private Animator anim;
+	private Animator bossAnim;
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
 	private bool isWaiting = false;
@@ -22,7 +22,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 
 	void Start()
 	{
-		anim = GetComponent<Animator>();
+		bossAnim = GetComponent<Animator>();
 		myRigidbody = GetComponent<Rigidbody2D>();
 		if (wayPoints.Length > 0)
 		{
@@ -48,7 +48,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
+			if (bossAnim.GetFloat("Move Y") != 0 && bossAnim.GetFloat("Move Y") != 0)
 				UpdateAnimation();
 			prevPos = transform.position;
 		}
@@ -80,6 +80,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 		}
 		else
 		{
+			bossAnim.SetTrigger("Attack");
 			ActionOnWaypoint.Invoke();
 			if (currentWaypoint.waitSeconds > 0)
 			{
@@ -113,7 +114,7 @@ public class Ep3_Dungeon_Phase_2_P1 : MonoBehaviour
 
 	void UpdateAnimation()
 	{
-		anim.SetFloat("Move X", myRigidbody.velocity.x);
-		anim.SetFloat("Move Y", myRigidbody.velocity.y);
+		bossAnim.SetFloat("Move X", myRigidbody.velocity.x);
+		bossAnim.SetFloat("Move Y", myRigidbody.velocity.y);
 	}
 }

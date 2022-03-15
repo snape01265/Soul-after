@@ -12,7 +12,7 @@ public class Invismaze_FloorIsLava : MonoBehaviour
         if (collision.CompareTag("Player") && !_isLava)
         {
             _isLava = true;
-            PuzzleManager.TeletoStart();
+            PuzzleManager.ReturnToStart();
             StartCoroutine(FlipLava());
         }
     }
