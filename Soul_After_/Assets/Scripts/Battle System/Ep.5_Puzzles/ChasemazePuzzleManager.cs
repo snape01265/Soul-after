@@ -17,6 +17,7 @@ public class ChasemazePuzzleManager : MonoBehaviour
     public CinemachineVirtualCamera ChaseCam;
     [Header("Puzzle Settings")]
     public float FadeinDuration;
+    public float CamshakeStrength = 1f;
     private List<Chasemaze_Hazard> hazard;
 
     public void InitPuzzle()
@@ -40,6 +41,7 @@ public class ChasemazePuzzleManager : MonoBehaviour
         {
             haz.isMoving = true;
         }
+        ChaseCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = CamshakeStrength;
     }
 
     public void EndPuzzle()
