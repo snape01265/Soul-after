@@ -92,7 +92,7 @@ public class InvismazePuzzleManager : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         Player.GiveBackControl();
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 
     IEnumerator TeleToStartPos()
@@ -113,6 +113,7 @@ public class InvismazePuzzleManager : MonoBehaviour
         Player.transform.position = StartPos.position;
         yield return new WaitForSeconds(FadeinDuration / 2);
         Player.GiveBackControl();
+        yield return StartCoroutine(LightsFade());
     }
 
     IEnumerator TeletoHub()
