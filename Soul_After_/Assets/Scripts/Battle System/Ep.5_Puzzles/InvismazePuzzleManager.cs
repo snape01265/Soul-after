@@ -53,12 +53,12 @@ public class InvismazePuzzleManager : MonoBehaviour
         }
 
         Player.gameObject.GetComponent<PlayerHealth>().RestoreHealth();
-        TeletoStart();
+        StartCoroutine(TeleToStartPos());
     }
 
-    public void TeletoStart()
+    public void ReturnToStart()
     {
-        StartCoroutine(TeletoStartPos());
+        StartCoroutine(ReturnToStartPos());
     }
 
     public void FinPuzzle()
@@ -95,7 +95,7 @@ public class InvismazePuzzleManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator TeletoStartPos()
+    IEnumerator TeleToStartPos()
     {
         Fadein.FadeInOutStatic(FadeinDuration);
         yield return new WaitForSeconds(FadeinDuration / 2);
@@ -103,6 +103,16 @@ public class InvismazePuzzleManager : MonoBehaviour
         Player.transform.position = StartPos.position;
         yield return new WaitForSeconds(FadeinDuration / 2);
         StartTimeline.Play();
+    }
+
+    IEnumerator ReturnToStartPos()
+    {
+        Player.CancelControl();
+        Fadein.FadeInOutStatic(FadeinDuration);
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        Player.transform.position = StartPos.position;
+        yield return new WaitForSeconds(FadeinDuration / 2);
+        Player.GiveBackControl();
     }
 
     IEnumerator TeletoHub()
