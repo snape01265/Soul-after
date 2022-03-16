@@ -8,12 +8,14 @@ public class Boss : MonoBehaviour
     public float attackDuration;
     public Transform firePoint;
     public GameObject meteorPrefab;
-    [HideInInspector]
+    //[HideInInspector]
     public Boss_Phase1 bossMovement;
     [HideInInspector]
     public GameObject turrets;
     [HideInInspector]
     public Animator anim;
+    [HideInInspector]
+    public bool cooldown = false;
 
     void Start()
     {
@@ -22,7 +24,10 @@ public class Boss : MonoBehaviour
 
     public void Stun()
     {
-        StartCoroutine(BossStun());
+        if(cooldown)
+        {
+            StartCoroutine(BossStun());
+        }
     }
     public void FireMeteor()
     {
@@ -31,11 +36,12 @@ public class Boss : MonoBehaviour
     IEnumerator BossStun()
     {
         anim.SetBool("Stunned", true);
-        //bossMovement.Pause();
+        bossMovement.enabled = false;
         turrets.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         anim.SetBool("Stunned", false);
-        //bossMovement.Resume();
+        bossMovement.enabled = true;
         turrets.SetActive(false);
+        cooldown = false;
     }
 }

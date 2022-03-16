@@ -7,9 +7,9 @@ public class Boss_Phase1 : MonoBehaviour
 {
     public Waypoint[] waypoints;
     public float speed = 1f;
-	public int meteorCD;
-	public int patternCD;
-	public int stunDuration;
+	public float meteorCD;
+	public float patternCD;
+	public float stunDuration;
 	public Boss boss;
 
 	private bool inReverse = true;
@@ -17,20 +17,20 @@ public class Boss_Phase1 : MonoBehaviour
     private Waypoint currentWaypoint;
 	private bool isWaiting = false;
 	private bool isCooldown = false;
-	private bool isDamaged = false;
 	private int currentIndex = 0;
 
 	void Start()
     {
 		bossPosition = transform.position;
-        if (waypoints.Length > 0)
+		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
+		if (waypoints.Length > 0)
         {
             currentWaypoint = waypoints[0];
         }
 		StartCoroutine(StopMovement(patternCD));
 	}
 
-	void Update()
+	void FixedUpdate()
     {
         if (!isWaiting)
         {
@@ -40,12 +40,12 @@ public class Boss_Phase1 : MonoBehaviour
         }
 		else if (isWaiting)
         {
-			isDamaged = true;
+			boss.cooldown = true;
 			StartCoroutine(StopMovement(patternCD));
         }
 		if(!isWaiting && !isCooldown)
         {
-			StartCoroutine(ShootMeteor(meteorCD));
+			StartCoroutine(MeteorAttack(meteorCD));
         }
     }
 	private void CheckWaypoint()
@@ -72,14 +72,14 @@ public class Boss_Phase1 : MonoBehaviour
 	{
 		isWaiting = !isWaiting;
 	}
-	IEnumerator StopMovement(int duration)
+	IEnumerator StopMovement(float duration)
     {
 		yield return new WaitForSeconds(stunDuration);
 		isWaiting = false;
 		yield return new WaitForSeconds(duration);
 		isWaiting = true;
 	}
-	IEnumerator ShootMeteor(int cd)
+	IEnumerator MeteorAttack(float cd)
     {
 		boss.FireMeteor();
 		isCooldown = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Meteor : MonoBehaviour
 {
-	public float speed = 10;
+	public float speed;
 	public float arcHeight = 1;
 
 	private Vector3 startPos;
@@ -14,11 +14,12 @@ public class Meteor : MonoBehaviour
 	{
 		startPos = transform.position;
 		Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-		targetPos = new Vector3(Random.Range(playerPos.x - 2, playerPos.x + 2), Random.Range(playerPos.y - 2, playerPos.x + 2), playerPos.z);
+		targetPos = new Vector3(Random.Range(playerPos.x - 2, playerPos.x + 2), Random.Range(playerPos.y - 2, playerPos.y + 2), playerPos.z);
+		speed = speed * Mathf.Abs(startPos.x - targetPos.x);
 	}
-
-	void Update()
+    void FixedUpdate()
 	{
+
 		float x0 = startPos.x;
 		float x1 = targetPos.x;
 		float dist = x1 - x0;
@@ -29,7 +30,10 @@ public class Meteor : MonoBehaviour
 
 		transform.rotation = LookAt2D(nextPos - transform.position);
 		transform.position = nextPos;
-		if (nextPos == targetPos) Arrived();
+		if (nextPos == targetPos)
+		{
+			Arrived();
+		}
 	}
 
 	void Arrived()
