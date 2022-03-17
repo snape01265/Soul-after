@@ -10,7 +10,7 @@ public class Boss_Phase2 : MonoBehaviour
     public float patternCD;
 
     private Boss boss;
-    private bool isInPlace = true;
+    private bool isInPlace = false;
     private bool isCooldown = false;
 
     private void Start()
@@ -21,18 +21,14 @@ public class Boss_Phase2 : MonoBehaviour
     {
         if (transform.position != originalPos)
         {
-            transform.position = new Vector3(Mathf.Lerp(transform.position.x, originalPos.x, 0.5f * Time.deltaTime), transform.position.y, transform.position.z);
-            isInPlace = true;
+            transform.position = Vector3.MoveTowards(transform.position, originalPos, 2 * Time.deltaTime);
         }
+        else if (transform.position == originalPos) isInPlace = true;
         if (isInPlace)
         {
             if (!isCooldown && !boss.cooldown)
             {
                 StartCoroutine(TraumaAttack());
-            }
-            else if (boss.cooldown)
-            {
-
             }
         }
     }
@@ -43,6 +39,7 @@ public class Boss_Phase2 : MonoBehaviour
         TraumaSweep();
         yield return new WaitForSeconds(patternCD);
         isCooldown = false;
+        boss.cooldown = false;
     }
     public void TraumaSweep()
     {

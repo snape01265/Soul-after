@@ -5,7 +5,7 @@ using UnityEngine;
 public class TraumaSweep : MonoBehaviour
 {
 	public Vector3 targetPos;
-	public float speed;
+	public float speed = 10;
 
 	private Boss boss;
 	private Vector3 startPos;
@@ -16,9 +16,9 @@ public class TraumaSweep : MonoBehaviour
 		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
-		Vector3 nextPos = Vector3.MoveTowards(startPos, targetPos, speed * Time.deltaTime);
+		Vector3 nextPos = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
 		transform.rotation = LookAt2D(nextPos - transform.position);
 		transform.position = nextPos;
