@@ -1192,7 +1192,7 @@ MonoBehaviour:
       type: 0
       typeString: 
     - title: Initial Value
-      value: 3
+      value: 6
       type: 1
       typeString: CustomFieldType_Number
     - title: Description
@@ -89588,7 +89588,10 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //few years later, time lapse needed'
+          AnimatorFloat(Move_Y, 1, Husband);
+
+          AnimatorFloat(Move_Y,
+          1, Wife);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -89862,7 +89865,15 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //few years later, time lapse needed'
+          AnimatorFloat(Move_X, 1, Husband);
+
+          AnimatorFloat(Move_X,
+          -1, Wife);
+
+          AnimatorFloat(Move_Y, 0, Husband);
+
+          AnimatorFloat(Move_Y,
+          0, Wife);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -89932,7 +89943,15 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //few years later, time lapse needed'
+          AnimatorFloat(Move_X, 0, Husband);
+
+          AnimatorFloat(Move_X,
+          0, Wife);
+
+          AnimatorFloat(Move_Y, 1, Husband);
+
+          AnimatorFloat(Move_Y,
+          1, Wife);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -90000,7 +90019,15 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //few years later, time lapse needed'
+          AnimatorFloat(Move_X, 1, Husband);
+
+          AnimatorFloat(Move_X,
+          -1, Wife);
+
+          AnimatorFloat(Move_Y, 0, Husband);
+
+          AnimatorFloat(Move_Y,
+          0, Wife);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -90128,7 +90155,10 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //phone rings'
+          AnimatorFloat(Move_X, 0, Husband);
+
+          AnimatorFloat(Move_Y,
+          -1, Husband);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -90313,9 +90343,9 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uBBF8\uC548\uD574 \uC5EC\uBCF4\u2026
-          \uC9C0\uAE08 \uAC00\uAC8C\uC5D0 \uC0AC\uC815\uC774 \uC0DD\uACA8\uC11C \uBC14\uB85C
-          \uAC00\uBD10\uC57C \uD560 \uAC70 \uAC19\uC544\u2026."
+        value: "\uBBF8\uC548\uD574 \uC5EC\uBCF4\u2026 \uC9C0\uAE08 \uAC00\uAC8C\uC5D0
+          \uC0AC\uC815\uC774 \uC0DD\uACA8\uC11C \uBC14\uB85C \uAC00\uBD10\uC57C \uD560
+          \uAC70 \uAC19\uC544\u2026."
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -90331,7 +90361,10 @@ MonoBehaviour:
           Timeline(speed, Timeline_8, 1)@Message(Continued); // Resume timeline on
           continue
 
-          //phone rings'
+          AnimatorFloat(Move_X, 1, Husband);
+
+          AnimatorFloat(Move_Y,
+          0, Husband);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 53
@@ -90488,7 +90521,7 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 5.6818237, y: 0}
+    canvasScrollPosition: {x: 0, y: 0}
     canvasZoom: 0.8800001
   - id: 54
     fields:
@@ -90590,6 +90623,12 @@ MonoBehaviour:
         destinationDialogueID: 139
         isConnector: 0
         priority: 2
+      - originConversationID: 54
+        originDialogueID: 0
+        destinationConversationID: 54
+        destinationDialogueID: 145
+        isConnector: 0
+        priority: 2
       conditionsString: 
       userScript: 
       onExecute:
@@ -90624,7 +90663,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\uC5EC\uBCF4\uC138\uC694?"
+        value: "\uC544 \uC5EC\uBCF4! \uC9D1\uC5D0\uB294 \uC798 \uB4E4\uC5B4\uAC14\uC5B4?
+          \uAD1C\uCC2E\uC544?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -90929,7 +90969,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 34
-        y: 352
+        y: 353.2658
         width: 160
         height: 30
     - id: 134
@@ -91282,7 +91322,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Timeline_9, 1)@Message(Continued); // Resume timeline on
-          continue'
+          continue
+
+          AnimatorFloat(Move_X, 0, Husband);
+
+          AnimatorFloat(Move_Y,
+          1, Husband);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 54
@@ -91599,7 +91644,7 @@ MonoBehaviour:
         typeString: CustomFieldType_Text
       - title: Dialogue Text
         value: "\uC544 \uC815\uB9D0\uB85C \uBC14\uC058\uB2E4\uB2C8\uAE4C! \uC6B0\uB9AC
-          \uB2E4 \uBA39\uC5EC \uC0B4\uB9AC\uB824\uACE0 \uD558\uB294\uAC70\uC796\uC544!
+          \uB2E4 \uBA39\uC5EC \uC0B4\uB9AC\uB824\uACE0 \uC774\uB7EC\uB294 \uAC70\uC796\uC544!
           \uB098 \uC880 \uC774\uD574\uC904 \uC218 \uC5C6\uC5B4?"
         type: 0
         typeString: CustomFieldType_Text
@@ -91614,7 +91659,12 @@ MonoBehaviour:
 
           required
           Timeline(speed, Timeline_9, 1)@Message(Continued); // Resume timeline on
-          continue'
+          continue
+
+          AnimatorFloat(Move_X, 1, Husband);
+
+          AnimatorFloat(Move_Y,
+          0, Husband);'
         type: 0
         typeString: CustomFieldType_Text
       conversationID: 54
@@ -91624,13 +91674,7 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 54
-        originDialogueID: 144
-        destinationConversationID: 54
-        destinationDialogueID: 145
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
       userScript: 
       onExecute:
@@ -91705,8 +91749,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 437.72137
-        y: 451.89865
+        x: 637.7213
+        y: 93.67088
         width: 160
         height: 30
     - id: 146
@@ -91772,8 +91816,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 437.72134
-        y: 513.92395
+        x: 637.7213
+        y: 155.69618
         width: 160
         height: 30
     - id: 147
@@ -91831,8 +91875,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 440.25305
-        y: 572.15173
+        x: 640.253
+        y: 213.92393
         width: 160
         height: 30
     entryGroups: []
