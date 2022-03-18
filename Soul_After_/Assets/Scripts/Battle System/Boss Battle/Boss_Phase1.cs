@@ -10,7 +10,14 @@ public class Boss_Phase1 : MonoBehaviour
 	public float meteorCD;
 	public float patternCD;
 	public float stunDuration;
+	[HideInInspector]
 	public Boss boss;
+	[HideInInspector]
+	public Transform firePoint;
+	[HideInInspector]
+	public GameObject meteorPrefab;
+	[HideInInspector]
+	public GameObject bossObject;
 
 	private bool inReverse = true;
 	private Vector3 bossPosition;
@@ -21,7 +28,7 @@ public class Boss_Phase1 : MonoBehaviour
 
 	void Start()
     {
-		bossPosition = transform.position;
+		bossPosition = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>().transform.position;
 		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
 		if (waypoints.Length > 0)
         {
@@ -35,7 +42,7 @@ public class Boss_Phase1 : MonoBehaviour
         if (!isWaiting)
         {
 			bossPosition = Vector3.MoveTowards(bossPosition, currentWaypoint.transform.position, speed * Time.deltaTime);
-			transform.position = bossPosition;
+			bossObject.transform.position = bossPosition;
 			CheckWaypoint();
         }
 		else if (isWaiting)
@@ -81,9 +88,13 @@ public class Boss_Phase1 : MonoBehaviour
 	}
 	IEnumerator MeteorAttack(float cd)
     {
-		boss.FireMeteor();
+		FireMeteor();
 		isCooldown = true;
 		yield return new WaitForSeconds(cd);
 		isCooldown = false;
     }
+	public void FireMeteor()
+	{
+		Instantiate(meteorPrefab, firePoint.position, firePoint.rotation);
+	}
 }

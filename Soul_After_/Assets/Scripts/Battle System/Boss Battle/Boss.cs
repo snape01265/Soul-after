@@ -6,11 +6,7 @@ public class Boss : MonoBehaviour
 {
 
     public float attackDuration;
-    public Transform firePoint;
-    public GameObject meteorPrefab;
-    public Boss_Phase1 phase1;
-    public Boss_Phase2 phase2;
-    public Boss_Phase3 phase3;
+    public GameObject[] bossPhases;
     [HideInInspector]
     public GameObject turrets;
     [HideInInspector]
@@ -30,44 +26,16 @@ public class Boss : MonoBehaviour
             StartCoroutine(BossStun());
         }
     }
-    public void FireMeteor()
-    {
-        Instantiate(meteorPrefab, firePoint.position, firePoint.rotation);
-    }
     IEnumerator BossStun()
     {
-        if (anim.GetInteger("Phase") == 1)
-        {
-            anim.SetBool("Stunned", true);
-            phase1.enabled = false;
-            turrets.SetActive(true);
-            yield return new WaitForSeconds(attackDuration);
-            anim.SetBool("Stunned", false);
-            phase1.enabled = true;
-            turrets.SetActive(false);
-            cooldown = false;
-        }
-        else if (anim.GetInteger("Phase") == 2)
-        {
-            anim.SetBool("Stunned", true);
-            phase2.enabled = false;
-            turrets.SetActive(true);
-            yield return new WaitForSeconds(attackDuration);
-            anim.SetBool("Stunned", false);
-            phase2.enabled = true;
-            turrets.SetActive(false);
-            cooldown = false;
-        }
-        else if (anim.GetInteger("Phase") == 3)
-        {
-            anim.SetBool("Stunned", true);
-            phase3.enabled = false;
-            turrets.SetActive(true);
-            yield return new WaitForSeconds(attackDuration);
-            anim.SetBool("Stunned", false);
-            phase3.enabled = true;
-            turrets.SetActive(false);
-            cooldown = false;
-        }
+        anim.SetBool("Stunned", true);
+        bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
+        turrets.SetActive(true);
+        yield return new WaitForSeconds(attackDuration);
+        anim.SetBool("Stunned", false);
+        turrets.SetActive(false);
+        yield return new WaitForSeconds(2);
+        bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
+        cooldown = false;
     }
 }

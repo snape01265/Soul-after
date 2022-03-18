@@ -26,15 +26,10 @@ public class BossHP : MonoBehaviour
         if (currentHealth <= 70 && 40 < currentHealth)
         {
             anim.SetInteger("Phase", 2);
-            boss.phase1.enabled = false;
-            boss.phase2.enabled = true;
         }
         else if (currentHealth <= 40 && 0 < currentHealth)
         {
             anim.SetInteger("Phase", 3);
-            boss.phase2.enabled = false;
-            boss.phase3.enabled = true;
-
         }
         else if (currentHealth <= 0)
         {
@@ -44,7 +39,6 @@ public class BossHP : MonoBehaviour
         else
         {
             anim.SetInteger("Phase", 1);
-            boss.phase1.enabled = true;
         }
     }
 }

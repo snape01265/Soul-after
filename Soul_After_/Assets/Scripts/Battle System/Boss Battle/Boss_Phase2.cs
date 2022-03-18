@@ -8,10 +8,12 @@ public class Boss_Phase2 : MonoBehaviour
     public TraumaSweep traumaPrefab;
     public Vector3 originalPos;
     public float patternCD;
+    public GameObject bossObject;
+    [HideInInspector]
+    public bool isCooldown = false;
 
     private Boss boss;
     private bool isInPlace = false;
-    private bool isCooldown = false;
 
     private void Start()
     {
@@ -19,11 +21,12 @@ public class Boss_Phase2 : MonoBehaviour
     }
     private void Update()
     {
-        if (transform.position != originalPos)
+        if (boss.transform.position != originalPos)
         {
-            transform.position = Vector3.MoveTowards(transform.position, originalPos, 2 * Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(boss.transform.position, originalPos, 2 * Time.deltaTime);
+            bossObject.transform.position = newPosition;
         }
-        else if (transform.position == originalPos) isInPlace = true;
+        else if (boss.transform.position == originalPos) isInPlace = true;
         if (isInPlace)
         {
             if (!isCooldown && !boss.cooldown)
@@ -35,10 +38,8 @@ public class Boss_Phase2 : MonoBehaviour
     IEnumerator TraumaAttack()
     {
         isCooldown = true;
-        yield return new WaitForEndOfFrame();
         TraumaSweep();
         yield return new WaitForSeconds(patternCD);
-        isCooldown = false;
         boss.cooldown = false;
     }
     public void TraumaSweep()

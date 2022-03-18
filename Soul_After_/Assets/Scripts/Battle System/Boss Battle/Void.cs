@@ -2,18 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TraumaSweep : MonoBehaviour
+public class Void : MonoBehaviour
 {
-	public Vector3 targetPos;
+	public GameObject wayPoint;
 	public float speed = 10;
+	public GameObject voidAttack;
 
-	private Boss_Phase2 phase2;
+	private Boss_Phase3 phase3;
 	private Boss boss;
+	private Vector3 targetPos;
 
 	void Start()
 	{
 		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
-		phase2 = GameObject.Find("Boss_Phase2").GetComponent<Boss_Phase2>();
+		phase3 = GameObject.Find("Boss_Phase3").GetComponent<Boss_Phase3>();
+		targetPos = wayPoint.transform.position;
 	}
 
 	void FixedUpdate()
@@ -24,20 +27,20 @@ public class TraumaSweep : MonoBehaviour
 		transform.position = nextPos;
 
 		if (nextPos == targetPos)
-        {
+		{
 			Arrived();
-        }
+		}
 	}
 
 	void Arrived()
 	{
-		phase2.isCooldown = false;
 		boss.cooldown = true;
-		Destroy(gameObject);
+		phase3.isCooldown = false;
+		Destroy(voidAttack);
 	}
 
 	static Quaternion LookAt2D(Vector2 forward)
 	{
-		return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
+		return Quaternion.Euler(0, 0, (Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg) - 90);
 	}
 }
