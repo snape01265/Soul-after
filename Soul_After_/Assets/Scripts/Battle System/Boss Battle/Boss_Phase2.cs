@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Boss_Phase2 : MonoBehaviour
 {
-    public Transform firePoint;
-    public TraumaSweep traumaPrefab;
+    public Transform[] firePoint;
+    public TraumaSweep[] traumaPrefab;
     public Vector3 originalPos;
     public float patternCD;
     public GameObject bossObject;
     [HideInInspector]
     public bool isCooldown = false;
 
+    [SerializeField]
+    private int rand;
     private Boss boss;
     private bool isInPlace = false;
 
@@ -44,6 +46,7 @@ public class Boss_Phase2 : MonoBehaviour
     }
     public void TraumaSweep()
     {
-        Instantiate(traumaPrefab, firePoint.position, firePoint.rotation);
+        rand = Random.Range(0, 2);
+        Instantiate(traumaPrefab[rand], firePoint[rand].position, firePoint[rand].rotation);
     }
 }

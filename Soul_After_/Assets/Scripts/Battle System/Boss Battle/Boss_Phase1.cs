@@ -24,8 +24,8 @@ public class Boss_Phase1 : MonoBehaviour
 	private bool inReverse = true;
 	private Vector3 bossPosition;
     private Waypoint currentWaypoint;
-	private bool isWaiting = false;
-	private bool isCooldown = false;
+	private bool isWaiting;
+	private bool isCooldown;
 	private int currentIndex = 0;
 
 	void Start()
@@ -41,6 +41,7 @@ public class Boss_Phase1 : MonoBehaviour
     private void OnEnable()
     {
 		isWaiting = false;
+		isCooldown = false;
     }
     void FixedUpdate()
     {
