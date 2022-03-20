@@ -9,6 +9,7 @@ public class Meteor : MonoBehaviour
 
 	private Vector3 startPos;
 	private Vector3 targetPos;
+	private Boss_Phase1 phase1;
 
 	void Start()
 	{
@@ -35,7 +36,11 @@ public class Meteor : MonoBehaviour
 			Arrived();
 		}
 	}
-
+    private void OnEnable()
+    {
+		phase1 = GameObject.Find("Boss_Phase1").GetComponent<Boss_Phase1>();
+		phase1.meteorCount += 1;
+	}
 	void Arrived()
 	{
 		Destroy(gameObject);

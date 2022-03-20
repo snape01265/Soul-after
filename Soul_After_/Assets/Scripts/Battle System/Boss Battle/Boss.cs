@@ -34,7 +34,6 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
-        yield return new WaitForSeconds(1);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
         cooldown = false;
     }

@@ -6,9 +6,9 @@ using UnityEngine.Events;
 public class Boss_Phase1 : MonoBehaviour
 {
     public Waypoint[] waypoints;
+	public int meteorNumber;
     public float speed = 1f;
 	public float meteorCD;
-	public float patternCD;
 	public float stunDuration;
 	[HideInInspector]
 	public Boss boss;
@@ -18,6 +18,8 @@ public class Boss_Phase1 : MonoBehaviour
 	public GameObject meteorPrefab;
 	[HideInInspector]
 	public GameObject bossObject;
+	[HideInInspector]
+	public int meteorCount;
 
 	private bool inReverse = true;
 	private Vector3 bossPosition;
@@ -34,10 +36,13 @@ public class Boss_Phase1 : MonoBehaviour
         {
             currentWaypoint = waypoints[0];
         }
-		StartCoroutine(StopMovement(patternCD));
 	}
 
-	void FixedUpdate()
+    private void OnEnable()
+    {
+		isWaiting = false;
+    }
+    void FixedUpdate()
     {
         if (!isWaiting)
         {
@@ -45,10 +50,9 @@ public class Boss_Phase1 : MonoBehaviour
 			bossObject.transform.position = bossPosition;
 			CheckWaypoint();
         }
-		else if (isWaiting)
+		if (!isWaiting && (meteorCount >= meteorNumber))
         {
-			boss.cooldown = true;
-			StartCoroutine(StopMovement(patternCD));
+			StartCoroutine(StopMovement(stunDuration));
         }
 		if(!isWaiting && !isCooldown)
         {
@@ -81,10 +85,13 @@ public class Boss_Phase1 : MonoBehaviour
 	}
 	IEnumerator StopMovement(float duration)
     {
-		yield return new WaitForSeconds(stunDuration);
-		isWaiting = false;
-		yield return new WaitForSeconds(duration);
 		isWaiting = true;
+		boss.cooldown = true;
+		meteorCount = 0;
+		isCooldown = false;
+		yield return new WaitForSeconds(duration);
+		isWaiting = false;
+		boss.cooldown = false;
 	}
 	IEnumerator MeteorAttack(float cd)
     {
@@ -92,7 +99,7 @@ public class Boss_Phase1 : MonoBehaviour
 		isCooldown = true;
 		yield return new WaitForSeconds(cd);
 		isCooldown = false;
-    }
+	}
 	public void FireMeteor()
 	{
 		Instantiate(meteorPrefab, firePoint.position, firePoint.rotation);
