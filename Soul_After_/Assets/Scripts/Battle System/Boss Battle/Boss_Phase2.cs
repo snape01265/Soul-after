@@ -5,7 +5,10 @@ using UnityEngine;
 public class Boss_Phase2 : MonoBehaviour
 {
     public Transform[] firePoint;
+    [HideInInspector]
     public TraumaSweep[] traumaPrefab;
+    [HideInInspector]
+    public GameObject warningPrefab;
     public Vector3 originalPos;
     public float patternCD;
     public GameObject bossObject;
@@ -40,6 +43,9 @@ public class Boss_Phase2 : MonoBehaviour
     IEnumerator TraumaAttack()
     {
         isCooldown = true;
+        rand = Random.Range(0, 2);
+        Instantiate(warningPrefab, firePoint[rand + 2].position, firePoint[rand + 2].rotation);
+        yield return new WaitForSeconds(1);
         TraumaSweep();
         yield return new WaitForSeconds(patternCD);
         boss.cooldown = false;
@@ -50,7 +56,6 @@ public class Boss_Phase2 : MonoBehaviour
         {
             sfx.Play();
         }
-        rand = Random.Range(0, 2);
         Instantiate(traumaPrefab[rand], firePoint[rand].position, firePoint[rand].rotation);
     }
 }
