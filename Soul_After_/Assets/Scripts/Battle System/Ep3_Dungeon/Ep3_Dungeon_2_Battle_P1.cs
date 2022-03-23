@@ -7,14 +7,11 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 {
 	public GameObject FlameGen;
 	public Waypoint[] wayPoints;
-	public float speed = 3f;
 	public bool inReverse = true;
 	public AudioSource sfx;
 
 	public UnityEvent ActionOnWaypoint;
 
-	private Vector3 prevPos;
-	private Rigidbody2D myRigidbody;
 	private Animator anim;
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
@@ -23,7 +20,6 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	void Start()
 	{
 		anim = GetComponent<Animator>();
-		myRigidbody = GetComponent<Rigidbody2D>();
 		if (wayPoints.Length > 0)
 		{
 			currentWaypoint = wayPoints[0];
@@ -45,12 +41,6 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-			/*float xvelocity = (transform.position.x - prevPos.x);
-			float yvelocity = (transform.position.y - prevPos.y);
-			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();
-			prevPos = transform.position;*/
 		}
 		if (trigger)
         {
@@ -101,11 +91,5 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	public void TriggerAction()
     {
 		trigger = true;
-	}
-	void UpdateAnimation()
-	{
-		anim.SetBool("Moving", true);
-		anim.SetFloat("Move X", myRigidbody.velocity.x);
-		anim.SetFloat("Move Y", myRigidbody.velocity.y);
 	}
 }
