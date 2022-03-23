@@ -19,7 +19,6 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
 	private bool isWaiting = false;
-	private float speedStorage = 0;
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -28,6 +27,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		{
 			currentWaypoint = wayPoints[0];
 		}
+		anim.SetBool("Moving", true);
 	}
 	private void OnEnable()
 	{
@@ -44,12 +44,12 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-			float xvelocity = (transform.position.x - prevPos.x);
+			/*float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
 			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
 				UpdateAnimation();
-			prevPos = transform.position;
+			prevPos = transform.position;*/
 		}
 	}
 
@@ -66,16 +66,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 
 		if (Vector3.Distance(currentPosition, targetPosition) > .1f)
 		{
-
-			Vector3 directionOfTravel = targetPosition - currentPosition;
-			directionOfTravel.Normalize();
-
-			this.transform.Translate(
-				directionOfTravel.x * speed * Time.deltaTime,
-				directionOfTravel.y * speed * Time.deltaTime,
-				directionOfTravel.z * speed * Time.deltaTime,
-				Space.World
-			);
+			transform.position = targetPosition;
 		}
 		else
 		{
@@ -87,17 +78,6 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 			{
 				Pause();
 				Invoke("Pause", currentWaypoint.waitSeconds);
-			}
-
-			if (currentWaypoint.speedOut > 0)
-			{
-				speedStorage = speed;
-				speed = currentWaypoint.speedOut;
-			}
-			else if (speedStorage != 0)
-			{
-				speed = speedStorage;
-				speedStorage = 0;
 			}
 			NextWaypoint();
 		}
