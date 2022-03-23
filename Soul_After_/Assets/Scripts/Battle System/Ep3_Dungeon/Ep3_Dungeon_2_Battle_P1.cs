@@ -19,6 +19,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
 	private bool isWaiting = false;
+	private bool trigger = false;
 	void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -50,6 +51,11 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
 				UpdateAnimation();
 			prevPos = transform.position;*/
+		}
+		if (trigger)
+        {
+			ActionOnWaypoint.Invoke();
+			trigger = false;
 		}
 	}
 
@@ -92,9 +98,9 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		currentWaypoint = wayPoints[currentIndex];
 	}
 
-	public void ActionOn()
+	public void TriggerAction()
     {
-		ActionOnWaypoint.Invoke();
+		trigger = true;
 	}
 	void UpdateAnimation()
 	{
