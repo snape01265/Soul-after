@@ -25,6 +25,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 			currentWaypoint = wayPoints[0];
 		}
 		anim.SetBool("Sitting", true);
+		anim.SetTrigger("Disappear");
 	}
 	private void OnEnable()
 	{
@@ -38,12 +39,10 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		if (currentWaypoint != null && !isWaiting)
-		{
-			MoveTowardsWaypoint();
-		}
 		if (trigger)
         {
+			if (sfx)
+				sfx.Play();
 			ActionOnWaypoint.Invoke();
 			trigger = false;
 		}
@@ -60,22 +59,9 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 
 		Vector3 targetPosition = currentWaypoint.transform.position;
 
-		if (Vector3.Distance(currentPosition, targetPosition) > .1f)
-		{
-			transform.position = targetPosition;
-		}
-		else
-		{
-			anim.SetTrigger("Attack");
-			if (sfx)
-				sfx.Play();
-			if (currentWaypoint.waitSeconds > 0)
-			{
-				Pause();
-				Invoke("Pause", currentWaypoint.waitSeconds);
-			}
-			NextWaypoint();
-		}
+		transform.position = targetPosition;
+		anim.SetTrigger("Attack");
+		NextWaypoint();
 	}
 
 	private void NextWaypoint()
