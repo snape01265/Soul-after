@@ -8,9 +8,8 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	public GameObject FlameGen;
 	public Waypoint[] wayPoints;
 	public bool inReverse = true;
-	public AudioSource sfx;
-
 	public UnityEvent ActionOnWaypoint;
+	public AudioSource sfx;
 
 	private Animator anim;
 	private Waypoint currentWaypoint;
