@@ -8,10 +8,10 @@ public class SimonPuzzle_Lightbulb : MonoBehaviour
     public SimonPuzzleManager Manager;
     private SpriteRenderer sprite;
     private Light2D light2D;
-    private readonly Color RED = new Color(255f, 0f, 0f);
-    private readonly Color GREEN = new Color(0f, 255f, 16f);
-    private readonly Color BLUE = new Color(0f, 30f, 255f);
-    private readonly Color YELLOW = new Color(255f, 253f, 0f);
+    private readonly Color32 RED = new Color32(255, 0, 0, 255);
+    private readonly Color32 GREEN = new Color32(0, 255, 16, 255);
+    private readonly Color32 BLUE = new Color32(0, 30, 255, 255);
+    private readonly Color32 YELLOW = new Color32(255, 253, 0, 255);
 
     private void Start()
     {
@@ -36,6 +36,7 @@ public class SimonPuzzle_Lightbulb : MonoBehaviour
             case (int)SimonPuzzleManager.COLORS.Blue:
                 //sprite.color = BLUE;
                 light2D.color = BLUE;
+                light2D.intensity = 2;
                 break;
             case (int)SimonPuzzleManager.COLORS.Yellow:
                 //sprite.color = YELLOW;
@@ -48,6 +49,7 @@ public class SimonPuzzle_Lightbulb : MonoBehaviour
     public void TurnOff()
     {
         light2D.enabled = false;
+        light2D.intensity = 1;
         //sprite.color = Color.white;
     }
 }
