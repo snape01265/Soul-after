@@ -27,7 +27,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		{
 			currentWaypoint = wayPoints[0];
 		}
-		anim.SetBool("Moving", true);
+		anim.SetBool("Sitting", true);
 	}
 	private void OnEnable()
 	{
@@ -70,10 +70,9 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		}
 		else
 		{
+			anim.SetTrigger("Attack");
 			if (sfx)
 				sfx.Play();
-			ActionOnWaypoint.Invoke();
-			anim.SetTrigger("Preattack");
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
@@ -93,6 +92,10 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		currentWaypoint = wayPoints[currentIndex];
 	}
 
+	public void ActionOn()
+    {
+		ActionOnWaypoint.Invoke();
+	}
 	void UpdateAnimation()
 	{
 		anim.SetBool("Moving", true);
