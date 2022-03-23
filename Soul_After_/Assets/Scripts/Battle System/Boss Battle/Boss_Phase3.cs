@@ -7,6 +7,8 @@ public class Boss_Phase3 : MonoBehaviour
 	public Waypoint[] waypoints;
 	public float speed;
 	public float voidCD;
+	public AudioSource sfx;
+
 	[HideInInspector]
 	public Boss boss;
 	[HideInInspector]
@@ -75,6 +77,10 @@ public class Boss_Phase3 : MonoBehaviour
 	}
 	public void FireVoid()
 	{
+		if (sfx)
+		{
+			sfx.Play();
+		}
 		Instantiate(voidPrefab, firePoint.position, firePoint.rotation);
 	}
 

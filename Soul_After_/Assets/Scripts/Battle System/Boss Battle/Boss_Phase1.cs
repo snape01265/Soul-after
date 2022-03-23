@@ -10,6 +10,7 @@ public class Boss_Phase1 : MonoBehaviour
     public float speed = 1f;
 	public float meteorCD;
 	public float stunDuration;
+	public AudioSource sfx;
 	[HideInInspector]
 	public Boss boss;
 	[HideInInspector]
@@ -103,6 +104,10 @@ public class Boss_Phase1 : MonoBehaviour
 	}
 	public void FireMeteor()
 	{
+		if(sfx)
+        {
+			sfx.Play();
+        }
 		Instantiate(meteorPrefab, firePoint.position, firePoint.rotation);
 	}
 }

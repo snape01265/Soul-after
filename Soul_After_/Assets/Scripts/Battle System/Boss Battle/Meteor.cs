@@ -6,6 +6,7 @@ public class Meteor : MonoBehaviour
 {
 	public float speed;
 	public float arcHeight = 1;
+	public GameObject shadow;
 
 	private Vector3 startPos;
 	private Vector3 targetPos;
@@ -20,7 +21,7 @@ public class Meteor : MonoBehaviour
 	}
     void FixedUpdate()
 	{
-
+		shadow.transform.position = targetPos;
 		float x0 = startPos.x;
 		float x1 = targetPos.x;
 		float dist = x1 - x0;

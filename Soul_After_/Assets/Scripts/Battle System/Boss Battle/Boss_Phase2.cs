@@ -9,10 +9,10 @@ public class Boss_Phase2 : MonoBehaviour
     public Vector3 originalPos;
     public float patternCD;
     public GameObject bossObject;
+    public AudioSource sfx;
     [HideInInspector]
     public bool isCooldown = false;
 
-    [SerializeField]
     private int rand;
     private Boss boss;
     private bool isInPlace = false;
@@ -46,6 +46,10 @@ public class Boss_Phase2 : MonoBehaviour
     }
     public void TraumaSweep()
     {
+        if (sfx)
+        {
+            sfx.Play();
+        }
         rand = Random.Range(0, 2);
         Instantiate(traumaPrefab[rand], firePoint[rand].position, firePoint[rand].rotation);
     }

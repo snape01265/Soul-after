@@ -44,11 +44,11 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 		if (currentWaypoint != null && !isWaiting)
 		{
 			MoveTowardsWaypoint();
-/*			float xvelocity = (transform.position.x - prevPos.x);
+			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
 			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();*/
+				UpdateAnimation();
 			prevPos = transform.position;
 		}
 	}
@@ -82,6 +82,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 			if (sfx)
 				sfx.Play();
 			ActionOnWaypoint.Invoke();
+			anim.SetTrigger("Preattack");
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
@@ -114,6 +115,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 
 	void UpdateAnimation()
 	{
+		anim.SetBool("Moving", true);
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
 		anim.SetFloat("Move Y", myRigidbody.velocity.y);
 	}
