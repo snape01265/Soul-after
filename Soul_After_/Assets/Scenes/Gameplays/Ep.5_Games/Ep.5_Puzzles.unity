@@ -646,6 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorManager: {fileID: 1675427085}
   DoorType: 2
+  EnterSFX: {fileID: 0}
 --- !u!212 &113975524
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4534,6 +4535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleManager: {fileID: 1387066895}
+  FloorEnterSFX: {fileID: 0}
 --- !u!1 &236665999
 GameObject:
   m_ObjectHideFlags: 0
@@ -6310,6 +6312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorManager: {fileID: 1675427085}
   DoorType: 0
+  EnterSFX: {fileID: 0}
 --- !u!212 &325054340
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14528,6 +14531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleManager: {fileID: 1387066895}
+  FloorEnterSFX: {fileID: 0}
 --- !u!19719996 &608545888
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -19846,7 +19850,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 329cfc2701c19644c934e5d8cad68c3e, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -19944,7 +19948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audio: {fileID: 825832306}
   duration: 0.75
-  targetVolume: 0
+  targetVolume: 1
 --- !u!1 &867888947
 GameObject:
   m_ObjectHideFlags: 0
@@ -21957,6 +21961,7 @@ MonoBehaviour:
   FlashingDuration: 0.25
   BrightIntensity: 1
   DimIntensity: 0.05
+  PressSFX: {fileID: 0}
 --- !u!212 &956904267
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22105,6 +22110,8 @@ MonoBehaviour:
   StartTimeline: {fileID: 1797651533}
   EndTimeline: {fileID: 1454820802}
   ChaseCam: {fileID: 1759114188}
+  BGMToFade: {fileID: 1473480507}
+  ChaseBGM: {fileID: 825832306}
   FadeinDuration: 1
   CamshakeStrength: 1
 --- !u!1 &969991178
@@ -23214,6 +23221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PuzzleManager: {fileID: 1387066895}
+  FloorEnterSFX: {fileID: 0}
 --- !u!19719996 &1153387586
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -26794,6 +26802,7 @@ GameObject:
   - component: {fileID: 1262778274}
   - component: {fileID: 1262778277}
   - component: {fileID: 1262778276}
+  - component: {fileID: 1262778275}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -26815,6 +26824,19 @@ Transform:
   m_Father: {fileID: 965327897}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1262778275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262778273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6653717d62707645ab177e91cca0799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PuzzleManager: {fileID: 965327898}
 --- !u!61 &1262778276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27142,6 +27164,7 @@ MonoBehaviour:
   FlashingDuration: 0.25
   BrightIntensity: 2
   DimIntensity: 0.1
+  PressSFX: {fileID: 0}
 --- !u!212 &1290619760
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28942,6 +28965,7 @@ MonoBehaviour:
   FlashingDuration: 0.25
   BrightIntensity: 1
   DimIntensity: 0.05
+  PressSFX: {fileID: 0}
 --- !u!212 &1304612292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29111,6 +29135,7 @@ MonoBehaviour:
   FlashingDuration: 0.25
   BrightIntensity: 1
   DimIntensity: 0.05
+  PressSFX: {fileID: 0}
 --- !u!212 &1307630764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43145,6 +43170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorManager: {fileID: 1675427085}
   DoorType: 1
+  EnterSFX: {fileID: 0}
 --- !u!212 &1660894122
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44066,6 +44092,9 @@ MonoBehaviour:
   StartTimeline: {fileID: 951491852}
   EndTimeline: {fileID: 1730399198}
   SimonCam: {fileID: 1507095682}
+  CorrectSFX: {fileID: 0}
+  WrongSFX: {fileID: 0}
+  BulbTurnOnSFX: {fileID: 0}
   PuzzlePatterns: 9
   FadeinDuration: 1
   PatternDuration: 10

@@ -10,6 +10,7 @@ public class SimonPuzzle_Buttons : MonoBehaviour
     public float FlashingDuration = .25f;
     public float BrightIntensity = .3f;
     public float DimIntensity = .05f;
+    public AudioSource PressSFX;
 
     private Light2D light2D;
     private bool pressed = false;
@@ -23,6 +24,8 @@ public class SimonPuzzle_Buttons : MonoBehaviour
     {
         if(Manager.isInputable && collision.CompareTag("Player") && !pressed)
         {
+            if (PressSFX)
+                PressSFX.Play();
             pressed = true;
             StartCoroutine(Flashing());
             Manager.UserInput.Add((int)InputColor);

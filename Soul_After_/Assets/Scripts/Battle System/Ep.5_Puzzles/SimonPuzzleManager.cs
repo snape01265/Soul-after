@@ -16,6 +16,9 @@ public class SimonPuzzleManager : MonoBehaviour
     public PlayableDirector StartTimeline;
     public PlayableDirector EndTimeline;
     public CinemachineVirtualCamera SimonCam;
+    public AudioSource CorrectSFX;
+    public AudioSource WrongSFX;
+    public AudioSource BulbTurnOnSFX;
     [Header("Puzzle Settings")]
     public int PuzzlePatterns = 9;
     public float FadeinDuration;
@@ -123,6 +126,8 @@ public class SimonPuzzleManager : MonoBehaviour
     {
         if (inputPat.Last() == puzzleAnswer[inputPat.Count - 1] && inputPat.Count == puzzleAnswer.Length)
         {
+            if (CorrectSFX)
+                CorrectSFX.Play();
             Debug.Log("Correct");
             StopAllCoroutines();
             isInputable = false;
@@ -136,6 +141,8 @@ public class SimonPuzzleManager : MonoBehaviour
         }
         else
         {
+            if (WrongSFX)
+                WrongSFX.Play();
             Debug.Log("incorrect");
             health.TakeDamage(DMG);
             StopAllCoroutines();
@@ -184,6 +191,8 @@ public class SimonPuzzleManager : MonoBehaviour
         int idx = 0;
         foreach(int color in ans)
         {
+            if (BulbTurnOnSFX)
+                BulbTurnOnSFX.Play();
             Lightbulbs[idx].TurnOnToColor(color);
             yield return new WaitForSeconds(LightsTime);
             idx++;

@@ -12,7 +12,7 @@ public class Chasemaze_Goal : MonoBehaviour
         if (collision.CompareTag("Player") && !_isGoal)
         {
             _isGoal = true;
-            PuzzleManager.FinPuzzle();
+            PuzzleManager.EndPuzzle();
             StartCoroutine(FlipGoal());
         }
     }
