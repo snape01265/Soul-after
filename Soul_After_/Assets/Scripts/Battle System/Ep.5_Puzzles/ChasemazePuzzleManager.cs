@@ -15,13 +15,18 @@ public class ChasemazePuzzleManager : MonoBehaviour
     public PlayableDirector StartTimeline;
     public PlayableDirector EndTimeline;
     public CinemachineVirtualCamera ChaseCam;
+    public MusicFade BGMToFade;
+    public AudioSource ChaseBGM;
     [Header("Puzzle Settings")]
     public float FadeinDuration;
     public float CamshakeStrength = 1f;
     private List<Chasemaze_Hazard> hazard;
+    private MusicFade chaseMusicFade;
 
     public void InitPuzzle()
     {
+        if (ChaseBGM)
+            chaseMusicFade = ChaseBGM.GetComponent<MusicFade>();
         hazard = new List<Chasemaze_Hazard>(GetComponentsInChildren<Chasemaze_Hazard>());
         hazard.Add(ChaseCam.GetComponent<Chasemaze_Hazard>());
         StartCoroutine(TeleToStartPos());
@@ -37,7 +42,13 @@ public class ChasemazePuzzleManager : MonoBehaviour
 
     public void StartPuzzle()
     {
-        foreach(var haz in hazard)
+        if (ChaseBGM)
+        {
+            ChaseBGM.Play();
+            chaseMusicFade.FadeMusic();
+        }
+            
+        foreach (var haz in hazard)
         {
             haz.isMoving = true;
         }
@@ -46,6 +57,19 @@ public class ChasemazePuzzleManager : MonoBehaviour
 
     public void EndPuzzle()
     {
+        if (BGMToFade)
+        {
+            BGMToFade.GetComponent<AudioSource>().volume = 0;
+            BGMToFade.GetComponent<AudioSource>().Play();
+            BGMToFade.targetVolume = 1;
+            BGMToFade.FadeMusic();
+        }
+        if (ChaseBGM)
+        {
+            chaseMusicFade.targetVolume = 0;
+            chaseMusicFade.FadeMusic();
+        }
+            
         foreach (var haz in hazard)
         {
             haz.isMoving = false;
