@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class BossHP : MonoBehaviour
 {
     public int currentHealth;
     public HealthBar healthBar;
-    [HideInInspector]
-    public Animator anim;
-    public Boss boss;
+    public PlayableDirector endScene;
 
+    private GameObject boss;
     private int maxHealth = 100;
+    private Animator anim;
+
     void Start()
     {
         anim = this.GetComponent<Animator>();
-        boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
+        boss = GameObject.FindGameObjectWithTag("Enemy");
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -34,7 +36,8 @@ public class BossHP : MonoBehaviour
         else if (currentHealth <= 0)
         {
             //Death Animation?
-            //Transition to Event Scene
+            boss.SetActive(false);
+            endScene.Play();
         }
         else
         {
