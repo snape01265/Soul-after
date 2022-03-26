@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
     public Animator anim;
     [HideInInspector]
     public bool cooldown = false;
+    public float fadeTime;
     private Fadein fade;
 
     void Start()
@@ -43,12 +44,12 @@ public class Boss : MonoBehaviour
     {
         anim.SetBool("Stunned", true);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
-        fade.FadeInOutStatic(1);
-        yield return new WaitForSeconds(1);
+        fade.FadeInOutStatic(fadeTime);
+        yield return new WaitForSeconds(fadeTime);
         turrets.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
-        fade.FadeInOutStatic(1);
-        yield return new WaitForSeconds(1);
+        fade.FadeInOutStatic(fadeTime);
+        yield return new WaitForSeconds(fadeTime);
         anim.SetBool("Vulnerable", false);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
