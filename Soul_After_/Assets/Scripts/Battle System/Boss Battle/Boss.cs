@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     [HideInInspector]
     public bool cooldown = false;
     public float fadeTime;
+    public AudioSource sfx;
+
     private Fadein fade;
 
     void Start()
@@ -37,6 +39,8 @@ public class Boss : MonoBehaviour
     {
         if(cooldown)
         {
+            if (sfx)
+                sfx.Play();
             StartCoroutine(BossStun());
         }
     }
@@ -49,6 +53,8 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(fadeTime);
         turrets.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
+        if (sfx)
+            sfx.Play();
         fade.FadeInOutStatic(fadeTime);
         yield return new WaitForSeconds(fadeTime);
         anim.SetBool("Stunned", false);

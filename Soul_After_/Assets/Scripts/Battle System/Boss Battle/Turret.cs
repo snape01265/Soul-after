@@ -36,8 +36,6 @@ public class Turret : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !onTurret && playerInRange)
         {
-            if (sfx)
-                sfx.Play();
             Vector3 turretPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             playerPosition.transform.position = turretPosition;
             player.CancelControl();
@@ -49,8 +47,6 @@ public class Turret : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && onTurret)
         {
-            if (sfx)
-                sfx.Play();
             player.GiveBackControl();
             playerCam.Priority = 1;
             turretCam.Priority = 0;
@@ -60,6 +56,8 @@ public class Turret : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space) && !cooldown)
             {
+                if (sfx)
+                    sfx.Play();
                 FireBullet();
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
