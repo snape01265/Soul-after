@@ -8,6 +8,7 @@ public class BossHP : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public PlayableDirector endScene;
+    public AudioSource sfx;
 
     private GameObject boss;
     private int maxHealth = 100;
@@ -23,6 +24,8 @@ public class BossHP : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (sfx)
+            sfx.Play();
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 70 && 40 < currentHealth)
