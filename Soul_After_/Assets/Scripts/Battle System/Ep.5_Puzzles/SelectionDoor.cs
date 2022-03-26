@@ -6,7 +6,10 @@ public class SelectionDoor : MonoBehaviour
 {
     public SelectionDoorManager DoorManager;
     public SelectionDoorManager.DOORTYPE DoorType;
+    public AudioSource EnterSFX;
+
     private bool isTriggered = false;
+    
     public void FinishedPuzzle()
     {
         gameObject.SetActive(false);
@@ -16,6 +19,8 @@ public class SelectionDoor : MonoBehaviour
     {
         if (!isTriggered && collision.CompareTag("Player"))
         {
+            if (EnterSFX)
+                EnterSFX.Play();
             isTriggered = true;
             switch (DoorType)
             {

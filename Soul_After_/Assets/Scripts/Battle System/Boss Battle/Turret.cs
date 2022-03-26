@@ -10,6 +10,7 @@ public class Turret : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public bool cooldown;
+    public AudioSource sfx;
     [HideInInspector]
     public CinemachineVirtualCamera playerCam;
     [HideInInspector]
@@ -35,6 +36,8 @@ public class Turret : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !onTurret && playerInRange)
         {
+            if (sfx)
+                sfx.Play();
             Vector3 turretPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             playerPosition.transform.position = turretPosition;
             player.CancelControl();
@@ -46,6 +49,8 @@ public class Turret : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.F) && onTurret)
         {
+            if (sfx)
+                sfx.Play();
             player.GiveBackControl();
             playerCam.Priority = 1;
             turretCam.Priority = 0;
