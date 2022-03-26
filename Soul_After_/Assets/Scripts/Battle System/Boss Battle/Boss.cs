@@ -21,6 +21,17 @@ public class Boss : MonoBehaviour
         fade = GameObject.Find("Fadein").GetComponent<Fadein>();
     }
 
+    private void Update()
+    {
+        if(cooldown)
+        {
+            anim.SetBool("Vulnerable", true);
+        }
+        else
+        {
+            anim.SetBool("Vulnerable", false);
+        }
+    }
     public void Stun()
     {
         if(cooldown)
@@ -30,14 +41,15 @@ public class Boss : MonoBehaviour
     }
     IEnumerator BossStun()
     {
-        fade.FadeInOutStatic(1);
-        yield return new WaitForSeconds(1);
         anim.SetBool("Stunned", true);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
+        fade.FadeInOutStatic(1);
+        yield return new WaitForSeconds(1);
         turrets.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         fade.FadeInOutStatic(1);
         yield return new WaitForSeconds(1);
+        anim.SetBool("Vulnerable", false);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);

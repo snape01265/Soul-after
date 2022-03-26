@@ -13,9 +13,11 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
 
     private List<Turret> turretList = new List<Turret>();
+    private Boss boss;
 
     void Start()
     {
+        boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
         rb.velocity = transform.right * speed;
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
         foreach(GameObject turret in turrets)
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
         {
             bossHP.TakeDamage(damage);
             sprite.enabled = false;
+            boss.anim.SetTrigger("Damage");
             StartCoroutine(DestroyBullet());
         }
         else
