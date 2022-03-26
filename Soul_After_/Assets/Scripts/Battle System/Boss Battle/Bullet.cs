@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public int damage;
     public int cooldownSeconds;
+    public AudioSource sfx;
     [HideInInspector]
     public SpriteRenderer sprite;
     [HideInInspector]
@@ -33,6 +34,8 @@ public class Bullet : MonoBehaviour
         BossHP bossHP = other.GetComponent<BossHP>();
         if (bossHP != null)
         {
+            if (sfx)
+                sfx.Play();
             bossHP.TakeDamage(damage);
             sprite.enabled = false;
             boss.anim.SetTrigger("Damage");
