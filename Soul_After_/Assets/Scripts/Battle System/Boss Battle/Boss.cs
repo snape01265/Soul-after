@@ -44,16 +44,15 @@ public class Boss : MonoBehaviour
     {
         anim.SetBool("Stunned", true);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
+        cooldown = false;
         fade.FadeInOutStatic(fadeTime);
         yield return new WaitForSeconds(fadeTime);
         turrets.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         fade.FadeInOutStatic(fadeTime);
         yield return new WaitForSeconds(fadeTime);
-        anim.SetBool("Vulnerable", false);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
-        cooldown = false;
     }
 }
