@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &83951373
 Transform:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &143864163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143864162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.5, y: 0, z: 10.10281}
+  m_LocalPosition: {x: 12.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1552288710}
@@ -4662,6 +4662,7 @@ GameObject:
   - component: {fileID: 604236440}
   - component: {fileID: 604236439}
   - component: {fileID: 604236438}
+  - component: {fileID: 604236441}
   m_Layer: 0
   m_Name: Ep.5_Timeline_1
   m_TagString: Untagged
@@ -4738,7 +4739,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelineToPlay"] = 2
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -4806,9 +4807,70 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -8595609518630783670, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 954593152}
+  - key: {fileID: -3262442152910610491, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 954593154}
+  - key: {fileID: 1833225360613610124, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 954593154}
+  - key: {fileID: -8295034726168818692, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 775920685}
+  - key: {fileID: -7515267296862269647, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 1145995833}
+  - key: {fileID: -1698263479759807696, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 1145995833}
+  - key: {fileID: 3081786962002772465, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 775920685}
+  - key: {fileID: -4247580796397046418, guid: 80dc7c9f4585c1a48bf194b74bd89353, type: 2}
+    value: {fileID: 604236436}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &604236441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604236436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682269457}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682269457}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &679748401
 GameObject:
   m_ObjectHideFlags: 0
@@ -5977,7 +6039,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4770889765666779275, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_Volume
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4770889765666779275, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_audioClip
@@ -9455,7 +9517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &903335353
 Transform:
   m_ObjectHideFlags: 0
@@ -13806,7 +13868,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -22592,7 +22654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 32
+  trigger: 8
   condition:
     luaConditions:
     - (Variable["TimelineToPlay"] == 0) and (Variable["Episode"] == 4)
@@ -23200,7 +23262,7 @@ MonoBehaviour:
   m_Follow: {fileID: 954593151}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7
+    OrthographicSize: 6
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -24888,7 +24950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672006299012660146, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5750666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7672006299012660146, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
       propertyPath: m_LocalRotation.w
