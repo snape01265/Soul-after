@@ -60,7 +60,6 @@ public class ScoreManager : MonoBehaviour
         }
         count += 1;
         Debug.Log(count);
-
     }
     public static void Miss()
     {
