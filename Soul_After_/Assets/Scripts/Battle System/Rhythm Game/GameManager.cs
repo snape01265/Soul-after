@@ -17,21 +17,24 @@ public class GameManager : MonoBehaviour
     public Lane[] lanes;
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
-    public double perfectMarginOfError;
-    public double goodMarginOfError;
-    public double badMarginOfError;
     public string fileLocation;
     public static MidiFile midiFile;
-    public Transform player;
-    public Transform seulha;
     public Image firstBG;
     public Image secondBG;
     public Image snowImage;
     public float bgSpeed;
-
     public float noteTime;
     public float noteSpawnX;
     public float noteTapX;
+    [HideInInspector]
+    public double perfectMarginOfError;
+    [HideInInspector]
+    public double goodMarginOfError;
+    [HideInInspector]
+    public double badMarginOfError;
+
+    private Transform player;
+    private Transform seulha;
     public float noteDespawnX
     {
         get
@@ -44,6 +47,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite());

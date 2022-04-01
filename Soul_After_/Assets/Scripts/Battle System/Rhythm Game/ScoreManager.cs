@@ -7,8 +7,8 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public TMPro.TextMeshPro comboText;
     public TMPro.TextMeshPro scoreText;
-    public Player player;
     public int[] multiplierThresholdsContainer;
+    [HideInInspector]
     public GameManager gameManager;
     private bool bgChange = false;
 
@@ -26,7 +26,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        cc = player.GetComponent<CatchController>();
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CatchController>();
         multiplierThresholds = multiplierThresholdsContainer;
     }
 

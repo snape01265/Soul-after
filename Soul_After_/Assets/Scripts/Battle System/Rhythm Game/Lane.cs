@@ -9,6 +9,7 @@ public class Lane : MonoBehaviour
     public KeyCode keyToPress;
     public GameObject notePrefab;
     List<Note> notes = new List<Note>();
+    [HideInInspector]
     public List<double> timeStamps = new List<double>();
     private bool keyAvailable = true;
 
