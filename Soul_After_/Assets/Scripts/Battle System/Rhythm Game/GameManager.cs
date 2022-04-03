@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public double goodMarginOfError;
     [HideInInspector]
     public double badMarginOfError;
+    public ScoreManager scoreManager;
 
     private Transform player;
     private Transform seulha;
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
         {
             ReadFromFile();
         }
+        StartRhythmGame();
     }
 
     [System.Obsolete]
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
     {
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
+        scoreManager.maxCount = notes.Count;
         notes.CopyTo(array, 0);
 
         foreach (var lane in lanes) lane.SetTimeStamps(array);

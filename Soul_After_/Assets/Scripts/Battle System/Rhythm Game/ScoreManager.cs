@@ -5,15 +5,16 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
+    public float bgChangeCount;
     public TMPro.TextMeshPro comboText;
     public TMPro.TextMeshPro scoreText;
     public int[] multiplierThresholdsContainer;
     [HideInInspector]
     public GameManager gameManager;
+    public int maxCount = 383;
     private bool bgChange = false;
 
     static int count;
-    static int maxCount = 383;
     static CatchController cc;
     static int currentScore;
     static int comboScore;
@@ -29,7 +30,20 @@ public class ScoreManager : MonoBehaviour
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CatchController>();
         multiplierThresholds = multiplierThresholdsContainer;
     }
-
+    void Update()
+    {
+        comboText.text = comboScore.ToString();
+        scoreText.text = currentScore.ToString();
+        if (count == bgChangeCount && !bgChange)
+        {
+            gameManager.ChangeBG();
+            bgChange = true;
+        }
+        if (count == maxCount)
+        {
+            gameManager.StartDialogue();
+        }
+    }
     public static void PerfectHit()
     {
         currentScore += perfectNoteValue * currentMultiplier;
@@ -65,22 +79,8 @@ public class ScoreManager : MonoBehaviour
     {
         comboScore = 0; 
         currentMultiplier = 1;
-        cc.TakeDamage(1);
+        //cc.TakeDamage(1);
         count += 1;
         Debug.Log(count);
-    }
-    void Update()
-    {
-        comboText.text = comboScore.ToString();
-        scoreText.text = currentScore.ToString();
-        if (count == 115 && !bgChange)
-        {
-            gameManager.ChangeBG();
-            bgChange = true;
-        }
-        if (count == maxCount)
-        {
-            gameManager.StartDialogue();
-        }
     }
 }
