@@ -8,6 +8,7 @@ public class DefenseGameManager : MonoBehaviour
     [Header("Objs")]
     public FloatValue HighScore;
     public MobGen[] MobGens;
+    public Barrier Barrier;
     public Fadein FadeIn;
     public SceneTransition SceneTransition;
     public Text CurWaveText;
@@ -28,6 +29,8 @@ public class DefenseGameManager : MonoBehaviour
     [Header("Gun Settings")]
     public float GunAtkSpd = .5f;
     public int GunAtkDmg = 5;
+    public float MaxGunSpread = 2f;
+    public float MaxGunSpreadTime = 3f;
     [Header("Game Settings")]
     public int ClassicTotWave = 10;
     public int WaveEnemyMul = 10;
@@ -148,8 +151,6 @@ public class DefenseGameManager : MonoBehaviour
             isSpawnable = true;
         }
     }
-
-
 
     private void ClassicEndGame()
     {
