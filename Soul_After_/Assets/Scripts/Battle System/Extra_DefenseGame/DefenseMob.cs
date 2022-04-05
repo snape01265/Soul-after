@@ -29,7 +29,7 @@ public class DefenseMob : MonoBehaviour
         normSpeed += Time.deltaTime * gameManager.EnemySpd;
         if (gameManager.OutForBlood)
         {
-            if (AtkMotion != null)
+            if (AtkMotion() != null)
             {
                 StopCoroutine(AtkMotion());
             }
