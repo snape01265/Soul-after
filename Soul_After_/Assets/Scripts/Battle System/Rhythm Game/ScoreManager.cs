@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshPro comboText;
     public TMPro.TextMeshPro scoreText;
     public int[] multiplierThresholdsContainer;
+    public bool isMinigame;
     [HideInInspector]
     public GameManager gameManager;
 
@@ -49,7 +50,10 @@ public class ScoreManager : MonoBehaviour
         }
         if (GameManager.GetAudioSourceTime() > gameManager.tracks[GameManager.track].clip.length - 0.05 && !resultScreen.activeInHierarchy)
         {
-            Invoke(nameof(EndTrack), 2f);
+            if(isMinigame)
+            {
+                Invoke(nameof(EndTrack), 2f);
+            }
         }
         if(resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
