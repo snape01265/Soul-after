@@ -52,7 +52,7 @@ public class Lane : MonoBehaviour
             {
                 if (Mathf.Abs((float)(audioTime - timeStamp)) < perfectMarginOfError)
                 {
-                    ScoreManager.BadHit();
+                    ScoreManager.PerfectHit();
                     notes[inputIndex].gameObject.GetComponent<Note>().PerfectHit();
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
@@ -66,22 +66,19 @@ public class Lane : MonoBehaviour
                 }
                 else if (Mathf.Abs((float)(audioTime - timeStamp)) < badMarginOfError)
                 {
-                    ScoreManager.PerfectHit();
+                    ScoreManager.BadHit();
                     notes[inputIndex].gameObject.GetComponent<Note>().BadHit();
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
                 else
                 {
-                    Debug.Log("OutOfRange");
-                    StartCoroutine(DisableKeys());
-
+                    //StartCoroutine(DisableKeys());
                 }
             }
             if(timeStamp + badMarginOfError <= audioTime)
             {
                 ScoreManager.Miss();
-                print($"Missed");
                 inputIndex++;
             }
         }

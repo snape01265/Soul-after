@@ -13,15 +13,13 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public AudioSource audioSource;
+    public AudioSource[] tracks;
+    public string[] fileLocation;
     public Lane[] lanes;
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
-    public string fileLocation;
     public static MidiFile midiFile;
-    public Image firstBG;
-    public Image secondBG;
-    public Image snowImage;
+    public Image[] images;
     public float bgSpeed;
     public float noteTime;
     public float noteSpawnX;
@@ -33,6 +31,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public double badMarginOfError;
     public ScoreManager scoreManager;
+    public static int track;
 
     private Transform player;
     private Transform seulha;
@@ -48,6 +47,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        track = DialogueLua.GetVariable("TrackSelection").asInt - 1;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     [System.Obsolete]
     private IEnumerator ReadFromWebsite()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation))
+        using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation[track]))
         {
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     }
     private void ReadFromFile()
     {
-        midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
+        midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation[track]);
     }
     public void StartRhythmGame()
     {
@@ -94,31 +94,29 @@ public class GameManager : MonoBehaviour
     {
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
-        scoreManager.maxCount = notes.Count;
         notes.CopyTo(array, 0);
-
         foreach (var lane in lanes) lane.SetTimeStamps(array);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
     }
     public void StartSong()
     {
-        audioSource.Play();
+        tracks[track].Play();
     }
     public void StartDialogue()
     {
-        PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2_RhythmGame_Conversations", player, seulha);
+        PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timeline 8(Rhythm Game)", player, seulha);
     }
     public void ChangeBG()
     {
         IEnumerator BackgroundTransition()
         {
             Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
-            StartCoroutine(Fade(true, firstBG, bgSpeed));
-            StartCoroutine(Fade(true, snowImage, bgSpeed));
+            StartCoroutine(Fade(true, images[0], bgSpeed));
+            StartCoroutine(Fade(true, images[2], bgSpeed));
             GameObject.Find("SnowParticles").SetActive(false);
             yield return new WaitForSeconds(5);
-            StartCoroutine(Fade(false, secondBG, bgSpeed));
+            StartCoroutine(Fade(false, images[1], bgSpeed));
             StartCoroutine(FadeLight(false, sunlight, bgSpeed));
             yield return null;
         }
@@ -166,6 +164,6 @@ public class GameManager : MonoBehaviour
     }
     public static double GetAudioSourceTime()
     {
-        return (double)instance.audioSource.timeSamples / instance.audioSource.clip.frequency;
+        return (double)instance.tracks[track].timeSamples / instance.tracks[track].clip.frequency;
     }
 }
