@@ -5,7 +5,12 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     public DefenseGameManager GameManager;
-    public int BarrierHealth;
+    private int BarrierHealth;
+
+    private void Start()
+    {
+        BarrierHealth = GameManager.BarrierHealth;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +26,7 @@ public class Barrier : MonoBehaviour
 
         if (BarrierHealth <= 0)
         {
+            GameManager.OutForBlood = true;
             gameObject.SetActive(false);
         }
     }

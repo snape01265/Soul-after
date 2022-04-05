@@ -7,19 +7,20 @@ public class Gun : MonoBehaviour
     public DefenseGameManager GameManager;
     public GameObject BulletPrefab;
 
-    private float gunSpread;
-    private Quaternion gunRotation;
+    private float gunSpread = 0;
     private bool spreadCD = false;
 
     void FixedUpdate()
     {
         if (Input.GetButton("Jump"))
         {
-            if (gunSpread <= GameManager.MaxGunSpread && !spreadCD)
+            if (gunSpread <= GameManager.MaxGunSpreadDeg && !spreadCD)
             {
+                float randAngle = Random.Range(-gunSpread, gunSpread);
                 StartCoroutine(GunSpread());
                 GameObject bullet = Instantiate(BulletPrefab);
                 bullet.tag = "bullet";
+                bullet.GetComponent<GunBullet>().FireAtAngle(randAngle);
             }
         } else if (gunSpread > 0 && !spreadCD)
         {
@@ -30,7 +31,7 @@ public class Gun : MonoBehaviour
     IEnumerator GunSpread()
     {
         spreadCD = true;
-        gunSpread += GameManager.MaxGunSpread / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
+        gunSpread += GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
         yield return new WaitForSeconds(GameManager.GunAtkSpd);
         spreadCD = false;
     }
@@ -38,7 +39,7 @@ public class Gun : MonoBehaviour
     IEnumerator SpreadCD()
     {
         spreadCD = true;
-        gunSpread -= GameManager.MaxGunSpread / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
+        gunSpread -= GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
         yield return new WaitForSeconds(GameManager.GunAtkSpd);
         spreadCD = false;
     }

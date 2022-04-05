@@ -9,6 +9,8 @@ public class MobGen : MonoBehaviour
 
     public void SpawnMob()
     {
+        float randY = Random.Range(gameManager.SpawnBorderYLower, gameManager.SpawnBorderYUpper);
+        transform.localPosition = new Vector3(0, randY, 0);
         Instantiate(MobPrefab);
     }
 }

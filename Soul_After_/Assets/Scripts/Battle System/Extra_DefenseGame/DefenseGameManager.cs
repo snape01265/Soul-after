@@ -14,12 +14,14 @@ public class DefenseGameManager : MonoBehaviour
     public Text CurWaveText;
     public Text HighScoreText;
     public Text CurScoreText;
+    public Text ClearText;
     [Header("Barrier Settings")]
     public int BarrierHealth = 100;
     public int BarrierHealPerRound = 15;
     [Header("Mob Settings")]
     public int EnemyAtkDmg = 7;
     public int EnemyHealth = 20;
+    public float EnemySpd = 0.1f;
     public float EnemyAtkTime = 2f;
     public float BaseSpawnRate = 3f;
     public float SpawnMulti = .8f;
@@ -29,8 +31,9 @@ public class DefenseGameManager : MonoBehaviour
     [Header("Gun Settings")]
     public float GunAtkSpd = .5f;
     public int GunAtkDmg = 5;
-    public float MaxGunSpread = 2f;
+    public float MaxGunSpreadDeg = 30f;
     public float MaxGunSpreadTime = 3f;
+    public float BulletSpd = 1f;
     [Header("Game Settings")]
     public int ClassicTotWave = 10;
     public int WaveEnemyMul = 10;
@@ -62,13 +65,16 @@ public class DefenseGameManager : MonoBehaviour
         }
     }
     private int curScore;
-
-    private int waveKill;
+    [HideInInspector]
+    public int WaveKill;
+    [HideInInspector]
+    public bool OutForBlood = false;
     private bool isClassic = true;
     private float spawnRate;
     private int simulSpawn;
     private readonly int SPAWNRATEDECINCRE = 5;
     private readonly int SIMULSPAWNINCINCRE = 30;
+    private readonly int CLEARTXTBUFFERTIME = 1;
 
     public void StartClassic()
     {
@@ -104,7 +110,7 @@ public class DefenseGameManager : MonoBehaviour
     private void StartWave(int MobCount)
     {
         int curMob = 0;
-        waveKill = 0;
+        WaveKill = 0;
         bool isSpawnable = true;
         bool spawnFinished = false;
 
@@ -119,8 +125,6 @@ public class DefenseGameManager : MonoBehaviour
                     for (int i = 0; i < simulSpawn; i++)
                     {
                         curMob++;
-                        float randY = Random.Range(SpawnBorderYLower, SpawnBorderYUpper);
-                        MobGens[i].transform.localPosition = new Vector3(0, randY, 0);
                         MobGens[i].SpawnMob();
                     }
                 }
@@ -132,14 +136,15 @@ public class DefenseGameManager : MonoBehaviour
                         MobGens[i].SpawnMob();
                     }
                 }
-            } else if (curMob > MobCount)
+            } else if (!spawnFinished && curMob > MobCount)
             {
                 spawnFinished = true;
             }
 
-            if (spawnFinished && waveKill >= MobCount)
+            if (spawnFinished && WaveKill >= MobCount)
             {
-                Debug.Log("Wave Cleared");
+                Barrier.RestoreHealth();
+                StartCoroutine(RenderClearText())
                 break;
             }
         }
@@ -158,7 +163,7 @@ public class DefenseGameManager : MonoBehaviour
         EndGame();
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         if (HighScore.initialValue < CurScore)
         {
@@ -166,7 +171,8 @@ public class DefenseGameManager : MonoBehaviour
         }
 
         FadeIn.FadeInOutStatic(GameEndFadeOutTime);
-        SceneTransition.ChangeScene();
+        Debug.Log("Game Ended!");
+        Time.timeScale = 0f;
     }
 
     private void InitScene()
@@ -197,5 +203,13 @@ public class DefenseGameManager : MonoBehaviour
         {
             CurScoreText.text = "현재 점수: " + curScore.ToString();
         }
+    }
+
+    IEnumerator RenderClearText()
+    {
+        yield return new WaitForSeconds(CLEARTXTBUFFERTIME);
+        ClearText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(WaveClearBreakTime - CLEARTXTBUFFERTIME * 2);
+        ClearText.gameObject.SetActive(false);
     }
 }
