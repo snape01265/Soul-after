@@ -54,6 +54,10 @@ public class ScoreManager : MonoBehaviour
             {
                 Invoke(nameof(EndTrack), 2f);
             }
+            else
+            {
+                
+            }
         }
         if(resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
