@@ -144,7 +144,7 @@ public class DefenseGameManager : MonoBehaviour
             if (spawnFinished && WaveKill >= MobCount)
             {
                 Barrier.RestoreHealth();
-                StartCoroutine(RenderClearText())
+                StartCoroutine(RenderClearText());
                 break;
             }
         }
