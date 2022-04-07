@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,12 +27,12 @@ public class DefenseGameManager : MonoBehaviour
     public float BaseSpawnRate = 3f;
     public float SpawnMulti = .8f;
     public int BaseSimulSpawn = 1;
-    public float SpawnBorderYUpper;
-    public float SpawnBorderYLower;
+    public float SpawnBorderYUpper = 10f;
+    public float SpawnBorderYLower = -10f;
     [Header("Gun Settings")]
     public float GunAtkSpd = .5f;
     public int GunAtkDmg = 5;
-    public float MaxGunSpreadDeg = 30f;
+    public float MaxGunSpreadDeg = 10f;
     public float MaxGunSpreadTime = 3f;
     public float BulletSpd = 1f;
     [Header("Game Settings")]
@@ -65,63 +66,41 @@ public class DefenseGameManager : MonoBehaviour
         }
     }
     private int curScore;
-    [HideInInspector]
+    // [HideInInspector]
     public int WaveKill;
     [HideInInspector]
     public bool OutForBlood = false;
-    private bool isClassic = true;
+    private bool waveFinished = false;
+    [SerializeField]
+    private bool isSpawnable = false;
+    [SerializeField]
+    private bool waveStarted = false;
+    private bool spawnFinished = false;
+    private bool isClassicMode = true;
     private float spawnRate;
     private int simulSpawn;
+    [SerializeField]
+    private int MobCount = 0;
+    public int curMob = 0;
     private readonly int SPAWNRATEDECINCRE = 5;
     private readonly int SIMULSPAWNINCINCRE = 30;
     private readonly int CLEARTXTBUFFERTIME = 1;
 
-    public void StartClassic()
+    //test only
+    private void Start()
     {
-        InitScene();
-        for (int i = 0; i < ClassicTotWave; i++)
-        {
-            StartWave(i * WaveEnemyMul);
-        }
-
-        ClassicEndGame();
+        Invoke("StartClassic", 3f);
     }
 
-    public void StartEndless()
+    private void FixedUpdate()
     {
-        isClassic = false;
-        InitScene();
-        for (int i = 1; ; i++)
-        {
-            if (i % SPAWNRATEDECINCRE == 0)
-            {
-                spawnRate *= SpawnMulti;
-
-                if (i % SIMULSPAWNINCINCRE == 0)
-                {
-                    simulSpawn += 1;
-                }
-            }
-            
-            StartWave(i * WaveEnemyMul);
-        }
-    }
-
-    private void StartWave(int MobCount)
-    {
-        int curMob = 0;
-        WaveKill = 0;
-        bool isSpawnable = true;
-        bool spawnFinished = false;
-
-        while (true)
+        if (waveStarted)
         {
             if (isSpawnable && curMob < MobCount)
             {
-                if (simulSpawn <= 6)
+                isSpawnable = false;
+                if (simulSpawn <= MobGens.Length)
                 {
-                    StartCoroutine(SpawnTimer());
-
                     for (int i = 0; i < simulSpawn; i++)
                     {
                         curMob++;
@@ -130,31 +109,75 @@ public class DefenseGameManager : MonoBehaviour
                 }
                 else
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < MobGens.Length; i++)
                     {
                         curMob++;
                         MobGens[i].SpawnMob();
                     }
                 }
-            } else if (!spawnFinished && curMob > MobCount)
+            }
+            else if (!spawnFinished && curMob <= MobCount)
             {
                 spawnFinished = true;
             }
 
             if (spawnFinished && WaveKill >= MobCount)
             {
-                Barrier.RestoreHealth();
-                StartCoroutine(RenderClearText());
-                break;
+                waveStarted = false;
+                spawnFinished = false;
+                StartCoroutine(CheckWaveFinished(isClassicMode));
             }
         }
+    }
 
-        IEnumerator SpawnTimer()
+    public void StartClassic()
+    {
+        InitScene();
+        StartCoroutine(StartWave(true));
+    }
+
+    public void StartEndless()
+    {
+        InitScene();
+        StartCoroutine(StartWave(false));
+    }
+
+    IEnumerator StartWave(bool isClassic)
+    {
+        CurWave++;
+
+        if (!isClassic && CurWave % SPAWNRATEDECINCRE == 0)
         {
-            isSpawnable = false;
-            yield return new WaitForSeconds(spawnRate);
-            isSpawnable = true;
+            spawnRate *= SpawnMulti;
+
+            if (CurWave % SIMULSPAWNINCINCRE == 0)
+            {
+                simulSpawn += 1;
+            }
         }
+        isClassicMode = isClassic;
+        curMob = 0;
+        MobCount = WaveEnemyMul * CurWave;
+        WaveKill = 0;
+        waveStarted = true;
+        Debug.Log("curwave : " + CurWave);
+        yield return null;
+    }
+
+    IEnumerator CheckWaveFinished(bool ClassicMode)
+    {
+        if (ClassicMode && CurWave >= ClassicTotWave)
+        {
+            ClassicEndGame();
+            yield break;
+        } else if (ClassicMode && CurWave < ClassicTotWave)
+        {
+            Barrier.RestoreHealth();
+            StartCoroutine(RenderClearText());
+            yield return new WaitForSeconds(WaveClearBreakTime);
+            StartCoroutine(StartWave(ClassicMode));
+        }
+
     }
 
     private void ClassicEndGame()
@@ -180,7 +203,9 @@ public class DefenseGameManager : MonoBehaviour
         spawnRate = BaseSpawnRate;
         simulSpawn = BaseSimulSpawn;
 
-        if (isClassic) return;
+        StartCoroutine(SpawnTimer());
+
+        if (isClassicMode) return;
         else
         {
             HighScoreText.text = "최고 점수: " + ((int)HighScore.initialValue).ToString();
@@ -189,7 +214,7 @@ public class DefenseGameManager : MonoBehaviour
 
     private void RenderCurWave()
     {
-        if (isClassic) return;
+        if (isClassicMode) return;
         else
         {
             CurWaveText.text = "웨이브: " + curWave.ToString();
@@ -198,7 +223,7 @@ public class DefenseGameManager : MonoBehaviour
 
     private void RenderCurScore()
     {
-        if (isClassic) return;
+        if (isClassicMode) return;
         else
         {
             CurScoreText.text = "현재 점수: " + curScore.ToString();
@@ -211,5 +236,12 @@ public class DefenseGameManager : MonoBehaviour
         ClearText.gameObject.SetActive(true);
         yield return new WaitForSeconds(WaveClearBreakTime - CLEARTXTBUFFERTIME * 2);
         ClearText.gameObject.SetActive(false);
+    }
+
+    IEnumerator SpawnTimer()
+    {
+        yield return new WaitForSeconds(spawnRate);
+        isSpawnable = true;
+        StartCoroutine(SpawnTimer());
     }
 }

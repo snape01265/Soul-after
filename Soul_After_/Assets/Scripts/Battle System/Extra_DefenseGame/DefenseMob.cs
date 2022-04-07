@@ -10,8 +10,10 @@ public class DefenseMob : MonoBehaviour
     private int gunDmg;
     private float normSpeed;
     private Barrier barrier;
+    [SerializeField]
     private bool inPosition = false;
     private Vector3 originPos;
+    private Vector3 targetPos;
 
     void Start()
     {
@@ -19,9 +21,10 @@ public class DefenseMob : MonoBehaviour
         Player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.Find("DefenseGameManager").GetComponent<DefenseGameManager>();
         barrier = GameObject.Find("Barrier").GetComponent<Barrier>();
-        originPos = transform.localPosition;
+        originPos = transform.position;
         health = gameManager.EnemyHealth;
         gunDmg = gameManager.GunAtkDmg;
+        targetPos = new Vector3(barrier.transform.position.x, originPos.y, originPos.z);
     }
 
     void FixedUpdate()
@@ -33,10 +36,10 @@ public class DefenseMob : MonoBehaviour
             {
                 StopCoroutine(AtkMotion());
             }
-            transform.localPosition = Vector3.Lerp(originPos, Player.transform.position, normSpeed);
+            transform.position = Vector3.Lerp(transform.position, Player.transform.position, normSpeed);
         }
         else if (!inPosition)
-            transform.localPosition = Vector3.Lerp(originPos, barrier.transform.position, normSpeed);
+            transform.position = Vector3.Lerp(originPos, targetPos, normSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,6 +47,9 @@ public class DefenseMob : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             gameManager.EndGame();
+        } else if (collision.CompareTag("Barrier"))
+        {
+            AttemptAtk();
         }
     }
 

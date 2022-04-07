@@ -4,26 +4,44 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public Player player;
     public DefenseGameManager GameManager;
     public GameObject BulletPrefab;
 
     private float gunSpread = 0;
     private bool spreadCD = false;
+    private bool isSlowed = false;
+    private float defSpeed;
+
+    private void Start()
+    {
+        defSpeed = player.speed;
+    }
 
     void FixedUpdate()
     {
         if (Input.GetButton("Jump"))
         {
+            if (!isSlowed)
+            {
+                player.speed *= .7f;
+                isSlowed = true;
+            }
+
             if (gunSpread <= GameManager.MaxGunSpreadDeg && !spreadCD)
             {
                 float randAngle = Random.Range(-gunSpread, gunSpread);
                 StartCoroutine(GunSpread());
-                GameObject bullet = Instantiate(BulletPrefab);
-                bullet.tag = "bullet";
+                GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
                 bullet.GetComponent<GunBullet>().FireAtAngle(randAngle);
             }
         } else if (gunSpread > 0 && !spreadCD)
         {
+            if (isSlowed)
+            {
+                player.speed = defSpeed;
+                isSlowed = false;
+            }
             StartCoroutine(SpreadCD());
         }
     }
@@ -31,7 +49,7 @@ public class Gun : MonoBehaviour
     IEnumerator GunSpread()
     {
         spreadCD = true;
-        gunSpread += GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
+        gunSpread = Mathf.Clamp(gunSpread + GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd, 0, GameManager.MaxGunSpreadDeg);
         yield return new WaitForSeconds(GameManager.GunAtkSpd);
         spreadCD = false;
     }
@@ -39,7 +57,7 @@ public class Gun : MonoBehaviour
     IEnumerator SpreadCD()
     {
         spreadCD = true;
-        gunSpread -= GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd;
+        gunSpread = Mathf.Clamp(gunSpread - GameManager.MaxGunSpreadDeg / GameManager.MaxGunSpreadTime * GameManager.GunAtkSpd, 0, GameManager.MaxGunSpreadDeg);
         yield return new WaitForSeconds(GameManager.GunAtkSpd);
         spreadCD = false;
     }
