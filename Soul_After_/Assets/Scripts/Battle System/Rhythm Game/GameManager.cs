@@ -97,11 +97,15 @@ public class GameManager : MonoBehaviour
         notes.CopyTo(array, 0);
         foreach (var lane in lanes) lane.SetTimeStamps(array);
 
-        Invoke(nameof(StartSong), songDelayInSeconds);
+        Invoke(nameof(PlaySong), songDelayInSeconds);
     }
-    public void StartSong()
+    public void PlaySong()
     {
         tracks[track].Play();
+    }
+    public void PauseSong()
+    {
+        tracks[track].Pause();
     }
     public void StartDialogue()
     {

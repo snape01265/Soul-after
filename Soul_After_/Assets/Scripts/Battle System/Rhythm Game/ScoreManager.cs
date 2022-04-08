@@ -13,6 +13,12 @@ public class ScoreManager : MonoBehaviour
     public bool isMinigame;
     [HideInInspector]
     public GameManager gameManager;
+    [HideInInspector]
+    public GameObject resultScreen;
+    [HideInInspector]
+    public SceneTransition sceneTransition;
+    [HideInInspector]
+    public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
     private bool bgChange = false;
 
@@ -23,15 +29,13 @@ public class ScoreManager : MonoBehaviour
     static int comboScore;
     static int[] multiplierThresholds;
     static int currentMultiplier = 1;
-    static int badNoteValue = 300;
+    static int badNoteValue = 50;
     static int goodNoteValue = 100;
-    static int perfectNoteValue = 50;
+    static int perfectNoteValue = 300;
     static int badNoteCount;
     static int goodNoteCount;
     static int perfectNoteCount;
     static int missCount;
-    public GameObject resultScreen;
-    public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
     void Start()
     {
@@ -61,7 +65,7 @@ public class ScoreManager : MonoBehaviour
         }
         if(resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
-            resultScreen.GetComponent<SceneTransition>().ChangeScene();
+            sceneTransition.ChangeScene();
         }
     }
     public static void PerfectHit()
