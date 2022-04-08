@@ -5,19 +5,12 @@ using UnityEngine;
 public class Barrier : MonoBehaviour
 {
     public DefenseGameManager GameManager;
+    [SerializeField]
     private int BarrierHealth;
 
     private void Start()
     {
         BarrierHealth = GameManager.BarrierHealth;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            collision.GetComponent<DefenseMob>().AttemptAtk();
-        }
     }
 
     public void TakeDamage()

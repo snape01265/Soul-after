@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public Quest quest;
     [NonSerialized]
     public bool control = true;
+    [NonSerialized]
+    public float speed = 20;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -35,7 +37,6 @@ public class Player : MonoBehaviour
     private readonly float minY = -4.7f;
     private readonly float maxY = 3.65f;
 
-    private readonly float speed = 20;
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .25f;
 
