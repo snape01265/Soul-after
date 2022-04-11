@@ -11,7 +11,7 @@ public class Lane : MonoBehaviour
     List<Note> notes = new List<Note>();
     [HideInInspector]
     public List<double> timeStamps = new List<double>();
-    private bool keyAvailable = true;
+    public bool keyAvailable = true;
 
     int spawnIndex = 0;
     int inputIndex = 0;
@@ -73,7 +73,7 @@ public class Lane : MonoBehaviour
                 }
                 else
                 {
-                    //StartCoroutine(DisableKeys());
+                    StartCoroutine(DisableKeys());
                 }
             }
             if(timeStamp + badMarginOfError <= audioTime)
