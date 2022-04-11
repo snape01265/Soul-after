@@ -11,6 +11,7 @@ public class Lane : MonoBehaviour
     List<Note> notes = new List<Note>();
     [HideInInspector]
     public List<double> timeStamps = new List<double>();
+    [HideInInspector]
     public bool keyAvailable = true;
 
     int spawnIndex = 0;
