@@ -78,8 +78,8 @@ public class DefenseGameManager : MonoBehaviour
     private int simulSpawn;
     private int MobCount = 0;
     public int curMob = 0;
-    private readonly int SPAWNRATEDECINCRE = 5;
-    private readonly int SIMULSPAWNINCINCRE = 30;
+    private readonly int SPAWNRATEDECINCRE = 5; //Spawning multiplier applied for every x(5) stages 
+    private readonly int SIMULSPAWNINCINCRE = 30; //Simultaneous spawn triggered every x(30) rounds
     private readonly int CLEARTXTBUFFERTIME = 1;
 
     //test only
