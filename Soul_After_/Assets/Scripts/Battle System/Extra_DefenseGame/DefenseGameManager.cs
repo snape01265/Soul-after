@@ -66,20 +66,16 @@ public class DefenseGameManager : MonoBehaviour
         }
     }
     private int curScore;
-    // [HideInInspector]
+    [NonSerialized]
     public int WaveKill;
-    [HideInInspector]
     public bool OutForBlood = false;
     private bool waveFinished = false;
-    [SerializeField]
     private bool isSpawnable = false;
-    [SerializeField]
     private bool waveStarted = false;
     private bool spawnFinished = false;
     private bool isClassicMode = true;
     private float spawnRate;
     private int simulSpawn;
-    [SerializeField]
     private int MobCount = 0;
     public int curMob = 0;
     private readonly int SPAWNRATEDECINCRE = 5;
@@ -214,11 +210,7 @@ public class DefenseGameManager : MonoBehaviour
 
     private void RenderCurWave()
     {
-        if (isClassicMode) return;
-        else
-        {
-            CurWaveText.text = "웨이브: " + curWave.ToString();
-        }
+        CurWaveText.text = "웨이브: " + curWave.ToString();
     }
 
     private void RenderCurScore()

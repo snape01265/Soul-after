@@ -10,7 +10,6 @@ public class DefenseMob : MonoBehaviour
     private int gunDmg;
     private float normSpeed;
     private Barrier barrier;
-    [SerializeField]
     private bool inPosition = false;
     private Vector3 originPos;
     private Vector3 targetPos;

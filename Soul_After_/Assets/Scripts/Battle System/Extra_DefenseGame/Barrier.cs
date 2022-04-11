@@ -1,12 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Barrier : MonoBehaviour
 {
     public DefenseGameManager GameManager;
-    [SerializeField]
-    private int BarrierHealth;
+    public Text BarrierText;
+    [HideInInspector]
+    public int BarrierHealth
+    {
+        get
+        {
+            return (barrierHealth);
+        }
+        set
+        {
+            barrierHealth = value;
+            RenderBarrierHealth();
+        }
+    }
+    private int barrierHealth;
 
     private void Start()
     {
@@ -27,5 +41,10 @@ public class Barrier : MonoBehaviour
     public void RestoreHealth()
     {
         BarrierHealth += GameManager.BarrierHealPerRound;
+    }
+
+    private void RenderBarrierHealth()
+    {
+        BarrierText.text = "º£¸®¾î: " + barrierHealth.ToString();
     }
 }
