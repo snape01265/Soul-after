@@ -7,6 +7,7 @@ public class ExitMenu : MonoBehaviour
     public GameObject exitMenu;
     public GameManager gameManager;
     public SceneTransition sceneTranstion;
+    public Lane[] laneList;
 
     private void Update()
     {
@@ -36,9 +37,17 @@ public class ExitMenu : MonoBehaviour
     public void PauseGame()
     {
         gameManager.PauseSong();
+        foreach (Lane lane in laneList)
+        {
+            lane.keyAvailable = false;
+        }
     }
     public void ResumeGame()
     {
         gameManager.PlaySong();
+        foreach (Lane lane in laneList)
+        {
+            lane.keyAvailable = true;
+        }
     }
 }
