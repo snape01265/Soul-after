@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Fox Market Functions")]
+    public int ItemID = 0;
+    public ItemProperties[] Items;
+    private MarketFunction market;
+    public FloatValue Token;
+
     public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
@@ -15,7 +21,6 @@ public class Player : MonoBehaviour
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
     public TimelinePlayer timeline;
-    public GameObject walkZone;
     [NonSerialized]
     public bool ispaused = false;
     [NonSerialized]
@@ -38,7 +43,7 @@ public class Player : MonoBehaviour
     private readonly float maxY = 3.65f;
 
     private readonly float normalVol = 1f;
-    private readonly float pauseVol = .25f;
+    private readonly float pauseVol = 1f;
 
     public VectorValue startingPosition;
     public BoolValue nameSetValue;
@@ -62,16 +67,17 @@ public class Player : MonoBehaviour
 
         AudioListener.volume = curVol.initialValue * normalVol;
     }
-
     void Start()
     {
+        //Fox Market
+        market = GameObject.FindGameObjectWithTag("Item").GetComponent<MarketFunction>();
+
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
         nameSet = nameSetValue.initialValue;
     }
-
     void FixedUpdate()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -123,7 +129,6 @@ public class Player : MonoBehaviour
             AnimatorOverride();
         }
     }
-
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag($"MovableObject"))
@@ -131,7 +136,6 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
-
     public void ResumeGame()
     {
         ToggleFunc();
@@ -139,7 +143,6 @@ public class Player : MonoBehaviour
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
     }
-
     public void PauseGame()
     {
         ToggleFunc();
@@ -147,26 +150,22 @@ public class Player : MonoBehaviour
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
     }
-
     //application quit
     public void GameExit()
     {
         Application.Quit();
     }
-
     //the player cant move
     public void CancelControl()
     {
         control = false;
         animator.SetBool("Moving", false);
     }
-
     //give back the controls to player
     public void GiveBackControl()
     {
         control = true;
     }
-
     public void ConditionalGiveBackControl()
     {
         if (nameSet)
@@ -174,7 +173,6 @@ public class Player : MonoBehaviour
             control = true;
         }
     }
-
     void UpdateAnimationAndMove()
     {
         if (change != Vector3.zero)
@@ -190,7 +188,6 @@ public class Player : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
-
     void MoveCharacter()
     {
         // Diagonal movement should be normalized
@@ -205,7 +202,6 @@ public class Player : MonoBehaviour
             transform.position + change * speed * Time.deltaTime
             );
     }
-
     public void WhoAreYou()
     {
         if (nameSet == false)
@@ -216,7 +212,6 @@ public class Player : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
-
     public void SetName()
     {
         string inputName = myName.text;
@@ -232,18 +227,15 @@ public class Player : MonoBehaviour
             timeline.StartTimeline();
         }
     }
-
     private void AssignNameVariable()
     {
         rpgTalk.variables[0].variableValue = nameSave.initialValue;
     }
-
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
         changeClothes = animatorValue.initialAnimator;
     }
-
     private void AnimatorOverride()
     {
         mainClothes = animatorValue.initialAnimator;
@@ -277,7 +269,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     public void QuestProgress1()
     {
         if (quest.isActive)
@@ -290,7 +281,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     public void QuestProgress2()
     {
         if (quest.isActive)
@@ -315,7 +305,6 @@ public class Player : MonoBehaviour
             }
         }
     }
-
     private void ToggleFunc()
     {
         RPGTalk[] rPGTalks = GameObject.FindObjectsOfType<RPGTalk>();
@@ -331,5 +320,17 @@ public class Player : MonoBehaviour
             rpgarea.TogglePause();
         }
     }
-
+    public void MakePayments()
+    {
+        if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
+        {
+            market.ItemTransaction();
+            Token.initialValue -= Items[ItemID].Price;
+            Debug.Log("You bought an item!");
+        }
+        else if (Token.initialValue < 0 || Token.initialValue < Items[ItemID].Price)
+        {
+            Debug.Log("Not enough money!");
+        } 
+    }   
 }
