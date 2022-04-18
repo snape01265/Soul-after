@@ -7,7 +7,7 @@ using PixelCrushers.DialogueSystem;
 public class MarketFunction : MonoBehaviour
 {
     private Player player;
-    public string[] House;
+    public string[] Items;
     //Panel colors
     public Image[] IMAGE;
     private Color PanelColor = Color.white;
@@ -16,9 +16,11 @@ public class MarketFunction : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         int ItemID = player.ItemID;
         int i = 0;
-        string HouseNo = House[ItemID];
-        foreach (string s in House)
+        string ItemNo = Items[ItemID];
+        foreach (string s in Items)
         {
+            //buying an item is triggering installed item to reset
+            //buying a new item must not reset the installed item
             if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == true)
             {
                 DialogueLua.SetItemField(s, "Installed", false);
@@ -27,18 +29,24 @@ public class MarketFunction : MonoBehaviour
             }
             i++;
         }
-        if (DialogueLua.GetItemField(HouseNo, "State").asBool == false && DialogueLua.GetItemField(HouseNo, "Installed").asBool == false)
+        if (DialogueLua.GetItemField(ItemNo, "State").asBool == false && DialogueLua.GetItemField(ItemNo, "Installed").asBool == false)
         {
-            DialogueLua.SetItemField(HouseNo, "State", true);
+            DialogueLua.SetItemField(ItemNo, "State", true);
             IMAGE[ItemID].color = Color.yellow;
             PanelColor = IMAGE[ItemID].color;
         }
-        else if (DialogueLua.GetItemField(HouseNo, "State").asBool == true && DialogueLua.GetItemField(HouseNo, "Installed").asBool == false)
+        else if (DialogueLua.GetItemField(ItemNo, "State").asBool == true && DialogueLua.GetItemField(ItemNo, "Installed").asBool == false)
         {
-            DialogueLua.SetItemField(HouseNo, "Installed", true);
+            DialogueLua.SetItemField(ItemNo, "Installed", true);
             IMAGE[ItemID].color = Color.grey;
             PanelColor = IMAGE[ItemID].color;
         }
-        
+
+        if (DialogueLua.GetItemField(ItemNo, "Bought").asBool == false)
+        {
+            DialogueLua.SetItemField(ItemNo, "Bought", true);
+            IMAGE[ItemID].color = Color.grey;
+            PanelColor = IMAGE[ItemID].color;
+        }
     }
 }

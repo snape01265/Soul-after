@@ -330,6 +330,7 @@ public class Player : MonoBehaviour
         }
         else if (Token.initialValue < 0 || Token.initialValue < Items[ItemID].Price)
         {
+            //need a UI for this
             Debug.Log("Not enough money!");
         } 
     }   
