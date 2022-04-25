@@ -188,7 +188,8 @@ public class Player : MonoBehaviour
         Regex rgx = new Regex("^[a-zA-Z가-힣0-9 ]{1,8}$");
         if (rgx.IsMatch(inputName))
         {
-            DialogueLua.SetActorField("Player(NPC)", "Display Name", inputName);
+            DialogueLua.SetActorField("Player(NPC)", "Name", inputName);
+            Debug.Log("");
             askWho.SetActive(false);
             timeline.playableGraph.GetRootPlayable(0).SetSpeed(1);
             GiveBackControl();
