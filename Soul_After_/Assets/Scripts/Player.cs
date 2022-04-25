@@ -2,6 +2,8 @@
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Playables;
+using PixelCrushers.DialogueSystem;
 
 public class Player : MonoBehaviour
 {
@@ -9,23 +11,21 @@ public class Player : MonoBehaviour
     public int ItemID = 0;
     public ItemProperties[] Items;
     public FloatValue Token;
-
     public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
     public InputField myName;
-    public RPGTalk rpgTalk;
     public FloatValue curVol;
     public AnimatorOverrideController changeSuit;
     public AnimatorOverrideController changeClothes;
     public AnimatorOverrideController mainClothes;
-    public TimelinePlayer timeline;
+    public PlayableDirector timeline;
+    public VectorValue startingPosition;
+    public AnimatorValue animatorValue;
     [NonSerialized]
     public bool ispaused = false;
     [NonSerialized]
     public bool inBattle = false;
-    [NonSerialized]
-    public Quest quest;
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
@@ -34,21 +34,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Vector3 change;
     private Animator animator;
-    private bool nameSet;
-
     private readonly float minX = -8;
     private readonly float maxX = 8.05f;
     private readonly float minY = -4.7f;
     private readonly float maxY = 3.65f;
-
     private readonly float normalVol = 1f;
     private readonly float pauseVol = 1f;
-
-    public VectorValue startingPosition;
-    public BoolValue nameSetValue;
-    public StringValue nameSave;
-    public AnimatorValue animatorValue;
-
     private GameObject loadSlotMenu;
 
     private void Awake()
@@ -72,7 +63,6 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
-        nameSet = nameSetValue.initialValue;
     }
     void FixedUpdate()
     {
@@ -117,10 +107,6 @@ public class Player : MonoBehaviour
                 }
                 UpdateAnimationAndMove();               
             }
-            if (rpgTalk != null)
-            {
-                AssignNameVariable();
-            }
             AnimatorOverride();
         }
     }
@@ -161,13 +147,6 @@ public class Player : MonoBehaviour
     {
         control = true;
     }
-    public void ConditionalGiveBackControl()
-    {
-        if (nameSet)
-        {
-            control = true;
-        }
-    }
     void UpdateAnimationAndMove()
     {
         if (change != Vector3.zero)
@@ -197,34 +176,27 @@ public class Player : MonoBehaviour
             transform.position + change * speed * Time.deltaTime
             );
     }
-    public void WhoAreYou()
-    {
-        if (nameSet == false)
-        {
-            askWho.SetActive(true);
-            myName.Select();
-            control = false;
-            animator.SetBool("Moving", false);
-        }
-    }
     public void SetName()
+    {
+        askWho.SetActive(true);
+        timeline.playableGraph.GetRootPlayable(0).SetSpeed(0);
+        CancelControl();
+    }
+    public void ConfirmName()
     {
         string inputName = myName.text;
         Regex rgx = new Regex("^[a-zA-Z가-힣0-9 ]{1,8}$");
-
         if (rgx.IsMatch(inputName))
         {
+            DialogueLua.SetActorField("Player(NPC)", "Display Name", inputName);
             askWho.SetActive(false);
-            nameSave.initialValue = myName.text;
-            AssignNameVariable();
-            nameSet = true;
-            nameSetValue.initialValue = nameSet;
-            timeline.StartTimeline();
+            timeline.playableGraph.GetRootPlayable(0).SetSpeed(1);
+            GiveBackControl();
         }
-    }
-    private void AssignNameVariable()
-    {
-        rpgTalk.variables[0].variableValue = nameSave.initialValue;
+        else
+        {
+            //error message?
+        }
     }
     public void ChangeSuit()
     {
@@ -251,54 +223,6 @@ public class Player : MonoBehaviour
     public void PlayerLookDown()
     {
         animator.SetFloat("Move_Y", -1);
-    }
-    public void QuestProgress0()
-    {
-        if (quest.isActive)
-        {
-            quest.goal.NPC0Talked();
-            if (quest.goal.IsReached())
-            {
-                quest.Complete();
-                road.QuestTrigger();
-            }
-        }
-    }
-    public void QuestProgress1()
-    {
-        if (quest.isActive)
-        {
-            quest.goal.NPC1Talked();
-            if (quest.goal.IsReached())
-            {
-                quest.Complete();
-                road.QuestTrigger();
-            }
-        }
-    }
-    public void QuestProgress2()
-    {
-        if (quest.isActive)
-        {
-            quest.goal.NPC2Talked();
-            if (quest.goal.IsReached())
-            {
-                quest.Complete();
-                road.QuestTrigger();
-            }
-        }
-    }
-    public void QuestProgress3()
-    {
-        if (quest.isActive)
-        {
-            quest.goal.NPC3Talked();
-            if (quest.goal.IsReached())
-            {
-                quest.Complete();
-                road.QuestTrigger();
-            }
-        }
     }
     private void ToggleFunc()
     {

@@ -16,7 +16,7 @@ public class QuestGiver : MonoBehaviour
     public void AcceptQuestTalk()
     {
         quest.isActive = true;
-        player.quest = quest;
+        //player.quest = quest;
         goal.goalType = GoalType.Talk;
     }
 }

@@ -119,7 +119,6 @@ public class RPGTalkArea : MonoBehaviour {
                 alreadyHappened = rpgtalkTarget.saveInstance.GetSavedData(name, 1);
             }
         }
-		ispaused = GameObject.Find("Player").GetComponent<Player>().ispaused;
     }
 	
 	/// <summary>
