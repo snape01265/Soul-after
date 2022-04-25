@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
@@ -27,12 +28,13 @@ public class SajaPuzzleBehavior : MonoBehaviour
     {
         pressedStates = new List<bool>(6) { false, false, false, false, false, false };
         boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
-
+        /*
         if (!puzzleFin.initialValue)
         {
+            //need to switch to dialogue system variable. 
             GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
         } else GameObject.Find("Road Block").SetActive(true);
-
+        */
         btnRenders = new List<ButtonRenderer>();
     }
 
@@ -58,9 +60,10 @@ public class SajaPuzzleBehavior : MonoBehaviour
         {
             // finish event
             Debug.Log("Event Finished!");
-            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").gameObject.SetActive(false);
-            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area (Suit On)").gameObject.SetActive(true);
-            puzzleFin.initialValue = true;
+            //GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").gameObject.SetActive(false);
+            //GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area (Suit On)").gameObject.SetActive(true);
+            //puzzleFin.initialValue = true;
+            DialogueLua.SetVariable("PuzzleFinished_Saja", true);
             finished = true;
             _audio.Play();
         } else
