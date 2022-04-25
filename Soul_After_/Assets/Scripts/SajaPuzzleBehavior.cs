@@ -30,6 +30,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
 
         if (!puzzleFin.initialValue)
         {
+            //need to switch to dialogue system variable. 
             GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
         } else GameObject.Find("Road Block").SetActive(true);
 
