@@ -189,7 +189,6 @@ public class Player : MonoBehaviour
         if (rgx.IsMatch(inputName))
         {
             DialogueLua.SetActorField("Player(NPC)", "Name", inputName);
-            Debug.Log("");
             askWho.SetActive(false);
             timeline.playableGraph.GetRootPlayable(0).SetSpeed(1);
             GiveBackControl();
