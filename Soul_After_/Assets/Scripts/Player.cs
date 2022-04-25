@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [Header("Fox Market Functions")]
     public int ItemID = 0;
     public ItemProperties[] Items;
-    private MarketFunction market;
     public FloatValue Token;
 
     public RoadBlock road;
@@ -69,9 +68,6 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        //Fox Market
-        market = GameObject.FindGameObjectWithTag("Item").GetComponent<MarketFunction>();
-
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
@@ -108,7 +104,6 @@ public class Player : MonoBehaviour
         {
             if (control)
             {
-
                 change = Vector3.zero;
                 change.x = Input.GetAxisRaw("Horizontal");
                 change.y = Input.GetAxisRaw("Vertical");
@@ -120,7 +115,7 @@ public class Player : MonoBehaviour
 
                     transform.position = bounds;
                 }
-                UpdateAnimationAndMove();
+                UpdateAnimationAndMove();               
             }
             if (rpgTalk != null)
             {
@@ -324,14 +319,14 @@ public class Player : MonoBehaviour
     {
         if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
         {
-            market.ItemTransaction();
-            Token.initialValue -= Items[ItemID].Price;
-            Debug.Log("You bought an item!");
+                GameObject.FindGameObjectWithTag("Market").GetComponent<MarketFunction>().ItemTransaction();
+                Token.initialValue -= Items[ItemID].Price;
+                Debug.Log("You bought an item!");
         }
         else if (Token.initialValue < 0 || Token.initialValue < Items[ItemID].Price)
         {
-            //need a UI for this
-            Debug.Log("Not enough money!");
-        } 
+                //need a UI for this
+                Debug.Log("Not enough money!");
+        }
     }   
 }
