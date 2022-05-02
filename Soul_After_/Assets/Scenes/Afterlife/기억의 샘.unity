@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seulha
       objectReference: {fileID: 0}
+    - target: {fileID: 7672006299012660147, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2639098933629698279, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
     - {fileID: 7672006299012660144, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
@@ -19169,7 +19173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224407, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
@@ -19602,21 +19606,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].target
       value: 
       objectReference: {fileID: 992474883}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].target
+      value: 
+      objectReference: {fileID: 1978885502}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].target
+      value: 
+      objectReference: {fileID: 1629832396}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].condition.luaConditions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.data[0]
       value: (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.data[0]
+      value: (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].condition.luaConditions.Array.data[0]
+      value: (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2154907587135656584, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 3560502537434893410, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 2547988415175083143, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
 --- !u!1 &1246437681
 GameObject:
@@ -19639,7 +19670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1246437682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31858,7 +31889,7 @@ Tilemap:
       - {fileID: -2256431350410458140, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -8602803218496701474, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -3668634497984119556, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 38, y: 43, z: 0}
@@ -31882,7 +31913,7 @@ Tilemap:
       - {fileID: -2256431350410458140, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -8602803218496701474, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -3668634497984119556, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 43, z: 0}
@@ -31978,7 +32009,7 @@ Tilemap:
       - {fileID: -7935476318972762422, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -3004813990061908120, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 8530086787768460589, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 42, y: 44, z: 0}
@@ -32062,7 +32093,7 @@ Tilemap:
       - {fileID: 1750455274573958327, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -151359969788263723, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -1577847706117351362, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 42, y: 45, z: 0}
@@ -32134,7 +32165,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 41, y: 46, z: 0}
@@ -32230,7 +32261,7 @@ Tilemap:
       - {fileID: 8637314396306506500, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -4184391810017940519, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 7990245446788948047, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 42, y: 47, z: 0}
@@ -33146,7 +33177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5171467617343325, guid: 9f6a4725266cd954889fda0446002d09, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5171467617343330, guid: 9f6a4725266cd954889fda0446002d09, type: 3}
       propertyPath: m_Size.x
