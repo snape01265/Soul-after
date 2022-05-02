@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {fileID: 11400000, guid: c9e0d12e35e07264e82a72df119b3c3a, type: 2}
-  changedPosition: {x: 48, y: 14.5}
-  sceneChangePosition: {x: 48, y: 14.5}
+  changedPosition: {x: 40, y: 17}
+  sceneChangePosition: {x: 40, y: 17}
 --- !u!50 &12785205
 Rigidbody2D:
   serializedVersion: 4
@@ -2859,11 +2859,10 @@ GameObject:
   - component: {fileID: 287087155}
   - component: {fileID: 287087158}
   - component: {fileID: 287087156}
-  - component: {fileID: 287087161}
-  - component: {fileID: 287087160}
   - component: {fileID: 287087159}
-  - component: {fileID: 287087163}
   - component: {fileID: 287087162}
+  - component: {fileID: 287087160}
+  - component: {fileID: 287087163}
   m_Layer: 6
   m_Name: "\uD56D\uC0C1 \uAE4C\uBA39\uB294 \uC0C8"
   m_TagString: Untagged
@@ -3122,32 +3121,6 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
---- !u!61 &287087161
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287087153}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &287087162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8950,7 +8923,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
     - {fileID: 11400000, guid: a9001a04adc48f141af652c04cdb8250, type: 2}
-    - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
+    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
     - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
     - m_PersistentCalls:
@@ -8983,9 +8956,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: ObjectActivation, Assembly-CSharp
-          m_MethodName: ObjectDisable
+        - m_Target: {fileID: 12785204}
+          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+          m_MethodName: SetPosition
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9128,6 +9101,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0f656de36da90de4790759fb8098136a, type: 2}
     - {fileID: 11400000, guid: 2653db03b8aa6304f9fc5d222bf135e6, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -9190,6 +9164,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1926154826}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 12785204}
+          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+          m_MethodName: SetPosition
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14438,7 +14426,6 @@ GameObject:
   - component: {fileID: 1461480601}
   - component: {fileID: 1461480600}
   - component: {fileID: 1461480599}
-  - component: {fileID: 1461480602}
   - component: {fileID: 1461480604}
   m_Layer: 6
   m_Name: "\uADF8\uB098\uB9C8 \uC815\uC0C1\uC778 \uB188"
@@ -15287,11 +15274,10 @@ GameObject:
   - component: {fileID: 1821413292}
   - component: {fileID: 1821413290}
   - component: {fileID: 1821413293}
-  - component: {fileID: 1821413295}
-  - component: {fileID: 1821413294}
   - component: {fileID: 1821413291}
-  - component: {fileID: 1821413297}
   - component: {fileID: 1821413296}
+  - component: {fileID: 1821413294}
+  - component: {fileID: 1821413297}
   m_Layer: 6
   m_Name: "\uBA40\uB6B1 \uBA40\uB6B1\uD55C \uC0C8"
   m_TagString: Untagged
@@ -15532,32 +15518,6 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
---- !u!61 &1821413295
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821413288}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &1821413296
 MonoBehaviour:
   m_ObjectHideFlags: 0
