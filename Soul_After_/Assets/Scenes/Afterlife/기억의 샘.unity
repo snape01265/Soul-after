@@ -18710,7 +18710,7 @@ PlayableDirector:
   - key: {fileID: -5001988502540392813, guid: 69b93d4be5d011048afd934a669ea025, type: 2}
     value: {fileID: 79916884}
   - key: {fileID: -2978175873584828303, guid: 9c2eb1aa4508b6242b44221ebdd1d676, type: 2}
-    value: {fileID: 1883810323}
+    value: {fileID: 1246437681}
   - key: {fileID: 2915851751766995697, guid: 9c2eb1aa4508b6242b44221ebdd1d676, type: 2}
     value: {fileID: 1883810322}
   - key: {fileID: -6498933384008130463, guid: 9c2eb1aa4508b6242b44221ebdd1d676, type: 2}
@@ -18740,12 +18740,27 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 134af8be40cc68e4989ff72279500c69, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1246437682}
           m_TargetAssemblyTypeName: ObjectActivation, Assembly-CSharp
           m_MethodName: ObjectDisable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1883810321}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19436,6 +19451,7 @@ GameObject:
   - component: {fileID: 1246437684}
   - component: {fileID: 1246437683}
   - component: {fileID: 1246437682}
+  - component: {fileID: 1246437688}
   m_Layer: 6
   m_Name: Thomas
   m_TagString: Untagged
@@ -19588,6 +19604,38 @@ Transform:
   m_Father: {fileID: 957355545}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1246437688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246437681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a64578247383140469c45370654a984a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actor: "\uD1A0\uB9C8\uC2A4"
+  persistentDataName: 
+  portrait: {fileID: 0}
+  spritePortrait: {fileID: 0}
+  barkUISettings:
+    barkUI: {fileID: 0}
+    barkUIOffset: {x: 0, y: 2, z: 0}
+  standardDialogueUISettings:
+    subtitlePanelNumber: 0
+    customSubtitlePanel: {fileID: 0}
+    customSubtitlePanelOffset: {x: 0, y: 0, z: 0}
+    menuPanelNumber: 0
+    customMenuPanel: {fileID: 0}
+    customMenuPanelOffset: {x: 0, y: 0, z: 0}
+    useMenuPanelFor: 0
+    portraitAnimatorController: {fileID: 0}
+    setSubtitleColor: 0
+    applyColorToPrependedName: 0
+    prependActorNameSeparator: ': '
+    subtitleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1341496044
 GameObject:
   m_ObjectHideFlags: 0
@@ -31689,7 +31737,7 @@ Tilemap:
       - {fileID: -7935476318972762422, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -3004813990061908120, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 8530086787768460589, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: 44, z: 0}
@@ -31761,7 +31809,7 @@ Tilemap:
       - {fileID: 4066967606814416355, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -5671402417351675746, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: 939695477000286621, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 34, y: 45, z: 0}
@@ -31845,7 +31893,7 @@ Tilemap:
       - {fileID: 5179729229929786695, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -6357656936587242567, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -5265067971496579032, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 34, y: 46, z: 0}
