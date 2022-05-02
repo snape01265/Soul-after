@@ -418,12 +418,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 32
+  trigger: 8
   condition:
     luaConditions:
     - (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 0)
     questConditions: []
-    acceptedTags: []
+    acceptedTags:
+    - Player
     acceptedGameObjects: []
     luaWizardIndex: -1
     lastEvaluationValue: 0
@@ -523,7 +524,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -550,8 +551,6 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 1751709371892087039, guid: 09ef7bf954873ee4da843756413e5285, type: 2}
     value: {fileID: 1892488319}
-  - key: {fileID: 7437934844077914199, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 3664754547014499481, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
     value: {fileID: 954593152}
   - key: {fileID: 66560079904377981, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
@@ -569,11 +568,13 @@ PlayableDirector:
   - key: {fileID: -7450740480074737215, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
     value: {fileID: 263112483}
   - key: {fileID: -2500352228782809509, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 777045647}
   - key: {fileID: 759442102820060791, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 777045646}
   - key: {fileID: 3907640816700647185, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
     value: {fileID: 233783189}
+  - key: {fileID: 4405899863710070642, guid: 7ad2761324091ff4282fa79df2682928, type: 2}
+    value: {fileID: 954593154}
   m_ExposedReferences:
     m_References:
     - 72b6cd65b8ee8cb4d8c9f923ac151cf2: {fileID: 1892488319}
@@ -2498,7 +2499,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_Name
-      value: "SceneTransitionTo\uC778\uAC04\uBD80\uC11C 2\uCE35"
+      value: "SceneTransitionTo\uC778\uAC04\uBD80\uC11C2\uCE35"
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: _audio
@@ -6626,6 +6627,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+--- !u!114 &777045646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 753417680106344469, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+  m_PrefabInstance: {fileID: 777045645}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &777045647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 753417679798186237, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+  m_PrefabInstance: {fileID: 777045645}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &789573846
 PrefabInstance:
   m_ObjectHideFlags: 0
