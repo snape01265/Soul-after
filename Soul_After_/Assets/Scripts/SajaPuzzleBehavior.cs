@@ -64,6 +64,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
             //GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area (Suit On)").gameObject.SetActive(true);
             //puzzleFin.initialValue = true;
             DialogueLua.SetVariable("PuzzleFinished_Saja", true);
+            DialogueLua.SetVariable("TimelineToPlay", 3);
             finished = true;
             _audio.Play();
         } else
