@@ -30313,8 +30313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
-    - {fileID: 2225282681631639195, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
-    - {fileID: 2225282683342224404, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
 --- !u!95 &680414767 stripped
 Animator:
@@ -64118,11 +64117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 16
+  trigger: 8
   condition:
     luaConditions: []
     questConditions: []
-    acceptedTags: []
+    acceptedTags:
+    - Player
     acceptedGameObjects: []
     luaWizardIndex: -1
     lastEvaluationValue: 0
@@ -64132,7 +64132,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["TimelineToPlay"] = 2
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -64151,7 +64151,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: 
+  conversation: Ep.1 Timelines/Timeline 1
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: 1
@@ -64164,17 +64164,7 @@ MonoBehaviour:
   monitorConversationDistanceFrequency: 1
   showCursorDuringConversation: 0
   pauseGameDuringConversation: 0
-  setActiveActions:
-  - condition:
-      luaConditions:
-      - (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 1)
-      questConditions: []
-      acceptedTags: []
-      acceptedGameObjects: []
-      luaWizardIndex: 0
-      lastEvaluationValue: 0
-    target: {fileID: 680414768}
-    state: 0
+  setActiveActions: []
   setEnabledActions: []
   setAnimatorStateActions: []
   onExecute:
@@ -66308,6 +66298,37 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
+--- !u!1 &1707908831
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707908832}
+  m_Layer: 0
+  m_Name: Object_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707908832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707908831}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2120468630}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1766278445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66750,7 +66771,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 680414768}
+    m_TransformParent: {fileID: 1707908832}
     m_Modifications:
     - target: {fileID: 2154907587135656584, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: conversationEvents.onConversationEnd.m_PersistentCalls.m_Calls.Array.size
@@ -66818,7 +66839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6607580332124383860, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_Name
-      value: Dialogue_Trigger
+      value: NPC_Activation_Trigger
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_RootOrder
@@ -66830,7 +66851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalPosition.z
@@ -66842,15 +66863,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66866,15 +66887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: luaCode
-      value: Variable["TimelineToPlay"] = 2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: trigger
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: conversation
-      value: Ep.1 Timelines/Timeline 1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: startConversationEntryID
@@ -66882,7 +66903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: condition.acceptedTags.Array.size
@@ -66894,10 +66915,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].state
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].state
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].target
+      value: 
+      objectReference: {fileID: 680414768}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].target
       value: 
       objectReference: {fileID: 670436392}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
@@ -66905,11 +66934,27 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
-      propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.data[0]
-      value: Variable["Episode"] == 1
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.size
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.data[0]
+      value: (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.data[0]
+      value: (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3560502537434893410, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 2154907587135656584, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 2547988415175083143, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+--- !u!4 &2120468630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+  m_PrefabInstance: {fileID: 2120468629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2126692155
 GameObject:
   m_ObjectHideFlags: 0
