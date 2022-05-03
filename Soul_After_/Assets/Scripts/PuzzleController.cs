@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using PixelCrushers.DialogueSystem;
 
 public class PuzzleController : MonoBehaviour
 {
@@ -78,6 +79,7 @@ public class PuzzleController : MonoBehaviour
                         resetBtn.SetActive(false);
                         //퍼즐 완료 Sound Effect 추가
                     }
+                    DialogueLua.SetVariable("Puzzle_1_Finished", true);
                     StartCoroutine(lightInAndOut(myLight, lightChangeDuration, waitDuration));
                 }
             }
