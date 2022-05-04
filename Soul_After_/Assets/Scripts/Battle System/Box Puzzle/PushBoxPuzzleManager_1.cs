@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using System;
 
 public class PushBoxPuzzleManager_1 : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         }
     }
     private int turnCount = 1;
-    [HideInInspector]
+    [NonSerialized]
     public int puzzleNum = 1;
     public bool goalReached = false;
     public AudioSource ResetSFX;
@@ -29,16 +30,16 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public AudioSource NextStageSFX;
     public PlayableDirector LastTimeline;
     public Text CounterTxt;
-    [HideInInspector]
+    [NonSerialized]
     public Vector3 startingPlayerPos;
-    [HideInInspector]
+    [NonSerialized]
     public int goalCount;
-    [HideInInspector]
+    [NonSerialized]
     public Fadein fade;
     public float fadeDuration;
-    [HideInInspector]
+    [NonSerialized]
     public bool isAvailable = true;
-    [HideInInspector]
+    [NonSerialized]
     public bool isPushing = false;
 
     private readonly int[] goalCounts = new int[] {3, 3, 1};
@@ -101,7 +102,12 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         if (goalCount <= 0)
             goalReached = true;
 
-        if (Input.GetKeyDown(keyForReset) && isAvailable && !isPushing && !isReset)
+        if (isPushing || isTranstioning)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(keyForReset) && isAvailable && !isReset)
         {
             ResetSFX.Play();
             isReset = true;
@@ -118,7 +124,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     break;
             }
         }
-        else if (TurnCount >= 0 && goalReached && !isPushing)
+        else if (TurnCount >= 0 && goalReached)
         {
             goalReached = false;
             isTranstioning = true;
@@ -128,20 +134,20 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
                     nextPuzzle("Start2");
                     goalCount = goalCounts[1];
                     StageNo.initialValue = 1;
-                    break;
+                    return;
                 case 2:
                     nextPuzzle("Start3");
                     goalCount = goalCounts[2];
                     StageNo.initialValue = 2;
-                    break;
+                    return;
                 case 3:
                     puzzleFinished = true;
                     fade.FadeInOutStatic(fadeDuration);
                     LastTimeline.Play();
-                    break;
+                    return;
             }
         }
-        else if (TurnCount == 0 && !isReset && !isPushing && !isTranstioning)
+        else if (TurnCount == 0 && !isReset)
         {
             if(OutofCountSFX)
                 OutofCountSFX.Play();
@@ -150,13 +156,13 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
             {
                 case 1:
                     StartCoroutine(Reset(18));
-                    break;
+                    return;
                 case 2:
                     StartCoroutine(Reset(27));
-                    break;
+                    return;
                 case 3:
                     StartCoroutine(Reset(2));
-                    break;
+                    return;
             }
         }
     }
