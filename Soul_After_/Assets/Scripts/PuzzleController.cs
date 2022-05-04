@@ -79,7 +79,14 @@ public class PuzzleController : MonoBehaviour
                         resetBtn.SetActive(false);
                         //퍼즐 완료 Sound Effect 추가
                     }
-                    DialogueLua.SetVariable("Puzzle_1_Finished", true);
+                    if(sceneName == "Ep.1 Puzzle_1")
+                    {
+                        DialogueLua.SetVariable("Puzzle_1_Finished", true);
+                    }
+                    else if(sceneName == "Ep.1 Puzzle_2")
+                    {
+                        DialogueLua.SetVariable("Puzzle_2_Finished", true);
+                    }                   
                     StartCoroutine(lightInAndOut(myLight, lightChangeDuration, waitDuration));
                 }
             }
