@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8197545271841318319
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 4.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 37ef8759975e2ac41aa0180d75f16834, type: 2}
 --- !u!114 &-8011554263931047303
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -36,9 +52,9 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 3
+    m_Start: 2.5
     m_ClipIn: 0
-    m_Asset: {fileID: 5906972248736234410}
+    m_Asset: {fileID: -296770088177380977}
     m_Duration: 1
     m_TimeScale: 1
     m_ParentTrack: {fileID: -7726949689812098816}
@@ -129,9 +145,9 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: 8000473572898017838}
     - {fileID: 7250871868567208186}
     - {fileID: -564434851886572772}
+    - {fileID: -8197545271841318319}
 --- !u!114 &-4763599786627388861
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,6 +293,27 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+--- !u!114 &-296770088177380977
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9a6ac88707e9d47aaafc868146ff92, type: 3}
+  m_Name: StartConversationClip
+  m_EditorClassIdentifier: 
+  template:
+    conversant: {fileID: 0}
+    conversation: Ep.1 Game/Game 2
+    jumpToSpecificEntry: 1
+    entryID: 31
+  conversant:
+    exposedName: 
+    defaultValue: {fileID: 0}
+  m_duration: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,27 +536,6 @@ MonoBehaviour:
     m_DisplayName: ScreenFaderClip
   m_Markers:
     m_Objects: []
---- !u!114 &5906972248736234410
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9a6ac88707e9d47aaafc868146ff92, type: 3}
-  m_Name: StartConversationClip
-  m_EditorClassIdentifier: 
-  template:
-    conversant: {fileID: 0}
-    conversation: Ep.1 Game/Game 2
-    jumpToSpecificEntry: 1
-    entryID: 31
-  conversant:
-    exposedName: 
-    defaultValue: {fileID: 0}
-  m_duration: 1
 --- !u!114 &6929560660635370677
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -578,22 +594,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &8000473572898017838
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
-  m_Name: Signal Emitter
-  m_EditorClassIdentifier: 
-  m_Time: 5.5
-  m_Retroactive: 0
-  m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: 37ef8759975e2ac41aa0180d75f16834, type: 2}
 --- !u!114 &8421008268703686842
 MonoBehaviour:
   m_ObjectHideFlags: 1
