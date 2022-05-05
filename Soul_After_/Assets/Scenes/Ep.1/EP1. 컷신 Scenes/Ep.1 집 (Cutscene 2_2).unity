@@ -510,19 +510,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3732646352336015125, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
       propertyPath: m_Size.x
-      value: 0.5572822
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3732646352336015125, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
       propertyPath: m_Size.y
-      value: 0.74701834
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3732646352336015125, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
       propertyPath: m_Offset.x
-      value: -0.002874732
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3732646352336015125, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
       propertyPath: m_Offset.y
-      value: -0.4887147
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3732646352336015127, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
       propertyPath: m_SortingLayer
@@ -5225,7 +5225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 65536
+  trigger: 16
   condition:
     luaConditions:
     - (Variable["Puzzle_1_Finished"] == true) and (Variable["TimelineToPlay"] ==
@@ -5242,10 +5242,10 @@ MonoBehaviour:
   questEntryNumber: 1
   questEntryState: 0
   luaCode: 
-  sequence: 
-  sequenceSpeaker: {fileID: 0}
+  sequence: AnimatorFloat(Move_X, 1, Player);
+  sequenceSpeaker: {fileID: 793383552}
   sequenceListener: {fileID: 0}
-  waitOneFrameOnStartOrEnable: 1
+  waitOneFrameOnStartOrEnable: 0
   alertMessage: 
   textTable: {fileID: 0}
   alertDuration: 0
@@ -5261,11 +5261,11 @@ MonoBehaviour:
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
   conversation: Ep.1 Timelines/Timeline 6
-  conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
+  conversationConversant: {fileID: 1374182633}
+  conversationActor: {fileID: 793383552}
   startConversationEntryID: 37
   exclusive: 0
-  replace: 0
+  replace: 1
   skipIfNoValidEntries: 0
   stopConversationOnTriggerExit: 0
   stopConversationIfTooFar: 0
@@ -7102,8 +7102,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -897856807
-  m_SortingLayer: 4
+  m_SortingLayerID: -1971436883
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
