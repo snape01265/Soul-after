@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 
         AudioListener.volume = curVol.initialValue * normalVol;
     }
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -64,6 +65,7 @@ public class Player : MonoBehaviour
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
     }
+
     void FixedUpdate()
     {
         if (Input.GetButtonDown("Cancel"))
@@ -110,6 +112,7 @@ public class Player : MonoBehaviour
             AnimatorOverride();
         }
     }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag($"MovableObject"))
@@ -117,36 +120,40 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
+
     public void ResumeGame()
     {
-        ToggleFunc();
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
     }
+
     public void PauseGame()
     {
-        ToggleFunc();
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
     }
+
     //application quit
     public void GameExit()
     {
         Application.Quit();
     }
+
     //the player cant move
     public void CancelControl()
     {
         control = false;
         animator.SetBool("Moving", false);
     }
+
     //give back the controls to player
     public void GiveBackControl()
     {
         control = true;
     }
+
     void UpdateAnimationAndMove()
     {
         if (change != Vector3.zero)
@@ -162,6 +169,7 @@ public class Player : MonoBehaviour
             animator.SetBool("Moving", false);
         }
     }
+
     void MoveCharacter()
     {
         // Diagonal movement should be normalized
@@ -176,12 +184,14 @@ public class Player : MonoBehaviour
             transform.position + change * speed * Time.deltaTime
             );
     }
+
     public void SetName()
     {
         askWho.SetActive(true);
         timeline.playableGraph.GetRootPlayable(0).SetSpeed(0);
         CancelControl();
     }
+
     public void ConfirmName()
     {
         string inputName = myName.text;
@@ -198,47 +208,39 @@ public class Player : MonoBehaviour
             //error message?
         }
     }
+
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
         changeClothes = animatorValue.initialAnimator;
     }
+
     private void AnimatorOverride()
     {
         mainClothes = animatorValue.initialAnimator;
         animator.runtimeAnimatorController = mainClothes as RuntimeAnimatorController;
     }
+
     public void PlayerLookRight()
     {
         animator.SetFloat("Move_X", 1);
     }
+
     public void PlayerLookUp()
     {
         animator.SetFloat("Move_Y", 1);
     }
+
     public void PlayerLookLeft()
     {
         animator.SetFloat("Move_X", -1);
     }
+
     public void PlayerLookDown()
     {
         animator.SetFloat("Move_Y", -1);
     }
-    private void ToggleFunc()
-    {
-        RPGTalk[] rPGTalks = GameObject.FindObjectsOfType<RPGTalk>();
-        RPGTalkArea[] rPGTalkAreas = GameObject.FindObjectsOfType<RPGTalkArea>();
 
-        foreach (RPGTalk rpg in rPGTalks)
-        {
-            rpg.TogglePause();
-        }
-
-        foreach (RPGTalkArea rpgarea in rPGTalkAreas)
-        {
-            rpgarea.TogglePause();
-        }
-    }
     public void MakePayments()
     {
         if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
