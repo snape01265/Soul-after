@@ -1007,7 +1007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154834889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -4.5, z: -10}
+  m_LocalPosition: {x: 0.25, y: -4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1143465853}
@@ -5455,7 +5455,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Seulha_Activated"] = true
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -8722,85 +8722,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: 578e31453c691c04faeccec8c8a75259, type: 2}
-    - {fileID: 11400000, guid: c2734d0cdc147694ab694dc1ca4267b2, type: 2}
-    - {fileID: 11400000, guid: 134af8be40cc68e4989ff72279500c69, type: 2}
     - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
-    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
-          m_MethodName: EnableComponent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CameraMovement, Assembly-CSharp
-          m_MethodName: DisableComponent
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
-          m_MethodName: ObjectEnable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
-          m_MethodName: ObjectEnableOnScene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 12785204}
           m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
           m_MethodName: SetPosition
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
-          m_MethodName: AddCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8924,7 +8852,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
     - {fileID: 11400000, guid: a9001a04adc48f141af652c04cdb8250, type: 2}
     - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
-    - {fileID: 11400000, guid: 3302343a34418df47b512e1c1260f994, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -8959,20 +8886,6 @@ MonoBehaviour:
         - m_Target: {fileID: 12785204}
           m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
           m_MethodName: SetPosition
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: CutsceneEnter, Assembly-CSharp
-          m_MethodName: AddCutscene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9097,45 +9010,14 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: c9f2b3b1022bcb34192222f732e973dc, type: 2}
-    - {fileID: 11400000, guid: 89372e3d280ef1b46a64fd4a7f7e75c2, type: 2}
-    - {fileID: 11400000, guid: 0f656de36da90de4790759fb8098136a, type: 2}
     - {fileID: 11400000, guid: 2653db03b8aa6304f9fc5d222bf135e6, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
-    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1926154826}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: ChangeSuit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1649266994}
-          m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-          m_MethodName: Disable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1649266994}
-          m_TargetAssemblyTypeName: ContextClue, Assembly-CSharp
-          m_MethodName: Enable
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9164,20 +9046,6 @@ MonoBehaviour:
         - m_Target: {fileID: 1926154826}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: GiveBackControl
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 12785204}
-          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
-          m_MethodName: SetPosition
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10060,7 +9928,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292137696}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
@@ -15082,17 +14950,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608078646}
   m_CullTransparentMesh: 1
---- !u!114 &1649266994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2050224935, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
-  m_PrefabInstance: {fileID: 2013090632}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2013090635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfef9438b71010b469a831eea40be404, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1676851537
 GameObject:
   m_ObjectHideFlags: 0

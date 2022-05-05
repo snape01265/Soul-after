@@ -434,7 +434,10 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 1
+  luaCode: 'Variable["TimelineToPlay"] = 1;
+
+    Variable["Vincent_Activated"] ==
+    true'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -6164,7 +6167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Episode"] == 1
     questConditions: []
     acceptedTags:
     - Player
@@ -24982,11 +24986,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.19
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.39
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25146,7 +25150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 1)
     questConditions: []
     acceptedTags:
     - Player
@@ -25180,7 +25185,7 @@ MonoBehaviour:
   cacheBarkLines: 0
   conversation: "Object Dialogues/\uC778\uAC04\uBD80\uC11C \uBE4C\uB529 Scene"
   conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
+  conversationActor: {fileID: 954593151}
   startConversationEntryID: 81
   exclusive: 0
   replace: 0
@@ -25443,7 +25448,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - (Variable["TimelineToPlay"] == 1) or (Variable["TimelineToPlay"] == 2) or (Variable["TimelineToPlay"]
+      == 3)
+    - Variable["Episode"] == 1
     questConditions: []
     acceptedTags:
     - Player
@@ -25477,7 +25485,7 @@ MonoBehaviour:
   cacheBarkLines: 0
   conversation: "Object Dialogues/\uC778\uAC04\uBD80\uC11C \uBE4C\uB529 Scene"
   conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
+  conversationActor: {fileID: 954593151}
   startConversationEntryID: 33
   exclusive: 0
   replace: 0
