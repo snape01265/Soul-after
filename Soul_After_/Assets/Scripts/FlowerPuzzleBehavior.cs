@@ -114,7 +114,7 @@ public class FlowerPuzzleBehavior : MonoBehaviour
     IEnumerator WaitForEnd(float t)
     {
         yield return new WaitForSeconds(t);
-        Debug.Log("Puzzle Finished!");
+        GameObject.Find("SceneTransitionToParkWinter").GetComponent<SceneTransition>().ChangeScene();
     }
 
     //Rain particle stop method
