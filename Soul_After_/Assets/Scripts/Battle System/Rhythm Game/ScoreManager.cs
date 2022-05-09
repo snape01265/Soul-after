@@ -13,11 +13,8 @@ public class ScoreManager : MonoBehaviour
     public bool isMinigame;
     [HideInInspector]
     public GameManager gameManager;
-    [HideInInspector]
     public GameObject resultScreen;
-    [HideInInspector]
     public SceneTransition sceneTransition;
-    [HideInInspector]
     public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
     private bool bgChange = false;
@@ -54,16 +51,9 @@ public class ScoreManager : MonoBehaviour
         }
         if (GameManager.GetAudioSourceTime() > gameManager.tracks[GameManager.track].clip.length - 0.05 && !resultScreen.activeInHierarchy)
         {
-            if(isMinigame)
-            {
-                Invoke(nameof(EndTrack), 2f);
-            }
-            else
-            {
-                
-            }
+            Invoke(nameof(EndTrack), 2f);
         }
-        if(resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
+        if (resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
             sceneTransition.ChangeScene();
         }
