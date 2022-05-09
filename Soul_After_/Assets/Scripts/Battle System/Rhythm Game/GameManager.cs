@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        track = DialogueLua.GetVariable("TrackSelection").asInt - 1;
+        track = DialogueLua.GetVariable("TrackSelection").asInt;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
         {
             ReadFromFile();
         }
-        StartRhythmGame();
     }
 
     [System.Obsolete]
@@ -96,7 +95,6 @@ public class GameManager : MonoBehaviour
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
         foreach (var lane in lanes) lane.SetTimeStamps(array);
-
         Invoke(nameof(PlaySong), songDelayInSeconds);
     }
     public void PlaySong()
