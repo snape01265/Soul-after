@@ -33,7 +33,7 @@ public class BoxPush_1 : MonoBehaviour
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (boxTouched && !pushing && Input.GetButtonDown("Jump"))
         {
@@ -60,10 +60,7 @@ public class BoxPush_1 : MonoBehaviour
                 DestCalcDown();
             }
         }
-    }
 
-    private void FixedUpdate()
-    {
         if (iceTouched)
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.03f);
         else if (!puzzleManager.isAvailable)
@@ -235,7 +232,7 @@ public class BoxPush_1 : MonoBehaviour
         {
             int boxCount = 0;
             con2Ds = new ContactPoint2D[6];
-            Player.GetComponent<BoxCollider2D>().GetContacts(con2Ds);
+            Player.GetComponent<Rigidbody2D>().GetContacts(con2Ds);
             foreach(ContactPoint2D con in con2Ds)
             {
                 if(con.collider != null && con.collider.CompareTag("PushBox"))
@@ -247,7 +244,8 @@ public class BoxPush_1 : MonoBehaviour
             {
                 boxTouched = true;
                 touchedPoint = collision.GetContact(0).normal;
-            }        
+            }
+            Debug.Log(boxCount);
         }
     }
 

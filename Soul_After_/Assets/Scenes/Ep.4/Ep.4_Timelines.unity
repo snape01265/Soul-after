@@ -63791,6 +63791,7 @@ GameObject:
   - component: {fileID: 1284765298}
   - component: {fileID: 1284765297}
   - component: {fileID: 1284765299}
+  - component: {fileID: 1284765300}
   m_Layer: 0
   m_Name: Music Player
   m_TagString: Untagged
@@ -63923,6 +63924,20 @@ MonoBehaviour:
   _audio: {fileID: 1284765297}
   duration: 0.5
   targetVolume: 0
+--- !u!114 &1284765300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284765296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  fadeoutTime: 0
 --- !u!1 &1350886246
 GameObject:
   m_ObjectHideFlags: 0
@@ -64032,6 +64047,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 285543090, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -80754,7 +80773,7 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1068168688}
+      - m_Target: {fileID: 2050869453}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
         m_Mode: 1
