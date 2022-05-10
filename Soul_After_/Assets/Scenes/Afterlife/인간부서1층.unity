@@ -266,7 +266,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 937478812}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ObjectActivation, Assembly-CSharp
           m_MethodName: ObjectEnable
           m_Mode: 1
@@ -1909,7 +1909,7 @@ Transform:
   - {fileID: 774956881}
   - {fileID: 1817638864}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398695759
 GameObject:
@@ -5060,7 +5060,7 @@ Transform:
   - {fileID: 2135065471}
   - {fileID: 450456474}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598661224
 GameObject:
@@ -10318,7 +10318,6 @@ GameObject:
   - component: {fileID: 903335358}
   - component: {fileID: 903335356}
   - component: {fileID: 903335354}
-  - component: {fileID: 903335360}
   - component: {fileID: 903335359}
   m_Layer: 0
   m_Name: Ep.3_Timeline_0
@@ -10442,7 +10441,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 937478812}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ObjectActivation, Assembly-CSharp
           m_MethodName: ObjectEnable
           m_Mode: 1
@@ -10508,11 +10507,12 @@ PlayableDirector:
   - key: {fileID: -106829947842762801, guid: e1f4661eaa005904f83f03709980b539, type: 2}
     value: {fileID: 529348232}
   - key: {fileID: -2240211921036507230, guid: e1f4661eaa005904f83f03709980b539, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 1153163907}
   - key: {fileID: 1726941624765046883, guid: e1f4661eaa005904f83f03709980b539, type: 2}
     value: {fileID: 529348230}
   m_ExposedReferences:
     m_References:
+    - 4a65d2b2657083c4798e390de466d768: {fileID: 2071099838}
     - bf72a63271ea7ea4dbfb35e190040ea2: {fileID: 0}
 --- !u!114 &903335359
 MonoBehaviour:
@@ -10596,107 +10596,6 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
---- !u!114 &903335360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903335352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  conversationEvents:
-    onConversationStart:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 682269457}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
-          m_MethodName: CancelControl
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onConversationEnd:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 682269457}
-          m_TargetAssemblyTypeName: Player, Assembly-CSharp
-          m_MethodName: GiveBackControl
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    onConversationCancelled:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLine:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLineEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationLineCancelled:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationResponseMenu:
-      m_PersistentCalls:
-        m_Calls: []
-    onConversationResponseMenuTimeout:
-      m_PersistentCalls:
-        m_Calls: []
-    onLinkedConversationStart:
-      m_PersistentCalls:
-        m_Calls: []
-  barkEvents:
-    onBarkStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onBarkEnd:
-      m_PersistentCalls:
-        m_Calls: []
-    onBarkLine:
-      m_PersistentCalls:
-        m_Calls: []
-  sequenceEvents:
-    onSequenceStart:
-      m_PersistentCalls:
-        m_Calls: []
-    onSequenceEnd:
-      m_PersistentCalls:
-        m_Calls: []
-  questEvents:
-    onQuestStateChange:
-      m_PersistentCalls:
-        m_Calls: []
-    onQuestTrackingEnabled:
-      m_PersistentCalls:
-        m_Calls: []
-    onQuestTrackingDisabled:
-      m_PersistentCalls:
-        m_Calls: []
-    onUpdateQuestTracker:
-      m_PersistentCalls:
-        m_Calls: []
-  pauseEvents:
-    onDialogueSystemPause:
-      m_PersistentCalls:
-        m_Calls: []
-    onDialogueSystemUnpause:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &914675243
 GameObject:
   m_ObjectHideFlags: 0
@@ -11315,51 +11214,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!1 &937478811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 937478813}
-  - component: {fileID: 937478812}
-  m_Layer: 0
-  m_Name: Ep.2_Activation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &937478812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937478811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activate: {fileID: 11400000, guid: 9ba72f4b70fc0014695d7a7180fe61e7, type: 2}
-  Object: {fileID: 0}
---- !u!4 &937478813
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937478811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &954593150
 PrefabInstance:
   m_ObjectHideFlags: 0
