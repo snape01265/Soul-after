@@ -7,7 +7,7 @@ public class GunBullet : MonoBehaviour
     private DefenseGameManager gameManager;
     private Rigidbody2D rb2D;
     private bool isMovable = false;
-    private readonly float timer = 10f;
+    private readonly float timer = 3f;
 
     private void Start()
     {
@@ -36,7 +36,6 @@ public class GunBullet : MonoBehaviour
 
     public void FireAtAngle(float Degrees)
     {
-        Debug.Log(Degrees);
         transform.rotation = Quaternion.Euler(0, 0, Degrees);
         isMovable = true;
         StartCoroutine(SelfDestTimer());
