@@ -19,7 +19,8 @@ public class DefenseMob : MonoBehaviour
         tag = "Enemy";
         Player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.Find("DefenseGameManager").GetComponent<DefenseGameManager>();
-        barrier = GameObject.Find("Barrier").GetComponent<Barrier>();
+        if(!gameManager.OutForBlood)
+            barrier = GameObject.Find("Barrier").GetComponent<Barrier>();
         originPos = transform.position;
         health = gameManager.EnemyHealth;
         gunDmg = gameManager.GunAtkDmg;
@@ -35,7 +36,7 @@ public class DefenseMob : MonoBehaviour
             {
                 StopCoroutine(AtkMotion());
             }
-            transform.position = Vector3.Lerp(transform.position, Player.transform.position, normSpeed);
+            transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.05f);
         }
         else if (!inPosition)
             transform.position = Vector3.Lerp(originPos, targetPos, normSpeed);

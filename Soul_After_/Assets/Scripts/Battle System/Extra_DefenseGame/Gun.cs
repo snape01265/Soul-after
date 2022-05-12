@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     private bool spreadCD = false;
     private bool isSlowed = false;
     private float defSpeed;
+    private readonly float SPEEDDECREASEMULTI = .66f;
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class Gun : MonoBehaviour
         {
             if (!isSlowed)
             {
-                player.speed *= .7f;
+                player.speed *= SPEEDDECREASEMULTI;
                 isSlowed = true;
             }
 

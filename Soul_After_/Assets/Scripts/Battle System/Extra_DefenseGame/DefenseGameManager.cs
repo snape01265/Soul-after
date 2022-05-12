@@ -26,6 +26,7 @@ public class DefenseGameManager : MonoBehaviour
     public float EnemyAtkTime = 2f;
     public float BaseSpawnRate = 3f;
     public float SpawnMulti = .8f;
+    public float SpawnRateDecreMulti = 1.1f; //Spawning multiplier lengthened for every Simul spawn
     public int BaseSimulSpawn = 1;
     public float SpawnBorderYUpper = 10f;
     public float SpawnBorderYLower = -10f;
@@ -69,24 +70,20 @@ public class DefenseGameManager : MonoBehaviour
     [NonSerialized]
     public int WaveKill;
     public bool OutForBlood = false;
-    private bool waveFinished = false;
     private bool isSpawnable = false;
     private bool waveStarted = false;
     private bool spawnFinished = false;
     private bool isClassicMode = true;
+    private bool gameEnded = false;
     private float spawnRate;
     private int simulSpawn;
     private int MobCount = 0;
+    [NonSerialized]
     public int curMob = 0;
-    private readonly int SPAWNRATEDECINCRE = 5; //Spawning multiplier applied for every x(5) stages 
-    private readonly int SIMULSPAWNINCINCRE = 30; //Simultaneous spawn triggered every x(30) rounds
+    private float spawnRateSimulDecre = 1; //Spawning multiplier lengthened for every Simul spawn
+    private readonly int SPAWNRATEDECINCRE = 2; //Spawning multiplier applied for every x(3) stages 
+    private readonly int[] SIMULSPAWNINCINCRE = { 5, 10, 20, 30 }; //Simultaneous spawn triggered every round in array
     private readonly int CLEARTXTBUFFERTIME = 1;
-
-    //test only
-    private void Start()
-    {
-        Invoke("StartClassic", 3f);
-    }
 
     private void FixedUpdate()
     {
@@ -100,7 +97,7 @@ public class DefenseGameManager : MonoBehaviour
                     for (int i = 0; i < simulSpawn; i++)
                     {
                         curMob++;
-                        MobGens[i].SpawnMob();
+                        MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
                     }
                 }
                 else
@@ -108,7 +105,7 @@ public class DefenseGameManager : MonoBehaviour
                     for (int i = 0; i < MobGens.Length; i++)
                     {
                         curMob++;
-                        MobGens[i].SpawnMob();
+                        MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
                     }
                 }
             }
@@ -135,6 +132,7 @@ public class DefenseGameManager : MonoBehaviour
     public void StartEndless()
     {
         InitScene();
+        CurScore = 0;
         StartCoroutine(StartWave(false));
     }
 
@@ -142,21 +140,23 @@ public class DefenseGameManager : MonoBehaviour
     {
         CurWave++;
 
-        if (!isClassic && CurWave % SPAWNRATEDECINCRE == 0)
+        if (CurWave % SPAWNRATEDECINCRE == 0)
         {
             spawnRate *= SpawnMulti;
-
-            if (CurWave % SIMULSPAWNINCINCRE == 0)
-            {
-                simulSpawn += 1;
-            }
         }
+
+        if (Array.Exists(SIMULSPAWNINCINCRE, x => x == CurWave))
+        {
+            simulSpawn += 1;
+            spawnRateSimulDecre *= SpawnRateDecreMulti;
+            spawnRate = BaseSpawnRate * spawnRateSimulDecre;
+        }
+
         isClassicMode = isClassic;
         curMob = 0;
         MobCount = WaveEnemyMul * CurWave;
         WaveKill = 0;
         waveStarted = true;
-        Debug.Log("curwave : " + CurWave);
         yield return null;
     }
 
@@ -184,14 +184,18 @@ public class DefenseGameManager : MonoBehaviour
 
     public void EndGame()
     {
-        if (HighScore.initialValue < CurScore)
+        if (!gameEnded)
         {
-            HighScore.initialValue = CurScore;
-        }
+            gameEnded = true;
 
-        FadeIn.FadeInOutStatic(GameEndFadeOutTime);
-        Debug.Log("Game Ended!");
-        Time.timeScale = 0f;
+            if (HighScore.initialValue < CurScore)
+            {
+                HighScore.initialValue = CurScore;
+            }
+
+            FadeIn.FadeInOutStatic(GameEndFadeOutTime);
+            SceneTransition.Invoke("ChangeScene", GameEndFadeOutTime);
+        }
     }
 
     private void InitScene()
