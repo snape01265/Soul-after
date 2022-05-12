@@ -73,7 +73,8 @@ public class DefenseGameManager : MonoBehaviour
     private bool isSpawnable = false;
     private bool waveStarted = false;
     private bool spawnFinished = false;
-    private bool isClassicMode = true;
+    [NonSerialized]
+    public bool isClassicMode = true;
     private bool gameEnded = false;
     private float spawnRate;
     private int simulSpawn;
@@ -118,25 +119,27 @@ public class DefenseGameManager : MonoBehaviour
             {
                 waveStarted = false;
                 spawnFinished = false;
-                StartCoroutine(CheckWaveFinished(isClassicMode));
+                StartCoroutine(CheckWaveFinished());
             }
         }
     }
 
     public void StartClassic()
     {
+        isClassicMode = true;
         InitScene();
-        StartCoroutine(StartWave(true));
+        StartCoroutine(StartWave());
     }
 
     public void StartEndless()
     {
+        isClassicMode = false;
         InitScene();
         CurScore = 0;
-        StartCoroutine(StartWave(false));
+        StartCoroutine(StartWave());
     }
 
-    IEnumerator StartWave(bool isClassic)
+    IEnumerator StartWave()
     {
         CurWave++;
 
@@ -152,7 +155,6 @@ public class DefenseGameManager : MonoBehaviour
             spawnRate = BaseSpawnRate * spawnRateSimulDecre;
         }
 
-        isClassicMode = isClassic;
         curMob = 0;
         MobCount = WaveEnemyMul * CurWave;
         WaveKill = 0;
@@ -160,18 +162,18 @@ public class DefenseGameManager : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator CheckWaveFinished(bool ClassicMode)
+    IEnumerator CheckWaveFinished()
     {
-        if (ClassicMode && CurWave >= ClassicTotWave)
+        if (isClassicMode && CurWave >= ClassicTotWave)
         {
             ClassicEndGame();
             yield break;
-        } else if (ClassicMode && CurWave < ClassicTotWave)
+        } else if (!isClassicMode || CurWave < ClassicTotWave)
         {
             Barrier.RestoreHealth();
             StartCoroutine(RenderClearText());
             yield return new WaitForSeconds(WaveClearBreakTime);
-            StartCoroutine(StartWave(ClassicMode));
+            StartCoroutine(StartWave());
         }
 
     }
@@ -188,7 +190,7 @@ public class DefenseGameManager : MonoBehaviour
         {
             gameEnded = true;
 
-            if (HighScore.initialValue < CurScore)
+            if (!isClassicMode && HighScore.initialValue < CurScore)
             {
                 HighScore.initialValue = CurScore;
             }

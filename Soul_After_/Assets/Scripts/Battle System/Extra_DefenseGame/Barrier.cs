@@ -21,6 +21,7 @@ public class Barrier : MonoBehaviour
         }
     }
     private int barrierHealth;
+    private readonly int CLASSICBARRIERHEALTHLIMIT = 150;
 
     private void Start()
     {
@@ -40,7 +41,10 @@ public class Barrier : MonoBehaviour
 
     public void RestoreHealth()
     {
-        BarrierHealth += GameManager.BarrierHealPerRound;
+        if (GameManager.isClassicMode)
+            BarrierHealth = Mathf.Clamp(BarrierHealth + GameManager.BarrierHealPerRound, 0, CLASSICBARRIERHEALTHLIMIT);
+        else
+            BarrierHealth += GameManager.BarrierHealPerRound;
     }
 
     private void RenderBarrierHealth()
