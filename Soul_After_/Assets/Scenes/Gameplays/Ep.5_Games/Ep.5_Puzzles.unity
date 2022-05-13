@@ -6939,7 +6939,7 @@ PlayableDirector:
     value: {fileID: 1652312249}
   - key: {fileID: 1735122014674745975, guid: 2a8d93925d70eb9478ed908443da8516, type: 2}
     value: {fileID: 895128969}
-  - key: {fileID: 2790389142004707052, guid: 2a8d93925d70eb9478ed908443da8516, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 895128970}
   - key: {fileID: 3412070600038922776, guid: 2a8d93925d70eb9478ed908443da8516, type: 2}
     value: {fileID: 0}
@@ -20120,9 +20120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820307769}
   - component: {fileID: 820307770}
-  - component: {fileID: 820307771}
   - component: {fileID: 820307772}
-  - component: {fileID: 820307773}
   m_Layer: 0
   m_Name: GameClear
   m_TagString: Untagged
@@ -20180,87 +20178,6 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - 630d09adbd3d65645ad595911d46a5d1: {fileID: 1227475915}
---- !u!114 &820307771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820307768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: 65536
-  condition:
-    luaConditions: []
-    questConditions: []
-    acceptedTags:
-    - Player
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  setQuestState: 1
-  questName: 
-  questState: 0
-  setQuestEntryState: 0
-  questEntryNumber: 1
-  questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 8
-  sequence: AnimatorFloat(Move_Y, 1, Player_Sub);
-  sequenceSpeaker: {fileID: 0}
-  sequenceListener: {fileID: 0}
-  waitOneFrameOnStartOrEnable: 1
-  alertMessage: 
-  textTable: {fileID: 0}
-  alertDuration: 0
-  sendMessages: []
-  barkSource: 0
-  barkConversation: 
-  barkText: 
-  barkTextSequence: 
-  barker: {fileID: 0}
-  barkTarget: {fileID: 0}
-  barkOrder: 0
-  allowBarksDuringConversations: 0
-  skipBarkIfNoValidEntries: 0
-  cacheBarkLines: 0
-  conversation: 
-  conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
-  startConversationEntryID: -1
-  exclusive: 0
-  replace: 0
-  skipIfNoValidEntries: 0
-  stopConversationOnTriggerExit: 0
-  stopConversationIfTooFar: 0
-  maxConversationDistance: 5
-  monitorConversationDistanceFrequency: 1
-  showCursorDuringConversation: 0
-  pauseGameDuringConversation: 0
-  setActiveActions:
-  - condition:
-      luaConditions:
-      - Variable["Ep_5_Puzzle.Simon_Finished"] == true
-      - Variable["Ep_5_Puzzle.Chase_Finished"] == true
-      - Variable["Ep_5_Puzzle.InvisMaze_Finished"] == true
-      questConditions: []
-      acceptedTags: []
-      acceptedGameObjects: []
-      luaWizardIndex: 0
-      lastEvaluationValue: 0
-    target: {fileID: 895128973}
-    state: 0
-  setEnabledActions: []
-  setAnimatorStateActions: []
-  onExecute:
-    m_PersistentCalls:
-      m_Calls: []
-  useConversationTitlePicker: 1
-  useBarkTitlePicker: 1
-  useQuestNamePicker: 1
-  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!114 &820307772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20306,32 +20223,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!61 &820307773
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820307768}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &825832304
 GameObject:
   m_ObjectHideFlags: 0
@@ -20474,7 +20365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audio: {fileID: 825832306}
   duration: 0.75
-  targetVolume: 0
+  targetVolume: 1
 --- !u!1 &867888947
 GameObject:
   m_ObjectHideFlags: 0
@@ -20565,7 +20456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5083390277488938104, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5083390277488938105, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
       propertyPath: m_Controller
@@ -20701,11 +20592,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
---- !u!4 &895128973 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5083390277488938107, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
-  m_PrefabInstance: {fileID: 895128968}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &895128974
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20771,7 +20657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions: []
+    luaConditions:
+    - Variable["Ep_5_Puzzle.Game_Finished"] == true
     questConditions: []
     acceptedTags: []
     acceptedGameObjects: []
@@ -30253,7 +30140,7 @@ PlayableDirector:
     value: {fileID: 1025774151}
   - key: {fileID: -1797939047084286007, guid: 2b1eed770e68e9f4abee1fc31b0c9378, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -6124953641581457394, guid: 2b1eed770e68e9f4abee1fc31b0c9378, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 895128970}
   - key: {fileID: 4355265957706450793, guid: 2b1eed770e68e9f4abee1fc31b0c9378, type: 2}
     value: {fileID: 1652312251}
@@ -36754,7 +36641,7 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -7429734067868247029, guid: 6cfdc171db3e7fe40b4aff7c81da4586, type: 2}
     value: {fileID: 1025774151}
-  - key: {fileID: -8404676548871318059, guid: 6cfdc171db3e7fe40b4aff7c81da4586, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 895128970}
   m_ExposedReferences:
     m_References:
@@ -44750,7 +44637,7 @@ PlayableDirector:
     value: {fileID: 895128969}
   - key: {fileID: -2596455617247573005, guid: 8fe5510befabbcd4a83b12e05be5b259, type: 2}
     value: {fileID: 1025774151}
-  - key: {fileID: -4129561544804744857, guid: 8fe5510befabbcd4a83b12e05be5b259, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 895128970}
   - key: {fileID: -7705197431408136531, guid: 8fe5510befabbcd4a83b12e05be5b259, type: 2}
     value: {fileID: 1730399196}
