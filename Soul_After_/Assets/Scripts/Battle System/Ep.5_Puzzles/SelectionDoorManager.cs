@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class SelectionDoorManager : MonoBehaviour
 {
@@ -40,7 +41,8 @@ public class SelectionDoorManager : MonoBehaviour
 
         if (fincount == Progress.initialValue.Count)
         {
-            Player_Sub.SetActive(true);
+            DialogueLua.SetVariable("Ep_5_Puzzle.Game_Finished", true);
+            Debug.Log("Variable is set to true");
         }
     }
 }

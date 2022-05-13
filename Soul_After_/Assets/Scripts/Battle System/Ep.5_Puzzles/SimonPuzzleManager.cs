@@ -102,19 +102,19 @@ public class SimonPuzzleManager : MonoBehaviour
             case 1:
                 {
                     for(int i = 0; i < (int)ANSLENGTH.Easy; i++)
-                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow+1));
                     break;
                 }
             case 2:
                 {
                     for (int i = 0; i < (int)ANSLENGTH.Medium; i++)
-                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow+1));
                     break;
                 }
             case 3:
                 {
                     for (int i = 0; i < (int)ANSLENGTH.Hard; i++)
-                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow));
+                        ans.Add(Random.Range((int)COLORS.Red, (int)COLORS.Yellow+1));
                     break;
                 }
         }
