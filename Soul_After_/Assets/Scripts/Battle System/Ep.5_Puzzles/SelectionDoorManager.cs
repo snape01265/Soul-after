@@ -10,6 +10,9 @@ public class SelectionDoorManager : MonoBehaviour
     public InvismazePuzzleManager InvisPuzzle;
     public ChasemazePuzzleManager ChasePuzzle;
     public SimonPuzzleManager SimonPuzzle;
+    public GameObject Player_Sub;
+
+    private int fincount;
 
     public enum DOORTYPE
     {
@@ -25,12 +28,19 @@ public class SelectionDoorManager : MonoBehaviour
 
     public void TrackProgress()
     {
+        fincount = 0;
         foreach (var isFin in Progress.initialValue.Select((value, index) => (value, index)))
         {
             if (isFin.value)
             {
                 Doors[isFin.index].FinishedPuzzle();
+                fincount++;
             }
+        }
+
+        if (fincount == Progress.initialValue.Count)
+        {
+            Player_Sub.SetActive(true);
         }
     }
 }
