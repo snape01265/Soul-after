@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DefenseMob : MonoBehaviour
 {
-    public AudioClip DeathSFXClip;
+    public AudioSource DeathSFX;
+
     private GameObject Player;
     private DefenseGameManager gameManager;
     private Animator anim;
@@ -16,7 +17,6 @@ public class DefenseMob : MonoBehaviour
     private bool isDying = false;
     private Vector3 originPos;
     private Vector3 targetPos;
-    private AudioSource DeathSFX;
 
     void Start()
     {
@@ -30,8 +30,6 @@ public class DefenseMob : MonoBehaviour
         health = gameManager.EnemyHealth;
         gunDmg = gameManager.GunAtkDmg;
         targetPos = new Vector3(barrier.transform.position.x, originPos.y, originPos.z);
-        DeathSFX = new AudioSource();
-        DeathSFX.clip = DeathSFXClip;
     }
 
     void FixedUpdate()
