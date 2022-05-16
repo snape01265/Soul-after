@@ -15,6 +15,7 @@ public class DefenseMob : MonoBehaviour
     private bool isDying = false;
     private Vector3 originPos;
     private Vector3 targetPos;
+    public AudioSource DeathSFX;
 
     void Start()
     {
@@ -74,7 +75,7 @@ public class DefenseMob : MonoBehaviour
             gameManager.WaveKill += 1;
             gameManager.CurScore += 1;
             StopAllCoroutines();
-            DeathMotion();
+            StartCoroutine(DeathMotion());
         }
     }
 
@@ -87,6 +88,7 @@ public class DefenseMob : MonoBehaviour
 
     IEnumerator DeathMotion()
     {
+        DeathSFX.Play();
         anim.SetTrigger("Death");
         yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);

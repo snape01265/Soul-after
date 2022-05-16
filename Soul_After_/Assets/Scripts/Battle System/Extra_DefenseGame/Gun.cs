@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     public Player player;
     public DefenseGameManager GameManager;
     public GameObject BulletPrefab;
+    public AudioSource GunFireSFX;
 
     private float gunSpread = 0;
     private bool spreadCD = false;
@@ -34,6 +35,7 @@ public class Gun : MonoBehaviour
                 float randAngle = Random.Range(-gunSpread, gunSpread);
                 StartCoroutine(GunSpread());
                 GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+                GunFireSFX.Play();
                 bullet.GetComponent<GunBullet>().FireAtAngle(randAngle);
             }
         } else if (gunSpread > 0 && !spreadCD)

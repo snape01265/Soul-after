@@ -7,6 +7,7 @@ public class Barrier : MonoBehaviour
 {
     public DefenseGameManager GameManager;
     public Text BarrierText;
+    public AudioSource TakeDmgSFX;
     [HideInInspector]
     public int BarrierHealth
     {
@@ -31,7 +32,7 @@ public class Barrier : MonoBehaviour
     public void TakeDamage()
     {
         BarrierHealth -= GameManager.EnemyAtkDmg;
-
+        TakeDmgSFX.Play();
         if (BarrierHealth <= 0)
         {
             GameManager.OutForBlood = true;
