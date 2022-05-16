@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
     public static MidiFile midiFile;
-    public Image[] images;
+    public GameObject[] images;
     public float bgSpeed;
     public float noteTime;
     public float noteSpawnX;
@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     public double badMarginOfError;
     public ScoreManager scoreManager;
     public static int track;
+    public bool isMinigame;
 
     private Transform player;
     private Transform seulha;
@@ -87,7 +88,21 @@ public class GameManager : MonoBehaviour
     }
     public void StartRhythmGame()
     {
-        GetDataFromMidi();
+        if (!isMinigame)
+        {
+            IEnumerator GameScreenTransition()
+            {
+                GameObject.Find("Fadein").GetComponent<Fadein>().FadeInOut(1);
+                yield return new WaitForSeconds(1);
+                GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
+                GetDataFromMidi();
+            }
+            StartCoroutine(GameScreenTransition());
+        }
+        else
+        {
+            GetDataFromMidi();
+        }
     }
     private void GetDataFromMidi()
     {
@@ -115,23 +130,23 @@ public class GameManager : MonoBehaviour
         {
             Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
             StartCoroutine(Fade(true, images[0], bgSpeed));
-            StartCoroutine(Fade(true, images[2], bgSpeed));
-            GameObject.Find("SnowParticles").SetActive(false);
+            StartCoroutine(Fade(true, images[1], bgSpeed));
+            //GameObject.Find("SnowParticles").SetActive(false);
             yield return new WaitForSeconds(5);
-            StartCoroutine(Fade(false, images[1], bgSpeed));
+            StartCoroutine(Fade(false, images[2], bgSpeed));
             StartCoroutine(FadeLight(false, sunlight, bgSpeed));
             yield return null;
         }
         StartCoroutine(BackgroundTransition());
     }
-
-    IEnumerator Fade(bool fadeAway, Image image, float t)
+    IEnumerator Fade(bool fadeAway, GameObject image, float t)
     {
+        SpriteRenderer imageComp = image.GetComponent<SpriteRenderer>();
         if (fadeAway)
         {
             for (float i = 0.5f; i >= 0; i -= Time.deltaTime / t)
             {
-                image.color = new Color(1, 1, 1, i);
+                imageComp.color = new Color(1, 1, 1, i);
                 yield return null;
             }
         }
@@ -139,7 +154,7 @@ public class GameManager : MonoBehaviour
         {
             for (float i = 0; i <= 0.5f; i += Time.deltaTime / t)
             {
-                image.color = new Color(1, 1, 1, i);
+                imageComp.color = new Color(1, 1, 1, i);
                 yield return null;
             }
         }

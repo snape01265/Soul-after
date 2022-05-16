@@ -10,7 +10,6 @@ public class ScoreManager : MonoBehaviour
     public TMPro.TextMeshPro comboText;
     public TMPro.TextMeshPro scoreText;
     public int[] multiplierThresholdsContainer;
-    public bool isMinigame;
     [HideInInspector]
     public GameManager gameManager;
     public GameObject resultScreen;
