@@ -38,6 +38,7 @@ public class DefenseMob : MonoBehaviour
             if (AtkMotion() != null)
             {
                 StopCoroutine(AtkMotion());
+                anim.SetBool("Attack", false);
             }
             transform.position = Vector3.Lerp(transform.position, Player.transform.position, 0.05f);
         }
@@ -65,18 +66,15 @@ public class DefenseMob : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (!isDying)
-        {
-            health -= gunDmg;
+        health -= gunDmg;
 
-            if (health <= 0)
-            {
-                isDying = true;
-                gameManager.WaveKill += 1;
-                gameManager.CurScore += 1;
-                StopAllCoroutines();
-                DeathMotion();
-            }
+        if (!isDying && health <= 0)
+        {
+            isDying = true;
+            gameManager.WaveKill += 1;
+            gameManager.CurScore += 1;
+            StopAllCoroutines();
+            DeathMotion();
         }
     }
 
