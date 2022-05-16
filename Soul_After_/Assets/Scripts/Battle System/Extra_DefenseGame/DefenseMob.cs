@@ -6,11 +6,13 @@ public class DefenseMob : MonoBehaviour
 {
     private GameObject Player;
     private DefenseGameManager gameManager;
+    private Animator anim;
     private int health;
     private int gunDmg;
     private float normSpeed;
     private Barrier barrier;
     private bool inPosition = false;
+    private bool isDying = false;
     private Vector3 originPos;
     private Vector3 targetPos;
 
@@ -19,8 +21,9 @@ public class DefenseMob : MonoBehaviour
         tag = "Enemy";
         Player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.Find("DefenseGameManager").GetComponent<DefenseGameManager>();
-        if(!gameManager.OutForBlood)
+        if (!gameManager.OutForBlood)
             barrier = GameObject.Find("Barrier").GetComponent<Barrier>();
+        anim = GetComponent<Animator>();
         originPos = transform.position;
         health = gameManager.EnemyHealth;
         gunDmg = gameManager.GunAtkDmg;
@@ -49,6 +52,7 @@ public class DefenseMob : MonoBehaviour
             gameManager.EndGame();
         } else if (collision.CompareTag("Barrier"))
         {
+            anim.SetBool("Attack", true);
             AttemptAtk();
         }
     }
@@ -61,21 +65,32 @@ public class DefenseMob : MonoBehaviour
 
     public void TakeDamage()
     {
-        health -= gunDmg;
-
-        if (health <= 0)
+        if (!isDying)
         {
-            gameManager.WaveKill += 1;
-            gameManager.CurScore += 1;
-            Destroy(gameObject);
+            health -= gunDmg;
+
+            if (health <= 0)
+            {
+                isDying = true;
+                gameManager.WaveKill += 1;
+                gameManager.CurScore += 1;
+                StopAllCoroutines();
+                DeathMotion();
+            }
         }
     }
 
     IEnumerator AtkMotion()
     {
-        // some attackmotion or whatever
         yield return new WaitForSeconds(gameManager.EnemyAtkTime);
         barrier.TakeDamage();
         StartCoroutine(AtkMotion());
+    }
+
+    IEnumerator DeathMotion()
+    {
+        anim.SetTrigger("Death");
+        yield return new WaitForSeconds(0.75f);
+        Destroy(gameObject);
     }
 }
