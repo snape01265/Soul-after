@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int ItemID = 0;
     public ItemProperties[] Items;
     public FloatValue Token;
+    public GameObject NoMoneyTab;
     public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
@@ -249,10 +250,11 @@ public class Player : MonoBehaviour
                 Token.initialValue -= Items[ItemID].Price;
                 Debug.Log("You bought an item!");
         }
-        else if (Token.initialValue < 0 || Token.initialValue < Items[ItemID].Price)
+        else if (Token.initialValue <= 0 || Token.initialValue < Items[ItemID].Price)
         {
-                //need a UI for this
-                Debug.Log("Not enough money!");
+            //need a UI for this
+            NoMoneyTab.SetActive(true);
+            Debug.Log("Not enough money!");
         }
     }   
 }
