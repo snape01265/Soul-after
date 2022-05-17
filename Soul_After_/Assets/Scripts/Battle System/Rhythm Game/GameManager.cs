@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] images;
     public float bgSpeed;
     public float noteTime;
-    public float noteSpawnX;
-    public float noteTapX;
+    public float noteSpawnY;
+    public float noteTapY;
     [HideInInspector]
     public double perfectMarginOfError;
     [HideInInspector]
@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour
 
     private Transform player;
     private Transform seulha;
-    public float noteDespawnX
+    public float noteDespawnY
     {
         get
         {
-            return noteTapX - (noteSpawnX - noteTapX);
+            return noteTapY - (noteSpawnY - noteTapY);
         }
     }
 
@@ -50,7 +50,10 @@ public class GameManager : MonoBehaviour
         instance = this;
         track = DialogueLua.GetVariable("TrackSelection").asInt;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
+        if(GameObject.FindGameObjectWithTag("NPC") != null)
+        {
+            seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
+        }
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
             StartCoroutine(ReadFromWebsite());
