@@ -6,17 +6,20 @@ using UnityEngine.UI;
 
 public class RaceBehavior : MonoBehaviour
 {
-    private readonly float PLAYERSPEED = 1f;
-    private readonly float BUFFER = 5f;
-    private readonly float BONUS = .05f;
-    private readonly float NORM = .03f;
-    private readonly float PENALTY = .02f;
-    private readonly float WINCOND = 100f;
-
     public Transform player;
     public Transform enemy;
     public Transform startObj;
     public Transform endObj;
+    public AudioSource countDownSFX;
+    public AudioSource bgm;
+    public BoolValue contestWon;
+
+    private readonly float PLAYERSPEED = 5f;
+    private readonly float BUFFER = 5f;
+    private readonly float BONUS = .4f;
+    private readonly float NORM = .2f;
+    private readonly float PENALTY = .1f;
+    private readonly float WINCOND = 100f;
 
     private float startPos;
     private float endPos;
@@ -28,10 +31,6 @@ public class RaceBehavior : MonoBehaviour
 
     private SceneTransition sceneTransition;
     private Text timer;
-    //Audio Source
-    public AudioSource countDownSFX;
-    public AudioSource bgm;
-    public BoolValue contestWon;
 
     private void Awake()
     {
@@ -50,7 +49,7 @@ public class RaceBehavior : MonoBehaviour
         sceneTransition = GameObject.Find("Scene Transition").GetComponent<SceneTransition>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (raceStart && !raceOver)
         {
@@ -77,7 +76,7 @@ public class RaceBehavior : MonoBehaviour
 
     private void AISwims()
     {
-        if (AITotal < playerTotal - BUFFER)
+        if (AITotal < playerTotal - BUFFER || WINCOND - playerTotal < 10f)
             AITotal += UnityEngine.Random.value * BONUS;
         else if (AITotal > playerTotal + BUFFER)
             AITotal += UnityEngine.Random.value * PENALTY;
@@ -92,7 +91,6 @@ public class RaceBehavior : MonoBehaviour
 
     private void PlayerLoses()
     {
-        Debug.Log("Player Lost!");
         raceOver = true;
         StartCoroutine(BackToScene());
 
@@ -100,7 +98,6 @@ public class RaceBehavior : MonoBehaviour
 
     private void PlayerWins()
     {
-        Debug.Log("Player Won!");
         raceOver = true;
         contestWon.initialValue = true;
         StartCoroutine(BackToScene());
