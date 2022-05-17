@@ -245,7 +245,6 @@ public class BoxPush_1 : MonoBehaviour
                 boxTouched = true;
                 touchedPoint = collision.GetContact(0).normal;
             }
-            Debug.Log(boxCount);
         }
     }
 

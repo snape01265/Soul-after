@@ -216,8 +216,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         player.transform.position = new Vector3(startingPlayerPos.x, startingPlayerPos.y, startingPlayerPos.z);
         for (int i = 0; i < box.Count; i++)
         {
-            //box[i].targetPos = box[i].transform.position;
-            //box[i].LastLoc = box[i].transform.position;
             box[i].PushToDest(startingBoxPos[i], false);
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
@@ -241,8 +239,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
 
         for (int i = 0; i < box.Count; i++)
         {
-            //box[i].targetPos = box[i].transform.position;
-            //box[i].LastLoc = box[i].transform.position;
             box[i].PushToDest(startingBoxPos[i], false);
         }
         yield return new WaitForSeconds(fadeDuration - (fadeDuration / 2) + 1);
