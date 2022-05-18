@@ -49,12 +49,16 @@ public class RaceBehavior : MonoBehaviour
         sceneTransition = GameObject.Find("Scene Transition").GetComponent<SceneTransition>();
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Horizontal"))
+            PlayerSwims();
+    }
+
     private void FixedUpdate()
     {
         if (raceStart && !raceOver)
         {
-            if (Input.GetButtonDown("Horizontal"))
-                PlayerSwims();
             AISwims();
             RenderSwimmers();
             CheckRaceFinish();
