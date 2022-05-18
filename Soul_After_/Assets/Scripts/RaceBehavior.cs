@@ -14,7 +14,7 @@ public class RaceBehavior : MonoBehaviour
     public AudioSource bgm;
     public BoolValue contestWon;
 
-    private readonly float PLAYERSPEED = 5f;
+    private readonly float PLAYERSPEED = 2f;
     private readonly float BUFFER = 5f;
     private readonly float BONUS = .3f;
     private readonly float NORM = .1f;
@@ -51,8 +51,9 @@ public class RaceBehavior : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Horizontal"))
-            PlayerSwims();
+        if (raceStart && !raceOver)
+            if (Input.GetButtonDown("Horizontal"))
+                PlayerSwims();
     }
 
     private void FixedUpdate()
