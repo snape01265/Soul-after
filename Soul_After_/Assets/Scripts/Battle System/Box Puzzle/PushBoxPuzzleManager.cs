@@ -2,12 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class PushBoxPuzzleManager : MonoBehaviour
 {
     public KeyCode keyForMirror;
     public KeyCode keyForReset;
-    public int turnCount;
+    [HideInInspector]
+    public int TurnCount
+    {
+        get
+        {
+            return turnCount;
+        }
+        set
+        {
+            turnCount = value;
+            SetCounter(value);
+        }
+    }
+    private int turnCount = 1;
     public FloatValue puzzleSave;
     [HideInInspector]
     public int puzzleNum;
@@ -24,6 +38,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public AudioSource mirrorSFX;
     public AudioSource clearSFX;
     public float fadeDuration;
+    public Text CounterTxt;
     [HideInInspector]
     public bool isReset = false;
 
@@ -86,7 +101,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount >= 0 && goalReached && !box.pushing)
+        else if (TurnCount >= 0 && goalReached && !box.pushing)
         {
             clearSFX.Play();
             isReset = true;
@@ -109,7 +124,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     break;
             }
         }
-        else if (turnCount == 0 && !isReset && !box.pushing && !goalReached)
+        else if (TurnCount == 0 && !isReset && !box.pushing && !goalReached)
         {
             resetSFX.Play();
             isReset = true;
@@ -167,7 +182,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         isReset = false;
         isAvailable = true;
         player.GetComponent<Player>().control = true;
-        turnCount = turnLimit;
+        TurnCount = turnLimit;
         yield return null;
     }
     public void SetPosition()
@@ -194,7 +209,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
         yield return new WaitForSeconds(fadeDuration - 0.5f);
         player.GetComponent<Player>().control = true;
         isAvailable = true;
-        turnCount = turnLimit;
+        TurnCount = turnLimit;
         isReset = false;
         yield return null;
     }
@@ -243,5 +258,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
         player.GetComponent<Player>().control = true;
         isAvailable = true;
         yield return null;
+    }
+
+    public void SetCounter(int count)
+    {
+        CounterTxt.text = "≥≤¿∫ ≈œ : " + count.ToString();
     }
 }

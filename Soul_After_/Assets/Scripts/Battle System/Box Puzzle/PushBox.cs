@@ -28,10 +28,6 @@ public class PushBox : MonoBehaviour
 
     void Start()
     {
-        /*
-        LastLoc = transform.position;
-        puzzleManager.startingBoxPos = transform.position;
-        puzzleManager.startingPlayerPos = transform.Find("Player").position;*/
         targetPos = transform.position;
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
@@ -64,16 +60,20 @@ public class PushBox : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.03f);
-        if (puzzleManager.isReset)
-            transform.position = Vector3.Lerp(transform.position, targetPos, 0.5f);
-        if (Vector3.Distance(transform.position, targetPos ) <= .03f && pushing)
+        if (iceTouched)
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.03f);
+        else if (puzzleManager.isReset)
+            transform.position = Vector3.Lerp(transform.position, targetPos, 1f);
+        else
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.3f);
+
+        if (Vector3.Distance(transform.position, targetPos) <= .01f && pushing)
         {
             transform.position = targetPos;
             pushing = false;
             teled = false;
             if (!puzzleManager.isReset)
-                puzzleManager.turnCount -= 1;
+                puzzleManager.TurnCount -= 1;
         }
     }
 
