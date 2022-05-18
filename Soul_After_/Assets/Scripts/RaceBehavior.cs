@@ -16,9 +16,9 @@ public class RaceBehavior : MonoBehaviour
 
     private readonly float PLAYERSPEED = 5f;
     private readonly float BUFFER = 5f;
-    private readonly float BONUS = .4f;
-    private readonly float NORM = .2f;
-    private readonly float PENALTY = .1f;
+    private readonly float BONUS = .3f;
+    private readonly float NORM = .1f;
+    private readonly float PENALTY = .05f;
     private readonly float WINCOND = 100f;
 
     private float startPos;
