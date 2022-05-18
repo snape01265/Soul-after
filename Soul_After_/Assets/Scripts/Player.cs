@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public ItemProperties[] Items;
     public FloatValue Token;
     public GameObject NoMoneyTab;
+    public TokenRenderer tokenRenderer;
     public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
@@ -246,9 +247,11 @@ public class Player : MonoBehaviour
     {
         if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
         {
-                GameObject.FindGameObjectWithTag("Market").GetComponent<MarketFunction>().ItemTransaction();
-                Token.initialValue -= Items[ItemID].Price;
-                Debug.Log("You bought an item!");
+            GameObject.FindGameObjectWithTag("Market").GetComponent<MarketFunction>().ItemTransaction();
+            Token.initialValue -= Items[ItemID].Price;
+            tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
+            tokenRenderer.BounceToken();
+            Debug.Log("You bought an item!");
         }
         else if (Token.initialValue <= 0 || Token.initialValue < Items[ItemID].Price)
         {
