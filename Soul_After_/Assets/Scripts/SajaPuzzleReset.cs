@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SajaPuzzleReset : MonoBehaviour
 {
-    public VectorList birdPos;
     private SajaPuzzleBehavior SajaPuzzle;
     private Animator anim;
     private bool pressed = false;

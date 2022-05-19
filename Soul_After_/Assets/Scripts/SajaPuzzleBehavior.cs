@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,37 +5,19 @@ using PixelCrushers.DialogueSystem;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
-    [HideInInspector]
-    public List<bool> pressedStates;
-    [HideInInspector]
-    public List<bool> boxOnBtn;
-
     public BoolValue puzzleFin;
+    public AudioSource _audio;
+
+    private List<bool> pressedStates = new List<bool>(6) { false, false, false, false, false, false };
+    private List<bool> boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
+    private bool finished = false;
+    private List<ButtonRenderer> btnRenders = new List<ButtonRenderer>();
+    private GameObject[] buttons;
 
     private readonly Vector3 REGBIRDPOS = new Vector3(-5, 3, 0);
     private readonly Vector3 DUMBIRDPOS = new Vector3(0, 3, 0);
     private readonly Vector3 FORGETBIRDPOS = new Vector3(5, 3, 0);
     private readonly List<bool> FINISHEDSTATE = new List<bool>(6) { true, true, true, true, true, true };
-
-    private bool finished = false;
-    private List<ButtonRenderer> btnRenders;
-    private GameObject[] buttons;
-    public AudioSource _audio;
-
-
-    private void Awake()
-    {
-        pressedStates = new List<bool>(6) { false, false, false, false, false, false };
-        boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
-        /*
-        if (!puzzleFin.initialValue)
-        {
-            //need to switch to dialogue system variable. 
-            GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").GetComponent<RPGTalkArea>().enabled = true;
-        } else GameObject.Find("Road Block").SetActive(true);
-        */
-        btnRenders = new List<ButtonRenderer>();
-    }
 
     private void Start()
     {
@@ -59,17 +40,10 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!finished && FINISHEDSTATE.SequenceEqual(pressedStates))
         {
             // finish event
-            Debug.Log("Event Finished!");
-            //GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area").gameObject.SetActive(false);
-            //GameObject.Find("그나마 정상인 놈").transform.Find("RPGTalk Area (Suit On)").gameObject.SetActive(true);
-            //puzzleFin.initialValue = true;
             DialogueLua.SetVariable("PuzzleFinished_Saja", true);
             DialogueLua.SetVariable("TimelineToPlay", 3);
             finished = true;
             _audio.Play();
-        } else
-        {
-            Debug.Log("Not finished");
         }
     }
 
@@ -94,11 +68,10 @@ public class SajaPuzzleBehavior : MonoBehaviour
         if (!finished)
         {
             pressedStates[idx] = true;
-            Debug.Log(idx);
             switch (idx)
             {
                 case 0:
-                    {                     
+                    {
                         CrossFlip(1);
                         CrossFlip(3);
                         break;
