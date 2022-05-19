@@ -7,7 +7,9 @@ public class TokenRenderer : MonoBehaviour
 {
     public Text TokenNo;
     public FloatValue Token;
+
     private Animator anim;
+    private int reward;
 
     void Start()
     {
@@ -18,10 +20,5 @@ public class TokenRenderer : MonoBehaviour
     public void BounceToken()
     {
         anim.SetTrigger("Bounce");
-    }
-
-    public void RewardToken()
-    {
-
     }
 }

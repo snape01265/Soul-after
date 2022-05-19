@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class DefenseGameManager : MonoBehaviour
 {
@@ -142,7 +143,8 @@ public class DefenseGameManager : MonoBehaviour
     IEnumerator StartWave()
     {
         CurWave++;
-
+        // Dialouge system variable(WaveCount) variable goes up as CurWave value goes up.
+        CountWaves();
         if (CurWave % SPAWNRATEDECINCRE == 0)
         {
             spawnRate *= SpawnMulti;
@@ -181,6 +183,7 @@ public class DefenseGameManager : MonoBehaviour
     private void ClassicEndGame()
     {
         // add token count
+        ClassicModeClear();
         EndGame();
     }
 
@@ -241,5 +244,19 @@ public class DefenseGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnRate);
         isSpawnable = true;
         StartCoroutine(SpawnTimer());
+    }
+    
+    // methods created by Byungsung
+    private void ClassicModeClear()
+    {
+        DialogueLua.SetVariable("DefenseGame.ClassicModeClear", true);
+        Debug.Log("Classic mode clear!");
+    }
+
+    private void CountWaves()
+    {
+        int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
+        WaveCount = CurWave;
+        Debug.Log("Wave is now" + WaveCount);
     }
 }
