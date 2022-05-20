@@ -73,6 +73,7 @@ public class DefenseMob : MonoBehaviour
         if (!isDying && health <= 0)
         {
             isDying = true;
+            GetComponent<BoxCollider2D>().enabled = false;
             gameManager.WaveKill += 1;
             gameManager.CurScore += 1;
             StopAllCoroutines();
