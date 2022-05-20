@@ -5,6 +5,7 @@ using UnityEngine;
 public class DefenseMob : MonoBehaviour
 {
     public AudioSource DeathSFX;
+    public AudioSource HitSFX;
 
     private GameObject Player;
     private DefenseGameManager gameManager;
@@ -68,6 +69,7 @@ public class DefenseMob : MonoBehaviour
 
     public void TakeDamage()
     {
+        HitSFX.Play();
         health -= gunDmg;
 
         if (!isDying && health <= 0)
