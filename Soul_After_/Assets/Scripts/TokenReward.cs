@@ -99,7 +99,7 @@ public class TokenReward : MonoBehaviour
         {
             int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
             // fix the denominator when needed
-            tokenRenderer.Token.initialValue += WaveCount / 2;
+            tokenRenderer.Token.initialValue += WaveCount / 8;
             tokenRenderer.TokenNo.text = "X " + tokenRenderer.Token.initialValue.ToString();
             tokenRenderer.BounceToken();
             TokenSFX.Play();
