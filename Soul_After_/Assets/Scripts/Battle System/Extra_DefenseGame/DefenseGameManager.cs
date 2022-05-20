@@ -192,7 +192,7 @@ public class DefenseGameManager : MonoBehaviour
         if (!gameEnded)
         {
             gameEnded = true;
-
+            
             if (!isClassicMode && HighScore.initialValue < CurScore)
             {
                 HighScore.initialValue = CurScore;
@@ -254,9 +254,9 @@ public class DefenseGameManager : MonoBehaviour
     }
 
     private void CountWaves()
-    {
+    { 
+        DialogueLua.SetVariable("DefenseGame.WaveCount", CurWave);
         int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
-        WaveCount = CurWave;
-        Debug.Log("Wave is now" + WaveCount);
+        Debug.Log("Wave is now " + WaveCount);
     }
 }
