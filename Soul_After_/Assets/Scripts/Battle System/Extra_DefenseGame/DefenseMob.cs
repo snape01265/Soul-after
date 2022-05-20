@@ -5,6 +5,7 @@ using UnityEngine;
 public class DefenseMob : MonoBehaviour
 {
     public AudioSource DeathSFX;
+    public AudioSource HitSFX;
 
     private GameObject Player;
     private DefenseGameManager gameManager;
@@ -68,11 +69,13 @@ public class DefenseMob : MonoBehaviour
 
     public void TakeDamage()
     {
+        HitSFX.Play();
         health -= gunDmg;
 
         if (!isDying && health <= 0)
         {
             isDying = true;
+            GetComponent<BoxCollider2D>().enabled = false;
             gameManager.WaveKill += 1;
             gameManager.CurScore += 1;
             StopAllCoroutines();
