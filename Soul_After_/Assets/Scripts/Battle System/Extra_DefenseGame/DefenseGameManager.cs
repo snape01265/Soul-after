@@ -255,8 +255,9 @@ public class DefenseGameManager : MonoBehaviour
 
     private void CountWaves()
     { 
-        DialogueLua.SetVariable("DefenseGame.WaveCount", CurWave);
         int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
+        WaveCount = CurWave;
+        DialogueLua.SetVariable("DefenseGame.WaveCount", WaveCount);
         Debug.Log("Wave is now " + WaveCount);
     }
 }

@@ -79,11 +79,11 @@ public class TokenReward : MonoBehaviour
     public void ShootingGameReward()
     {
         bool isClassicMode = DialogueLua.GetVariable("Defense_Classic_Mode").asBool;
-        bool clearClassic = DialogueLua.GetVariable("DefenseGame.ClassicModeClear").asBool;
-        int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
-
-        if (isClassicMode)
+  
+        if (isClassicMode == true)
         {
+            bool clearClassic = DialogueLua.GetVariable("DefenseGame.ClassicModeClear").asBool;
+            Debug.Log("Classic mode activated");
             if (clearClassic)
             {
                 reward = 3;
@@ -98,13 +98,13 @@ public class TokenReward : MonoBehaviour
         }
         else
         {
+            int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
             // fix the denominator when needed
-            tokenRenderer.Token.initialValue += Mathf.Floor(WaveCount / 2);
+            tokenRenderer.Token.initialValue += Mathf.Floor(WaveCount / 7);
             tokenRenderer.TokenNo.text = "X " + tokenRenderer.Token.initialValue.ToString();
             tokenRenderer.BounceToken();
+            TokenSFX.Play();
             Debug.Log(Mathf.Floor(WaveCount / 10) + " tokens rewarded.");
-            // Reset the variable after the reward by running lua code.
-            DialogueLua.SetVariable("DefenseGame.WaveCount", 0);
         }
     }
 
