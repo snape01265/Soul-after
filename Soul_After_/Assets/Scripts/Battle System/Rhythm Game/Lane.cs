@@ -47,6 +47,7 @@ public class Lane : MonoBehaviour
             double perfectMarginOfError = GameManager.instance.perfectMarginOfError;
             double goodMarginOfError = GameManager.instance.goodMarginOfError;
             double badMarginOfError = GameManager.instance.badMarginOfError;
+            double missMarginOfError = GameManager.instance.missMarginOfError;
             double audioTime = GameManager.GetAudioSourceTime() - (GameManager.instance.inputDelayInMilliseconds / 1000.0);
 
             if (Input.GetKeyDown(keyToPress) && keyAvailable)
@@ -72,9 +73,12 @@ public class Lane : MonoBehaviour
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
-                else
+                else if (Mathf.Abs((float)(audioTime - timeStamp)) < missMarginOfError)
                 {
-                    StartCoroutine(DisableKeys());
+                    ScoreManager.Miss();
+                    // miss effect ex: notes[inputIndex].gameObject.GetComponent<Note>().Miss();
+                    Destroy(notes[inputIndex].gameObject);
+                    inputIndex++;
                 }
             }
             if(timeStamp + badMarginOfError <= audioTime)
@@ -89,7 +93,8 @@ public class Lane : MonoBehaviour
     {
         keyAvailable = false;
         //play some indicator
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
+        yield return null;
         keyAvailable = true;
     }
 }

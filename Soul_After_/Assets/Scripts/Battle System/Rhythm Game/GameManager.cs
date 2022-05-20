@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     public double goodMarginOfError;
     [HideInInspector]
     public double badMarginOfError;
+    [HideInInspector]
+    public double missMarginOfError;
     public ScoreManager scoreManager;
     public static int track;
     public bool isMinigame;
@@ -61,6 +63,10 @@ public class GameManager : MonoBehaviour
         else
         {
             ReadFromFile();
+        }
+        if (isMinigame)
+        {
+            StartRhythmGame();
         }
     }
 
