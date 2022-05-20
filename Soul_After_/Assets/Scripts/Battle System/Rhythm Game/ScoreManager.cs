@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -121,18 +122,23 @@ public class ScoreManager : MonoBehaviour
         if(percentAccuracy > 40)
         {
             rankValue = "D";
+            DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
             if (percentAccuracy > 55)
             {
                 rankValue = "C";
+                DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
                 if (percentAccuracy > 70)
                 {
                     rankValue = "B";
+                    DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
                     if (percentAccuracy > 85)
                     {
                         rankValue = "A";
+                        DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
                         if (percentAccuracy == 100)
                         {
                             rankValue = "S";
+                            DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
                         }
                     }
                 }

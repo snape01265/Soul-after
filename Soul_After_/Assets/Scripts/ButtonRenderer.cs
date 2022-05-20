@@ -24,7 +24,6 @@ public class ButtonRenderer : MonoBehaviour
             saja.ToggleBoxOnBtn(BtnIdx);
             if(anim.GetBool("Pressed") == false)
             {
-                Debug.Log("Pressed.");
                 ButtonDown();
                 gameObject.GetComponentInParent<SajaPuzzleBehavior>().AdvancePuzzle(BtnIdx);
             }

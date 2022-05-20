@@ -264,7 +264,7 @@ MonoBehaviour:
   MaxGunSpreadTime: 3
   BulletSpd: 30
   ClassicTotWave: 10
-  WaveEnemyMul: 8
+  WaveEnemyMul: 7
   WaveClearBreakTime: 5
   GameEndFadeOutTime: 2
   OutForBlood: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["DefenseGame.ClassicModeFin"] = false
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -393,7 +393,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["DefenseGame.ClassicModeFin"] = true
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -6574,6 +6574,10 @@ PrefabInstance:
       value: SceneTransitionToPolice_Dep
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+      propertyPath: fadeWait
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 171287654064927804, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: sceneToLoad
       value: Police_Dep
       objectReference: {fileID: 0}
@@ -7643,6 +7647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979816419}
   - component: {fileID: 1979816420}
+  - component: {fileID: 1979816421}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -7760,6 +7765,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1979816421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979816418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 11400000, guid: 01e2481ade031264da853daa220d496c, type: 2}
+  fadeoutTime: 0.75
 --- !u!1 &1986415174
 GameObject:
   m_ObjectHideFlags: 0
@@ -8162,6 +8181,8 @@ MonoBehaviour:
   ItemID: 0
   Items: []
   Token: {fileID: 0}
+  NoMoneyTab: {fileID: 0}
+  tokenRenderer: {fileID: 0}
   road: {fileID: 0}
   menuSet: {fileID: 899018965}
   askWho: {fileID: 0}
