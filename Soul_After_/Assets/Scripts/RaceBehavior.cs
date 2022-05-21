@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PixelCrushers.DialogueSystem;
 
 public class RaceBehavior : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class RaceBehavior : MonoBehaviour
 
     private void CheckRaceFinish()
     {
+        DialogueLua.SetVariable("SwimGame.SwimGameFin", true);
         if (playerTotal > WINCOND)
             PlayerWins();
         else if (AITotal > WINCOND)
@@ -97,14 +99,15 @@ public class RaceBehavior : MonoBehaviour
     private void PlayerLoses()
     {
         raceOver = true;
+        DialogueLua.SetVariable("SwimGame.SwimGameWin", false);
         StartCoroutine(BackToScene());
-
     }
 
     private void PlayerWins()
     {
         raceOver = true;
         contestWon.initialValue = true;
+        DialogueLua.SetVariable("SwimGame.SwimGameWin", true);
         StartCoroutine(BackToScene());
     }
 
