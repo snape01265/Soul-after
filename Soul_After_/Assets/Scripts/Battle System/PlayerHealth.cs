@@ -64,6 +64,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+           
+        if (CurHP.initialValue <= 0)
+        {
+            StopAllCoroutines();
+            PlayableDirector deathTimeline = GameObject.Find("GameOver").GetComponent<PlayableDirector>();
+            deathTimeline.Play();
+            Debug.Log("Gameover");
+        }
+    }
     public void TakeDamage(int dmg)
     {
         int oldhp = (int)CurHP.initialValue;

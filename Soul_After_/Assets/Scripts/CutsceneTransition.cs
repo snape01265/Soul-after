@@ -6,10 +6,17 @@ using UnityEngine.SceneManagement;
 public class CutsceneTransition : MonoBehaviour
 {
     public string sceneToLoad;
+    public GameObject fadeInPanel;
     public GameObject fadeOutPanel;
-    public float fadeWait;
-
-    private void OnEnable()
+    private void Awake()
+    {
+        if (fadeInPanel != null)
+        {
+            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            Destroy(panel, 1);
+        }
+    }
+    public void ChangeScene()
     {
         StartCoroutine(FadeCo());
         GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
@@ -20,7 +27,7 @@ public class CutsceneTransition : MonoBehaviour
         {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
-        yield return new WaitForSeconds(fadeWait);
+        yield return new WaitForSeconds(2);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!asyncOperation.isDone)
         {
