@@ -70,7 +70,8 @@ public class PlayerHealth : MonoBehaviour
         if (CurHP.initialValue <= 0)
         {
             StopAllCoroutines();
-            PlayableDirector deathTimeline = GameObject.Find("GameOver").GetComponent<PlayableDirector>();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CancelControl();
+            PlayableDirector deathTimeline = GameObject.Find("Gameover").GetComponent<PlayableDirector>();
             deathTimeline.Play();
             Debug.Log("Gameover");
         }
