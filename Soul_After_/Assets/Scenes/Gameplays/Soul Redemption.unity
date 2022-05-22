@@ -5310,9 +5310,11 @@ MonoBehaviour:
   state: 0
   enemiesInBattle:
   - {fileID: 11400000, guid: e69199a7d101a794880b8c6d19e28fee, type: 2}
-  playerHeart: {fileID: 1975942370}
+  playerHealth: {fileID: 0}
   rpgTalk: {fileID: 1888126995}
   phaseCount: 0
+  enemyActed: 0
+  patternCount: 0
 --- !u!4 &406464417
 Transform:
   m_ObjectHideFlags: 0
@@ -21038,7 +21040,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -21564,20 +21566,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b405f039b95717244a0660b6face4acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10
+  hpStates: 
+  CurHP: {fileID: 0}
   maxHP: 10
-  SP: 0
-  needSP: 1
   levelClear: 0
-  SPDisplay: {fileID: 1747587139}
   hitSound: {fileID: 1975942376}
-  acqSound: {fileID: 1975942377}
   flashColor: {r: 1, g: 1, b: 1, a: 0.5254902}
   regularColor: {r: 1, g: 1, b: 1, a: 1}
   flashDuration: 0.25
   numberOfFlashes: 2
   triggerCollider: {fileID: 1975942373}
   mySprite: {fileID: 1975942374}
+  ShieldEnabled: 0
+  CD: 0
+  ShieldAnim: {fileID: 0}
 --- !u!50 &1975942372
 Rigidbody2D:
   serializedVersion: 4
