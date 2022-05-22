@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DefenseMob : MonoBehaviour
 {
-    public AudioSource DeathSFX;
+    public AudioSource HitSFX;
+    public AudioClip DeathSFX;
 
     private GameObject Player;
     private DefenseGameManager gameManager;
@@ -68,6 +69,7 @@ public class DefenseMob : MonoBehaviour
 
     public void TakeDamage()
     {
+        HitSFX.Play();
         health -= gunDmg;
 
         if (!isDying && health <= 0)
@@ -90,7 +92,7 @@ public class DefenseMob : MonoBehaviour
 
     IEnumerator DeathMotion()
     {
-        DeathSFX.Play();
+        HitSFX.PlayOneShot(DeathSFX);
         anim.SetTrigger("Death");
         yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);

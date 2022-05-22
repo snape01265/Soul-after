@@ -1315,7 +1315,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98388348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 6, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 573836882}
@@ -1801,6 +1801,8 @@ GameObject:
   m_Component:
   - component: {fileID: 283327283}
   - component: {fileID: 283327284}
+  - component: {fileID: 283327285}
+  - component: {fileID: 283327286}
   m_Layer: 0
   m_Name: SwimGameReward
   m_TagString: Untagged
@@ -1831,14 +1833,162 @@ PlayableDirector:
   m_GameObject: {fileID: 283327282}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 0}
+  m_PlayableAsset: {fileID: 11400000, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
   m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -3901707181808439299, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 77712341}
+  - key: {fileID: 144293738011248259, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 1729836383}
+  - key: {fileID: -723062716532160157, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 283327282}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &283327285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283327282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 2354a04e87864c54a903d6453fed7054, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729836382}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729836382}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1611243149}
+          m_TargetAssemblyTypeName: TokenReward, Assembly-CSharp
+          m_MethodName: DefaultReward
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &283327286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283327282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 16
+  condition:
+    luaConditions:
+    - (Variable["SwimGame.SwimGameFin"] == true) and (Variable["SwimGame.SwimGameWin"]
+      == true)
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: 
+  sequence: 
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: 
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: -1
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 283327284}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!1 &370977764
 GameObject:
   m_ObjectHideFlags: 0
@@ -10776,7 +10926,7 @@ Tilemap:
       - {fileID: -2256431350410458140, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -8602803218496701474, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -3668634497984119556, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 4, z: 0}
@@ -11508,6 +11658,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf483578ad5b83645a3080668864d41c, type: 3}
+--- !u!114 &1611243149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9082925310665943269, guid: bf483578ad5b83645a3080668864d41c, type: 3}
+  m_PrefabInstance: {fileID: 1611243148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16b422c73fbb7b54a86ce5760ef06b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1729836380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11589,6 +11750,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e84bf7456b6b84fa91b7b272c2fbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1729836383 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3315974713476907895, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+  m_PrefabInstance: {fileID: 1729836380}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1756226926
 GameObject:
   m_ObjectHideFlags: 0
@@ -11617,9 +11783,214 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 283327283}
+  - {fileID: 1785707700}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1785707699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1785707700}
+  - component: {fileID: 1785707703}
+  - component: {fileID: 1785707702}
+  - component: {fileID: 1785707701}
+  m_Layer: 0
+  m_Name: SwimGameNoReward
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1785707700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785707699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1756226927}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1785707701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785707699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 16
+  condition:
+    luaConditions:
+    - (Variable["SwimGame.SwimGameFin"] == true) and (Variable["SwimGame.SwimGameWin"]
+      == false)
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: 
+  sequence: 
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: 
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: -1
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1785707703}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
+--- !u!114 &1785707702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785707699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 2354a04e87864c54a903d6453fed7054, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729836382}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1729836382}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1611243149}
+          m_TargetAssemblyTypeName: TokenReward, Assembly-CSharp
+          m_MethodName: DefaultReward
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &1785707703
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785707699}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e2207fe2d5bf7e64faf9ee810c76dcbb, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -3901707181808439299, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 77712341}
+  - key: {fileID: 144293738011248259, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 1729836383}
+  - key: {fileID: -723062716532160157, guid: e0cdbc7f92b47194ebb67d3beb3daaf6, type: 2}
+    value: {fileID: 1785707699}
+  - key: {fileID: 478336022998576967, guid: e2207fe2d5bf7e64faf9ee810c76dcbb, type: 2}
+    value: {fileID: 77712341}
+  - key: {fileID: -2887737456677233996, guid: e2207fe2d5bf7e64faf9ee810c76dcbb, type: 2}
+    value: {fileID: 1729836383}
+  - key: {fileID: -8234482824265878312, guid: e2207fe2d5bf7e64faf9ee810c76dcbb, type: 2}
+    value: {fileID: 1785707699}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &1815743634
 GameObject:
   m_ObjectHideFlags: 0
@@ -16477,7 +16848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2099602109}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 6, y: 2.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

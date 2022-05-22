@@ -17730,7 +17730,8 @@ MonoBehaviour:
   trigger: 16
   condition:
     luaConditions:
-    - Variable["Defense_Classic_Mode"] == false
+    - (Variable["DefenseGame.InfiniteModeFin"] == true) and (Variable["Defense_Classic_Mode"]
+      == false)
     questConditions: []
     acceptedTags: []
     acceptedGameObjects: []
