@@ -52,7 +52,7 @@ public class RaceBehavior : MonoBehaviour
         timer.color = timerColor;
         sceneTransition = GameObject.Find("Scene Transition").GetComponent<SceneTransition>();
         playerAnim = player.GetComponent<Animator>();
-        enemyAnim = player.GetComponent<Animator>();
+        enemyAnim = enemy.GetComponent<Animator>();
     }
 
     private void Update()
