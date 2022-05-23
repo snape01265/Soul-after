@@ -15,11 +15,14 @@ public class RaceBehavior : MonoBehaviour
     public AudioSource bgm;
     public BoolValue contestWon;
 
-    private readonly float PLAYERSPEED = 2f;
+    private Animator playerAnim;
+    private Animator enemyAnim;
+
+    private readonly float PLAYERSPEED = 1.5f;
     private readonly float BUFFER = 5f;
     private readonly float BONUS = .3f;
-    private readonly float NORM = .1f;
-    private readonly float PENALTY = .05f;
+    private readonly float NORM = .2f;
+    private readonly float PENALTY = .1f;
     private readonly float WINCOND = 100f;
 
     private float startPos;
@@ -44,10 +47,12 @@ public class RaceBehavior : MonoBehaviour
         AITotal = 0;
         //text's alpha value is set to 0 in the beginning.
         timer = GameObject.Find("Timer").GetComponent<Text>();
-        var timerColor = timer.color;
+        Color timerColor = timer.color;
         timerColor.a = 0f;
         timer.color = timerColor;
         sceneTransition = GameObject.Find("Scene Transition").GetComponent<SceneTransition>();
+        playerAnim = player.GetComponent<Animator>();
+        enemyAnim = player.GetComponent<Animator>();
     }
 
     private void Update()
@@ -74,7 +79,6 @@ public class RaceBehavior : MonoBehaviour
 
     private void CheckRaceFinish()
     {
-        DialogueLua.SetVariable("SwimGame.SwimGameFin", true);
         if (playerTotal > WINCOND)
             PlayerWins();
         else if (AITotal > WINCOND)
@@ -118,18 +122,22 @@ public class RaceBehavior : MonoBehaviour
 
         player.position = Vector3.Lerp(player.position, playerTarget, .05f);
         enemy.position = Vector3.Lerp(enemy.position, enemyTarget, .05f);
+
+        if (!raceOver && Vector3.Distance(player.position, playerTarget) > .5f)
+        {
+            playerAnim.SetTrigger("Swim");
+        }
     }
 
     private IEnumerator CountDown()
     {
+        Color timerColor = timer.color;
+        timerColor.a = 1f;
+        timer.color = timerColor;
         countDownSFX.Play();
         int countDown = 3;
         while (countDown > 0)
         {
-            timer = GameObject.Find("Timer").GetComponent<Text>();
-            var timerColor = timer.color;
-            timerColor.a = 1f;
-            timer.color = timerColor;
             timer.text = countDown.ToString();
             countDown -= 1;
             yield return new WaitForSeconds(1.3f);
@@ -140,10 +148,13 @@ public class RaceBehavior : MonoBehaviour
         //After "Go!" is shown on the screen, the text should disappear and the bgm should play. 
         yield return raceStart = true;
         bgm.Play();
+        enemyAnim.SetBool("Swim", true);
     }
 
     private IEnumerator BackToScene()
     {
+        enemyAnim.SetBool("Swim", false);
+        DialogueLua.SetVariable("SwimGame.SwimGameFin", true);
         yield return new WaitForSeconds(4f);
         sceneTransition.ChangeScene();
     }
