@@ -70,6 +70,7 @@ public class DefenseGameManager : MonoBehaviour
     private int curScore;
     [NonSerialized]
     public int WaveKill;
+    [NonSerialized]
     public bool OutForBlood = false;
     private bool isSpawnable = false;
     private bool waveStarted = false;
