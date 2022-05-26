@@ -27,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
     public float flashDuration;
     public int numberOfFlashes;
     public Collider2D triggerCollider;
+    public Collider2D boxCollider;
     public SpriteRenderer mySprite;
 
     [Header("Shield")]
@@ -171,11 +172,21 @@ public class PlayerHealth : MonoBehaviour
                 temp++;
             }
         }
-
         currentIFrame = null;
         triggerCollider.enabled = true;
     }
-    
+
+    public void PlayerInvulnerable()
+    {
+        triggerCollider.enabled = false;
+        boxCollider.enabled = false;
+    }
+    public void PlayerVulnerable()
+    {
+        triggerCollider.enabled = true;
+        boxCollider.enabled = true;
+    }
+
     IEnumerator FlipAfter(int Time)
     {
         yield return new WaitForSeconds(Time - RECHARGEANIMTIME);

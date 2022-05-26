@@ -86,4 +86,9 @@ public class Ep3_Dungeon_2_Battle_P4 : MonoBehaviour
 	{
 		trigger = true;
 	}
+	public void ResetAnimation()
+	{
+		anim.SetBool("Moving", false);
+		anim.SetBool("Sitting", false);
+	}
 }

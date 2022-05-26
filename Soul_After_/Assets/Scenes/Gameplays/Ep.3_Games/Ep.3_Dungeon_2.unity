@@ -1489,10 +1489,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1503,10 +1503,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1603,7 +1603,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -1836,12 +1836,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112809336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1302495557}
-  m_RootOrder: 0
+  m_Father: {fileID: 854229081}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &112809338
 MonoBehaviour:
@@ -2427,6 +2427,8 @@ Transform:
   - {fileID: 1124064928}
   - {fileID: 427542100}
   - {fileID: 474120018}
+  - {fileID: 632139977}
+  - {fileID: 2087379478}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4230,10 +4232,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4244,10 +4246,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -29281,7 +29283,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -29554,12 +29556,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632139975}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 127621631}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635107662
 GameObject:
@@ -33477,6 +33479,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1408834467}
     - target: {fileID: 285543090, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 1156562705}
+    - target: {fileID: 285543090, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: ShieldEnabled
       value: 1
       objectReference: {fileID: 0}
@@ -33523,6 +33529,10 @@ PrefabInstance:
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_Mass
+      value: 0.80999994
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Name
@@ -33708,10 +33718,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -33722,10 +33732,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -34612,7 +34622,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854229080}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34625,8 +34635,9 @@ Transform:
   - {fileID: 1901660489}
   - {fileID: 767896862}
   - {fileID: 95372723}
-  m_Father: {fileID: 1640718113}
-  m_RootOrder: 5
+  - {fileID: 112809337}
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860270581
 GameObject:
@@ -52474,7 +52485,7 @@ Transform:
   - {fileID: 792376108}
   - {fileID: 1736581648}
   m_Father: {fileID: 1640718113}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1112053046
 GameObject:
@@ -52707,7 +52718,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -53722,9 +53733,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
   m_PrefabInstance: {fileID: 767389118}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1156562700 stripped
+--- !u!61 &1156562705 stripped
 BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 3468686249737713402, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2305315432131700987, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
   m_PrefabInstance: {fileID: 767389118}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1156562706 stripped
@@ -54760,7 +54771,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1178307307
 GameObject:
@@ -56609,37 +56620,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1 &1302495556
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1302495557}
-  m_Layer: 0
-  m_Name: Ep.3_Timeline
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1302495557
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1302495556}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 112809337}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302655744
 GameObject:
   m_ObjectHideFlags: 0
@@ -59055,7 +59035,6 @@ GameObject:
   - component: {fileID: 1441010506}
   - component: {fileID: 1441010505}
   - component: {fileID: 1441010504}
-  - component: {fileID: 1441010503}
   - component: {fileID: 1441010502}
   - component: {fileID: 1441010510}
   m_Layer: 0
@@ -59104,19 +59083,6 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &1441010503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441010499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e93e3fa770474b87067eaf2df81ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!50 &1441010504
 Rigidbody2D:
   serializedVersion: 4
@@ -59228,6 +59194,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1441010510}
+        m_TargetAssemblyTypeName: Ep3_Dungeon_2_Battle_P2, Assembly-CSharp
+        m_MethodName: ResetAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -59265,7 +59243,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441010499}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -59668,7 +59646,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 127621631}
     m_Modifications:
     - target: {fileID: 171287654064927803, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_Name
@@ -59700,7 +59678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59720,15 +59698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -61473,7 +61451,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -62026,10 +62004,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62040,10 +62018,10 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1156562700}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -62247,7 +62225,6 @@ GameObject:
   - component: {fileID: 1633955952}
   - component: {fileID: 1633955951}
   - component: {fileID: 1633955950}
-  - component: {fileID: 1633955949}
   - component: {fileID: 1633955948}
   - component: {fileID: 1633955947}
   m_Layer: 0
@@ -62379,19 +62356,6 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &1633955949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633955945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e93e3fa770474b87067eaf2df81ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!50 &1633955950
 Rigidbody2D:
   serializedVersion: 4
@@ -62506,6 +62470,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1633955947}
+        m_TargetAssemblyTypeName: Ep3_Dungeon_2_Battle_P1, Assembly-CSharp
+        m_MethodName: ResetAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -62543,7 +62519,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633955945}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -62736,7 +62712,6 @@ Transform:
   - {fileID: 985470719}
   - {fileID: 1571215783}
   - {fileID: 1737197069}
-  - {fileID: 854229081}
   - {fileID: 1104408992}
   m_Father: {fileID: 0}
   m_RootOrder: 11
@@ -65211,7 +65186,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -70512,7 +70487,6 @@ GameObject:
   - component: {fileID: 1988390208}
   - component: {fileID: 1988390207}
   - component: {fileID: 1988390206}
-  - component: {fileID: 1988390205}
   - component: {fileID: 1988390204}
   - component: {fileID: 1988390203}
   m_Layer: 0
@@ -70587,19 +70561,6 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &1988390205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988390201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e93e3fa770474b87067eaf2df81ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!50 &1988390206
 Rigidbody2D:
   serializedVersion: 4
@@ -70712,6 +70673,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1988390203}
+        m_TargetAssemblyTypeName: Ep3_Dungeon_2_Battle_P4, Assembly-CSharp
+        m_MethodName: ResetAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -70749,7 +70722,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988390201}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -71524,7 +71497,6 @@ GameObject:
   - component: {fileID: 2032547953}
   - component: {fileID: 2032547948}
   - component: {fileID: 2032547947}
-  - component: {fileID: 2032547945}
   - component: {fileID: 2032547944}
   - component: {fileID: 2032547946}
   m_Layer: 0
@@ -71559,19 +71531,6 @@ MonoBehaviour:
     onUse:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &2032547945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032547943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e93e3fa770474b87067eaf2df81ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!114 &2032547946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71730,6 +71689,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1633955947}
+        m_TargetAssemblyTypeName: Ep3_Dungeon_2_Battle_P1, Assembly-CSharp
+        m_MethodName: ResetAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -71741,7 +71712,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2032547943}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -72121,7 +72092,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.15}
@@ -72900,6 +72871,11 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &2087379478 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 171287654064927806, guid: 120718bbce5292f4da26a964a7eed7c5, type: 3}
+  m_PrefabInstance: {fileID: 1496775310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100024281
 GameObject:
   m_ObjectHideFlags: 0
