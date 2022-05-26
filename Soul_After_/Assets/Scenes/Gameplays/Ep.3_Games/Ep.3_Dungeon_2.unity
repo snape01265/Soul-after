@@ -1296,8 +1296,6 @@ PlayableDirector:
     value: {fileID: 1156562698}
   - key: {fileID: -9021383640742957169, guid: 90633356ac607aa4a912cc49abbd5408, type: 2}
     value: {fileID: 0}
-  - key: {fileID: -2602276862214260137, guid: 90633356ac607aa4a912cc49abbd5408, type: 2}
-    value: {fileID: 1988390211}
   - key: {fileID: 2393560194998061023, guid: 90633356ac607aa4a912cc49abbd5408, type: 2}
     value: {fileID: 1156562706}
   - key: {fileID: 2141983015202169639, guid: 90633356ac607aa4a912cc49abbd5408, type: 2}
@@ -1990,6 +1988,8 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: 69a8b240706452642a1c2f513145f653, type: 2}
     - {fileID: 11400000, guid: ba0d7dbadd57d4141b2926ce3560222d, type: 2}
+    - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -2023,6 +2023,34 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1156562698}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1621936228}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: RestoreHealth
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4087,8 +4115,6 @@ PlayableDirector:
   - key: {fileID: -5644279911999184023, guid: 2d64d022e2cad4d4d96821a51e6ebc2b, type: 2}
     value: {fileID: 1156562706}
   - key: {fileID: 5317920772177397062, guid: 2d64d022e2cad4d4d96821a51e6ebc2b, type: 2}
-    value: {fileID: 1441010509}
-  - key: {fileID: 3858739842989530666, guid: 2d64d022e2cad4d4d96821a51e6ebc2b, type: 2}
     value: {fileID: 1441010509}
   m_ExposedReferences:
     m_References:
@@ -30613,18 +30639,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1621936228}
-          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-          m_MethodName: RestoreHealth
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1156562707}
@@ -33744,6 +33758,36 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+--- !u!1 &770417573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770417574}
+  m_Layer: 0
+  m_Name: BossPos
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770417574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770417573}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 80, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1104408992}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775031010
 GameObject:
   m_ObjectHideFlags: 0
@@ -52484,6 +52528,7 @@ Transform:
   - {fileID: 1056858131}
   - {fileID: 792376108}
   - {fileID: 1736581648}
+  - {fileID: 770417574}
   m_Father: {fileID: 1640718113}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -58096,6 +58141,10 @@ PrefabInstance:
     - target: {fileID: 5083390277488938104, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
       propertyPath: m_Name
       value: Victim_Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083390277488938106, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5083390277488938106, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
       propertyPath: m_SortingOrder
@@ -68908,7 +68957,7 @@ PlayableDirector:
   - key: {fileID: -1972690864664637112, guid: 3e73959f65a56c04ca4a0d7e80b95c0a, type: 2}
     value: {fileID: 1901660488}
   - key: {fileID: -5414588390939931786, guid: 3e73959f65a56c04ca4a0d7e80b95c0a, type: 2}
-    value: {fileID: 2044143986}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - f5911eaf4cc4c7b40a7da692c7e0fdda: {fileID: 1663141039}
@@ -71889,7 +71938,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 29ef3c09031817343b8f62fe15e04f14, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
