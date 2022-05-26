@@ -60,8 +60,6 @@ public class FlowerPuzzleBehavior : MonoBehaviour
             case 2:
                 if (FlowerAnim)
                     FlowerAnim.Play();
-
-                MarigoldDead.blocksRaycasts = false;
                 // 이후 animator로 대체
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldAlive);
                 fadeInOut.CanvasGroupFadeOutOther(MarigoldDead);
