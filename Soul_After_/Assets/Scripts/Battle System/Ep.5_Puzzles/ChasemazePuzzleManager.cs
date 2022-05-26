@@ -42,12 +42,6 @@ public class ChasemazePuzzleManager : MonoBehaviour
 
     public void StartPuzzle()
     {
-        if (ChaseBGM)
-        {
-            ChaseBGM.Play();
-            chaseMusicFade.FadeMusic();
-        }
-            
         foreach (var haz in hazard)
         {
             haz.isMoving = true;
@@ -57,19 +51,6 @@ public class ChasemazePuzzleManager : MonoBehaviour
 
     public void EndPuzzle()
     {
-        if (BGMToFade)
-        {
-            BGMToFade.GetComponent<AudioSource>().volume = 0;
-            BGMToFade.GetComponent<AudioSource>().Play();
-            BGMToFade.targetVolume = 1;
-            BGMToFade.FadeMusic();
-        }
-        if (ChaseBGM)
-        {
-            chaseMusicFade.targetVolume = 0;
-            chaseMusicFade.FadeMusic();
-        }
-            
         foreach (var haz in hazard)
         {
             haz.isMoving = false;
