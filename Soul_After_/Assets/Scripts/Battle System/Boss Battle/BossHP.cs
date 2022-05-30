@@ -9,6 +9,7 @@ public class BossHP : MonoBehaviour
     public HealthBar healthBar;
     public PlayableDirector endScene;
     public AudioSource sfx;
+    public GameObject turret;
 
     private GameObject boss;
     private int maxHealth = 100;
@@ -39,6 +40,7 @@ public class BossHP : MonoBehaviour
         else if (currentHealth <= 0)
         {
             //Death Animation?
+            turret.SetActive(false);
             boss.SetActive(false);
             endScene.Play();
         }
