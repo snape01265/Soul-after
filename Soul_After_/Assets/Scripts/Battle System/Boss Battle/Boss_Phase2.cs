@@ -24,7 +24,7 @@ public class Boss_Phase2 : MonoBehaviour
     {
         boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (boss.transform.position != originalPos)
         {
