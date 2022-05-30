@@ -55,13 +55,15 @@ public class Boss : MonoBehaviour
         turrets.SetActive(true);
         damaged = true;
         yield return new WaitForSeconds(attackDuration);
+
         if (sfx)
             sfx.Play();
+
         fade.FadeInOutStatic(fadeTime);
+        damaged = false;
         yield return new WaitForSeconds(fadeTime);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
-        damaged = false;
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
     }
 }

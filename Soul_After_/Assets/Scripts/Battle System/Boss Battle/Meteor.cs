@@ -46,8 +46,11 @@ public class Meteor : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
-
-	static Quaternion LookAt2D(Vector2 forward)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
+    static Quaternion LookAt2D(Vector2 forward)
 	{
 		return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
 	}
