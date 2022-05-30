@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
     public Animator anim;
     [HideInInspector]
     public bool cooldown = false;
+    public bool damaged;
     public float fadeTime;
     public AudioSource sfx;
 
@@ -52,6 +53,7 @@ public class Boss : MonoBehaviour
         fade.FadeInOutStatic(fadeTime);
         yield return new WaitForSeconds(fadeTime);
         turrets.SetActive(true);
+        damaged = true;
         yield return new WaitForSeconds(attackDuration);
         if (sfx)
             sfx.Play();
@@ -59,6 +61,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(fadeTime);
         anim.SetBool("Stunned", false);
         turrets.SetActive(false);
+        damaged = false;
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
     }
 }

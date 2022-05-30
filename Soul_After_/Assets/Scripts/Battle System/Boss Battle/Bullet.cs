@@ -31,7 +31,9 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         BossHP bossHP = other.GetComponent<BossHP>();
-        if (bossHP != null)
+        GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
+
+        if (bossHP != null && boss.damaged)
         {
             bossHP.TakeDamage(damage);
             sprite.enabled = false;
