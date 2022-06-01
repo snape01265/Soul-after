@@ -26,4 +26,10 @@ public class MusicTransition : MonoBehaviour
         _audio = GameObject.Find("Music Player").GetComponent<AudioSource>();
         StartCoroutine(StartFade(_audio, duration, targetVolume));
     }
+
+    public void StartMusic()
+    {
+        _audio = GameObject.Find("Music Player").GetComponent<AudioSource>();
+        _audio.Play();
+    }
 }
