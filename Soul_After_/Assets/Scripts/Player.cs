@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         transform.position = startingPosition.initialValue;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (Input.GetButtonDown("Cancel"))
         {
@@ -93,7 +93,10 @@ public class Player : MonoBehaviour
                 loadSlotMenu.SetActive(false);
             }
         } 
+    }
 
+    private void FixedUpdate()
+    {
         if (!ispaused)
         {
             if (control)
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour
 
                     transform.position = bounds;
                 }
-                UpdateAnimationAndMove();               
+                UpdateAnimationAndMove();
             }
             AnimatorOverride();
         }

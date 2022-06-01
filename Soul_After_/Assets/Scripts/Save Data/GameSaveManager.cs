@@ -36,7 +36,7 @@ public class GameSaveManager : MonoBehaviour
             foreach (ScriptableObject scriptable in objToSave)
                 results += JsonUtility.ToJson(scriptable) + "~";
 
-            results += PersistentDataManager.GetSaveData() + "~";
+            results += PersistentDataManager.GetSaveData();
 
             binary.Serialize(file, results);
 
