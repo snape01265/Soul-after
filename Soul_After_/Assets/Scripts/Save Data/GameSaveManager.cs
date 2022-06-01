@@ -62,7 +62,7 @@ public class GameSaveManager : MonoBehaviour
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
                 string[] results = ((string)binary.Deserialize(file)).Split('~');
-                for (int i = 0; i < objToSave.Count-1; i++)
+                for (int i = 0; i < objToSave.Count; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
@@ -126,7 +126,7 @@ public class GameSaveManager : MonoBehaviour
                     string.Format("/Save{0}.dat", slotNo), FileMode.Open);
                 BinaryFormatter binary = new BinaryFormatter();
                 string[] results = ((string)binary.Deserialize(file)).Split('~');
-                for (int i = 0; i < objToSave.Count - 1; i++)
+                for (int i = 0; i < objToSave.Count; i++)
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
