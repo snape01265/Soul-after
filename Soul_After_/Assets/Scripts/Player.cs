@@ -128,6 +128,7 @@ public class Player : MonoBehaviour
 
     public void ResumeGame()
     {
+        GiveBackControl();
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
