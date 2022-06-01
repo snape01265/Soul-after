@@ -66,7 +66,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
-                PersistentDataManager.ApplySaveData(objToSave[objToSave.Count - 1].ToString());
+                PersistentDataManager.ApplySaveData(results[results.Length - 1]);
                 file.Close();
                 return true;
             }
@@ -130,7 +130,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
-                PersistentDataManager.ApplySaveData(objToSave[objToSave.Count - 1].ToString());
+                PersistentDataManager.ApplySaveData(results[results.Length - 1]);
                 file.Close();
             }
         }
