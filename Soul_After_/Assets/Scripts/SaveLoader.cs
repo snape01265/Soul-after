@@ -17,6 +17,7 @@ public class SaveLoader : MonoBehaviour
         Time.timeScale = 1f;
         StartCoroutine(FadeCo()); 
     }
+
     public IEnumerator FadeCo()
     {
         if (fadeOutPanel != null)
@@ -30,6 +31,7 @@ public class SaveLoader : MonoBehaviour
             yield return null;
         }
     }
+
     public void Quit()
     {
         Application.Quit();

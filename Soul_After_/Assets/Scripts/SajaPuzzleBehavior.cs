@@ -5,7 +5,6 @@ using PixelCrushers.DialogueSystem;
 
 public class SajaPuzzleBehavior : MonoBehaviour
 {
-    public BoolValue puzzleFin;
     public AudioSource _audio;
 
     private List<bool> pressedStates = new List<bool>(6) { false, false, false, false, false, false };
@@ -50,7 +49,6 @@ public class SajaPuzzleBehavior : MonoBehaviour
     public void ResetPuzzle()
     {
         pressedStates = new List<bool>(6) { false, false, false, false, false, false };
-        boxOnBtn = new List<bool>(6) { false, false, false, false, false, false };
         finished = false;
 
         GameObject.Find("등록시키고 싶은 새").transform.position = REGBIRDPOS;
