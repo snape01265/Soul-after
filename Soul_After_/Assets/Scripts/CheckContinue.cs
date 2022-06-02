@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class CheckContinue : MonoBehaviour
 {
-    private readonly int CURTIMEIDX = 17;
-
     void Start()
     {
         for (int n = 0; n < 3; n++)

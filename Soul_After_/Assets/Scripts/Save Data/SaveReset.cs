@@ -26,7 +26,6 @@ public class SaveReset : MonoBehaviour
         foreach (ScriptableObject obj in objects)
         {
             string type = obj.GetType().ToString();
-            Debug.Log(obj + " = " + type);
 
             switch (type)
             {
