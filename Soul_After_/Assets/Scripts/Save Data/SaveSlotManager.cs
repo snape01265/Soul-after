@@ -34,9 +34,6 @@ public class SaveSlotManager : MonoBehaviour
                     BinaryFormatter binary = new BinaryFormatter();
                     string[] results = ((string)binary.Deserialize(file)).Split('~');
                     Array.Resize(ref results, results.Length - 1);
-                    Debug.Log(results.Length);
-                    Debug.Log(results[results.Length - 1]);
-                    Debug.Log(results[0]);
                     StringValue saveTime = ScriptableObject.CreateInstance(typeof(StringValue)) as StringValue;
                     JsonUtility.FromJsonOverwrite(results[curTimeIdx], saveTime);
                     dateTimes.Add(saveTime.initialValue);
