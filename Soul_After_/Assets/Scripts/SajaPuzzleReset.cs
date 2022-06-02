@@ -31,21 +31,15 @@ public class SajaPuzzleReset : MonoBehaviour
             if (pressed && anim.GetBool("Flicked") == false)
             {
                 anim.SetBool("Flicked", true);
-                Debug.Log("Reset!");
                 SajaPuzzle.ResetPuzzle();
                 pressed = false;
             }
             else if (pressed && anim.GetBool("Flicked") == true)
             {
                 anim.SetBool("Flicked", false);
-                Debug.Log("Reset!");
                 SajaPuzzle.ResetPuzzle();
                 pressed = false;
             }
-        }
-        else
-        {
-            Debug.Log("Reset Failed.");
         }
     }
 }

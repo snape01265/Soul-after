@@ -3,7 +3,6 @@ using UnityEngine;
 public class ButtonRenderer : MonoBehaviour
 {
     private SajaPuzzleBehavior saja;
-    private bool BtnState;
     private int BtnIdx;
     public AudioSource _audio;
     private Animator anim;
