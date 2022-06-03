@@ -61,6 +61,6 @@ public class LoadSlotManager : MonoBehaviour
         else
             Debug.Log("로드 실패!");
 
-        GameObject.Find("SaveLoader").GetComponent<SaveLoader>().LoadNextScene();
+        //GameObject.Find("SaveLoader").GetComponent<SaveLoader>().LoadNextScene();
     }
 }

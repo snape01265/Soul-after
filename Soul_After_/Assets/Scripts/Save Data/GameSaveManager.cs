@@ -66,6 +66,7 @@ public class GameSaveManager : MonoBehaviour
                 {
                     JsonUtility.FromJsonOverwrite(results[i], objToSave[i]);
                 }
+                Debug.Log(results[results.Length - 1]);
                 PersistentDataManager.ApplySaveData(results[results.Length - 1]);
                 file.Close();
                 return true;
