@@ -93,7 +93,7 @@ public class PlayerHealth : MonoBehaviour
 
         if ((int) CurHP.initialValue <= 0)
         {
-            GameObject.Find("GameOverCutscene").GetComponent<PlayableDirector>().Play();
+            GameObject.Find("GameOver").GetComponent<PlayableDirector>().Play();
             mySprite.color = regularColor;
         }
         else if (currentIFrame == null)
