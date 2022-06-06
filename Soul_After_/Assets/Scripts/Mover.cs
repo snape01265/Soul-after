@@ -54,8 +54,13 @@ public class Mover : MonoBehaviour
 
 	public void Pause()
 	{
-		isWaiting = !isWaiting;
+		isWaiting = true;
 	}
+
+	public void Unpause()
+    {
+		isWaiting = false;
+    }
 
 	private void MoveTowardsWaypoint()
 	{
@@ -81,7 +86,7 @@ public class Mover : MonoBehaviour
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
-				Invoke("Pause", currentWaypoint.waitSeconds);
+				Invoke("Unpause", currentWaypoint.waitSeconds);
 			}
 
 			if (currentWaypoint.speedOut > 0)
