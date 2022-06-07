@@ -8,6 +8,7 @@ public class Mover : MonoBehaviour
 	public bool isCircular;
 	public bool isOneWay = false;
 	public bool inReverse = true;
+	public bool isWaiting = false;
 	public AudioSource OneWaySFX;
 
 	private Vector3 prevPos;
@@ -15,7 +16,7 @@ public class Mover : MonoBehaviour
 	private Animator anim;
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
-	private bool isWaiting = false;
+
 	private float speedStorage = 0;
 
 	void Start()
@@ -36,16 +37,30 @@ public class Mover : MonoBehaviour
 			float xvelocity = (transform.position.x - prevPos.x);
 			float yvelocity = (transform.position.y - prevPos.y);
 			myRigidbody.velocity = new Vector2(xvelocity, yvelocity);
-			if (anim.GetFloat("Move Y") != 0 && anim.GetFloat("Move Y") != 0)
-				UpdateAnimation();
+			UpdateAnimation();
 			prevPos = transform.position;
 		}
+        else
+        {		
+			StopMovement();
+        }
+	}
+	private void StopMovement()
+    {
+		myRigidbody.position = new Vector2(transform.position.x, transform.position.y);
+		myRigidbody.velocity = new Vector2(0, 0);
+		UpdateAnimation();
 	}
 
 	public void Pause()
 	{
-		isWaiting = !isWaiting;
+		isWaiting = true;
 	}
+
+	public void Unpause()
+    {
+		isWaiting = false;
+    }
 
 	private void MoveTowardsWaypoint()
 	{
@@ -71,7 +86,7 @@ public class Mover : MonoBehaviour
 			if (currentWaypoint.waitSeconds > 0)
 			{
 				Pause();
-				Invoke("Pause", currentWaypoint.waitSeconds);
+				Invoke("Unpause", currentWaypoint.waitSeconds);
 			}
 
 			if (currentWaypoint.speedOut > 0)
@@ -125,7 +140,18 @@ public class Mover : MonoBehaviour
 	}
     void UpdateAnimation()
 	{
-		anim.SetFloat("Move X", myRigidbody.velocity.x);
-		anim.SetFloat("Move Y", myRigidbody.velocity.y);
+		if (!isWaiting)
+        {
+			anim.SetBool("Moving", true);
+			anim.SetFloat("Move_X", myRigidbody.velocity.x);
+			anim.SetFloat("Move_Y", myRigidbody.velocity.y);
+		}
+        else
+        {
+			anim.SetBool("Moving", false);
+			anim.SetFloat("Move_X", myRigidbody.velocity.x);
+			anim.SetFloat("Move_Y", myRigidbody.velocity.y);
+		}
+		
 	}
 }
