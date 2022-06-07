@@ -9,9 +9,6 @@ public class GlobalLightControl : MonoBehaviour
     public void NightAtmosphere()
     {
         GlobalLight = GetComponent<Light2D>();
-        Color NightColor = GlobalLight.color;
-        NightColor.r = 0.4f;
-        NightColor.g = 0.4f;
-        NightColor.b = 1f;
+        GlobalLight.color = new Color(.4f, .4f, 1f);
     }
 }
