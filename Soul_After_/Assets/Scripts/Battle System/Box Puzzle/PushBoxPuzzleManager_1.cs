@@ -32,7 +32,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public Text CounterTxt;
     [NonSerialized]
     public Vector3 startingPlayerPos;
-    [NonSerialized]
     public int goalCount;
     [NonSerialized]
     public Fadein fade;

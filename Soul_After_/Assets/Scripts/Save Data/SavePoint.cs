@@ -12,7 +12,8 @@ public class SavePoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && inRange)
         {
-            startingPosition.initialValue = new Vector2(transform.position.x, transform.position.y - 1);
+            Transform playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            startingPosition.initialValue = new Vector2(playerPos.transform.position.x, playerPos.transform.position.y);
             lastScene.initialValue = gameObject.scene.name;
         }
     }
