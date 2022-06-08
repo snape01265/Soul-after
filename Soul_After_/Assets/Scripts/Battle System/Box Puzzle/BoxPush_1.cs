@@ -33,7 +33,7 @@ public class BoxPush_1 : MonoBehaviour
         DestCalcNode = transform.Find("DestCalcNode").gameObject;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (boxTouched && !pushing && Input.GetButtonDown("Jump"))
         {
@@ -60,7 +60,10 @@ public class BoxPush_1 : MonoBehaviour
                 DestCalcDown();
             }
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (iceTouched)
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.03f);
         else if (!puzzleManager.isAvailable)
