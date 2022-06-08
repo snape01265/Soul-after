@@ -64,20 +64,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-           
-        if (CurHP.initialValue <= 0)
-        {
-            StopAllCoroutines();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CancelControl();
-            PlayableDirector deathTimeline = GameObject.Find("Gameover").GetComponent<PlayableDirector>();
-            deathTimeline.Play();
-            Debug.Log("Gameover");
-        }
-    }
     public void TakeDamage(int dmg)
     {
+        triggerCollider.enabled = false;
         int oldhp = (int)CurHP.initialValue;
         if (ShieldEnabled && !ShieldBroken && !ShieldCD)
         {
@@ -93,8 +82,12 @@ public class PlayerHealth : MonoBehaviour
 
         if ((int) CurHP.initialValue <= 0)
         {
-            GameObject.Find("GameOver").GetComponent<PlayableDirector>().Play();
+            StopAllCoroutines();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CancelControl();
+            PlayableDirector deathTimeline = GameObject.Find("Gameover").GetComponent<PlayableDirector>();
+            deathTimeline.Play();
             mySprite.color = regularColor;
+            Debug.Log("Gameover");
         }
         else if (currentIFrame == null)
         {
@@ -147,7 +140,7 @@ public class PlayerHealth : MonoBehaviour
     IEnumerator IFrame()
     {
         int temp = 0;
-        triggerCollider.enabled = false;
+
 
         if (hitSound)
             hitSound.Play();
