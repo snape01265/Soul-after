@@ -68,7 +68,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         {
             case 0:
                 nextPuzzle("Start1", 1);
-                goalCount = goalCounts[1];
+                goalCount = goalCounts[0];
                 break;
             case 1:
                 nextPuzzle("Start2", 2);
@@ -236,7 +236,6 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player.transform.position = new Vector3(startX, startY, startZ);
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, 1 + (30 * CamMulti), mainCamera.transform.position.z);
-
         for (int i = 0; i < box.Count; i++)
         {
             box[i].PushToDest(startingBoxPos[i], false);
