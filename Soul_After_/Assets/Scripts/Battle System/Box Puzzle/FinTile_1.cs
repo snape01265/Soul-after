@@ -21,7 +21,7 @@ public class FinTile_1 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PushBox"))
+        if (other.CompareTag("PushBox") && box.isAvailable)
         {
             box.goalCount += 1;
         }
