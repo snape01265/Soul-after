@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
     public static MidiFile midiFile;
+    public static int track;
     public GameObject[] images;
     public float bgSpeed;
     public float noteTime;
@@ -32,9 +33,12 @@ public class GameManager : MonoBehaviour
     public double badMarginOfError;
     [HideInInspector]
     public double missMarginOfError;
+    [HideInInspector]
     public ScoreManager scoreManager;
-    public static int track;
+    [HideInInspector]
     public bool isMinigame;
+    [HideInInspector]
+    public bool isPlaying = false;
 
     private Transform player;
     private Transform seulha;
@@ -97,13 +101,15 @@ public class GameManager : MonoBehaviour
     }
     public void StartRhythmGame()
     {
-        if (!isMinigame)
+        if (!isMinigame && !isPlaying)
         {
             IEnumerator GameScreenTransition()
             {
                 GameObject.Find("Fadein").GetComponent<Fadein>().FadeInOut(1);
                 yield return new WaitForSeconds(1);
-                GameObject.FindGameObjectWithTag("MainCamera").SetActive(false);
+                player.gameObject.SetActive(false);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
+                yield return new WaitForSeconds(1);
                 GetDataFromMidi();
             }
             StartCoroutine(GameScreenTransition());
@@ -115,6 +121,7 @@ public class GameManager : MonoBehaviour
     }
     private void GetDataFromMidi()
     {
+        isPlaying = true;
         var notes = midiFile.GetNotes();
         var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
         notes.CopyTo(array, 0);
