@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -980,12 +984,12 @@ GameObject:
   m_Component:
   - component: {fileID: 41163548}
   - component: {fileID: 41163550}
-  - component: {fileID: 41163549}
   - component: {fileID: 41163551}
   - component: {fileID: 41163554}
   - component: {fileID: 41163553}
   - component: {fileID: 41163555}
   - component: {fileID: 41163556}
+  - component: {fileID: 41163552}
   m_Layer: 0
   m_Name: Weakness_P1_1
   m_TagString: Untagged
@@ -1007,32 +1011,6 @@ Transform:
   m_Father: {fileID: 2089084172}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &41163549
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41163547}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &41163550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1118,7 +1096,9 @@ MonoBehaviour:
   luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
 
     SetQuestEntryState("DungeonQuest_1",
-    1, "active")'
+    1, "active");
+
+    Variable["Dungeon_1.Weakness_1_Active"] = false'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -1160,6 +1140,25 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
+--- !u!95 &41163552
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41163547}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cff1faddbeb9fb34eb6c8d58bf7c713e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &41163553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1266,6 +1265,30 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 41163554}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 41163552}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Disappear
             m_BoolArgument: 0
           m_CallState: 2
     onConversationCancelled:
@@ -2302,7 +2325,7 @@ PlayableDirector:
   - key: {fileID: -1888475654022574853, guid: 3617e0a819107b44092b248c330d2909, type: 2}
     value: {fileID: 1145704997}
   - key: {fileID: 8443308109265514691, guid: 3617e0a819107b44092b248c330d2909, type: 2}
-    value: {fileID: 585713139}
+    value: {fileID: 0}
   - key: {fileID: -2581053099300546250, guid: 3617e0a819107b44092b248c330d2909, type: 2}
     value: {fileID: 148409924}
   - key: {fileID: 1129373648330106609, guid: 3617e0a819107b44092b248c330d2909, type: 2}
@@ -2336,6 +2359,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     - {fileID: 11400000, guid: eab10fef35856744d888ae47fea2a279, type: 2}
     - {fileID: 11400000, guid: 578e31453c691c04faeccec8c8a75259, type: 2}
+    - {fileID: 11400000, guid: 46aca80477f87004a80f54f7afe51741, type: 2}
+    - {fileID: 11400000, guid: bf99aad196ea7554da4d908d3172a59d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -2444,6 +2469,34 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &152596532
 PrefabInstance:
@@ -2755,6 +2808,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1666043976}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1604373073}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: RestoreHealth
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9652,7 +9717,7 @@ PlayableDirector:
   - key: {fileID: -8444335203274699637, guid: 7897c9e90d087e64bb8a606387275d04, type: 2}
     value: {fileID: 228046008}
   - key: {fileID: -1686831052503684, guid: 7897c9e90d087e64bb8a606387275d04, type: 2}
-    value: {fileID: 585713139}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 889c744e4218cd1469a091273906aac4: {fileID: 1180223865}
@@ -10363,6 +10428,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1604373073}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: RestoreHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -10573,12 +10650,12 @@ GameObject:
   m_Component:
   - component: {fileID: 299810434}
   - component: {fileID: 299810436}
-  - component: {fileID: 299810435}
   - component: {fileID: 299810438}
   - component: {fileID: 299810439}
   - component: {fileID: 299810440}
   - component: {fileID: 299810441}
   - component: {fileID: 299810437}
+  - component: {fileID: 299810442}
   m_Layer: 0
   m_Name: Weakness_P1_2
   m_TagString: Untagged
@@ -10600,32 +10677,6 @@ Transform:
   m_Father: {fileID: 1304050035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &299810435
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 299810433}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!212 &299810436
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10725,7 +10776,9 @@ MonoBehaviour:
   luaCode: 'Variable["Weakness"] = Variable["Weakness"] + 1;
 
     SetQuestEntryState("DungeonQuest_1",
-    2, "active")'
+    2, "active");
+
+    Variable["Dungeon_1.Weakness_2_Active"] = false'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -10861,6 +10914,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 299810440}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 299810442}
+          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_MethodName: SetTrigger
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Disappear
+            m_BoolArgument: 0
+          m_CallState: 2
     onConversationCancelled:
       m_PersistentCalls:
         m_Calls: []
@@ -10919,6 +10996,25 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
+--- !u!95 &299810442
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299810433}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cff1faddbeb9fb34eb6c8d58bf7c713e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &309340360
 GameObject:
   m_ObjectHideFlags: 0
@@ -11044,6 +11140,8 @@ GameObject:
   - component: {fileID: 335144024}
   - component: {fileID: 335144030}
   - component: {fileID: 335144031}
+  - component: {fileID: 335144032}
+  - component: {fileID: 335144033}
   m_Layer: 0
   m_Name: Weakness_P2
   m_TagString: Untagged
@@ -11110,10 +11208,8 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 'Variable["TimelineToPlay"] = 6;
-
-    Variable["Weakness"] = 6'
-  sequence: 
+  luaCode: Variable["Weakness"] = 6
+  sequence: AnimatorBool(Exclamation, true, Speech_Bubble);
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -11163,18 +11259,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 292451205}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1072863360}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -11358,6 +11442,90 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &335144032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335144022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14948a7c5b8b88143934f4d2fc8840eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {fileID: 11400000, guid: 5ce7eefeedf4c284fbca9fd418a1ffb3, type: 2}
+  changedPosition: {x: 1.5, y: 56.75}
+  sceneChangePosition: {x: 0, y: 0}
+--- !u!114 &335144033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335144022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 32
+  condition:
+    luaConditions:
+    - Variable["TimelineToPlay"] == 6
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: 
+  sequence: AnimatorBool(Exclamation, false, Speech_Bubble);
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: Ep.3 Dungeon Dialogues/Ep.3 Dungeon 1
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: 89
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!1 &340619120
 GameObject:
   m_ObjectHideFlags: 0
@@ -57359,7 +57527,7 @@ MonoBehaviour:
   luaCode: 'Variable["TimelineToPlay"] = 8;
 
     Variable["Weakness"] = 8'
-  sequence: 
+  sequence: AnimatorBool(Exclamation, true, Speech_Bubble);
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -58059,6 +58227,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -58810,6 +58982,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     - {fileID: 11400000, guid: eab10fef35856744d888ae47fea2a279, type: 2}
+    - {fileID: 11400000, guid: 46aca80477f87004a80f54f7afe51741, type: 2}
+    - {fileID: 11400000, guid: bf99aad196ea7554da4d908d3172a59d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -58905,6 +59079,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &442367963
 GameObject:
   m_ObjectHideFlags: 0
@@ -58997,6 +59199,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -60993,7 +61199,7 @@ PlayableDirector:
   - key: {fileID: 2353962153264994419, guid: 8b4d237d372ed2f43a4a422da51418f6, type: 2}
     value: {fileID: 1145704997}
   - key: {fileID: 6501297217970166346, guid: 8b4d237d372ed2f43a4a422da51418f6, type: 2}
-    value: {fileID: 585713139}
+    value: {fileID: 0}
   - key: {fileID: 5058528506546734599, guid: 8b4d237d372ed2f43a4a422da51418f6, type: 2}
     value: {fileID: 536909598}
   m_ExposedReferences:
@@ -63458,20 +63664,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6957546671294757977, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
   m_PrefabInstance: {fileID: 1145704995}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &703927037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703927036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1457d28ac93a2ba4a9e23d9fb7ec4460, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShieldBroken: {fileID: 1777610382}
-  ShieldRecharge: {fileID: 1753511098}
 --- !u!1 &704382075 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6563492059519798976, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -63582,6 +63774,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -63738,7 +63934,7 @@ PlayableDirector:
   - key: {fileID: -5532829818569890942, guid: 0eef20cf920d5654cb635b04cc887df1, type: 2}
     value: {fileID: 1145704997}
   - key: {fileID: 3849936836151909602, guid: 0eef20cf920d5654cb635b04cc887df1, type: 2}
-    value: {fileID: 585713139}
+    value: {fileID: 0}
   - key: {fileID: -5459269198630435602, guid: 0eef20cf920d5654cb635b04cc887df1, type: 2}
     value: {fileID: 739397579}
   - key: {fileID: 0}
@@ -64013,6 +64209,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
     - {fileID: 11400000, guid: eab10fef35856744d888ae47fea2a279, type: 2}
+    - {fileID: 11400000, guid: 46aca80477f87004a80f54f7afe51741, type: 2}
+    - {fileID: 11400000, guid: bf99aad196ea7554da4d908d3172a59d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -64095,6 +64293,34 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &761428473
 PrefabInstance:
@@ -64383,7 +64609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812759108}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.5, z: 0}
+  m_LocalPosition: {x: 0, y: -3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1054980977}
@@ -64413,7 +64639,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 1}
+  m_Size: {x: 6, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &812759111
 MonoBehaviour:
@@ -64482,7 +64708,17 @@ MonoBehaviour:
   showCursorDuringConversation: 0
   pauseGameDuringConversation: 0
   setActiveActions: []
-  setEnabledActions: []
+  setEnabledActions:
+  - condition:
+      luaConditions:
+      - Variable["TimelineToPlay"] == 4
+      questConditions: []
+      acceptedTags: []
+      acceptedGameObjects: []
+      luaWizardIndex: 0
+      lastEvaluationValue: 0
+    target: {fileID: 812759110}
+    state: 1
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
@@ -64496,6 +64732,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1780877873}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -64856,6 +65104,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -65644,7 +65896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 16
   condition:
-    luaConditions: []
+    luaConditions:
+    - (Variable["TimelineToPlay"] == 1) or (Variable["TimelineToPlay"] == 2)
     questConditions: []
     acceptedTags: []
     acceptedGameObjects: []
@@ -65917,6 +66170,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 939af2e2c79f0384399b7b9852079f32, type: 2}
     - {fileID: 11400000, guid: f0a975458c9a22349a0ab70be9660815, type: 2}
     - {fileID: 11400000, guid: 578e31453c691c04faeccec8c8a75259, type: 2}
+    - {fileID: 11400000, guid: 5f3f67e73fded6f49bc26107ebd8b058, type: 2}
+    - {fileID: 11400000, guid: 76954ed48afa0454da1a9f427356430d, type: 2}
+    - {fileID: 11400000, guid: 44feb7a84601a304a948d408ee851f63, type: 2}
+    - {fileID: 11400000, guid: 46aca80477f87004a80f54f7afe51741, type: 2}
+    - {fileID: 11400000, guid: bf99aad196ea7554da4d908d3172a59d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -66051,6 +66309,88 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 335144032}
+          m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+          m_MethodName: SetPosition
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2036960169}
+          m_TargetAssemblyTypeName: MusicFade, Assembly-CSharp
+          m_MethodName: FadeMusic
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1282186143}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: set_volume
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1282186143}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!1001 &931322867
 PrefabInstance:
@@ -68231,7 +68571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1072863361
 Transform:
   m_ObjectHideFlags: 0
@@ -84714,7 +85054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
@@ -84725,6 +85065,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1145704996}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 1142862427}
+    - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -84733,11 +85077,23 @@ PrefabInstance:
       value: GiveBackControl
       objectReference: {fileID: 0}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: EndDialogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
       value: Player, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: DialogueSystemFunction, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6683573299589234215, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
@@ -84760,6 +85116,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a22eaf2dfe0e6449f4665e328d6a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1142862427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7994427055428654940, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+  m_PrefabInstance: {fileID: 1142862424}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872625dd52738ed43a5b45c0b74cac4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1145704995
@@ -84800,6 +85167,10 @@ PrefabInstance:
     - target: {fileID: 2264015111089252617, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305315432131700987, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: menuSet
@@ -84851,7 +85222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Mass
-      value: 1.6199999
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713402, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_IsTrigger
@@ -84873,11 +85244,20 @@ PrefabInstance:
       propertyPath: onSelectedUsable.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5863374301699232577, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: ShieldBroken
+      value: 
+      objectReference: {fileID: 1777610382}
+    - target: {fileID: 5863374301699232577, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: ShieldRecharge
+      value: 
+      objectReference: {fileID: 1753511098}
     - target: {fileID: 6957546671294757977, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3468686249737713402, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
 --- !u!114 &1145704996 stripped
 MonoBehaviour:
@@ -86262,6 +86642,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -86855,7 +87239,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2bede4ab27068134ba735457fdc24b26, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -86968,7 +87352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgm: {fileID: 0}
-  fadeoutTime: 0.75
+  fadeoutTime: 1
 --- !u!1 &1286424317
 GameObject:
   m_ObjectHideFlags: 0
@@ -87383,6 +87767,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -87433,7 +87821,6 @@ GameObject:
   - component: {fileID: 1331030203}
   - component: {fileID: 1331030204}
   - component: {fileID: 1331030207}
-  - component: {fileID: 1331030209}
   - component: {fileID: 1331030210}
   - component: {fileID: 1331030211}
   - component: {fileID: 1331030212}
@@ -87492,7 +87879,7 @@ MonoBehaviour:
   luaCode: 'Variable["Weakness"] = 5;
 
     Variable["TimelineToPlay"] = 5;'
-  sequence: 
+  sequence: AnimatorBool(Exclamation, true, Speech_Bubble);
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -87744,19 +88131,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1331030209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331030201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a5e93e3fa770474b87067eaf2df81ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
 --- !u!114 &1331030210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87806,7 +88180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1331030212
 MonoBehaviour:
@@ -88569,6 +88943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -89264,7 +89642,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6607580332124383860, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_Name
-      value: NPC_Activation
+      value: Object_Activation
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_RootOrder
@@ -89312,24 +89690,121 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].state
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[6].state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[7].state
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].target
       value: 
       objectReference: {fileID: 1616701859}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].target
+      value: 
+      objectReference: {fileID: 1572349081}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].target
+      value: 
+      objectReference: {fileID: 1752756894}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[3].target
+      value: 
+      objectReference: {fileID: 153892220}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[4].target
+      value: 
+      objectReference: {fileID: 292451206}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[5].target
+      value: 
+      objectReference: {fileID: 1182691574}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[6].target
+      value: 
+      objectReference: {fileID: 41163548}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[7].target
+      value: 
+      objectReference: {fileID: 299810434}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[3].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[4].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[5].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[6].condition.luaConditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[7].condition.luaConditions.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.data[0]
       value: (Variable["TimelineToPlay"] == 0) or (Variable["TimelineToPlay"] ==
         1) or (Variable["TimelineToPlay"] == 2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.data[0]
+      value: Variable["TimelineToPlay"] == 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[2].condition.luaConditions.Array.data[0]
+      value: Variable["TimelineToPlay"] == 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[3].condition.luaConditions.Array.data[0]
+      value: (Variable["TimelineToPlay"] == 3) or (Variable["TimelineToPlay"] ==
+        4) or (Variable["TimelineToPlay"] == 5) or (Variable["TimelineToPlay"] ==
+        6) or (Variable["TimelineToPlay"] == 7) or (Variable["TimelineToPlay"] ==
+        8) or (Variable["TimelineToPlay"] == 9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[4].condition.luaConditions.Array.data[0]
+      value: (Variable["TimelineToPlay"] == 6) or (Variable["TimelineToPlay"] ==
+        7) or (Variable["TimelineToPlay"] == 8) or (Variable["TimelineToPlay"] ==
+        9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[5].condition.luaConditions.Array.data[0]
+      value: Variable["TimelineToPlay"] == 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[6].condition.luaConditions.Array.data[0]
+      value: Variable["Dungeon_1.Weakness_1_Active"] == false
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: setActiveActions.Array.data[7].condition.luaConditions.Array.data[0]
+      value: Variable["Dungeon_1.Weakness_2_Active"] == false
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3560502537434893410, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
@@ -90784,7 +91259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1570324332
 Transform:
   m_ObjectHideFlags: 0
@@ -90912,6 +91387,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 335144032}
+        m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+        m_MethodName: ResetPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -90961,6 +91448,7 @@ GameObject:
   - component: {fileID: 1572349078}
   - component: {fileID: 1572349077}
   - component: {fileID: 1572349076}
+  - component: {fileID: 1572349082}
   m_Layer: 0
   m_Name: Phase_2_Boss
   m_TagString: Untagged
@@ -91124,6 +91612,74 @@ Transform:
   m_Father: {fileID: 1054980977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572349082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572349075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 32
+  condition:
+    luaConditions: []
+    questConditions: []
+    acceptedTags: []
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: 
+  sequence: AnimatorBool(Exclamation, false, Speech_Bubble);
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: Ep.3 Dungeon Dialogues/Ep.3 Dungeon 1
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: 92
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls: []
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!1 &1581665743
 GameObject:
   m_ObjectHideFlags: 0
@@ -92106,7 +92662,7 @@ MonoBehaviour:
   trigger: 32
   condition:
     luaConditions:
-    - Variable["Weakness"] ~= 2
+    - (Variable["Weakness"] == 0) or (Variable["Weakness"] == 1)
     questConditions:
     - questName: DungeonQuest_1
       questState: 2
@@ -93836,6 +94392,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 335144032}
+        m_TargetAssemblyTypeName: NPCPosition, Assembly-CSharp
+        m_MethodName: ResetPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -94963,7 +95531,6 @@ GameObject:
   - component: {fileID: 1702537315}
   - component: {fileID: 1702537314}
   - component: {fileID: 1702537313}
-  - component: {fileID: 1702537312}
   - component: {fileID: 1702537316}
   - component: {fileID: 1702537317}
   m_Layer: 0
@@ -94987,76 +95554,6 @@ Transform:
   m_Father: {fileID: 1054980977}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1702537312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702537310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: 32
-  condition:
-    luaConditions: []
-    questConditions:
-    - questName: DungeonQuest_1
-      questState: 2
-    acceptedTags: []
-    acceptedGameObjects: []
-    luaWizardIndex: -1
-    lastEvaluationValue: 0
-  setQuestState: 1
-  questName: 
-  questState: 0
-  setQuestEntryState: 0
-  questEntryNumber: 1
-  questEntryState: 0
-  luaCode: 
-  sequence: 
-  sequenceSpeaker: {fileID: 0}
-  sequenceListener: {fileID: 0}
-  waitOneFrameOnStartOrEnable: 1
-  alertMessage: 
-  textTable: {fileID: 0}
-  alertDuration: 0
-  sendMessages: []
-  barkSource: 0
-  barkConversation: 
-  barkText: 
-  barkTextSequence: 
-  barker: {fileID: 0}
-  barkTarget: {fileID: 0}
-  barkOrder: 0
-  allowBarksDuringConversations: 0
-  skipBarkIfNoValidEntries: 0
-  cacheBarkLines: 0
-  conversation: 
-  conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
-  startConversationEntryID: -1
-  exclusive: 0
-  replace: 0
-  skipIfNoValidEntries: 0
-  stopConversationOnTriggerExit: 0
-  stopConversationIfTooFar: 0
-  maxConversationDistance: 5
-  monitorConversationDistanceFrequency: 1
-  showCursorDuringConversation: 0
-  pauseGameDuringConversation: 0
-  setActiveActions: []
-  setEnabledActions: []
-  setAnimatorStateActions: []
-  onExecute:
-    m_PersistentCalls:
-      m_Calls: []
-  useConversationTitlePicker: 1
-  useBarkTitlePicker: 1
-  useQuestNamePicker: 1
-  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
 --- !u!61 &1702537313
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95939,6 +96436,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519798977, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6563492059519799036, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6563492059519799037, guid: 08ddba72281c3414db3848401d3d4d62, type: 3}
@@ -97437,7 +97938,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b95ede1e0732fa94787d547d130c212d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -100601,6 +101102,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1780877873}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: set_volume
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -100618,7 +101131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575688, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.25
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575688, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_LocalPosition.y
@@ -100638,7 +101151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.x
-      value: 6
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.y
@@ -100646,7 +101159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
@@ -100654,7 +101167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575703, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575703, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.y
@@ -101131,6 +101644,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: eab10fef35856744d888ae47fea2a279, type: 2}
     - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
     - {fileID: 11400000, guid: 578e31453c691c04faeccec8c8a75259, type: 2}
+    - {fileID: 11400000, guid: 46aca80477f87004a80f54f7afe51741, type: 2}
+    - {fileID: 11400000, guid: bf99aad196ea7554da4d908d3172a59d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -101268,6 +101783,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerInvulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1604373073}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: PlayerVulnerable
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1866513251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101281,7 +101824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575688, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.25
+      value: -5.75
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575688, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_LocalPosition.y
@@ -101301,7 +101844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.x
-      value: 7
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.y
@@ -101309,7 +101852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575695, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.y
@@ -101317,7 +101860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575703, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.x
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8891195418006575703, guid: 732042de9ea221f4fb909a166e42a142, type: 3}
       propertyPath: m_Size.y
