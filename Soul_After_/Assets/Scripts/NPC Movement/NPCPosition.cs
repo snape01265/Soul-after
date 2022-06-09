@@ -20,4 +20,10 @@ public class NPCPosition : MonoBehaviour
     {
         changedPosition = sceneChangePosition;
     }
+
+    public void ResetPosition()
+    {
+        position.initialValue = position.defaultValue;
+        transform.position = position.initialValue;
+    }
 }

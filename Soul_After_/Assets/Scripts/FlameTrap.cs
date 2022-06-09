@@ -9,11 +9,10 @@ public class FlameTrap : MonoBehaviour
     public int patternType;
     public float interval;
     public float scale;
+    public float BUFFER = .5f;
 
     public Vector3 NormFire = new Vector3(1f, 1f, 1f);
     public Vector3 SmolFire = new Vector3(.1f, .1f, .1f);
-
-    private readonly float BUFFER = .5f;
 
     private Light2D lightComp;
     private CircleCollider2D circleCollider2D;
