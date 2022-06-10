@@ -11,7 +11,7 @@ public class ExitMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && gameManager.isPlaying)
         {
             if (exitMenu.activeSelf)
             {
