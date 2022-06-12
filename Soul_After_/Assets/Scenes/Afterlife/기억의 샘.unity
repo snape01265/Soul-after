@@ -971,7 +971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213536281}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.5, y: 30, z: -10}
+  m_LocalPosition: {x: 38.5, y: 28, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122573523}
@@ -1088,7 +1088,10 @@ MonoBehaviour:
   questEntryState: 0
   luaCode: 'Variable["Episode"] = 3;
 
-    Variable["TimelineToPlay"] = 0'
+    Variable["TimelineToPlay"] = 0;
+
+    Variable["Episode_Start"]
+    = false'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -3886,9 +3889,9 @@ CompositeCollider2D:
       - X: 370000000
         Y: 340000000
       - X: 370000000
-        Y: 390000000
+        Y: 400000000
       - X: 400000000
-        Y: 390000000
+        Y: 400000000
       - X: 400000000
         Y: 340000000
       - X: 420000000
@@ -4161,17 +4164,17 @@ CompositeCollider2D:
         Y: 454375008
       - X: 285624992
         Y: 450000000
+    - - X: 513750016
+        Y: 450000000
+      - X: 520000000
+        Y: 454375008
+      - X: 525624992
+        Y: 450000000
     - - X: 573750016
         Y: 450000000
       - X: 580000000
         Y: 454375008
       - X: 585625024
-        Y: 450000000
-    - - X: 183750000
-        Y: 450000000
-      - X: 190000000
-        Y: 454375008
-      - X: 195624992
         Y: 450000000
     - - X: 243750000
         Y: 450000000
@@ -4185,17 +4188,17 @@ CompositeCollider2D:
         Y: 454375008
       - X: 225624992
         Y: 450000000
+    - - X: 183750000
+        Y: 450000000
+      - X: 190000000
+        Y: 454375008
+      - X: 195624992
+        Y: 450000000
     - - X: 543750016
         Y: 450000000
       - X: 550000000
         Y: 454375008
       - X: 555625024
-        Y: 450000000
-    - - X: 513750016
-        Y: 450000000
-      - X: 520000000
-        Y: 454375008
-      - X: 525624992
         Y: 450000000
     - - X: 483750016
         Y: 450000000
@@ -4203,12 +4206,6 @@ CompositeCollider2D:
         Y: 454375008
       - X: 495624992
         Y: 450000000
-    - - X: 573750016
-        Y: 420000000
-      - X: 580000000
-        Y: 424375008
-      - X: 585625024
-        Y: 420000000
     - - X: 543750016
         Y: 420000000
       - X: 550000000
@@ -4263,6 +4260,12 @@ CompositeCollider2D:
         Y: 424375008
       - X: 195624992
         Y: 420000000
+    - - X: 573750016
+        Y: 420000000
+      - X: 580000000
+        Y: 424375008
+      - X: 585625024
+        Y: 420000000
     - - X: 470000000
         Y: 410000000
       - X: 470000000
@@ -4279,24 +4282,6 @@ CompositeCollider2D:
         Y: 420000000
       - X: 300000000
         Y: 410000000
-    - - X: 253750000
-        Y: 390000000
-      - X: 260000000
-        Y: 394375008
-      - X: 265624992
-        Y: 390000000
-    - - X: 223750000
-        Y: 390000000
-      - X: 230000000
-        Y: 394375008
-      - X: 235624992
-        Y: 390000000
-    - - X: 193750000
-        Y: 390000000
-      - X: 200000000
-        Y: 394375008
-      - X: 205624992
-        Y: 390000000
     - - X: 563750016
         Y: 390000000
       - X: 570000000
@@ -4320,6 +4305,24 @@ CompositeCollider2D:
       - X: 480000000
         Y: 394375008
       - X: 485624992
+        Y: 390000000
+    - - X: 253750000
+        Y: 390000000
+      - X: 260000000
+        Y: 394375008
+      - X: 265624992
+        Y: 390000000
+    - - X: 223750000
+        Y: 390000000
+      - X: 230000000
+        Y: 394375008
+      - X: 235624992
+        Y: 390000000
+    - - X: 193750000
+        Y: 390000000
+      - X: 200000000
+        Y: 394375008
+      - X: 205624992
         Y: 390000000
     - - X: 283750016
         Y: 390000000
@@ -4345,17 +4348,17 @@ CompositeCollider2D:
         Y: 364375008
       - X: 205624992
         Y: 360000000
-    - - X: 533750016
-        Y: 360000000
-      - X: 540000000
-        Y: 364375008
-      - X: 545625024
-        Y: 360000000
     - - X: 563750016
         Y: 360000000
       - X: 570000000
         Y: 364375008
       - X: 575625024
+        Y: 360000000
+    - - X: 533750016
+        Y: 360000000
+      - X: 540000000
+        Y: 364375008
+      - X: 545625024
         Y: 360000000
     - - X: 503750016
         Y: 360000000
@@ -4369,6 +4372,12 @@ CompositeCollider2D:
         Y: 334375008
       - X: 285624992
         Y: 330000000
+    - - X: 573750016
+        Y: 330000000
+      - X: 580000000
+        Y: 334375008
+      - X: 585625024
+        Y: 330000000
     - - X: 243750000
         Y: 330000000
       - X: 250000000
@@ -4380,18 +4389,6 @@ CompositeCollider2D:
       - X: 220000000
         Y: 334375008
       - X: 225624992
-        Y: 330000000
-    - - X: 183750000
-        Y: 330000000
-      - X: 190000000
-        Y: 334375008
-      - X: 195624992
-        Y: 330000000
-    - - X: 573750016
-        Y: 330000000
-      - X: 580000000
-        Y: 334375008
-      - X: 585625024
         Y: 330000000
     - - X: 543750016
         Y: 330000000
@@ -4410,6 +4407,12 @@ CompositeCollider2D:
       - X: 490000000
         Y: 334375008
       - X: 495624992
+        Y: 330000000
+    - - X: 183750000
+        Y: 330000000
+      - X: 190000000
+        Y: 334375008
+      - X: 195624992
         Y: 330000000
     - - X: 368124992
         Y: 316249984
@@ -4435,11 +4438,11 @@ CompositeCollider2D:
         Y: 310000000
       - X: 408750016
         Y: 310000000
-    - - X: 213750000
+    - - X: 303750016
         Y: 300000000
-      - X: 220000000
+      - X: 310000000
         Y: 304375008
-      - X: 225624992
+      - X: 315624992
         Y: 300000000
     - - X: 573750016
         Y: 300000000
@@ -4465,11 +4468,11 @@ CompositeCollider2D:
         Y: 304375008
       - X: 495624992
         Y: 300000000
-    - - X: 453750016
+    - - X: 213750000
         Y: 300000000
-      - X: 460000000
+      - X: 220000000
         Y: 304375008
-      - X: 465624992
+      - X: 225624992
         Y: 300000000
     - - X: 183750000
         Y: 300000000
@@ -4477,11 +4480,11 @@ CompositeCollider2D:
         Y: 304375008
       - X: 195624992
         Y: 300000000
-    - - X: 303750016
+    - - X: 453750016
         Y: 300000000
-      - X: 310000000
+      - X: 460000000
         Y: 304375008
-      - X: 315624992
+      - X: 465624992
         Y: 300000000
     - - X: 273750016
         Y: 300000000
@@ -4531,12 +4534,6 @@ CompositeCollider2D:
         Y: 270000000
       - X: 416249984
         Y: 270000000
-    - - X: 273750016
-        Y: 270000000
-      - X: 280000000
-        Y: 274375008
-      - X: 285624992
-        Y: 270000000
     - - X: 243750000
         Y: 270000000
       - X: 250000000
@@ -4591,18 +4588,12 @@ CompositeCollider2D:
         Y: 274375008
       - X: 315624992
         Y: 270000000
-    - - X: 368124992
-        Y: 246250000
-      - X: 366875008
-        Y: 250000000
-      - X: 362500000
-        Y: 250000000
-      - X: 360624992
-        Y: 246875008
-      - X: 360624992
-        Y: 240000000
-      - X: 368750016
-        Y: 240000000
+    - - X: 273750016
+        Y: 270000000
+      - X: 280000000
+        Y: 274375008
+      - X: 285624992
+        Y: 270000000
     - - X: 408124992
         Y: 246250000
       - X: 406875008
@@ -4615,6 +4606,18 @@ CompositeCollider2D:
         Y: 240000000
       - X: 408750016
         Y: 240000000
+    - - X: 368124992
+        Y: 246250000
+      - X: 366875008
+        Y: 250000000
+      - X: 362500000
+        Y: 250000000
+      - X: 360624992
+        Y: 246875008
+      - X: 360624992
+        Y: 240000000
+      - X: 368750016
+        Y: 240000000
     - - X: 303750016
         Y: 240000000
       - X: 310000000
@@ -4699,23 +4702,17 @@ CompositeCollider2D:
         Y: 214375008
       - X: 255624992
         Y: 210000000
-    - - X: 543750016
+    - - X: 213750000
         Y: 210000000
-      - X: 550000000
+      - X: 220000000
         Y: 214375008
-      - X: 555625024
+      - X: 225624992
         Y: 210000000
     - - X: 183750000
         Y: 210000000
       - X: 190000000
         Y: 214375008
       - X: 195624992
-        Y: 210000000
-    - - X: 213750000
-        Y: 210000000
-      - X: 220000000
-        Y: 214375008
-      - X: 225624992
         Y: 210000000
     - - X: 573750016
         Y: 210000000
@@ -4735,23 +4732,23 @@ CompositeCollider2D:
         Y: 214375008
       - X: 495624992
         Y: 210000000
+    - - X: 543750016
+        Y: 210000000
+      - X: 550000000
+        Y: 214375008
+      - X: 555625024
+        Y: 210000000
+    - - X: 213750000
+        Y: 180000000
+      - X: 220000000
+        Y: 184375008
+      - X: 225624992
+        Y: 180000000
     - - X: 183750000
         Y: 180000000
       - X: 190000000
         Y: 184375008
       - X: 195624992
-        Y: 180000000
-    - - X: 303750016
-        Y: 180000000
-      - X: 310000000
-        Y: 184375008
-      - X: 315624992
-        Y: 180000000
-    - - X: 453750016
-        Y: 180000000
-      - X: 460000000
-        Y: 184375008
-      - X: 465624992
         Y: 180000000
     - - X: 273750016
         Y: 180000000
@@ -4759,17 +4756,29 @@ CompositeCollider2D:
         Y: 184375008
       - X: 285624992
         Y: 180000000
+    - - X: 303750016
+        Y: 180000000
+      - X: 310000000
+        Y: 184375008
+      - X: 315624992
+        Y: 180000000
     - - X: 243750000
         Y: 180000000
       - X: 250000000
         Y: 184375008
       - X: 255624992
         Y: 180000000
-    - - X: 213750000
+    - - X: 483750016
         Y: 180000000
-      - X: 220000000
+      - X: 490000000
         Y: 184375008
-      - X: 225624992
+      - X: 495624992
+        Y: 180000000
+    - - X: 453750016
+        Y: 180000000
+      - X: 460000000
+        Y: 184375008
+      - X: 465624992
         Y: 180000000
     - - X: 573750016
         Y: 180000000
@@ -4788,12 +4797,6 @@ CompositeCollider2D:
       - X: 520000000
         Y: 184375008
       - X: 525624992
-        Y: 180000000
-    - - X: 483750016
-        Y: 180000000
-      - X: 490000000
-        Y: 184375008
-      - X: 495624992
         Y: 180000000
     - - X: 368124992
         Y: 176250000
@@ -4869,8 +4872,8 @@ CompositeCollider2D:
       - {x: 35, y: 34.999973}
       - {x: 35.00003, y: 34}
       - {x: 37, y: 34.00003}
-      - {x: 37.00003, y: 39}
-      - {x: 40, y: 38.999973}
+      - {x: 37.00003, y: 40}
+      - {x: 40, y: 39.999973}
       - {x: 40.00003, y: 34}
       - {x: 42, y: 34.00003}
       - {x: 42.00003, y: 35}
@@ -14371,36 +14374,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741824
-  - first: {x: 37, y: 39, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 27
-      m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741824
-  - first: {x: 38, y: 39, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 27
-      m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741824
-  - first: {x: 39, y: 39, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 27
-      m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741824
   - first: {x: 40, y: 39, z: 0}
     second:
       serializedVersion: 2
@@ -18302,36 +18275,6 @@ Tilemap:
       m_AnimationSpeed: 1
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
-  - first: {x: 37, y: 39, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
-      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
-      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
-      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
-      m_AnimationSpeed: 1
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 38, y: 39, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
-      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
-      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
-      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
-      m_AnimationSpeed: 1
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
-  - first: {x: 39, y: 39, z: 0}
-    second:
-      m_AnimatedSprites:
-      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
-      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
-      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
-      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
-      m_AnimationSpeed: 1
-      m_AnimationTimeOffset: 0
-      m_IsLooping: 1
   - first: {x: 40, y: 39, z: 0}
     second:
       m_AnimatedSprites:
@@ -19227,7 +19170,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 149
+  - m_RefCount: 146
     m_Data: {fileID: 11400000, guid: 2c48136fab840df49959f18f4e39f06e, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: e08c7f68215f95647a0857eb2935dfd9, type: 2}
@@ -19292,10 +19235,10 @@ Tilemap:
     m_Data: {fileID: -5710720316583847276, guid: 5cfed412ec6f7af46aaa1e48f65f934a, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 3350004809810163815, guid: 5cfed412ec6f7af46aaa1e48f65f934a, type: 3}
-  - m_RefCount: 149
+  - m_RefCount: 146
     m_Data: {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1225
+  - m_RefCount: 1222
     m_Data:
       e00: 1
       e01: 0
@@ -19314,7 +19257,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1225
+  - m_RefCount: 1222
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -19742,7 +19685,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: 
+  luaCode: Variable["Episode_Start"] = false
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -19959,6 +19902,7 @@ GameObject:
   - component: {fileID: 968176064}
   - component: {fileID: 968176066}
   - component: {fileID: 968176067}
+  - component: {fileID: 968176068}
   m_Layer: 0
   m_Name: Ep.5_Timeline_2
   m_TagString: Untagged
@@ -20047,7 +19991,8 @@ MonoBehaviour:
   trigger: 8
   condition:
     luaConditions:
-    - (Variable["Episode"] == 5) and (Variable["TimelineToPlay"] == 2)
+    - (Variable["TimelineToPlay"] == 2) and (Variable["Episode"] == 5) and (Variable["Episode_Start"]
+      == true)
     questConditions: []
     acceptedTags:
     - Player
@@ -20060,7 +20005,7 @@ MonoBehaviour:
   setQuestEntryState: 0
   questEntryNumber: 1
   questEntryState: 0
-  luaCode: Variable["TimelineToPlay"] = 3
+  luaCode: 
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -20079,10 +20024,10 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: 
+  conversation: Object Dialogues/Entrance Choice
   conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 0}
-  startConversationEntryID: -1
+  conversationActor: {fileID: 1883810320}
+  startConversationEntryID: 5
   exclusive: 0
   replace: 0
   skipIfNoValidEntries: 0
@@ -20097,19 +20042,7 @@ MonoBehaviour:
   setAnimatorStateActions: []
   onExecute:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 968176064}
-        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -20159,6 +20092,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 37ef8759975e2ac41aa0180d75f16834, type: 2}
     - {fileID: 11400000, guid: 939af2e2c79f0384399b7b9852079f32, type: 2}
     - {fileID: 11400000, guid: f0a975458c9a22349a0ab70be9660815, type: 2}
+    - {fileID: 11400000, guid: ba0d7dbadd57d4141b2926ce3560222d, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -20254,6 +20188,109 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1972906380}
+          m_TargetAssemblyTypeName: UnityEngine.Collider2D, UnityEngine
+          m_MethodName: set_isTrigger
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &968176068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968176062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5473918a168c44fa0294bd4d1399f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conversationEvents:
+    onConversationStart:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1883810321}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLine:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationLineCancelled:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenu:
+      m_PersistentCalls:
+        m_Calls: []
+    onConversationResponseMenuTimeout:
+      m_PersistentCalls:
+        m_Calls: []
+    onLinkedConversationStart:
+      m_PersistentCalls:
+        m_Calls: []
+  barkEvents:
+    onBarkStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onBarkLine:
+      m_PersistentCalls:
+        m_Calls: []
+  sequenceEvents:
+    onSequenceStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onSequenceEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  questEvents:
+    onQuestStateChange:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingEnabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onQuestTrackingDisabled:
+      m_PersistentCalls:
+        m_Calls: []
+    onUpdateQuestTracker:
+      m_PersistentCalls:
+        m_Calls: []
+  pauseEvents:
+    onDialogueSystemPause:
+      m_PersistentCalls:
+        m_Calls: []
+    onDialogueSystemUnpause:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1001 &992474878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20812,7 +20849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[3].condition.luaConditions.Array.data[0]
-      value: (Variable["TimelineToPlay"] == 2) and (Variable["Episode"] == 4)
+      value: Variable["Episode_Start"] == true
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[4].condition.luaConditions.Array.data[0]
@@ -27223,14 +27260,25 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1972906375}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - guid: 8f0bc51e-1c1f-4f76-9883-bc4ca45ad470
     onExecute:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1947124016}
-          m_TargetAssemblyTypeName: PixelCrushers.DialogueSystem.DialogueSystemTrigger,
-            Assembly-CSharp
-          m_MethodName: OnUse
+        - m_Target: {fileID: 968176064}
+          m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+          m_MethodName: Play
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -27241,6 +27289,22 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - guid: 9e0dacc4-578e-499f-877e-ac0860a68cd2
+    onExecute:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1883810321}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - guid: 22e14d51-aa11-4c08-bf80-e994ceabcd2d
     onExecute:
       m_PersistentCalls:
         m_Calls:
@@ -34943,6 +35007,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5083390277488938105, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7eb05116deff5fc4a9048410ee31d665, type: 2}
+    - target: {fileID: 5083390277488938106, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1f5d67aef63322d489b5ccf4eca18f64, type: 3}
     - target: {fileID: 5083390277488938106, guid: 12cd0a23082e9f14b8216ab669151e43, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -35238,7 +35310,10 @@ MonoBehaviour:
   questEntryState: 0
   luaCode: 'Variable["TimelineToPlay"] = 0;
 
-    Variable["Episode"] = 5'
+    Variable["Episode"] = 5;
+
+    Variable["Episode_Start"]
+    = false'
   sequence: 
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
@@ -35522,7 +35597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674370202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.5, y: 30, z: -10}
+  m_LocalPosition: {x: 38.5, y: 22, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -38742,7 +38817,7 @@ Tilemap:
       - {fileID: -2256431350410458140, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -8602803218496701474, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -3668634497984119556, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 38, y: 43, z: 0}
@@ -38970,7 +39045,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 35, y: 46, z: 0}
@@ -39030,7 +39105,7 @@ Tilemap:
       - {fileID: -6998893926533875496, guid: df8aa7fff05ca214ba2046c3586914cf, type: 3}
       - {fileID: -7229258861929204966, guid: cba2612d34c8e3f4791eece60f668173, type: 3}
       - {fileID: -2518344173620885325, guid: 5483e81729b5d7d49bbd3ba3f6014d33, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 42, y: 46, z: 0}
@@ -39734,13 +39809,14 @@ GameObject:
   - component: {fileID: 1972906379}
   - component: {fileID: 1972906378}
   - component: {fileID: 1972906377}
+  - component: {fileID: 1972906381}
   m_Layer: 0
   m_Name: Episode_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1972906376
 Transform:
   m_ObjectHideFlags: 0
@@ -39965,6 +40041,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1972906381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972906375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!1001 &1978885500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40084,6 +40174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014992559}
   - component: {fileID: 2014992560}
+  - component: {fileID: 2014992561}
   m_Layer: 0
   m_Name: Episode_5
   m_TagString: Untagged
@@ -40117,11 +40208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: 64
+  trigger: 8
   condition:
     luaConditions: []
     questConditions: []
-    acceptedTags: []
+    acceptedTags:
+    - Player
     acceptedGameObjects: []
     luaWizardIndex: -1
     lastEvaluationValue: 0
@@ -40185,6 +40277,32 @@ MonoBehaviour:
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
   selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
+--- !u!61 &2014992561
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014992558}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &2038557386
 GameObject:
   m_ObjectHideFlags: 0
@@ -44036,6 +44154,36 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 37, y: 39, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 28
+      m_TileSpriteIndex: 28
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741824
+  - first: {x: 38, y: 39, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 28
+      m_TileSpriteIndex: 28
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741824
+  - first: {x: 39, y: 39, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 28
+      m_TileSpriteIndex: 28
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741824
   - first: {x: 40, y: 39, z: 0}
     second:
       serializedVersion: 2
@@ -45997,6 +46145,36 @@ Tilemap:
       m_AnimationSpeed: 1
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
+  - first: {x: 37, y: 39, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
+      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
+      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
+      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
+      m_AnimationSpeed: 1
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 38, y: 39, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
+      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
+      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
+      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
+      m_AnimationSpeed: 1
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
+  - first: {x: 39, y: 39, z: 0}
+    second:
+      m_AnimatedSprites:
+      - {fileID: -7016192065476073454, guid: ec374fd9413a6354f8c4fda5394094a3, type: 3}
+      - {fileID: -5168662464077775432, guid: 317b5a880a7585f40b9d1708e17e212c, type: 3}
+      - {fileID: 4000357641752577069, guid: 2dd62d0b8e55fdb4b941cdf9dd451db8, type: 3}
+      - {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
+      m_AnimationSpeed: 1
+      m_AnimationTimeOffset: 0
+      m_IsLooping: 1
   - first: {x: 38, y: 40, z: 0}
     second:
       m_AnimatedSprites:
@@ -46064,7 +46242,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 2c48136fab840df49959f18f4e39f06e, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 466297d6c62549d4f99be9f8472b5610, type: 2}
@@ -46139,7 +46317,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 3
+  - m_RefCount: 6
     m_Data: {fileID: -65944275288538044, guid: 1e10f328310284e4d9b72570beb3678e, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -756697880590935957, guid: 68632c779ee6cb94698eaebba312fc8e, type: 3}
@@ -46158,7 +46336,7 @@ Tilemap:
   - m_RefCount: 501
     m_Data: {fileID: 206702834575656856, guid: c4a3c74453f3506459c35887c588e100, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 524
+  - m_RefCount: 527
     m_Data:
       e00: 1
       e01: 0
@@ -46231,7 +46409,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 561
+  - m_RefCount: 564
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
