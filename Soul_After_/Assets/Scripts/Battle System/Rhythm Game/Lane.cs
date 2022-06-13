@@ -1,6 +1,7 @@
 using Melanchall.DryWetMidi.Interaction;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine;
 
 public class Lane : MonoBehaviour
@@ -13,9 +14,11 @@ public class Lane : MonoBehaviour
     public List<double> timeStamps = new List<double>();
     [HideInInspector]
     public bool keyAvailable = true;
+    public Light2D hitLight;
 
     int spawnIndex = 0;
     int inputIndex = 0;
+    float t = 0;
 
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -49,7 +52,16 @@ public class Lane : MonoBehaviour
             double badMarginOfError = GameManager.instance.badMarginOfError;
             double missMarginOfError = GameManager.instance.missMarginOfError;
             double audioTime = GameManager.GetAudioSourceTime() - (GameManager.instance.inputDelayInMilliseconds / 1000.0);
-
+            if (Input.GetKey(keyToPress))
+            {
+                hitLight.intensity = Mathf.Lerp(0.25f, 0.75f, t);
+                t += 7f * Time.deltaTime;
+            }
+            else if (Input.GetKeyUp(keyToPress))
+            {
+                hitLight.intensity = 0;
+                t = 0;
+            }
             if (Input.GetKeyDown(keyToPress) && keyAvailable)
             {
                 if (Mathf.Abs((float)(audioTime - timeStamp)) < perfectMarginOfError)

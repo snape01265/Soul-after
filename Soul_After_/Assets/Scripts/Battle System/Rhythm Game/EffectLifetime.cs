@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
-public class EffectObject : MonoBehaviour
+public class EffectLifetime : MonoBehaviour
 {
     public float lifetime = 1f;
 
