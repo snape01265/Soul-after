@@ -42,7 +42,7 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
-        comboText.text = comboScore.ToString();
+        comboText.text = comboScore.ToString() + "\nCombos!";
         scoreText.text = currentScore.ToString();
         if (count == bgChangeCount && !bgChange)
         {
