@@ -18,6 +18,7 @@ public class Lane : MonoBehaviour
 
     int spawnIndex = 0;
     int inputIndex = 0;
+    float t = 0;
 
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
@@ -51,14 +52,15 @@ public class Lane : MonoBehaviour
             double badMarginOfError = GameManager.instance.badMarginOfError;
             double missMarginOfError = GameManager.instance.missMarginOfError;
             double audioTime = GameManager.GetAudioSourceTime() - (GameManager.instance.inputDelayInMilliseconds / 1000.0);
-
             if (Input.GetKey(keyToPress))
             {
-                hitLight.intensity = 0.5f;
+                hitLight.intensity = Mathf.Lerp(0.25f, 0.75f, t);
+                t += 7f * Time.deltaTime;
             }
             else if (Input.GetKeyUp(keyToPress))
             {
                 hitLight.intensity = 0;
+                t = 0;
             }
             if (Input.GetKeyDown(keyToPress) && keyAvailable)
             {

@@ -7,11 +7,13 @@ public class Note : MonoBehaviour
     private double timeInstantiated;
     public float assignedTime;
     public GameObject badEffect, goodEffect, perfectEffect, missEffect;
+    private Vector3 hitLine;
 
     private void Start()
     {
         timeInstantiated = GameManager.GetAudioSourceTime();
         timeInstantiated = assignedTime - GameManager.instance.noteTime;
+        hitLine = new Vector3(transform.position.x, -5f);
     }
     void Update()
     {
@@ -30,14 +32,14 @@ public class Note : MonoBehaviour
     }
     public void BadHit()
     {
-        Instantiate(badEffect, transform.position, perfectEffect.transform.rotation);
+        Instantiate(badEffect, hitLine, badEffect.transform.rotation);
     }
     public void GoodHit()
     {
-        Instantiate(goodEffect, transform.position, perfectEffect.transform.rotation);
+        Instantiate(goodEffect, hitLine, goodEffect.transform.rotation);
     }
     public void PerfectHit()
     {
-        Instantiate(perfectEffect, transform.position, perfectEffect.transform.rotation);
+        Instantiate(perfectEffect, hitLine, perfectEffect.transform.rotation);
     }
 }

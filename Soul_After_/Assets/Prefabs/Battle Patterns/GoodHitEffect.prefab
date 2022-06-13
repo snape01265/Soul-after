@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4397165900939348381}
-  - component: {fileID: 5976216444449984317}
+  - component: {fileID: 5146196865020462999}
+  - component: {fileID: 5138900963500240622}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +32,19 @@ Transform:
   m_Father: {fileID: 8267873229801822801}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5976216444449984317
+--- !u!114 &5146196865020462999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3319985996692323069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae013d48117884b46a4165112cd3c508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5138900963500240622
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,11 +58,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.75
-  m_Color: {r: 0.58143467, g: 0.8867924, b: 0.8867924, a: 1}
-  m_Intensity: 1
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.5803922, g: 0.8862745, b: 0.8862745, a: 1}
+  m_Intensity: 0
   m_LightVolumeOpacity: 1
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 0f45c0d4
   m_LightCookieSprite: {fileID: 21300000, guid: af9eacf110ea17a46897803ffa0dda98, type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -65,13 +78,13 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.1
-  m_ShapeLightFalloffOffset: {x: 0, y: 1}
+  m_ShapeLightFalloffSize: 0.25
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5, y: -0.1, z: 0}
-  - {x: 0.5, y: -0.1, z: 0}
-  - {x: 0.5, y: 0, z: 0}
-  - {x: -0.5, y: 0, z: 0}
+  - {x: -0.5, y: -0.05, z: 0}
+  - {x: 0.5, y: -0.05, z: 0}
+  - {x: 0.5, y: 0.05, z: 0}
+  - {x: -0.5, y: 0.05, z: 0}
 --- !u!1 &8267873229801822803
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8267873229801822803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5778898, y: -1.6501764, z: -46.806526}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4397165900939348381}
@@ -116,4 +129,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fba3688cc6d30a4abed500df3092726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 0.2
