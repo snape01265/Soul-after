@@ -40,7 +40,7 @@ public class SceneTransition : MonoBehaviour
         }
         playerStorage.initialValue = playerPosition;
         StartCoroutine(FadeCo());
-        if (GameObject.Find("Music Player"))
+        if (GameObject.Find("Music Player").GetComponent<MusicPlayer>() != null)
         {
             GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
         }

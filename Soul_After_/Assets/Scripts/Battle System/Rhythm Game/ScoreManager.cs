@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.Playables;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ScoreManager : MonoBehaviour
     public GameManager gameManager;
     public GameObject resultScreen;
     public SceneTransition sceneTransition;
+    public PlayableDirector gameover;
     public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
     private bool bgChange = false;
@@ -55,7 +57,16 @@ public class ScoreManager : MonoBehaviour
         }
         if (resultScreen.activeInHierarchy && Input.GetKeyDown(KeyCode.Space))
         {
-            sceneTransition.ChangeScene();
+            string rankAchieved = DialogueLua.GetVariable("RhythmGame.RankValue").AsString;
+
+            if (rankAchieved == "F" || rankAchieved == "D")
+            {
+                gameover.Play();
+            }
+            else
+            {
+                sceneTransition.ChangeScene();
+            }
         }
     }
     public static void PerfectHit()
@@ -111,15 +122,16 @@ public class ScoreManager : MonoBehaviour
         perfectText.text = perfectNoteCount.ToString() + "x";
         missText.text = missCount.ToString() + "x";
 
-        float totalHit = badNoteCount + goodNoteCount + perfectNoteCount;
-        float totalNotes = badNoteCount + goodNoteCount + perfectNoteCount + missCount;
+        float totalHit = (badNoteCount * 50) + (goodNoteCount * 100) + (perfectNoteCount * 300);
+        float totalNotes = (badNoteCount + goodNoteCount + perfectNoteCount + missCount) * 300;
         float percentAccuracy = (totalHit / totalNotes) * 100f;
 
         accuracyText.text = percentAccuracy.ToString("F") + "%";
 
         string rankValue = "F";
+        DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);
 
-        if(percentAccuracy > 40)
+        if (percentAccuracy > 40)
         {
             rankValue = "D";
             DialogueLua.SetVariable("RhythmGame.RankValue", rankValue);

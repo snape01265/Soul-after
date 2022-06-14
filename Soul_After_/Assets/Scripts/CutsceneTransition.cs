@@ -19,7 +19,10 @@ public class CutsceneTransition : MonoBehaviour
     public void ChangeScene()
     {
         StartCoroutine(FadeCo());
-        GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
+        if (GameObject.Find("Music Player").GetComponent<MusicPlayer>() != null)
+        {
+            GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(sceneToLoad);
+        }
     }
     public IEnumerator FadeCo()
     {

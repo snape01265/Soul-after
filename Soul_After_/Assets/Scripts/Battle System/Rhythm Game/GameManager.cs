@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
                 player.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
                 yield return new WaitForSeconds(1);
-                GetDataFromMidi();
+                PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timeline 8(Rhythm Game)", player, seulha);
             }
             StartCoroutine(GameScreenTransition());
         }
