@@ -17,13 +17,13 @@ public class ScoreManager : MonoBehaviour
     public GameObject resultScreen;
     public SceneTransition sceneTransition;
     public PlayableDirector gameover;
+    [HideInInspector]
     public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
     private bool bgChange = false;
 
     static int maxComboCount;
     static int count;
-    static CatchController cc;
     static int currentScore;
     static int comboScore;
     static int[] multiplierThresholds;
@@ -39,7 +39,6 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CatchController>();
         multiplierThresholds = multiplierThresholdsContainer;
     }
     void Update()
@@ -67,6 +66,16 @@ public class ScoreManager : MonoBehaviour
             {
                 sceneTransition.ChangeScene();
             }
+            bgChange = false;
+            currentScore = 0;
+            comboScore = 0;
+            count = 0;
+            maxComboCount = 0;
+            perfectNoteCount = 0;
+            goodNoteCount = 0;
+            badNoteCount = 0;
+            missCount = 0;
+            currentMultiplier = 1;
         }
     }
     public static void PerfectHit()
@@ -99,8 +108,6 @@ public class ScoreManager : MonoBehaviour
             if (multiplierThresholds[currentMultiplier - 1] <= comboScore)
             {
                 currentMultiplier++;
-                cc.Heal(1);
-                // if hp = 5, do nothing
             }
         }
         count += 1;
@@ -109,12 +116,12 @@ public class ScoreManager : MonoBehaviour
     {
         comboScore = 0; 
         currentMultiplier = 1;
-        //cc.TakeDamage(1);
         missCount += 1;
         count += 1;
     }
     public void EndTrack()
     {
+        gameManager.isPlaying = false;
         resultScreen.SetActive(true);
 
         badText.text = badNoteCount.ToString() + "x";

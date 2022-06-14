@@ -9,7 +9,6 @@ using UnityEngine.Networking;
 using PixelCrushers.DialogueSystem;
 using UnityEngine.Experimental.Rendering.Universal;
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -110,7 +109,7 @@ public class GameManager : MonoBehaviour
                 player.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
                 yield return new WaitForSeconds(1);
-                PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timeline 8(Rhythm Game)", player, seulha);
+                PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timelines/RhythmGame", player, seulha);
             }
             StartCoroutine(GameScreenTransition());
         }
@@ -119,7 +118,7 @@ public class GameManager : MonoBehaviour
             GetDataFromMidi();
         }
     }
-    private void GetDataFromMidi()
+    public void GetDataFromMidi()
     {
         isPlaying = true;
         var notes = midiFile.GetNotes();
