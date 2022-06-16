@@ -74,12 +74,12 @@ public class GameManager : MonoBehaviour
         {
             IEnumerator GameScreenTransition()
             {
-                GameObject.Find("Fadein").GetComponent<Fadein>().FadeInOut(1);
                 yield return new WaitForSeconds(1);
                 player.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().orthographicSize = 7;
-                yield return new WaitForSeconds(1);
+                PixelCrushers.DialogueSystem.DialogueManager.PlaySequence("Fade(in, .75)");
+                yield return new WaitForSeconds(2);
                 PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timelines/RhythmGame", player, seulha);
             }
             StartCoroutine(GameScreenTransition());
