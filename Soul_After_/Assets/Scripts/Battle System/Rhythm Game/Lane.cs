@@ -93,12 +93,4 @@ public class Lane : MonoBehaviour
             }
         }
     }
-    IEnumerator DisableKeys()
-    {
-        keyAvailable = false;
-        //play some indicator
-        //yield return new WaitForSeconds(0.5f);
-        yield return null;
-        keyAvailable = true;
-    }
 }

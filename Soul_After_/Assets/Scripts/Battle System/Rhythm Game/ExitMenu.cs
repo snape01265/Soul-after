@@ -37,6 +37,7 @@ public class ExitMenu : MonoBehaviour
     public void PauseGame()
     {
         gameManager.PauseSong();
+        Time.timeScale = 0;
         foreach (Lane lane in laneList)
         {
             lane.keyAvailable = false;
@@ -45,6 +46,7 @@ public class ExitMenu : MonoBehaviour
     public void ResumeGame()
     {
         gameManager.PlaySong();
+        Time.timeScale = 1;
         foreach (Lane lane in laneList)
         {
             lane.keyAvailable = true;
