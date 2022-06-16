@@ -52,12 +52,12 @@ public class Lane : MonoBehaviour
             double badMarginOfError = GameManager.instance.badMarginOfError;
             double missMarginOfError = GameManager.instance.missMarginOfError;
             double audioTime = GameManager.GetAudioSourceTime() - (GameManager.instance.inputDelayInMilliseconds / 1000.0);
-            if (Input.GetKey(keyToPress))
+            if (Input.GetKey(keyToPress) && keyAvailable)
             {
                 hitLight.intensity = Mathf.Lerp(0.25f, 0.75f, t);
                 t += 7f * Time.deltaTime;
             }
-            else if (Input.GetKeyUp(keyToPress))
+            else if (keyAvailable)
             {
                 hitLight.intensity = 0;
                 t = 0;

@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
     void Start()
     {
         instance = this;
@@ -59,39 +58,10 @@ public class GameManager : MonoBehaviour
         {
             seulha = GameObject.FindGameObjectWithTag("NPC").GetComponent<Transform>();
         }
-        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
-        {
-            StartCoroutine(ReadFromWebsite());
-        }
-        else
-        {
-            ReadFromFile();
-        }
+        ReadFromFile();
         if (isMinigame)
         {
             StartRhythmGame();
-        }
-    }
-
-    [System.Obsolete]
-    private IEnumerator ReadFromWebsite()
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation[track]))
-        {
-            yield return www.SendWebRequest();
-            if (www.isNetworkError || www.isHttpError)
-            {
-                Debug.LogError(www.error);
-            }
-            else
-            {
-                byte[] results = www.downloadHandler.data;
-                using (var stream = new MemoryStream(results))
-                {
-                    midiFile = MidiFile.Read(stream);
-                    GetDataFromMidi();
-                }
-            }
         }
     }
     private void ReadFromFile()
