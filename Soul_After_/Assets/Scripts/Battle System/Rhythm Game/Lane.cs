@@ -85,13 +85,6 @@ public class Lane : MonoBehaviour
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
-                else if (Mathf.Abs((float)(audioTime - timeStamp)) < missMarginOfError)
-                {
-                    ScoreManager.Miss();
-                    // miss effect ex: notes[inputIndex].gameObject.GetComponent<Note>().Miss();
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
             }
             if(timeStamp + badMarginOfError <= audioTime)
             {
@@ -100,7 +93,6 @@ public class Lane : MonoBehaviour
             }
         }
     }
-
     IEnumerator DisableKeys()
     {
         keyAvailable = false;
