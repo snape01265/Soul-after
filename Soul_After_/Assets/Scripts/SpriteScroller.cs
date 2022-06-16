@@ -16,7 +16,10 @@ public class SpriteScroller : MonoBehaviour
     }
     void Update()
     {
-        offset = moveSpeed * Time.deltaTime;
-        material.mainTextureOffset += offset;
+        if (material != null)
+        {
+            offset = moveSpeed * Time.deltaTime;
+            material.mainTextureOffset += offset;
+        }
     }
 }
