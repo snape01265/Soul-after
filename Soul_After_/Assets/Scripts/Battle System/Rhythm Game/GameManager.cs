@@ -15,12 +15,11 @@ public class GameManager : MonoBehaviour
     public AudioSource[] tracks;
     public string[] fileLocation;
     public Lane[] lanes;
+    public GameObject[] images;
     public float songDelayInSeconds;
     public int inputDelayInMilliseconds;
     public static MidiFile midiFile;
     public static int track;
-    public GameObject[] images;
-    public float bgSpeed;
     public float noteTime;
     public float noteSpawnY;
     public float noteTapY;
@@ -41,6 +40,7 @@ public class GameManager : MonoBehaviour
 
     private Transform player;
     private Transform seulha;
+    private float bgSpeed = 10;
     public float noteDespawnY
     {
         get
@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         else
         {
             GetDataFromMidi();
+            SetBG();
         }
     }
     public void GetDataFromMidi()
@@ -146,13 +147,17 @@ public class GameManager : MonoBehaviour
             Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
             StartCoroutine(Fade(true, images[0], bgSpeed));
             StartCoroutine(Fade(true, images[1], bgSpeed));
-            //GameObject.Find("SnowParticles").SetActive(false);
+            GameObject.Find("SnowParticles").SetActive(false);
             yield return new WaitForSeconds(5);
             StartCoroutine(Fade(false, images[2], bgSpeed));
             StartCoroutine(FadeLight(false, sunlight, bgSpeed));
             yield return null;
         }
         StartCoroutine(BackgroundTransition());
+    }
+    public void SetBG()
+    {
+        images[track].SetActive(true);
     }
     IEnumerator Fade(bool fadeAway, GameObject image, float t)
     {
