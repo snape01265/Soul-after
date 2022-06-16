@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForSeconds(1);
                 player.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().orthographicSize = 7;
                 yield return new WaitForSeconds(1);
                 PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timelines/RhythmGame", player, seulha);
             }
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviour
             Light2D sunlight = GameObject.Find("Sunlight").GetComponent<Light2D>();
             StartCoroutine(Fade(true, images[0], bgSpeed));
             StartCoroutine(Fade(true, images[1], bgSpeed));
-            GameObject.Find("SnowParticles").SetActive(false);
+            StartCoroutine(Fade(true, GameObject.Find("´«"), bgSpeed));
             yield return new WaitForSeconds(5);
             StartCoroutine(Fade(false, images[2], bgSpeed));
             StartCoroutine(FadeLight(false, sunlight, bgSpeed));
