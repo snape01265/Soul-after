@@ -263,5 +263,22 @@ public class Player : MonoBehaviour
             NoMoneyTab.SetActive(true);
             Debug.Log("Not enough money!");
         }
-    }   
+    }
+
+    public void DisableCollider()
+    {
+        BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+        foreach (BoxCollider2D col in colliders)
+        {
+            col.enabled = false;
+        }
+    }
+    public void EnableCollider()
+    {
+        BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();
+        foreach (BoxCollider2D col in colliders)
+        {
+            col.enabled = true;
+        }
+    }
 }
