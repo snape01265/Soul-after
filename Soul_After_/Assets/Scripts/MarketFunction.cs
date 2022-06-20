@@ -15,7 +15,6 @@ public class MarketFunction : MonoBehaviour
     private void OnEnable()
     {
         CheckItemStatus();
-        Debug.Log("Checking item status");
     }
 
     public void ItemTransaction()
@@ -33,7 +32,6 @@ public class MarketFunction : MonoBehaviour
                 DialogueLua.SetItemField(ItemNo, "Bought", true);
                 IMAGE[ItemID].color = Color.grey;
                 PanelColor = IMAGE[ItemID].color;
-                Debug.Log("It turned grey!");
             }
         }
         //Houses
@@ -44,7 +42,6 @@ public class MarketFunction : MonoBehaviour
                 DialogueLua.SetItemField(ItemNo, "State", true);
                 IMAGE[ItemID].color = Color.yellow;
                 PanelColor = IMAGE[ItemID].color;
-                Debug.Log("It turned yellow!");
                 return;
             }
 
@@ -55,7 +52,6 @@ public class MarketFunction : MonoBehaviour
                     DialogueLua.SetItemField(s, "Installed", false);
                     IMAGE[i].color = Color.yellow;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("House dismantled");
                 }
                 i++;
             }
@@ -84,13 +80,11 @@ public class MarketFunction : MonoBehaviour
                 {
                     IMAGE[i].color = Color.white;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("Item stays white!");
                 }
                 else
                 {
                     IMAGE[i].color = Color.grey;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("Item stays grey!");
                 }
             }
             else
@@ -99,19 +93,16 @@ public class MarketFunction : MonoBehaviour
                 {
                     IMAGE[i].color = Color.white;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("House stays white!");
                 }
                 else if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == false)
                 {
                     IMAGE[i].color = Color.yellow;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("House stays yellow!");
                 }
                 else if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == true)
                 {
                     IMAGE[i].color = Color.grey;
                     PanelColor = IMAGE[i].color;
-                    Debug.Log("House stays grey!");
                 }
             }
             i++;

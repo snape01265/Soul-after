@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8972006737851339095, guid: e468334032387554eb5127293b4bcb0e, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8972006737851339095, guid: e468334032387554eb5127293b4bcb0e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1815,7 +1815,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1033438144}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: NPCActivation, Assembly-CSharp
           m_MethodName: ObjectEnable
           m_Mode: 1
@@ -5297,7 +5297,7 @@ Transform:
   - {fileID: 2135065471}
   - {fileID: 450456474}
   m_Father: {fileID: 2045900413}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598661224
 GameObject:
@@ -6556,7 +6556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2045900413}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &774956879
 PrefabInstance:
@@ -13321,51 +13321,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1033438143
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1033438145}
-  - component: {fileID: 1033438144}
-  m_Layer: 0
-  m_Name: VincentActivation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1033438144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033438143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 547f860628f276e468d5a4c2eb930bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activate: {fileID: 11400000, guid: 3d6602670d1cade4ea4e0814188c2a80, type: 2}
-  Object: {fileID: 2225282682769596480}
---- !u!4 &1033438145
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033438143}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2045900413}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048493839
 GameObject:
   m_ObjectHideFlags: 0
@@ -14647,7 +14602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153163906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.04, y: -5, z: -10}
+  m_LocalPosition: {x: 5.0400004, y: -5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24166,7 +24121,6 @@ Transform:
   - {fileID: 914675244}
   - {fileID: 263345547}
   - {fileID: 233783190}
-  - {fileID: 1033438145}
   - {fileID: 756271208}
   - {fileID: 2089168536}
   - {fileID: 126021727}
@@ -24313,7 +24267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25478,7 +25432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224407, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
@@ -25602,8 +25556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 32
   condition:
-    luaConditions:
-    - (Variable["Episode"] == 1) and (Variable["TimelineToPlay"] == 1)
+    luaConditions: []
     questConditions: []
     acceptedTags:
     - Player
@@ -25635,10 +25588,10 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: "Object Dialogues/\uC778\uAC04\uBD80\uC11C \uBE4C\uB529 Scene"
-  conversationConversant: {fileID: 0}
+  conversation: Afterlife NPC Dialogues/Vincent
+  conversationConversant: {fileID: 775920681}
   conversationActor: {fileID: 954593151}
-  startConversationEntryID: 81
+  startConversationEntryID: -1
   exclusive: 0
   replace: 0
   skipIfNoValidEntries: 0
