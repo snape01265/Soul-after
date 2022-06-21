@@ -139,7 +139,7 @@ public class PuzzleController : MonoBehaviour
 
         yield return waitSec;
 
-        GameObject.Find("Scene Transition").GetComponent<SceneTransition>().ChangeScene();
+        GameObject.Find("SceneTransitionToMaze").GetComponent<SceneTransition>().ChangeScene();
     }
 
     public int findIndex(TileRenderer tr)

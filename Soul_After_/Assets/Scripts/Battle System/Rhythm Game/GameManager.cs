@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     public double missMarginOfError;
     [HideInInspector]
     public ScoreManager scoreManager;
-    [HideInInspector]
     public bool isMinigame;
     [HideInInspector]
     public bool isPlaying = false;
