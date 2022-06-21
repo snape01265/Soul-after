@@ -219,8 +219,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: sequence
+      value: 'AnimatorFloat(Move_X, 1, Player);
+
+        AnimatorFloat(Move_Y, 0,
+        Player);'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+      propertyPath: waitOneFrameOnStartOrEnable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].state
@@ -254,7 +265,10 @@ PrefabInstance:
       propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.data[0]
       value: Variable["Puzzle_1_Finished"] == true
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2154907587135656584, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 2547988415175083143, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
+    - {fileID: 3560502537434893410, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
 --- !u!4 &58753224 stripped
 Transform:
@@ -383,7 +397,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
       propertyPath: m_Volume
-      value: 0.15
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2918632108524221832, guid: b4c8e4a1f98a37844ab997690b634051, type: 3}
       propertyPath: m_audioClip
@@ -812,6 +826,20 @@ MonoBehaviour:
     applyColorToPrependedName: 0
     prependActorNameSeparator: ': '
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &155620597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155620588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99496518e49a23941a763d44b7d5bb62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
+  contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
 --- !u!1 &214709164
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,6 +919,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 657446908}
     m_Modifications:
+    - target: {fileID: 1769740541929285950, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769740541929285950, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8674970970343849717, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: conversationActor
       value: 
@@ -951,6 +987,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 8674970970675588279, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674970970675588279, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674970970675588279, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8674970970675588282, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -961,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8674970970675588282, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8674970970675588282, guid: 73ec4b9b079d1614fa6553a3823ff00c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2101,7 +2149,6 @@ GameObject:
   - component: {fileID: 522110872}
   - component: {fileID: 522110871}
   - component: {fileID: 522110873}
-  - component: {fileID: 522110874}
   - component: {fileID: 522110875}
   m_Layer: 0
   m_Name: Ep.1_Timeline_6
@@ -2210,9 +2257,9 @@ PlayableDirector:
   - key: {fileID: 5522225777671666270, guid: 1cbc5303f75451247ad2ed9d6036f6ce, type: 2}
     value: {fileID: 155620587}
   - key: {fileID: -2126099873928258716, guid: 1cbc5303f75451247ad2ed9d6036f6ce, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 960821824}
   - key: {fileID: -8371413663342751887, guid: 1cbc5303f75451247ad2ed9d6036f6ce, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 960821824}
   - key: {fileID: 1260358977302325480, guid: 1cbc5303f75451247ad2ed9d6036f6ce, type: 2}
     value: {fileID: 793383549}
   - key: {fileID: -5805831341931404057, guid: 1cbc5303f75451247ad2ed9d6036f6ce, type: 2}
@@ -2298,32 +2345,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!61 &522110874
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522110870}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &522110875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3946,7 +3967,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3468686249737713401, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Mass
-      value: 0.80999994
+      value: 0.5625
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Name
@@ -4128,9 +4149,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2225282683342224402, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+--- !u!95 &960821824 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2225282683342224402, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+  m_PrefabInstance: {fileID: 960821823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &960821825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2225282683342224407, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
@@ -5267,7 +5292,9 @@ MonoBehaviour:
   questEntryNumber: 1
   questEntryState: 0
   luaCode: 
-  sequence: AnimatorFloat(Move_X, 1, Player);
+  sequence: 'AnimatorFloat(Move_X, 1, Player);
+
+    AnimatorFloat(Move_Y, 0, Player);'
   sequenceSpeaker: {fileID: 793383552}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 0
