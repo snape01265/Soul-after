@@ -21,6 +21,7 @@ public class Flameshot : MonoBehaviour
 	private Waypoint currentWaypoint;
 	private bool isWaiting = false;
 	private bool damaged = false;
+	private PlayerHealth health;
 
 	void Start()
 	{
@@ -123,18 +124,21 @@ public class Flameshot : MonoBehaviour
 			Light.enabled = false;
 			isWaiting = true;
 		}
-		else if (other.gameObject.CompareTag("Player") && !damaged)
-        {
-			damaged = true;
-			playerHealth.TakeDamage(damage);
+		else if (other.GetComponent<PlayerHealth>() && !other.GetComponent<PlayerHealth>().PainState)
+		{
+			health = other.GetComponent<PlayerHealth>();
+			health.PainState = true;
+			health.TakeDamage(damage);
 			StartCoroutine(WaitForDmg());
 		}
-    }
+	}
+
 	private IEnumerator WaitForDmg()
 	{
 		yield return new WaitForSeconds(.5f);
-		damaged = false;
+		health.PainState = false;
 	}
+
 	void UpdateAnimation()
 	{
 		anim.SetFloat("Move X", myRigidbody.velocity.x);
