@@ -55,13 +55,13 @@ public class FlameTrap : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(sec - BUFFER);
             circleCollider2D.enabled = true;
-            yield return new WaitForSeconds(BUFFER);
+            yield return new WaitForSeconds(sec - BUFFER);
             Shrink();
             circleCollider2D.enabled = false;
             yield return new WaitForSeconds(sec);
             Expand();
+            yield return new WaitForSeconds(BUFFER);
         }
     }
 
@@ -73,9 +73,9 @@ public class FlameTrap : MonoBehaviour
             circleCollider2D.enabled = false;
             yield return new WaitForSeconds(sec);
             Expand();
-            yield return new WaitForSeconds(sec - BUFFER);
-            circleCollider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
+            circleCollider2D.enabled = true;
+            yield return new WaitForSeconds(sec - BUFFER);
         }
     }
 
