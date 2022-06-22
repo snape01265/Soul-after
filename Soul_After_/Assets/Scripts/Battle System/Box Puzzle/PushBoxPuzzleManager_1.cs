@@ -32,6 +32,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public Text CounterTxt;
     [NonSerialized]
     public Vector3 startingPlayerPos;
+    [NonSerialized]
     public int goalCount;
     [NonSerialized]
     public Fadein fade;
@@ -40,13 +41,14 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     public bool isAvailable = true;
     [NonSerialized]
     public bool isPushing = false;
+    [NonSerialized]
+    public bool isReset = false;
 
     private readonly int[] goalCounts = new int[] {3, 3, 1};
     private List<Vector3> startingBoxPos = new List<Vector3>();
     private List<BoxPush_1> box = new List<BoxPush_1>();
     private GameObject player;
     private GameObject mainCamera;
-    private bool isReset = false;
     private bool isTranstioning = false;
     private bool puzzleFinished = false;
 
