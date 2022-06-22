@@ -5,14 +5,15 @@ using UnityEngine;
 public class EnemyAtkHazard : MonoBehaviour
 {
     public int damage;
-    private bool damaged;
+    private PlayerHealth health;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.GetComponent<PlayerHealth>() && !damaged)
+        if (other.GetComponent<PlayerHealth>() && !other.GetComponent<PlayerHealth>().PainState)
         {
-            damaged = true;
-            other.GetComponent<PlayerHealth>().TakeDamage(damage);
+            health = other.GetComponent<PlayerHealth>();
+            health.PainState = true;
+            health.TakeDamage(damage);
             StartCoroutine(WaitForDmg());
         }
     }
@@ -20,6 +21,6 @@ public class EnemyAtkHazard : MonoBehaviour
     private IEnumerator WaitForDmg()
     {
         yield return new WaitForSeconds(.5f);
-        damaged = false;
+        health.PainState = false;
     }
 }

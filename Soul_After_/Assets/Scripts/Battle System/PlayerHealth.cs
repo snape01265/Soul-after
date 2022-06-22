@@ -34,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
     public int CD;
     public Animator ShieldAnim;
 
+    [HideInInspector]
+    public bool PainState = false;
     private bool ShieldBroken = false;
     private bool ShieldCD = false;
     private readonly float RECHARGEANIMTIME = 1f;
@@ -66,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        triggerCollider.enabled = false;
+        PainState = true;
         int oldhp = (int)CurHP.initialValue;
         if (ShieldEnabled && !ShieldBroken && !ShieldCD)
         {
@@ -165,7 +167,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         currentIFrame = null;
-        triggerCollider.enabled = true;
+        PainState = false;
     }
 
     public void PlayerInvulnerable()

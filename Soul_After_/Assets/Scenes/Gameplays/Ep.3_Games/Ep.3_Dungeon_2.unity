@@ -1505,9 +1505,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1621936228}
-          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-          m_MethodName: PlayerVulnerable
+        - m_Target: {fileID: 1156562707}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: EnableCollider
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2932,9 +2932,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[1].condition.luaConditions.Array.data[0]
-      value: (Variable["TimelineToPlay"] == 0) or (Variable["TimelineToPlay"] ==
+      value: '(Variable["TimelineToPlay"] == 0) or (Variable["TimelineToPlay"] ==
         1) or (Variable["TimelineToPlay"] == 2) or (Variable["TimelineToPlay"] ==
-        3) or (Variable["TimelineToPlay"] == 4)
+        3) or (Variable["TimelineToPlay"] == 4) or
+
+        (Variable["TimelineToPlay"]
+        == 14)'
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[2].condition.luaConditions.Array.data[0]
@@ -4599,9 +4602,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1621936228}
-          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-          m_MethodName: PlayerVulnerable
+        - m_Target: {fileID: 1156562707}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: EnableCollider
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6163,8 +6166,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -3796378089214985174, guid: 2c1c402aa3f830f4a8df8aba98a6018d, type: 2}
     value: {fileID: 1156562698}
-  - key: {fileID: 5287403621212068681, guid: 2c1c402aa3f830f4a8df8aba98a6018d, type: 2}
-    value: {fileID: 1156562706}
   - key: {fileID: 520378082535280752, guid: 2c1c402aa3f830f4a8df8aba98a6018d, type: 2}
     value: {fileID: 1156562706}
   - key: {fileID: -3924757526124705219, guid: 2c1c402aa3f830f4a8df8aba98a6018d, type: 2}
@@ -10121,7 +10122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344570462}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -22, y: 0.5, z: 0}
+  m_LocalPosition: {x: -22, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1508446001}
@@ -10208,7 +10209,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &344570466
 MonoBehaviour:
@@ -13368,8 +13369,6 @@ PlayableDirector:
   - key: {fileID: -4419416694587376301, guid: cc1be10c0ec5f484897db0b268f9ce59, type: 2}
     value: {fileID: 1156562698}
   - key: {fileID: -8113298513300273354, guid: cc1be10c0ec5f484897db0b268f9ce59, type: 2}
-    value: {fileID: 1156562706}
-  - key: {fileID: -7177500483072879708, guid: cc1be10c0ec5f484897db0b268f9ce59, type: 2}
     value: {fileID: 1156562706}
   - key: {fileID: -6820450696092499012, guid: cc1be10c0ec5f484897db0b268f9ce59, type: 2}
     value: {fileID: 510033752}
@@ -34189,6 +34188,10 @@ PrefabInstance:
       propertyPath: ShieldEnabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 285543090, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: numberOfFlashes
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713398, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: menuSet
       value: 
@@ -34453,9 +34456,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1621936228}
-          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-          m_MethodName: PlayerVulnerable
+        - m_Target: {fileID: 1156562707}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: EnableCollider
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -60594,6 +60597,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1156562707}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: DisableCollider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -63415,9 +63430,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1621936228}
-          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-          m_MethodName: PlayerVulnerable
+        - m_Target: {fileID: 1156562707}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: EnableCollider
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -63870,6 +63885,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1633955947}
         m_TargetAssemblyTypeName: Ep3_Dungeon_2_Battle_P1, Assembly-CSharp
         m_MethodName: ResetAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1156562707}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: DisableCollider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -64607,17 +64634,93 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678037073}
   m_Enabled: 1
-  m_Tiles: {}
+  m_Tiles:
+  - first: {x: 4, y: -23, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 5, y: -23, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 4, y: -22, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 2
+      m_TileSpriteIndex: 2
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 5, y: -22, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 3
+      m_TileSpriteIndex: 3
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
-  m_TileAssetArray: []
-  m_TileSpriteArray: []
-  m_TileMatrixArray: []
-  m_TileColorArray: []
+  m_TileAssetArray:
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 6a64bfee661be054089dfbadfbff1854, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1657a5f703f03b74ea027292a71ef964, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: f681df792be126744a3b8179f578e95f, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: eef3ccca8f396844aa3ec4258c23643f, type: 2}
+  m_TileSpriteArray:
+  - m_RefCount: 1
+    m_Data: {fileID: -828058303595216362, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 4534669085207622275, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 3485278739940699130, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1796292156607730682, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  m_TileMatrixArray:
+  - m_RefCount: 4
+    m_Data:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  m_TileColorArray:
+  - m_RefCount: 4
+    m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: 0, y: 0, z: 0}
-  m_Size: {x: 0, y: 0, z: 1}
+  m_Origin: {x: 0, y: -23, z: 0}
+  m_Size: {x: 6, y: 23, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -66798,7 +66901,7 @@ Tilemap:
       - {fileID: 21300000, guid: 9015829752999334298a2e4e47a1ad63, type: 3}
       - {fileID: 21300000, guid: a50adeb370e4e4a49bb1111baf091780, type: 3}
       - {fileID: 21300000, guid: c4bec1f3fdfc17c4d8a919fa6c40dc22, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -3, y: 83, z: 0}
@@ -69291,26 +69394,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 4, y: -23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 12
-      m_TileSpriteIndex: 19
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 5, y: -23, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 13
-      m_TileSpriteIndex: 13
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -7, y: -22, z: 0}
     second:
       serializedVersion: 2
@@ -69366,26 +69449,6 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 0
       m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 4, y: -22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 5, y: -22, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 15
-      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -70987,14 +71050,14 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 22645a602b0df024186604afbfa478be, type: 2}
   - m_RefCount: 11
     m_Data: {fileID: 11400000, guid: 776fa8fad3d641b4fb44aad82d3c3494, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 6a64bfee661be054089dfbadfbff1854, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 1657a5f703f03b74ea027292a71ef964, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: f681df792be126744a3b8179f578e95f, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: eef3ccca8f396844aa3ec4258c23643f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 1c4fe7f6e847c694a950e380e3ff9671, type: 2}
   - m_RefCount: 2
@@ -71042,20 +71105,20 @@ Tilemap:
     m_Data: {fileID: -2677298223746245187, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
   - m_RefCount: 13
     m_Data: {fileID: 4530165809995614896, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 4534669085207622275, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 3485278739940699130, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1796292156607730682, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -8489859571036192716, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -2570963361692525772, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 4257274462400306744, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -828058303595216362, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 11
     m_Data: {fileID: -1066069483736807141, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
   - m_RefCount: 13
@@ -71069,7 +71132,7 @@ Tilemap:
   - m_RefCount: 8
     m_Data: {fileID: 6234777305426516603, guid: 86147b2b812a5d444abdcd9826e029d3, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 212
+  - m_RefCount: 208
     m_Data:
       e00: 1
       e01: 0
@@ -71088,7 +71151,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 212
+  - m_RefCount: 208
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -73897,6 +73960,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1156562707}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: DisableCollider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -74913,6 +74988,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1156562707}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: DisableCollider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
@@ -75830,7 +75917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075240745}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22, y: 55, z: 0}
+  m_LocalPosition: {x: 22, y: 55.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571215783}
@@ -75941,7 +76028,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
+  m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &2075240749
 MonoBehaviour:
