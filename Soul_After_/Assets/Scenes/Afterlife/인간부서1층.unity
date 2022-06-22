@@ -14347,7 +14347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1091702578}
   m_Layer: 0
-  m_Name: Timeline_Positions
+  m_Name: NPC_Positions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14365,6 +14365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 826565771}
+  - {fileID: 1795118529}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22906,6 +22907,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
+--- !u!1 &1795118528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795118529}
+  m_Layer: 0
+  m_Name: SeulhaPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1795118529
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795118528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18, y: 6.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1091702578}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1817638862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23873,7 +23904,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: sequence
-      value: AnimatorFloat(Move_X, -1, Vincent);
+      value: 'AnimatorFloat(Move_X, -1, Vincent);
+
+        MoveTo(SeulhaPos, Seulha);'
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
@@ -23897,7 +23930,7 @@ PrefabInstance:
       objectReference: {fileID: 775920681}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: onExecute.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -23913,7 +23946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: onExecute.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetPosition
+      value: SetAndPlacePosition
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[0].condition.luaConditions.Array.size
@@ -25016,6 +25049,10 @@ PrefabInstance:
       propertyPath: overwriteCallbackAfterTalk.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 682269457}
+    - target: {fileID: 2225282683342224402, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224403, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -25310,7 +25347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672006299012660144, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
       propertyPath: sceneChangePosition.y
-      value: -6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7672006299012660145, guid: 4406d1718786fc740b8891fe4f5bc810, type: 3}
       propertyPath: m_Size.x
