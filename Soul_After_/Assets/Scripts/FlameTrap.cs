@@ -10,6 +10,7 @@ public class FlameTrap : MonoBehaviour
     public float interval;
     public float scale;
     public float BUFFER = .5f;
+    public float CD = .5f;
 
     public Vector3 NormFire = new Vector3(1f, 1f, 1f);
     public Vector3 SmolFire = new Vector3(.1f, .1f, .1f);
@@ -53,14 +54,15 @@ public class FlameTrap : MonoBehaviour
 
     IEnumerator BlinkPatternOdd(float sec)
     {
+        yield return new WaitForSeconds(CD);
         while (true)
         {
-            yield return new WaitForSeconds(sec - BUFFER);
-            circleCollider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
+            circleCollider2D.enabled = true;
+            yield return new WaitForSeconds(sec - BUFFER);
             Shrink();
             circleCollider2D.enabled = false;
-            yield return new WaitForSeconds(sec);
+            yield return new WaitForSeconds(sec + CD * 2);
             Expand();
         }
     }
@@ -71,11 +73,11 @@ public class FlameTrap : MonoBehaviour
         {
             Shrink();
             circleCollider2D.enabled = false;
-            yield return new WaitForSeconds(sec);
+            yield return new WaitForSeconds(sec + CD * 2);
             Expand();
-            yield return new WaitForSeconds(sec - BUFFER);
-            circleCollider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
+            circleCollider2D.enabled = true;
+            yield return new WaitForSeconds(sec - BUFFER);
         }
     }
 
