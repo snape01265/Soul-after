@@ -88,7 +88,7 @@ public class InvismazePuzzleManager : MonoBehaviour
         {
             time += Time.deltaTime;
             Light.intensity = Mathf.Lerp(1, 0, time / LightsOutDuration);
-            playerLight.intensity = Mathf.Lerp(0, 0.3f, time / LightsOutDuration);
+            playerLight.intensity = Mathf.Lerp(0, 0.5f, time / LightsOutDuration);
             yield return new WaitForEndOfFrame();
         }
         Player.GiveBackControl();
