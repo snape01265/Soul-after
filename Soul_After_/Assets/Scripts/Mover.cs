@@ -47,7 +47,6 @@ public class Mover : MonoBehaviour
 	}
 	private void StopMovement()
     {
-		myRigidbody.position = new Vector2(transform.position.x, transform.position.y);
 		myRigidbody.velocity = new Vector2(0, 0);
 		UpdateAnimation();
 	}
