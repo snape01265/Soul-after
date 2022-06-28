@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
 
     public void MakePayments()
     {
-        if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
+        if (Token.initialValue > 0 && Token.initialValue >= Items[ItemID].Price)
         {
             GameObject.FindGameObjectWithTag("Market").GetComponent<MarketFunction>().ItemTransaction();
             Token.initialValue -= Items[ItemID].Price;
