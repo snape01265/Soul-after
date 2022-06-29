@@ -49,8 +49,7 @@ public class MazeBehavior : MonoBehaviour
         }
         if (mazeState.initialValue.All<bool>(x => x == false))
         {
-            playerHealth.CurHP.initialValue = playerHealth.CurHP.defaultValue;
-            playerHealth.RenderHp(0, (int) playerHealth.CurHP.initialValue);
+            playerHealth.RestoreHealth();
         }
     }
 
