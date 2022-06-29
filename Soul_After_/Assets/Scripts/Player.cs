@@ -128,7 +128,6 @@ public class Player : MonoBehaviour
 
     public void ResumeGame()
     {
-        GiveBackControl();
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
@@ -249,7 +248,7 @@ public class Player : MonoBehaviour
 
     public void MakePayments()
     {
-        if (Token.initialValue > 0 && Token.initialValue > Items[ItemID].Price)
+        if (Token.initialValue > 0 && Token.initialValue >= Items[ItemID].Price)
         {
             GameObject.FindGameObjectWithTag("Market").GetComponent<MarketFunction>().ItemTransaction();
             Token.initialValue -= Items[ItemID].Price;

@@ -6,8 +6,8 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
-using PixelCrushers.DialogueSystem;
 using UnityEngine.Experimental.Rendering.Universal;
+using PixelCrushers.DialogueSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -73,13 +73,12 @@ public class GameManager : MonoBehaviour
         {
             IEnumerator GameScreenTransition()
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(1.5f);
                 player.gameObject.SetActive(false);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Transform>().SetPositionAndRotation(new Vector3(0, 0, -10), this.transform.rotation);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().orthographicSize = 7;
-                PixelCrushers.DialogueSystem.DialogueManager.PlaySequence("Fade(in, .75)");
                 yield return new WaitForSeconds(2);
-                PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timelines/RhythmGame", player, seulha);
+                DialogueManager.StartConversation("Ep.2 Timelines/RhythmGame", player, seulha);
             }
             StartCoroutine(GameScreenTransition());
         }
@@ -108,7 +107,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartDialogue()
     {
-        PixelCrushers.DialogueSystem.DialogueManager.StartConversation("Ep.2 Timeline 8(Rhythm Game)", player, seulha);
+        DialogueManager.StartConversation("Ep.2 Timeline 8(Rhythm Game)", player, seulha);
     }
     public void ChangeBG()
     {
