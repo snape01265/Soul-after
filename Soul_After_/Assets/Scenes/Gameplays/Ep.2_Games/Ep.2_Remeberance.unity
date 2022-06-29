@@ -6677,11 +6677,16 @@ PrefabInstance:
       propertyPath: m_UseFullKinematicContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713402, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3468686249737713402, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
 --- !u!95 &737997872 stripped
 Animator:
@@ -7144,13 +7149,10 @@ MonoBehaviour:
   conversationEvents:
     onConversationStart:
       m_PersistentCalls:
-        m_Calls: []
-    onConversationEnd:
-      m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1836294360}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: GetDataFromMidi
+        - m_Target: {fileID: 737997873}
+          m_TargetAssemblyTypeName: Player, Assembly-CSharp
+          m_MethodName: CancelControl
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7160,6 +7162,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    onConversationEnd:
+      m_PersistentCalls:
+        m_Calls: []
     onConversationCancelled:
       m_PersistentCalls:
         m_Calls: []
@@ -8280,12 +8285,8 @@ PrefabInstance:
       value: ResumeGame
       objectReference: {fileID: 0}
     - target: {fileID: 1050791411045285044, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
-      propertyPath: displaySettings.inputSettings.cancel.key
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1050791411045285044, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
-      propertyPath: displaySettings.inputSettings.cancelConversation.key
-      value: 0
+      propertyPath: debugLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1050791411052252720, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_IsActive
@@ -8445,7 +8446,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1050791412209569329, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_Text
-      value: 
+      value: Input Field
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412209654791, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: visibility
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412209654791, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: onFocus.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412209654791, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: onUnfocus.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2490472058125945021, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_Enabled
@@ -8473,7 +8486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6566123471329124667, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6683573299589234215, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_IsActive
@@ -15046,7 +15059,9 @@ MonoBehaviour:
   questEntryNumber: 1
   questEntryState: 0
   luaCode: 
-  sequence: Fade(stay, .75);
+  sequence: 'Fade(stay, .75);
+
+    Fade(in, .5)@1.5;'
   sequenceSpeaker: {fileID: 0}
   sequenceListener: {fileID: 0}
   waitOneFrameOnStartOrEnable: 1
@@ -16282,7 +16297,7 @@ MonoBehaviour:
   - {fileID: 479402183}
   - {fileID: 1751703541}
   - {fileID: 84320480}
-  songDelayInSeconds: 2
+  songDelayInSeconds: 4
   inputDelayInMilliseconds: 100
   noteTime: 3
   noteSpawnY: 9
