@@ -17,7 +17,7 @@ public class Rebirth : MonoBehaviour
         volume.sharedProfile.TryGet<Bloom>(out bloom);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (cases == 1)
         {
