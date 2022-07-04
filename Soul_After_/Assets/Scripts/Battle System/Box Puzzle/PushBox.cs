@@ -65,7 +65,7 @@ public class PushBox : MonoBehaviour
         else if (puzzleManager.isReset)
             transform.position = Vector3.Lerp(transform.position, targetPos, 1f);
         else
-            transform.position = Vector3.Lerp(transform.position, targetPos, 0.3f);
+            transform.position = Vector3.Lerp(transform.position, targetPos, 0.15f);
 
         if (Vector3.Distance(transform.position, targetPos) <= .01f && pushing)
         {
