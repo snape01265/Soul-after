@@ -6,7 +6,7 @@ public class RoadBlock : MonoBehaviour
 {
     public BoolValue trigger;
     public BoxCollider2D physicsCollider;
-    void Update()
+    void Start()
     {
         if(trigger.initialValue)
         {
@@ -16,7 +16,7 @@ public class RoadBlock : MonoBehaviour
 
     public void Open()
     {
-        gameObject.SetActive(!trigger.initialValue);
+        gameObject.SetActive(false);
     }
 
     public void QuestTrigger()
