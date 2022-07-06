@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
     private bool ShieldCD = false;
     private readonly float RECHARGEANIMTIME = 1f;
 
-    void Start()
+    void Awake()
     {
         heartRenderers = Enumerable.Repeat<HeartRenderer>(null, maxHP).ToList();
 
