@@ -11,24 +11,24 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
-        curMusic = gameObject.GetComponent<AudioSource>();
+        curMusic = GetComponent<AudioSource>();
         SetUpSingleton();
     }
+
     public void UpdateMusic(string scenetoload)
     {
         string scene = scenetoload;
         if (bgm != null && bgm.initialValue.Contains(scene))
         {
             DontDestroyOnLoad(gameObject);
-            Debug.Log("Not Destroyed");
         }
         else
         {
             StartCoroutine(MusicFade());
-            Debug.Log("Destroyed");
         }
 
     }
+
     private void SetUpSingleton()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -40,6 +40,7 @@ public class MusicPlayer : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
+
     public IEnumerator MusicFade()
     {
         float currentTime = 0;
@@ -54,6 +55,7 @@ public class MusicPlayer : MonoBehaviour
         Destroy(gameObject);
         yield break;
     }
+
     public void DisableMusic()
     {
         gameObject.SetActive(false);
