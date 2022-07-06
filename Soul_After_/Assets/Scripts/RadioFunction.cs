@@ -9,7 +9,7 @@ public class RadioFunction : MonoBehaviour
 
     private AudioSource AudioSource;
 
-    private void Start()
+    private void Awake()
     {
         SelectSong();
     }
