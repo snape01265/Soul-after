@@ -33,7 +33,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
     [NonSerialized]
     public Vector3 startingPlayerPos;
     [NonSerialized]
-    public int goalCount;
+    public int goalCount = 999;
     [NonSerialized]
     public Fadein fade;
     public float fadeDuration;
@@ -64,12 +64,11 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         }
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         puzzleNum = (int) StageNo.initialValue;
-        goalCount = goalCounts[puzzleNum];
         switch (puzzleNum)
         {
             case 0:
                 nextPuzzle("Start1", 1);
-                goalCount = goalCounts[0];
+
                 break;
             case 1:
                 nextPuzzle("Start2", 2);
@@ -248,6 +247,7 @@ public class PushBoxPuzzleManager_1 : MonoBehaviour
         SetPosition();
         isReset = false;
         isTranstioning = false;
+        goalCount = goalCounts[CamMulti];
         yield return null;
     }
 }

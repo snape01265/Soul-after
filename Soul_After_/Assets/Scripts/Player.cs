@@ -8,19 +8,17 @@ using PixelCrushers.DialogueSystem;
 public class Player : MonoBehaviour
 {
     [Header("Fox Market Functions")]
+    [NonSerialized]
     public int ItemID = 0;
     public ItemProperties[] Items;
     public FloatValue Token;
     public GameObject NoMoneyTab;
     public TokenRenderer tokenRenderer;
-    public RoadBlock road;
     public GameObject menuSet;
     public GameObject askWho;
     public InputField myName;
     public FloatValue curVol;
     public AnimatorOverrideController changeSuit;
-    public AnimatorOverrideController changeClothes;
-    public AnimatorOverrideController mainClothes;
     public PlayableDirector timeline;
     public VectorValue startingPosition;
     public AnimatorValue animatorValue;
@@ -44,28 +42,14 @@ public class Player : MonoBehaviour
     private readonly float pauseVol = 1f;
     private GameObject loadSlotMenu;
 
-    private void Awake()
-    {
-        if (animatorValue.defaultAnimator != null && animatorValue.initialAnimator != null)
-        {
-            mainClothes = animatorValue.defaultAnimator;
-            changeClothes = animatorValue.initialAnimator;
-        }
-        else
-        {
-            animatorValue.defaultAnimator = mainClothes;
-            animatorValue.initialAnimator = changeClothes;
-        }
-
-        AudioListener.volume = curVol.initialValue * normalVol;
-    }
-
     void Start()
     {
+        AudioListener.volume = curVol.initialValue * normalVol;
         animator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
+        animator.runtimeAnimatorController = animatorValue.initialAnimator as RuntimeAnimatorController;
     }
 
     void Update()
@@ -114,7 +98,6 @@ public class Player : MonoBehaviour
                 }
                 UpdateAnimationAndMove();
             }
-            AnimatorOverride();
         }
     }
 
@@ -217,13 +200,7 @@ public class Player : MonoBehaviour
     public void ChangeSuit()
     {
         animatorValue.initialAnimator = changeSuit;
-        changeClothes = animatorValue.initialAnimator;
-    }
-
-    private void AnimatorOverride()
-    {
-        mainClothes = animatorValue.initialAnimator;
-        animator.runtimeAnimatorController = mainClothes as RuntimeAnimatorController;
+        animator.runtimeAnimatorController = animatorValue.initialAnimator as RuntimeAnimatorController;
     }
 
     public void PlayerLookRight()

@@ -123,6 +123,93 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &5625932
+GameObject:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5625933}
+  - component: {fileID: 5625935}
+  - component: {fileID: 5625934}
+  m_Layer: 0
+  m_Name: cm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5625933
+Transform:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625932}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1089971796}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5625934
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
+  m_LookaheadIgnoreY: 0
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_TargetMovementOnly: 1
+  m_ScreenX: 0.5
+  m_ScreenY: 0.5
+  m_CameraDistance: 10
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
+  m_DeadZoneDepth: 0
+  m_UnlimitedSoftZone: 0
+  m_SoftZoneWidth: 0.8
+  m_SoftZoneHeight: 0.8
+  m_BiasX: 0
+  m_BiasY: 0
+  m_CenterOnActivate: 1
+  m_GroupFramingMode: 2
+  m_AdjustmentMode: 0
+  m_GroupFramingSize: 0.8
+  m_MaxDollyIn: 5000
+  m_MaxDollyOut: 5000
+  m_MinimumDistance: 1
+  m_MaximumDistance: 5000
+  m_MinimumFOV: 3
+  m_MaximumFOV: 60
+  m_MinimumOrthoSize: 1
+  m_MaximumOrthoSize: 5000
+--- !u!114 &5625935
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6898073
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 984245912559819521, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 984245912559819521, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1055,6 +1142,18 @@ MonoBehaviour:
   onExecute:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 283513561}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: CancelControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 91201991}
         m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
         m_MethodName: Play
@@ -1110,6 +1209,8 @@ PlayableDirector:
     value: {fileID: 722098056}
   - key: {fileID: 4160802619795099234, guid: 37f08401a1000434bb6bc1234d33bf31, type: 2}
     value: {fileID: 91201988}
+  - key: {fileID: 7098580107971047872, guid: 37f08401a1000434bb6bc1234d33bf31, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 9bf1a18a584d3db4fb4ba7463c7f008e: {fileID: 1964269697}
@@ -1155,6 +1256,9 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
+    - {fileID: 11400000, guid: e48c7c69221c3c64aae2faacb748e5d8, type: 2}
+    - {fileID: 11400000, guid: f4b30b4da1dfefa48b5a6b3ff91c249f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -1175,6 +1279,48 @@ MonoBehaviour:
         - m_Target: {fileID: 283513561}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: SetBloomIntensity
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -25218,7 +25364,7 @@ Transform:
   - {fileID: 806744516}
   - {fileID: 1456829831}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396133200
 GameObject:
@@ -25749,7 +25895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3057378388941152302, guid: 76473c0d445dc17499f409b7094cb9a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29306,6 +29452,8 @@ PlayableDirector:
     value: {fileID: 24807007}
   - key: {fileID: -3236314437524131939, guid: c74ea7c4ed63d594d8560d51442630de, type: 2}
     value: {fileID: 24807007}
+  - key: {fileID: 3298038136207770130, guid: c74ea7c4ed63d594d8560d51442630de, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &468747817
@@ -29337,12 +29485,57 @@ MonoBehaviour:
   m_Events:
     m_Signals:
     - {fileID: 11400000, guid: 3fb9134123111e24bbe21e644006378a, type: 2}
+    - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
+    - {fileID: 11400000, guid: e48c7c69221c3c64aae2faacb748e5d8, type: 2}
+    - {fileID: 11400000, guid: f4b30b4da1dfefa48b5a6b3ff91c249f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 283513561}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: GiveBackControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: SetBloomIntensity
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -29841,7 +30034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1562890201031171731, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1562890201031171731, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30232,6 +30425,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
     - {fileID: 11400000, guid: 7b2dedf3f13b8cc4b96e772d4f2462a2, type: 2}
+    - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
+    - {fileID: 11400000, guid: f4b30b4da1dfefa48b5a6b3ff91c249f, type: 2}
+    - {fileID: 11400000, guid: e48c7c69221c3c64aae2faacb748e5d8, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -30280,6 +30476,48 @@ MonoBehaviour:
         - m_Target: {fileID: 283513561}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: PlayerLookUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: SetBloomIntensity
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -31249,8 +31487,14 @@ PlayableDirector:
     value: {fileID: 24807007}
   - key: {fileID: -991788013765621579, guid: e5044112c95c9704dab4be0946136eec, type: 2}
     value: {fileID: 24807007}
+  - key: {fileID: 3267606840794792725, guid: e5044112c95c9704dab4be0946136eec, type: 2}
+    value: {fileID: 24807007}
+  - key: {fileID: -1589213292966143448, guid: e5044112c95c9704dab4be0946136eec, type: 2}
+    value: {fileID: 1608420144}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - a0dfca8ef5025ec44ae5fc618899db1d: {fileID: 1964269697}
+    - b330aca242377b24dbd7992a387bccac: {fileID: 1089971795}
 --- !u!4 &728863270
 Transform:
   m_ObjectHideFlags: 0
@@ -31372,6 +31616,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: fad565e16c387ff43b50b1e83a4b9ff1, type: 2}
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 6a6c31edd5ba09b4481717cd220779b1, type: 2}
+    - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
+    - {fileID: 11400000, guid: e48c7c69221c3c64aae2faacb748e5d8, type: 2}
+    - {fileID: 11400000, guid: f4b30b4da1dfefa48b5a6b3ff91c249f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -31513,6 +31760,48 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: SetBloomIntensity
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &737918543
 GameObject:
   m_ObjectHideFlags: 0
@@ -31563,7 +31852,7 @@ Transform:
   - {fileID: 209292242}
   - {fileID: 1490426674}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745645987
 GameObject:
@@ -65207,6 +65496,73 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &1089971794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089971796}
+  - component: {fileID: 1089971795}
+  m_Layer: 0
+  m_Name: CM vcam1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089971795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089971794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_StandbyUpdate: 2
+  m_LookAt: {fileID: 0}
+  m_Follow: {fileID: 0}
+  m_Lens:
+    FieldOfView: 60
+    OrthographicSize: 6
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    LensShift: {x: 0, y: 0}
+  m_Transitions:
+    m_BlendHint: 0
+    m_InheritPosition: 0
+    m_OnCameraLive:
+      m_PersistentCalls:
+        m_Calls: []
+  m_LegacyBlendHint: 0
+  m_ComponentOwner: {fileID: 5625933}
+--- !u!4 &1089971796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089971794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5625933}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097551570
 GameObject:
   m_ObjectHideFlags: 0
@@ -65459,8 +65815,8 @@ MonoBehaviour:
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
   conversation: Object Dialogues/Signs
-  conversationConversant: {fileID: 0}
-  conversationActor: {fileID: 1267214696}
+  conversationConversant: {fileID: 1267214696}
+  conversationActor: {fileID: 1126529910}
   startConversationEntryID: 3
   exclusive: 0
   replace: 0
@@ -65823,6 +66179,70 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
+--- !u!1 &1161633056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161633059}
+  - component: {fileID: 1161633058}
+  - component: {fileID: 1161633057}
+  m_Layer: 0
+  m_Name: Global_Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1161633057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161633056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abd7a909e12e9d438f4b21d692d9b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloomIntensity: 0
+  speed: 0.6
+  cases: 0
+--- !u!114 &1161633058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161633056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: fc0593d7f9bcc024fbbc4adafb4bfb63, type: 2}
+--- !u!4 &1161633059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161633056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1171417993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65880,7 +66300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[1].state
@@ -65925,11 +66345,11 @@ PrefabInstance:
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[4].target
       value: 
-      objectReference: {fileID: 867576261}
+      objectReference: {fileID: 806744516}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[5].target
       value: 
-      objectReference: {fileID: 962023181}
+      objectReference: {fileID: 806744516}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[6].target
       value: 
@@ -66000,11 +66420,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[4].condition.luaConditions.Array.data[0]
-      value: (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 3)
+      value: (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 4)
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[5].condition.luaConditions.Array.data[0]
-      value: (Variable["TimelineToPlay"] == 1) and (Variable["Episode"] == 4)
+      value: (Variable["Ep_4.BloomTriggered"] == true) and (Variable["TimelineToPlay"]
+        == 1) and (Variable["Episode"] == 4)
       objectReference: {fileID: 0}
     - target: {fileID: 9043721333060407149, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: setActiveActions.Array.data[6].condition.luaConditions.Array.data[0]
@@ -66047,6 +66468,242 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3732646352336015112, guid: 9e504bb85c6d8124ab75cce03e2451e4, type: 3}
   m_PrefabInstance: {fileID: 339419152}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1180863884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180863885}
+  - component: {fileID: 1180863889}
+  - component: {fileID: 1180863888}
+  - component: {fileID: 1180863887}
+  - component: {fileID: 1180863886}
+  m_Layer: 0
+  m_Name: Ep.4_Timeline_Bloom_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1180863885
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180863884}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1917755770}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180863886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180863884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
+    - {fileID: 11400000, guid: e48c7c69221c3c64aae2faacb748e5d8, type: 2}
+    - {fileID: 11400000, guid: f4b30b4da1dfefa48b5a6b3ff91c249f, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: ChangeBloomIntensityDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1161633057}
+          m_TargetAssemblyTypeName: Rebirth, Assembly-CSharp
+          m_MethodName: SetBloomIntensity
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!320 &1180863887
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180863884}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 9ba598d2c5f354247a0d1886d9cf1a67, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -8264911324292310906, guid: 9ba598d2c5f354247a0d1886d9cf1a67, type: 2}
+    value: {fileID: 1180863884}
+  - key: {fileID: -5974444192919255499, guid: 9ba598d2c5f354247a0d1886d9cf1a67, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &1180863888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180863884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c593457cd8105e148906690e1707c592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: 8
+  condition:
+    luaConditions:
+    - (Variable["Ep_4.BloomTriggered"] == false) and (Variable["Episode"] == 4) and
+      (Variable["TimelineToPlay"] == 1)
+    questConditions: []
+    acceptedTags:
+    - Player
+    acceptedGameObjects: []
+    luaWizardIndex: -1
+    lastEvaluationValue: 0
+  setQuestState: 1
+  questName: 
+  questState: 0
+  setQuestEntryState: 0
+  questEntryNumber: 1
+  questEntryState: 0
+  luaCode: Variable["Ep_4.BloomTriggered"] = true
+  sequence: 
+  sequenceSpeaker: {fileID: 0}
+  sequenceListener: {fileID: 0}
+  waitOneFrameOnStartOrEnable: 1
+  alertMessage: 
+  textTable: {fileID: 0}
+  alertDuration: 0
+  sendMessages: []
+  barkSource: 0
+  barkConversation: 
+  barkText: 
+  barkTextSequence: 
+  barker: {fileID: 0}
+  barkTarget: {fileID: 0}
+  barkOrder: 0
+  allowBarksDuringConversations: 0
+  skipBarkIfNoValidEntries: 0
+  cacheBarkLines: 0
+  conversation: 
+  conversationConversant: {fileID: 0}
+  conversationActor: {fileID: 0}
+  startConversationEntryID: -1
+  exclusive: 0
+  replace: 0
+  skipIfNoValidEntries: 0
+  stopConversationOnTriggerExit: 0
+  stopConversationIfTooFar: 0
+  maxConversationDistance: 5
+  monitorConversationDistanceFrequency: 1
+  showCursorDuringConversation: 0
+  pauseGameDuringConversation: 0
+  setActiveActions: []
+  setEnabledActions: []
+  setAnimatorStateActions: []
+  onExecute:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1180863887}
+        m_TargetAssemblyTypeName: UnityEngine.Playables.PlayableDirector, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 962023182}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  useConversationTitlePicker: 1
+  useBarkTitlePicker: 1
+  useQuestNamePicker: 1
+  selectedDatabase: {fileID: 11400000, guid: e71e54246ba89de41a1c490e5c95617b, type: 2}
+--- !u!61 &1180863889
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180863884}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 19}
+  m_EdgeRadius: 0
 --- !u!1 &1223223591
 GameObject:
   m_ObjectHideFlags: 0
@@ -66343,7 +67000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3468686249737713399, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66428,6 +67085,10 @@ PrefabInstance:
     - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3468686249737713403, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5548f73c4e6204d98e2228e3c6c5e5, type: 3}
@@ -66590,7 +67251,7 @@ Transform:
   m_Children:
   - {fileID: 472738103}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416272042
 GameObject:
@@ -68172,7 +68833,7 @@ Camera:
   field of view: 60
   orthographic: 1
   orthographic size: 6
-  m_Depth: -1
+  m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -68255,9 +68916,9 @@ MonoBehaviour:
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 255
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -68591,7 +69252,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691100207
 GameObject:
@@ -68850,7 +69511,7 @@ Transform:
   - {fileID: 91201989}
   - {fileID: 559548179}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1813734425
 PrefabInstance:
@@ -68865,7 +69526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7862926332448791126, guid: b59c7b6a3a9023749b22e8941e534add, type: 3}
       propertyPath: m_LocalPosition.x
@@ -69229,8 +69890,9 @@ Transform:
   - {fileID: 1870360814}
   - {fileID: 1277415063}
   - {fileID: 665110414}
+  - {fileID: 1180863885}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964269696
 GameObject:

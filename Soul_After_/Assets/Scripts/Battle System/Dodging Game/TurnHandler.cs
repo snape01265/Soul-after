@@ -39,7 +39,6 @@ public class TurnHandler : MonoBehaviour
     {
         if (state == BattleState.Start)
         {
-            playerHealth.GetComponent<PlayerHealth>().levelClear = false;
             phaseCount += 1;
             state = BattleState.PlayerTurn;
         }

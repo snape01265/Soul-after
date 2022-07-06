@@ -11,18 +11,7 @@ public class SceneTransition : MonoBehaviour
     public VectorValue playerStorage;
     public GameObject fadeOutPanel;
     public float fadeWait;
-    public StringValue lastScene;
     public AudioSource _audio;
-    public Text sceneName;
-
-    void Awake()
-    {
-        if (sceneName != null)
-        {
-            var sn = sceneName.GetComponent<Animator>();
-            sn.SetBool("FadeShort", true);
-        }
-    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
