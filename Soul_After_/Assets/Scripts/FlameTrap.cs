@@ -11,6 +11,7 @@ public class FlameTrap : MonoBehaviour
     public float scale;
     public float BUFFER = .5f;
     public float CD = .5f;
+    public float LightSize = .1f;
 
     public Vector3 NormFire = new Vector3(1f, 1f, 1f);
     public Vector3 SmolFire = new Vector3(.1f, .1f, .1f);
@@ -109,7 +110,7 @@ public class FlameTrap : MonoBehaviour
 
     public void Shrink()
     {
-        lightComp.pointLightOuterRadius = .1f;
+        lightComp.pointLightOuterRadius = LightSize;
         transform.localScale = SmolFire;
     }
 
