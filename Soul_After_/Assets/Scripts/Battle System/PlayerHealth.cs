@@ -57,32 +57,35 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        PainState = true;
-        int oldhp = (int)CurHP.initialValue;
-        if (ShieldEnabled && !ShieldBroken && !ShieldCD)
+        if (!PainState)
         {
-            ShieldBroken = true;
-            ShieldCD = true;
-            StartCoroutine(FlipAfter(CD));
-        }
-        else
-        {
-            CurHP.initialValue -= dmg;
-            RenderHp(oldhp, (int)CurHP.initialValue);
-        }
+            PainState = true;
+            int oldhp = (int)CurHP.initialValue;
+            if (ShieldEnabled && !ShieldBroken && !ShieldCD)
+            {
+                ShieldBroken = true;
+                ShieldCD = true;
+                StartCoroutine(FlipAfter(CD));
+            }
+            else
+            {
+                CurHP.initialValue -= dmg;
+                RenderHp(oldhp, (int)CurHP.initialValue);
+            }
 
-        if ((int) CurHP.initialValue <= 0)
-        {
-            StopAllCoroutines();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CancelControl();
-            PlayableDirector deathTimeline = GameObject.Find("Gameover").GetComponent<PlayableDirector>();
-            deathTimeline.Play();
-            mySprite.color = regularColor;
-        }
-        else if (currentIFrame == null)
-        {
-            StartCoroutine(IFrame());
-            currentIFrame = IFrame();
+            if ((int)CurHP.initialValue <= 0)
+            {
+                StopAllCoroutines();
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().CancelControl();
+                PlayableDirector deathTimeline = GameObject.Find("Gameover").GetComponent<PlayableDirector>();
+                deathTimeline.Play();
+                mySprite.color = regularColor;
+            }
+            else if (currentIFrame == null)
+            {
+                StartCoroutine(IFrame());
+                currentIFrame = IFrame();
+            }
         }
     }
 
