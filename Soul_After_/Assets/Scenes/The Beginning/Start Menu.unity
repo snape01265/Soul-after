@@ -5721,6 +5721,50 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1130523086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130523088}
+  - component: {fileID: 1130523087}
+  m_Layer: 0
+  m_Name: RestoreHP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1130523087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130523086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 011ffa55d8744484890f395e3a04a9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 11400000, guid: 783729e50df2e1d40abf231f4e940080, type: 2}
+--- !u!4 &1130523088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130523086}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1136683244
 GameObject:
   m_ObjectHideFlags: 0
@@ -6652,6 +6696,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1130523087}
+        m_TargetAssemblyTypeName: RestoreHP, Assembly-CSharp
+        m_MethodName: RefillHP
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1801798906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7428,6 +7484,90 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1130523087}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: RefillHP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: RestoreHP, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953308363440321, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1130523087}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: RefillHP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: RestoreHP, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953309944332273, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1130523087}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: RefillHP
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: RestoreHP, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500953310199364655, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5266944612154710856, guid: 6ec2b89787d9da04691e710fd9f1c383, type: 3}
       propertyPath: m_RootOrder
       value: 8
