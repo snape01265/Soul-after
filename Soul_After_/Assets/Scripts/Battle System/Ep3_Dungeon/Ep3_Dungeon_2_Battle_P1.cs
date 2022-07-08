@@ -85,7 +85,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
     }
 	public void EnableHitbox()
 	{
-		col.enabled = false;
+		col.enabled = true;
 	}
 
 	public void ResetAnimation()
