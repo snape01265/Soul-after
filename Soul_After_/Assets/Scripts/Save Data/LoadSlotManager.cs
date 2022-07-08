@@ -14,11 +14,6 @@ public class LoadSlotManager : MonoBehaviour
         string defaultTimeMsg = "No Save";
         string prefix = "- ";
 
-        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text = prefix;
-
-
         for (int n = 0; n < 3; n++)
         {
             try
@@ -33,7 +28,7 @@ public class LoadSlotManager : MonoBehaviour
                     Array.Resize(ref results, results.Length - 1);
                     StringValue saveTime = ScriptableObject.CreateInstance(typeof(StringValue)) as StringValue;
                     JsonUtility.FromJsonOverwrite(results[curTimeIdx], saveTime);
-                    dateTimes.Add(saveTime.initialValue);
+                    dateTimes.Add(DateTime.Parse(saveTime.initialValue).ToString("yyyy년 MM월 dd일 HH:mm"));
                     file.Close();
                 }
                 else dateTimes.Add(defaultTimeMsg);
@@ -45,11 +40,9 @@ public class LoadSlotManager : MonoBehaviour
             }
         }
 
-        Debug.Log(dateTimes.Count);
-
-        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text += dateTimes[0];
-        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text += dateTimes[1];
-        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text += dateTimes[2];
+        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text = prefix + dateTimes[0];
+        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text = prefix + dateTimes[1];
+        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text = prefix + dateTimes[2];
     }
 
     public void LoadInSlot(int slotNo)
@@ -60,7 +53,5 @@ public class LoadSlotManager : MonoBehaviour
             Debug.Log("로드 성공!");
         else
             Debug.Log("로드 실패!");
-
-        //GameObject.Find("SaveLoader").GetComponent<SaveLoader>().LoadNextScene();
     }
 }

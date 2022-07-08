@@ -8,19 +8,16 @@ using UnityEngine.UI;
 public class SaveSlotManager : MonoBehaviour
 {
     public StringValue curTime;
+    private readonly string prefix = "- ";
 
     private void OnEnable()
     {
         List<string> dateTimes = new List<string>();
         int curTimeIdx = 17;
         string defaultTimeMsg = "No Save";
-        string prefix = "- ";
+        
 
         GameObject.Find("Player").GetComponent<Player>().ispaused = true;
-        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = prefix;
-        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = prefix;
-
 
         for (int n = 0; n < 3; n++)
         {
@@ -36,7 +33,7 @@ public class SaveSlotManager : MonoBehaviour
                     Array.Resize(ref results, results.Length - 1);
                     StringValue saveTime = ScriptableObject.CreateInstance(typeof(StringValue)) as StringValue;
                     JsonUtility.FromJsonOverwrite(results[curTimeIdx], saveTime);
-                    dateTimes.Add(saveTime.initialValue);
+                    dateTimes.Add(DateTime.Parse(saveTime.initialValue).ToString("yyyy년 MM월 dd일 HH:mm"));
                     file.Close();
                 }
                 else dateTimes.Add(defaultTimeMsg);
@@ -48,11 +45,9 @@ public class SaveSlotManager : MonoBehaviour
             }
         }
 
-        Debug.Log(dateTimes.Count);
-
-        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text += dateTimes[0];
-        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text += dateTimes[1];
-        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text += dateTimes[2];
+        this.transform.Find("Background/Save Slot/Slot 1/DateTime").GetComponent<Text>().text = prefix + dateTimes[0];
+        this.transform.Find("Background/Save Slot/Slot 2/DateTime").GetComponent<Text>().text = prefix + dateTimes[1];
+        this.transform.Find("Background/Save Slot/Slot 3/DateTime").GetComponent<Text>().text = prefix + dateTimes[2];
     }
 
     public void SaveInSlot(int slotNo)
@@ -63,10 +58,8 @@ public class SaveSlotManager : MonoBehaviour
 
         if (result)
         {
-            Debug.Log("저장 성공!");
             string loc = string.Format("Background/Save Slot/Slot {0}/DateTime", (slotNo + 1).ToString());
-            Debug.Log(loc);
-            this.transform.Find(loc).GetComponent<Text>().text = curTime.initialValue;
+            this.transform.Find(loc).GetComponent<Text>().text = prefix + DateTime.Parse(curTime.initialValue).ToString("yyyy년 MM월 dd일 HH:mm");
             gameObject.transform.Find("Background/Save Slot/Save Comp").gameObject.SetActive(true);
             gameObject.GetComponent<AudioSource>().Play();
         }
