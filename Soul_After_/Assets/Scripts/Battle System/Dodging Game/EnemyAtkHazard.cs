@@ -12,15 +12,7 @@ public class EnemyAtkHazard : MonoBehaviour
         if (other.GetComponent<PlayerHealth>() && !other.GetComponent<PlayerHealth>().PainState)
         {
             health = other.GetComponent<PlayerHealth>();
-            health.PainState = true;
             health.TakeDamage(damage);
-            StartCoroutine(WaitForDmg());
         }
-    }
-
-    private IEnumerator WaitForDmg()
-    {
-        yield return new WaitForSeconds(.5f);
-        health.PainState = false;
     }
 }

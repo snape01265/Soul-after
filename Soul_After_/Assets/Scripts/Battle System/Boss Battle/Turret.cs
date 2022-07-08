@@ -54,6 +54,7 @@ public class Turret : MonoBehaviour
         }
         if (onTurret)
         {
+            transform.Find("UI_Key_F").gameObject.SetActive(false);
             if (Input.GetKeyDown(KeyCode.Space) && !cooldown)
             {
                 if (sfx)
@@ -74,7 +75,7 @@ public class Turret : MonoBehaviour
             currentRotation.z = (currentRotation.z > 180) ? currentRotation.z - 360 : currentRotation.z;
             currentRotation.z = Mathf.Clamp(currentRotation.z, minRotation, maxRotation);
             transform.localRotation = Quaternion.Euler(currentRotation);
-        }
+        } 
     }
     private void FireBullet()
     {
@@ -90,12 +91,14 @@ public class Turret : MonoBehaviour
             onTurret = false;
         }
         transform.rotation = originalRotation;
+        transform.Find("UI_Key_F").gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            transform.Find("UI_Key_F").gameObject.SetActive(true);
         }
     }
     private void OnTriggerExit2D(Collider2D other)
@@ -103,6 +106,7 @@ public class Turret : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            transform.Find("UI_Key_F").gameObject.SetActive(false);
         }
     }
 
