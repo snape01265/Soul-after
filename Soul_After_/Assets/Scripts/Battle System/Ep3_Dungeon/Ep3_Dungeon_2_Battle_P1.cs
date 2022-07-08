@@ -11,6 +11,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	public UnityEvent ActionOnWaypoint;
 	public AudioSource sfx;
 
+	private Collider2D col;
 	private Animator anim;
 	private Waypoint currentWaypoint;
 	private int currentIndex = 0;
@@ -18,6 +19,7 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
 	private bool trigger = false;
 	void Start()
 	{
+		col = GetComponent<BoxCollider2D>();
 		anim = GetComponent<Animator>();
 		if (wayPoints.Length > 0)
 		{
@@ -77,6 +79,15 @@ public class Ep3_Dungeon_2_Battle_P1 : MonoBehaviour
     {
 		trigger = true;
 	}
+	public void DisableHitbox()
+    {
+		col.enabled = false;
+    }
+	public void EnableHitbox()
+	{
+		col.enabled = true;
+	}
+
 	public void ResetAnimation()
     {
 		anim.SetBool("Moving", false);
