@@ -5,13 +5,14 @@ using UnityEngine;
 public class NpcController : MonoBehaviour
 {
     public float moveSpeed;
-    public bool isWalking;
     public float walkTime;
     public float waitTime;
     public bool canMove;
+    [HideInInspector]
     public Collider2D walkZone;
 
     private Transform player;
+    private bool isWalking;
     private Vector3 directionVector;
     private int walkDirection;
     private float walkCounter;
@@ -27,6 +28,7 @@ public class NpcController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myTransform = GetComponent<Transform>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        walkCounter = walkTime;
         ChooseDirection();
     }
 
@@ -43,6 +45,7 @@ public class NpcController : MonoBehaviour
                 {
                     isWalking = false;
                     waitCounter = waitTime;
+                    walkCounter = walkTime;
                     anim.SetBool("Moving", false);
                 }
             }
@@ -77,25 +80,21 @@ public class NpcController : MonoBehaviour
         {
             case 0:
                 isWalking = true;
-                walkCounter = walkTime;
                 anim.SetBool("Moving", false);
                 directionVector = Vector3.up;
                 break;
             case 1:
                 isWalking = true;
-                walkCounter = walkTime;
                 anim.SetBool("Moving", false);
                 directionVector = Vector3.down;
                 break;
             case 2:
                 isWalking = true;
-                walkCounter = walkTime;
                 anim.SetBool("Moving", false);
                 directionVector = Vector3.left;
                 break;
             case 3:
                 isWalking = true;
-                walkCounter = walkTime;
                 anim.SetBool("Moving", false);
                 directionVector = Vector3.right;
                 break;
