@@ -4,7 +4,6 @@ using UnityEngine;
 //특정 바운더리에서 NPC를 움직이게 하는 스크립트
 public class NpcController : MonoBehaviour
 {
-    public Transform target;
     public float moveSpeed;
     public bool isWalking;
     public float walkTime;
@@ -12,28 +11,23 @@ public class NpcController : MonoBehaviour
     public bool canMove;
     public Collider2D walkZone;
 
-    private Vector2 minWalkPoint;
-    private Vector2 maxWalkPoint;
-    private bool hasWalkZone;
-    private Rigidbody2D myRigidbody;
+    private Transform player;
+    private Vector3 directionVector;
+    private int walkDirection;
     private float walkCounter;
-    private int WalkDirection;
     private float waitCounter;
+
+    private Rigidbody2D myRigidbody;
+    private Transform myTransform;
     private Animator anim;
 
     void Start()
     {
         anim = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
-        waitCounter = waitTime;
-        walkCounter = walkTime;
+        myTransform = GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         ChooseDirection();
-        if (walkZone != null)
-        {
-            minWalkPoint = walkZone.bounds.min;
-            maxWalkPoint = walkZone.bounds.max;
-            hasWalkZone = true;
-        }
     }
 
     void Update()
@@ -43,57 +37,7 @@ public class NpcController : MonoBehaviour
             if (isWalking)
             {
                 walkCounter -= Time.deltaTime;
-                switch (WalkDirection)
-                {
-                    case 0:
-                        if (hasWalkZone && transform.position.y > maxWalkPoint.y)
-                        {
-                            isWalking = false;
-                            waitCounter = waitTime;
-                            anim.SetBool("Moving", false);
-                        }
-                        else
-                        {
-                            myRigidbody.velocity = new Vector2(0, moveSpeed);
-                        }
-                        break;
-                    case 1:
-                        if (hasWalkZone && transform.position.x > maxWalkPoint.x)
-                        {
-                            isWalking = false;
-                            waitCounter = waitTime;
-                            anim.SetBool("Moving", false);
-                        }
-                        else
-                        {
-                            myRigidbody.velocity = new Vector2(moveSpeed, 0);
-                        }
-                        break;
-                    case 2:
-                        if (hasWalkZone && transform.position.y < maxWalkPoint.y)
-                        {
-                            isWalking = false;
-                            waitCounter = waitTime;
-                            anim.SetBool("Moving", false);
-                        }
-                        else
-                        {
-                            myRigidbody.velocity = new Vector2(0, -moveSpeed);
-                        }
-                        break;
-                    case 3:
-                        if (hasWalkZone && transform.position.x < maxWalkPoint.x)
-                        {
-                            isWalking = false;
-                            waitCounter = waitTime;
-                            anim.SetBool("Moving", false);
-                        }
-                        else
-                        {
-                            myRigidbody.velocity = new Vector2(-moveSpeed, 0);
-                        }
-                        break;
-                }
+                Move();
                 UpdateAnimation();
                 if (walkCounter < 0)
                 {
@@ -104,7 +48,6 @@ public class NpcController : MonoBehaviour
             }
             else
             {
-                anim.SetBool("Moving", false);
                 waitCounter -= Time.deltaTime;
                 myRigidbody.velocity = Vector2.zero;
                 if (waitCounter < 0)
@@ -115,22 +58,61 @@ public class NpcController : MonoBehaviour
         }
     }
 
+    public void Move()
+    {
+        Vector3 temp = myTransform.position + directionVector * moveSpeed * Time.deltaTime;
+        if (walkZone.bounds.Contains(temp))
+        {
+            myRigidbody.MovePosition(temp);
+        }
+        else
+        {
+            ChooseDirection();
+        }
+    }
     public void ChooseDirection()
     {
-        WalkDirection = Random.Range(0, 4);
-        isWalking = true;
-        walkCounter = walkTime;
+        walkDirection = Random.Range(0, 4);
+        switch(walkDirection)
+        {
+            case 0:
+                isWalking = true;
+                walkCounter = walkTime;
+                anim.SetBool("Moving", false);
+                directionVector = Vector3.up;
+                break;
+            case 1:
+                isWalking = true;
+                walkCounter = walkTime;
+                anim.SetBool("Moving", false);
+                directionVector = Vector3.down;
+                break;
+            case 2:
+                isWalking = true;
+                walkCounter = walkTime;
+                anim.SetBool("Moving", false);
+                directionVector = Vector3.left;
+                break;
+            case 3:
+                isWalking = true;
+                walkCounter = walkTime;
+                anim.SetBool("Moving", false);
+                directionVector = Vector3.right;
+                break;
+            default:
+                break;
+        }
     }
     void UpdateAnimation()
     {
-        anim.SetFloat("Move X", myRigidbody.velocity.x);
-        anim.SetFloat("Move Y", myRigidbody.velocity.y);
+        anim.SetFloat("Move_X", directionVector.x);
+        anim.SetFloat("Move_Y", directionVector.y);
         anim.SetBool("Moving", true);
     }
     void UpdateAnimationIdle(Vector3 vector)
     {
-        anim.SetFloat("Move X", vector.x);
-        anim.SetFloat("Move Y", vector.y);
+        anim.SetFloat("Move_X", vector.x);
+        anim.SetFloat("Move_Y", vector.y);
         anim.SetBool("Moving", false);
     }
     public void StopMovement()
@@ -145,14 +127,14 @@ public class NpcController : MonoBehaviour
     }
     public void LookInDirection()
     {
-        Vector3 vector = target.position - transform.position;
+        Vector3 vector = player.position - transform.position;
 
-        if (vector.x > 0 && Mathf.Abs(vector.y) < 1.5)
+        if (vector.x > 0 && Mathf.Abs(vector.y) < 1)
         {
             //right
             UpdateAnimationIdle(vector);
         }
-        else if (vector.x < 0 && Mathf.Abs(vector.y) < 1.5)
+        else if (vector.x < 0 && Mathf.Abs(vector.y) < 1)
         {
             //left
             UpdateAnimationIdle(vector);
@@ -169,3 +151,4 @@ public class NpcController : MonoBehaviour
         }
     }
 }
+
