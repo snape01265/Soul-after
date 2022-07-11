@@ -10,6 +10,7 @@ public class SpikeTrap : MonoBehaviour
     public float scale;
     public AudioSource SpikeSFX;
 
+    public float CD = .5f;
     private readonly float BUFFER = .5f;
     private readonly float ANIMDUR = .5f;
 
@@ -55,19 +56,20 @@ public class SpikeTrap : MonoBehaviour
 
     IEnumerator BlinkPatternOdd(float sec)
     {
+        yield return new WaitForSeconds(CD);
         while (true)
         {
+            yield return new WaitForSeconds(BUFFER);
+            Collider2D.enabled = true;
             yield return new WaitForSeconds(sec - BUFFER - ANIMDUR * 2);
+            Animator.SetBool("Up", false);
+            yield return new WaitForSeconds(ANIMDUR);
+            Collider2D.enabled = false;
+            yield return new WaitForSeconds(sec + CD * 2);
             Animator.SetBool("Up", true);
             if (SpikeSFX)
                 SpikeSFX.Play();
             yield return new WaitForSeconds(ANIMDUR);
-            Collider2D.enabled = true;
-            yield return new WaitForSeconds(BUFFER);
-            Animator.SetBool("Up", false);
-            yield return new WaitForSeconds(ANIMDUR);
-            Collider2D.enabled = false;
-            yield return new WaitForSeconds(sec);
         }
     }
 
@@ -75,17 +77,17 @@ public class SpikeTrap : MonoBehaviour
     {
         while (true)
         {
-            if (SpikeSFX)
-                SpikeSFX.Play();
             Animator.SetBool("Up", false);
             yield return new WaitForSeconds(ANIMDUR);
             Collider2D.enabled = false;
-            yield return new WaitForSeconds(sec);
-            yield return new WaitForSeconds(sec - BUFFER - ANIMDUR * 2);
+            yield return new WaitForSeconds(sec + CD * 2);
             Animator.SetBool("Up", true);
+            if (SpikeSFX)
+                SpikeSFX.Play();
             yield return new WaitForSeconds(ANIMDUR);
-            Collider2D.enabled = true;
             yield return new WaitForSeconds(BUFFER);
+            Collider2D.enabled = true;
+            yield return new WaitForSeconds(sec - BUFFER - ANIMDUR * 2);
         }
     }
 }
