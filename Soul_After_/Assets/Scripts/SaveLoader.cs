@@ -15,7 +15,11 @@ public class SaveLoader : MonoBehaviour
     public void LoadNextScene()
     {
         Time.timeScale = 1f;
-        StartCoroutine(FadeCo()); 
+        StartCoroutine(FadeCo());
+        if (GameObject.Find("Music Player").GetComponent<MusicPlayer>() != null)
+        {
+            GameObject.Find("Music Player").GetComponent<MusicPlayer>().UpdateMusic(lastScene.initialValue);
+        }
     }
 
     public IEnumerator FadeCo()
