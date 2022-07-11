@@ -46,7 +46,6 @@ public class ChasemazePuzzleManager : MonoBehaviour
         {
             haz.isMoving = true;
         }
-        ChaseCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = CamshakeStrength;
     }
 
     public void EndPuzzle()
@@ -75,5 +74,10 @@ public class ChasemazePuzzleManager : MonoBehaviour
         ChaseCam.enabled = false;
         Player.transform.position = HubPos.position;
         yield return null;
+    }
+
+    public void ShakeCamera()
+    {
+        ChaseCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = CamshakeStrength;
     }
 }
