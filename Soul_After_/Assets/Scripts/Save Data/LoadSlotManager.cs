@@ -40,9 +40,12 @@ public class LoadSlotManager : MonoBehaviour
             }
         }
 
-        this.transform.Find("Background/LoadSlot/Slot_1/DateTime").GetComponent<Text>().text = prefix + dateTimes[0];
-        this.transform.Find("Background/LoadSlot/Slot_2/DateTime").GetComponent<Text>().text = prefix + dateTimes[1];
-        this.transform.Find("Background/LoadSlot/Slot_3/DateTime").GetComponent<Text>().text = prefix + dateTimes[2];
+        for (int i = 0; i < 3; i++)
+        {
+            if (dateTimes[i] == defaultTimeMsg)
+                transform.Find($"Background/LoadSlot/Slot_{i+1}").GetComponent<Button>().interactable = false;
+            this.transform.Find($"Background/LoadSlot/Slot_{i+1}/DateTime").GetComponent<Text>().text = prefix + dateTimes[i];
+        }
     }
 
     public void LoadInSlot(int slotNo)
