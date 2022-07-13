@@ -23,13 +23,13 @@ public class GameManager : MonoBehaviour
     public float noteTime;
     public float noteSpawnY;
     public float noteTapY;
-    [HideInInspector]
+    //[HideInInspector]
     public double perfectMarginOfError;
-    [HideInInspector]
+    //[HideInInspector]
     public double goodMarginOfError;
-    [HideInInspector]
+    //[HideInInspector]
     public double badMarginOfError;
-    [HideInInspector]
+    //[HideInInspector]
     public double missMarginOfError;
     [HideInInspector]
     public ScoreManager scoreManager;

@@ -49,7 +49,7 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
-        scoreText.text = currentScore.ToString();
+        scoreText.text = "Score\n" + currentScore.ToString() + "\nx" + currentMultiplier.ToString();
         if (count == bgChangeCount && !bgChange)
         {
             gameManager.ChangeBG();
@@ -116,7 +116,7 @@ public class ScoreManager : MonoBehaviour
             {
                 maxComboCount = comboScore;
             }
-            if (multiplierThresholds[currentMultiplier - 1] <= comboScore)
+            if (multiplierThresholds[currentMultiplier - 1] <= comboScore - 1)
             {
                 currentMultiplier++;
             }
