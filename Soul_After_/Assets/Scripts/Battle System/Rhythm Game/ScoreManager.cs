@@ -8,15 +8,21 @@ using UnityEngine.Playables;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    public float bgChangeCount;
     public TMPro.TextMeshPro comboText;
     public TMPro.TextMeshPro scoreText;
     public int[] multiplierThresholdsContainer;
     [HideInInspector]
+    public float bgChangeCount;
+    [HideInInspector]
     public GameManager gameManager;
+    [HideInInspector]
     public GameObject resultScreen;
+    [HideInInspector]
     public SceneTransition sceneTransition;
+    [HideInInspector]
     public PlayableDirector gameover;
+    //[HideInInspector]
+    public Animator textAnimation;
     [HideInInspector]
     public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
 
@@ -43,7 +49,6 @@ public class ScoreManager : MonoBehaviour
     }
     void Update()
     {
-        comboText.text = "Combos " + comboScore.ToString();
         scoreText.text = currentScore.ToString();
         if (count == bgChangeCount && !bgChange)
         {
@@ -80,18 +85,25 @@ public class ScoreManager : MonoBehaviour
     }
     public static void PerfectHit()
     {
+        ScoreManager scoreManager = new ScoreManager();
+        scoreManager.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
+        scoreManager.comboText.text = comboScore.ToString() + "\nPerfect";
         currentScore += perfectNoteValue * currentMultiplier;
         perfectNoteCount += 1;
         NoteHit();
     }
     public static void GoodHit()
     {
+        ScoreManager scoreManager = new ScoreManager();
+        scoreManager.comboText.text = comboScore.ToString() + "\nGood";
         currentScore += goodNoteValue * currentMultiplier;
         goodNoteCount += 1;
         NoteHit();
     }
     public static void BadHit()
     {
+        ScoreManager scoreManager = new ScoreManager();
+        scoreManager.comboText.text = comboScore.ToString() + "\nBad";
         currentScore += badNoteValue * currentMultiplier;
         badNoteCount += 1;
         NoteHit();
@@ -110,6 +122,8 @@ public class ScoreManager : MonoBehaviour
                 currentMultiplier++;
             }
         }
+        ScoreManager scoreManager = new ScoreManager();
+        scoreManager.comboAnimation();
         count += 1;
     }
     public static void Miss()
@@ -118,6 +132,10 @@ public class ScoreManager : MonoBehaviour
         currentMultiplier = 1;
         missCount += 1;
         count += 1;
+    }
+    public void comboAnimation()
+    {
+        textAnimation.SetTrigger("Hit");
     }
     public void EndTrack()
     {

@@ -6830,6 +6830,7 @@ GameObject:
   - component: {fileID: 318786501}
   - component: {fileID: 318786503}
   - component: {fileID: 318786502}
+  - component: {fileID: 318786504}
   m_Layer: 0
   m_Name: ComboCounter
   m_TagString: Untagged
@@ -6853,8 +6854,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.5, y: 4}
-  m_SizeDelta: {x: 5, y: 3}
+  m_AnchoredPosition: {x: 0.05, y: -2}
+  m_SizeDelta: {x: 10, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &318786502
 MonoBehaviour:
@@ -6876,19 +6877,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
+  m_text: '50
 
-'
+    PERFECT'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aac932e7fe5e1ad488119841f47aaa66, type: 2}
-  m_sharedMaterial: {fileID: 5877053830609427171, guid: aac932e7fe5e1ad488119841f47aaa66, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f13b39aa7d626f489d06b097e5f1221, type: 2}
+  m_sharedMaterial: {fileID: -4472555884829555362, guid: 4f13b39aa7d626f489d06b097e5f1221, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6905,15 +6906,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
-  m_fontSizeBase: 11
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6969,7 +6970,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5877053830609427171, guid: aac932e7fe5e1ad488119841f47aaa66, type: 2}
+  - {fileID: -4472555884829555362, guid: 4f13b39aa7d626f489d06b097e5f1221, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6991,6 +6992,25 @@ MeshRenderer:
   m_SortingLayer: 12
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &318786504
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318786500}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aca44672040e65049b7583e5f8a4e767, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &322766674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 984245912559819521, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
@@ -9844,10 +9864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9549c4b277c44d24899acc61b0483291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgChangeCount: 115
-  comboText: {fileID: 318786502}
   scoreText: {fileID: 765396742}
   multiplierThresholdsContainer: 320000006400000096000000c8000000fa0000002c0100005e01000090010000c2010000f4010000
+  bgChangeCount: 115
   gameManager: {fileID: 1836294360}
   resultScreen: {fileID: 412252036}
   sceneTransition: {fileID: 1815148554}
@@ -10209,7 +10228,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050791412182873025, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412182873025, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412182875615, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050791412182939433, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
@@ -13960,7 +13987,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -13990,7 +14017,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -14273,16 +14300,16 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 8
     m_Data: {fileID: -64898776373625483, guid: 5c7193d1f91beb3448924adafed0e415, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: -1535460398215270255, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
+    m_Data: {fileID: 3280235342217261273, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1688388452655382417, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 3280235342217261273, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+    m_Data: {fileID: -1535460398215270255, guid: 0c02822eefa5c4945a7a56b46b7b2302, type: 3}
   - m_RefCount: 24
     m_Data: {fileID: 6218866321790281054, guid: 5c7193d1f91beb3448924adafed0e415, type: 3}
   - m_RefCount: 1
@@ -18578,9 +18605,9 @@ MonoBehaviour:
   noteTime: 3
   noteSpawnY: 9
   noteTapY: -14
-  perfectMarginOfError: 0.1
-  goodMarginOfError: 0.15
-  badMarginOfError: 0.2
+  perfectMarginOfError: 0.075
+  goodMarginOfError: 0.1125
+  badMarginOfError: 0.15
   missMarginOfError: 0
   scoreManager: {fileID: 1028890045}
   isMinigame: 0
