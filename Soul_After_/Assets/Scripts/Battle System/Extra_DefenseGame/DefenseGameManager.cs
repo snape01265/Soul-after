@@ -81,12 +81,17 @@ public class DefenseGameManager : MonoBehaviour
     private float spawnRate;
     private int simulSpawn;
     private int MobCount = 0;
-    [NonSerialized]
-    public int curMob = 0;
+    private int curMob = 0;
+    private int genCount;
     private float spawnRateSimulDecre = 1; //Spawning multiplier lengthened for every Simul spawn
     private readonly int SPAWNRATEDECINCRE = 2; //Spawning multiplier applied for every x(3) stages 
     private readonly int[] SIMULSPAWNINCINCRE = { 5, 10, 20, 30 }; //Simultaneous spawn triggered every round in array
     private readonly int CLEARTXTBUFFERTIME = 1;
+
+    private void Start()
+    {
+        genCount = MobGens.Length;
+    }
 
     private void FixedUpdate()
     {
@@ -95,20 +100,27 @@ public class DefenseGameManager : MonoBehaviour
             if (isSpawnable && curMob < MobCount)
             {
                 isSpawnable = false;
-                if (simulSpawn <= MobGens.Length)
+                if (simulSpawn <= genCount)
                 {
                     for (int i = 0; i < simulSpawn; i++)
                     {
-                        curMob++;
-                        MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
+                        if (curMob < MobCount)
+                        {
+                            curMob++;
+                            MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
+                        }
+                        else return;
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < MobGens.Length; i++)
+                    for (int i = 0; i < genCount; i++)
                     {
-                        curMob++;
-                        MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
+                        if (curMob < MobCount)
+                        {
+                            curMob++;
+                            MobGens[i].Invoke("SpawnMob", UnityEngine.Random.value * spawnRate);
+                        }else return;
                     }
                 }
             }
