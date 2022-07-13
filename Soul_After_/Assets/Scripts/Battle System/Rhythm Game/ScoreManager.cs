@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     static int maxComboCount;
     static int count;
     static int currentScore;
-    static int comboScore;
+    static int comboScore = 1;
     static int[] multiplierThresholds;
     static int currentMultiplier = 1;
     static int badNoteValue = 50;
@@ -73,7 +73,7 @@ public class ScoreManager : MonoBehaviour
             }
             bgChange = false;
             currentScore = 0;
-            comboScore = 0;
+            comboScore = 1;
             count = 0;
             maxComboCount = 0;
             perfectNoteCount = 0;
@@ -85,25 +85,24 @@ public class ScoreManager : MonoBehaviour
     }
     public static void PerfectHit()
     {
-        ScoreManager scoreManager = new ScoreManager();
-        scoreManager.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
-        scoreManager.comboText.text = comboScore.ToString() + "\nPerfect";
+        instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
+        instance.comboText.text = comboScore.ToString() + "\nPerfect";
         currentScore += perfectNoteValue * currentMultiplier;
         perfectNoteCount += 1;
         NoteHit();
     }
     public static void GoodHit()
     {
-        ScoreManager scoreManager = new ScoreManager();
-        scoreManager.comboText.text = comboScore.ToString() + "\nGood";
+        instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
+        instance.comboText.text = comboScore.ToString() + "\nGood";
         currentScore += goodNoteValue * currentMultiplier;
         goodNoteCount += 1;
         NoteHit();
     }
     public static void BadHit()
     {
-        ScoreManager scoreManager = new ScoreManager();
-        scoreManager.comboText.text = comboScore.ToString() + "\nBad";
+        instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
+        instance.comboText.text = comboScore.ToString() + "\nBad";
         currentScore += badNoteValue * currentMultiplier;
         badNoteCount += 1;
         NoteHit();
@@ -122,20 +121,20 @@ public class ScoreManager : MonoBehaviour
                 currentMultiplier++;
             }
         }
-        ScoreManager scoreManager = new ScoreManager();
-        scoreManager.comboAnimation();
+        comboAnimation();
         count += 1;
     }
     public static void Miss()
     {
-        comboScore = 0; 
+        comboScore = 1; 
         currentMultiplier = 1;
         missCount += 1;
         count += 1;
     }
-    public void comboAnimation()
+    public static void comboAnimation()
     {
-        textAnimation.SetTrigger("Hit");
+        instance.textAnimation = GameObject.Find("ComboCounter").GetComponent<Animator>();
+        instance.textAnimation.SetTrigger("Hit");
     }
     public void EndTrack()
     {
