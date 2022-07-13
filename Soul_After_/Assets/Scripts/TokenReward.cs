@@ -89,17 +89,13 @@ public class TokenReward : MonoBehaviour
                 reward = 3;
                 TokenUIChange();
             }
-            else
-            {
-                Debug.Log("No reward for not clearing classic mode.");
-            }
             DialogueLua.SetVariable("DefenseGame.ClassicModeClear", false);
         }
         else
         {
             int WaveCount = DialogueLua.GetVariable("DefenseGame.WaveCount").asInt;
             // fix the denominator when needed
-            tokenRenderer.Token.initialValue += WaveCount / 7;
+            tokenRenderer.Token.initialValue += WaveCount / 6;
             tokenRenderer.TokenNo.text = "X " + tokenRenderer.Token.initialValue.ToString();
             tokenRenderer.BounceToken();
             TokenSFX.Play();
