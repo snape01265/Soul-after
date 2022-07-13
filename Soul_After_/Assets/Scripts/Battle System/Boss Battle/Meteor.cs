@@ -16,7 +16,7 @@ public class Meteor : MonoBehaviour
 	{
 		startPos = transform.position;
 		Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-		targetPos = new Vector3(Random.Range(playerPos.x - 2, playerPos.x + 2), Random.Range(playerPos.y - 2, playerPos.y + 2), playerPos.z);
+		targetPos = new Vector3(Random.Range(playerPos.x - 1.5f, playerPos.x + 1.5f), Random.Range(playerPos.y - 1.5f, playerPos.y + 1.5f), playerPos.z);
 		speed = speed * Mathf.Abs(startPos.x - targetPos.x);
 	}
     void FixedUpdate()
