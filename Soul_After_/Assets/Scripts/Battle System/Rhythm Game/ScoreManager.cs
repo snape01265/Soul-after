@@ -21,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     public SceneTransition sceneTransition;
     [HideInInspector]
     public PlayableDirector gameover;
-    //[HideInInspector]
+    [HideInInspector]
     public Animator textAnimation;
     [HideInInspector]
     public Text accuracyText, badText, goodText, perfectText, missText, rankText, totalComboText, totalScoreText;
