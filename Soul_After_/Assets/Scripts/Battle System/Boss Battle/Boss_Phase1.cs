@@ -15,7 +15,7 @@ public class Boss_Phase1 : MonoBehaviour
 	public Boss boss;
 	[HideInInspector]
 	public Transform firePoint;
-	[HideInInspector]
+	//[HideInInspector]
 	public GameObject meteorPrefab;
 	[HideInInspector]
 	public GameObject bossObject;
