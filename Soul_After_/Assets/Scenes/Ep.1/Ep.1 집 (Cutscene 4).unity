@@ -1196,12 +1196,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -7008143553980312093, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
     value: {fileID: 464352731}
-  - key: {fileID: 7226626405741567493, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -8545709779017432160, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
     value: {fileID: 1836560520}
-  - key: {fileID: -7476886436120696954, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
-    value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: -2651177954819759014, guid: 9b3dbc7a78590344b95115c4846ed025, type: 2}
@@ -1745,8 +1741,9 @@ GameObject:
   m_Component:
   - component: {fileID: 464352733}
   - component: {fileID: 464352732}
+  - component: {fileID: 464352734}
   m_Layer: 0
-  m_Name: 'Music Player '
+  m_Name: Music Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1862,6 +1859,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &464352734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464352731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  fadeoutTime: 1
 --- !u!1 &517747845
 GameObject:
   m_ObjectHideFlags: 0
@@ -4263,7 +4274,15 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050791412182873025, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412182873025, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1050791412182875615, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050791412182939433, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
@@ -6261,6 +6280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836560522}
   - component: {fileID: 1836560521}
+  - component: {fileID: 1836560523}
   m_Layer: 0
   m_Name: Music Player 2
   m_TagString: Untagged
@@ -6378,6 +6398,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836560523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836560520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ccfd04eb228ae94eb37af90d122d763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgm: {fileID: 0}
+  fadeoutTime: 1
 --- !u!1 &1868267444
 GameObject:
   m_ObjectHideFlags: 0
@@ -7480,6 +7514,10 @@ PrefabInstance:
     - target: {fileID: 1175908067224162500, guid: 9d4df74b716690b4c99665c6cbe5e03f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175908067224162522, guid: 9d4df74b716690b4c99665c6cbe5e03f, type: 3}
+      propertyPath: duration
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1175908067224162523, guid: 9d4df74b716690b4c99665c6cbe5e03f, type: 3}
       propertyPath: m_Name
