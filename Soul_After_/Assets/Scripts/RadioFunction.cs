@@ -9,11 +9,6 @@ public class RadioFunction : MonoBehaviour
 
     private AudioSource AudioSource;
 
-    private void Awake()
-    {
-        SelectSong();
-    }
-
     public void SelectSong()
     {
         AudioSource = GetComponent<AudioSource>();
