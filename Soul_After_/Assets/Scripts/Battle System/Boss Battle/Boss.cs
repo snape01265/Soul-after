@@ -39,7 +39,12 @@ public class Boss : MonoBehaviour
         }
         if(phaseChange)
         {
-
+            StopAllCoroutines();
+            fade.FadeInOutStatic(fadeTime);
+            damaged = false;
+            turrets.SetActive(false);
+            StartCoroutine(EnableBoss());
+            phaseChange = false;
         }
     }
     public void Stun()
@@ -67,9 +72,15 @@ public class Boss : MonoBehaviour
 
         fade.FadeInOutStatic(fadeTime);
         damaged = false;
-        yield return new WaitForSeconds(fadeTime);
-        anim.SetBool("Stunned", false);
         turrets.SetActive(false);
+        yield return new WaitForSeconds(fadeTime + 0.5f);
+        anim.SetBool("Stunned", false);
+        bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
+    }
+    public IEnumerator EnableBoss()
+    {
+        yield return new WaitForSeconds(fadeTime + 0.5f);
+        anim.SetBool("Stunned", false);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
     }
 }

@@ -34,10 +34,12 @@ public class BossHP : MonoBehaviour
         if (currentHealth == 70)
         {
             anim.SetInteger("Phase", 2);
+            bossScript.phaseChange = true;
         }
         else if (currentHealth == 40)
         {
             anim.SetInteger("Phase", 3);
+            bossScript.phaseChange = true;
         }
         else if (currentHealth <= 0)
         {
@@ -45,10 +47,6 @@ public class BossHP : MonoBehaviour
             turret.SetActive(false);
             boss.SetActive(false);
             endScene.Play();
-        }
-        else
-        {
-            anim.SetInteger("Phase", 1);
         }
     }
 }
