@@ -25,15 +25,17 @@ public class BossHP : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Boss bossScript = boss.GetComponent<Boss>();
+
         if (sfx)
             sfx.Play();
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 70 && 40 < currentHealth)
+        if (currentHealth == 70)
         {
             anim.SetInteger("Phase", 2);
         }
-        else if (currentHealth <= 40 && 0 < currentHealth)
+        else if (currentHealth == 40)
         {
             anim.SetInteger("Phase", 3);
         }

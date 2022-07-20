@@ -13,6 +13,8 @@ public class Boss : MonoBehaviour
     public Animator anim;
     [HideInInspector]
     public bool cooldown = false;
+    [HideInInspector]
+    public bool phaseChange = false;
     public bool damaged;
     public float fadeTime;
     public AudioSource sfx;
@@ -35,6 +37,10 @@ public class Boss : MonoBehaviour
         {
             anim.SetBool("Vulnerable", false);
         }
+        if(phaseChange)
+        {
+
+        }
     }
     public void Stun()
     {
@@ -45,7 +51,7 @@ public class Boss : MonoBehaviour
             StartCoroutine(BossStun());
         }
     }
-    IEnumerator BossStun()
+    public IEnumerator BossStun()
     {
         anim.SetBool("Stunned", true);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
