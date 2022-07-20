@@ -6,7 +6,9 @@ using PixelCrushers.DialogueSystem;
 
 public class MarketFunction : MonoBehaviour
 {   
+    [HideInInspector]
     public string[] Items;
+    [HideInInspector]
     public Image[] IMAGE;
 
     private Color PanelColor = Color.white;
@@ -40,9 +42,9 @@ public class MarketFunction : MonoBehaviour
             if (DialogueLua.GetItemField(ItemNo, "State").asBool == false && DialogueLua.GetItemField(ItemNo, "Installed").asBool == false)
             {
                 DialogueLua.SetItemField(ItemNo, "State", true);
-                IMAGE[ItemID].color = Color.yellow;
+                DialogueLua.SetItemField(ItemNo, "Installed", true);
+                IMAGE[ItemID].color = Color.grey;
                 PanelColor = IMAGE[ItemID].color;
-                return;
             }
 
             foreach (string s in Items)
