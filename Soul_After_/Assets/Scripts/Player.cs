@@ -231,13 +231,26 @@ public class Player : MonoBehaviour
             Token.initialValue -= Items[ItemID].Price;
             tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
             tokenRenderer.BounceToken();
-            Debug.Log("You bought an item!");
         }
         else if (Token.initialValue <= 0 || Token.initialValue < Items[ItemID].Price)
         {
             //need a UI for this
             NoMoneyTab.SetActive(true);
-            Debug.Log("Not enough money!");
+        }
+    }
+
+    public void PayTokenForQuest()
+    {
+        if (Token.initialValue >= 5)
+        {
+            Token.initialValue -= 5;
+            tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
+            tokenRenderer.BounceToken();
+            DialogueLua.SetVariable("CampFire.TokenPaidToFox", true);
+        }
+        else
+        {
+            DialogueLua.SetVariable("CampFire.TokenPaidToFox", false);
         }
     }
 
