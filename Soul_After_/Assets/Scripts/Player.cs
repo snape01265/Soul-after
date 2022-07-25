@@ -254,6 +254,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void FoxGivesTokensBack()
+    {
+        Token.initialValue += 10;
+        tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
+        tokenRenderer.BounceToken();
+    }
+
     public void DisableCollider()
     {
         BoxCollider2D[] colliders = GetComponents<BoxCollider2D>();

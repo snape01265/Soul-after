@@ -11,4 +11,10 @@ public class GlobalLightControl : MonoBehaviour
         GlobalLight = GetComponent<Light2D>();
         GlobalLight.color = new Color(.4f, .4f, 1f);
     }
+
+    public void ResetAtmosphere()
+    {
+        GlobalLight = GetComponent<Light2D>();
+        GlobalLight.color = new Color(1f, 1f, 1f);
+    }
 }
