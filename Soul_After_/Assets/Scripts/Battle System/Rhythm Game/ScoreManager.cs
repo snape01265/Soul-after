@@ -87,6 +87,7 @@ public class ScoreManager : MonoBehaviour
     {
         instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
         instance.comboText.text = comboScore.ToString() + "\nPerfect";
+        instance.comboText.color = new Color(1f, 0.7960784f, 0.4470588f, 1);
         currentScore += perfectNoteValue * currentMultiplier;
         perfectNoteCount += 1;
         NoteHit();
@@ -95,6 +96,7 @@ public class ScoreManager : MonoBehaviour
     {
         instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
         instance.comboText.text = comboScore.ToString() + "\nGood";
+        instance.comboText.color = new Color(0.4705882f, 0.8862745f, 0.8862745f, 1);
         currentScore += goodNoteValue * currentMultiplier;
         goodNoteCount += 1;
         NoteHit();
@@ -103,6 +105,7 @@ public class ScoreManager : MonoBehaviour
     {
         instance.comboText = GameObject.Find("ComboCounter").GetComponent<TMPro.TextMeshPro>();
         instance.comboText.text = comboScore.ToString() + "\nBad";
+        instance.comboText.color = new Color(0.5882353f, 0.8862745f, 0.4705882f, 1);
         currentScore += badNoteValue * currentMultiplier;
         badNoteCount += 1;
         NoteHit();
