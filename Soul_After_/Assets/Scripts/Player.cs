@@ -245,6 +245,7 @@ public class Player : MonoBehaviour
         {
             Token.initialValue -= 5;
             tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
+            GameObject.Find("TokenReward").GetComponent<AudioSource>().Play();
             tokenRenderer.BounceToken();
             DialogueLua.SetVariable("CampFire.TokenPaidToFox", true);
         }
@@ -258,6 +259,7 @@ public class Player : MonoBehaviour
     {
         Token.initialValue += 10;
         tokenRenderer.TokenNo.text = "X " + Token.initialValue.ToString();
+        GameObject.Find("TokenReward").GetComponent<AudioSource>().Play();
         tokenRenderer.BounceToken();
     }
 
