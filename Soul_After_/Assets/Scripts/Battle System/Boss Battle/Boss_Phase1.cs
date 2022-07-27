@@ -31,8 +31,7 @@ public class Boss_Phase1 : MonoBehaviour
 
 	void Start()
     {
-		bossPosition = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>().transform.position;
-		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
+		bossPosition = bossObject.transform.position;
 		if (waypoints.Length > 0)
         {
             currentWaypoint = waypoints[0];
@@ -48,7 +47,7 @@ public class Boss_Phase1 : MonoBehaviour
     {
         if (!isWaiting)
         {
-			bossPosition = Vector3.MoveTowards(bossPosition, currentWaypoint.transform.position, speed * Time.deltaTime);
+			bossPosition = Vector3.MoveTowards(bossObject.transform.position, currentWaypoint.transform.position, speed * Time.deltaTime);
 			bossObject.transform.position = bossPosition;
 			CheckWaypoint();
         }

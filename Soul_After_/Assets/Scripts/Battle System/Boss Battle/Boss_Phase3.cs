@@ -27,8 +27,7 @@ public class Boss_Phase3 : MonoBehaviour
 
 	void Start()
 	{
-		bossPosition = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>().transform.position;
-		boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
+		bossPosition = bossObject.transform.position;
 		if (waypoints.Length > 0)
 		{
 			currentWaypoint = waypoints[0];

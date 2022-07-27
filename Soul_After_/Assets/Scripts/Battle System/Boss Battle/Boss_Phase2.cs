@@ -17,6 +17,7 @@ public class Boss_Phase2 : MonoBehaviour
     public bool isCooldown = false;
 
     private int rand;
+    [SerializeField]
     private Boss boss;
     private bool isInPlace = false;
 
@@ -26,12 +27,12 @@ public class Boss_Phase2 : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (boss.transform.position != originalPos)
+        if (bossObject.transform.position != originalPos)
         {
-            Vector3 newPosition = Vector3.MoveTowards(boss.transform.position, originalPos, 2 * Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(bossObject.transform.position, originalPos, 2 * Time.deltaTime);
             bossObject.transform.position = newPosition;
         }
-        else if (boss.transform.position == originalPos) isInPlace = true;
+        else if (bossObject.transform.position == originalPos) isInPlace = true;
         if (isInPlace)
         {
             if (!isCooldown && !boss.cooldown)

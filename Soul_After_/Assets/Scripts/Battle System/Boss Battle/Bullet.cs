@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
 
     private List<Turret> turretList = new List<Turret>();
+    [SerializeField]
     private Boss boss;
 
     void Start()
