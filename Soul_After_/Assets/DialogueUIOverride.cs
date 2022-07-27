@@ -6,58 +6,52 @@ using PixelCrushers.DialogueSystem;
 
 public class DialogueUIOverride : MonoBehaviour
 {
-    public Sprite[] DialoguePanels;
+    public Sprite[] dialoguePanels;
 
-    private string ActorName;
-    private Image Image;
+    private string actorName;
+    private Image image;
 
-    private void Update()
+    public void OnConversationLine(Subtitle subtitle)
     {
         ChangeDialogueUI();
     }
-
-    //reference 용
-    void OnConversationLine(Subtitle subtitle)
-    {
-        Debug.Log(subtitle.speakerInfo.Name + " says: " + subtitle.formattedText.text);
-    }
-
     public void ChangeDialogueUI()
     {
-        Image = GetComponent<Image>();       
-        
-        switch (ActorName)
+        image = GetComponent<Image>();
+        actorName = DialogueManager.currentActor.ToString();
+        Debug.Log(actorName);
+        switch (actorName)
         {
-            case "슬아":
-                Image.sprite = DialoguePanels[1];
+            case "Seulha (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[1];
                 break;
 
-            case "빈센트":
-                Image.sprite = DialoguePanels[2];
+            case "Vincent (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[2];
                 break;
 
-            case "마이클":
-                Image.sprite = DialoguePanels[3];
+            case "Michael (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[3];
                 break;
 
-            case "토마스":
-                Image.sprite = DialoguePanels[4];
+            case "Thomas (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[4];
                 break;
 
-            case "예카테리나 2세":
-                Image.sprite = DialoguePanels[5];
+            case "Katherina_II (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[5];
                 break;
 
-            case "여우 같은 놈":
-                Image.sprite = DialoguePanels[6];
+            case "Fox (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[6];
                 break;
 
-            case "곰식":
-                Image.sprite = DialoguePanels[7];
+            case "GomShik (UnityEngine.Transform)":
+                image.sprite = dialoguePanels[7];
                 break;
 
             default:
-                Image.sprite = DialoguePanels[0];
+                image.sprite = dialoguePanels[0];
                 break;
         }
     }
