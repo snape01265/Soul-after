@@ -8,19 +8,24 @@ public class DialogueUIOverride : MonoBehaviour
 {
     public Sprite[] DialoguePanels;
 
+    private string ActorName;
     private Image Image;
-    private Subtitle Subtitle;
 
     private void Update()
     {
         ChangeDialogueUI();
     }
 
+    //reference ¿ë
+    void OnConversationLine(Subtitle subtitle)
+    {
+        Debug.Log(subtitle.speakerInfo.Name + " says: " + subtitle.formattedText.text);
+    }
+
     public void ChangeDialogueUI()
     {
-        Image = GetComponent<Image>();
-        string ActorName = Subtitle.speakerInfo.Name;
-
+        Image = GetComponent<Image>();       
+        
         switch (ActorName)
         {
             case "½½¾Æ":
