@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerPosition = GameObject.FindGameObjectWithTag("Player");
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        turretTransform = GetComponent<SpriteRenderer>().transform;
+        turretTransform = transform;
         originalRotation = transform.rotation;
     }
     private void Update()
@@ -37,7 +37,7 @@ public class Turret : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && !onTurret && playerInRange)
         {
             Vector3 turretPosition = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
-            playerPosition.transform.position = turretPosition;
+            playerPosition.transform.position = new Vector3(turretPosition.x, turretPosition.y - 1, turretPosition.z);
             player.CancelControl();
             playerAnim.SetFloat("Move_X", 0);
             playerAnim.SetFloat("Move_Y", 1);
