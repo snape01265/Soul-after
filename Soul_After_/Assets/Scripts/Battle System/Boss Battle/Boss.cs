@@ -15,8 +15,6 @@ public class Boss : MonoBehaviour
     public bool cooldown = false;
     [HideInInspector]
     public bool phaseChange = false;
-    [HideInInspector]
-    public SpriteRenderer stunEffect;
     public bool damaged;
     public float fadeTime;
     public AudioSource sfx;
@@ -62,7 +60,6 @@ public class Boss : MonoBehaviour
     {
         anim.SetBool("Stunned", true);
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(false);
-        stunEffect.enabled = true;
         cooldown = false;
         fade.FadeInOutStatic(fadeTime);
         yield return new WaitForSeconds(fadeTime);
@@ -78,7 +75,6 @@ public class Boss : MonoBehaviour
         turrets.SetActive(false);
         yield return new WaitForSeconds(fadeTime + 0.5f);
         anim.SetBool("Stunned", false);
-        stunEffect.enabled = false;
         bossPhases[anim.GetInteger("Phase") - 1].SetActive(true);
     }
     public IEnumerator EnableBoss()
