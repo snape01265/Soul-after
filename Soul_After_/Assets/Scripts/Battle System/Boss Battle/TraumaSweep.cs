@@ -38,6 +38,6 @@ public class TraumaSweep : MonoBehaviour
 
 	static Quaternion LookAt2D(Vector2 forward)
 	{
-		return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg);
+		return Quaternion.Euler(0, 0, Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg + 90);
 	}
 }

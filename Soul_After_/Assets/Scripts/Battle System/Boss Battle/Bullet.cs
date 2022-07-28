@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class Bullet : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class Bullet : MonoBehaviour
     private List<Turret> turretList = new List<Turret>();
     [SerializeField]
     private Boss boss;
+    private CameraControl cameraControl;
 
     void Start()
     {
+        cameraControl = GameObject.Find("CMTurret").GetComponent<CameraControl>();
+        //Below is previous scripts
         boss = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Boss>();
         rb.velocity = transform.right * speed;
         GameObject[] turrets = GameObject.FindGameObjectsWithTag("Turret");
@@ -39,6 +43,7 @@ public class Bullet : MonoBehaviour
             sprite.enabled = false;
             boss.anim.SetTrigger("Damage");
             StartCoroutine(DestroyBullet());
+            cameraControl.ShakeCamera();
         }
         else
         {
