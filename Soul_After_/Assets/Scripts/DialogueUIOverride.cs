@@ -19,7 +19,6 @@ public class DialogueUIOverride : MonoBehaviour
     {
         image = GetComponent<Image>();
         actorName = DialogueManager.currentActor.ToString();
-        Debug.Log(actorName);
         switch (actorName)
         {
             case "Seulha (UnityEngine.Transform)":
