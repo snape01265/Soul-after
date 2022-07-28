@@ -12,7 +12,7 @@ public class BossHP : MonoBehaviour
     public GameObject turret;
 
     private GameObject boss;
-    private int maxHealth = 100;
+    private int maxHealth = 150;
     private Animator anim;
 
     void Start()
@@ -31,12 +31,12 @@ public class BossHP : MonoBehaviour
             sfx.Play();
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth == 70)
+        if (currentHealth == maxHealth * 2/3)
         {
             anim.SetInteger("Phase", 2);
             bossScript.phaseChange = true;
         }
-        else if (currentHealth == 40)
+        else if (currentHealth == maxHealth * 1/3)
         {
             anim.SetInteger("Phase", 3);
             bossScript.phaseChange = true;
