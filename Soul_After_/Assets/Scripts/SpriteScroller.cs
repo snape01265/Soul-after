@@ -22,4 +22,8 @@ public class SpriteScroller : MonoBehaviour
             material.mainTextureOffset += offset;
         }
     }
+    public void ResetPosition()
+    {
+        material.mainTextureOffset = new Vector2(0f, 0f);
+    }
 }
