@@ -50,6 +50,6 @@ public class Barrier : MonoBehaviour
 
     private void RenderBarrierHealth()
     {
-        BarrierText.text = "º£¸®¾î: " + barrierHealth.ToString();
+        BarrierText.text = barrierHealth.ToString();
     }
 }
