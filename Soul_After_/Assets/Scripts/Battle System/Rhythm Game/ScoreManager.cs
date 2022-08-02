@@ -17,6 +17,8 @@ public class ScoreManager : MonoBehaviour
     public GameManager gameManager;
     [HideInInspector]
     public GameObject resultScreen;
+    [SerializeField]
+    public SpriteScroller[] spriteScroller;
     [HideInInspector]
     public SceneTransition sceneTransition;
     [HideInInspector]
@@ -63,12 +65,17 @@ public class ScoreManager : MonoBehaviour
         {
             string rankAchieved = DialogueLua.GetVariable("RhythmGame.RankValue").AsString;
 
-            if (rankAchieved == "F" || rankAchieved == "D")
+            if (!gameManager.isMinigame && (rankAchieved == "F" || rankAchieved == "D"))
             {
                 gameover.Play();
             }
             else
             {
+                foreach(SpriteScroller backgroundObject in spriteScroller)
+                {
+                    backgroundObject.ResetPosition();
+                    backgroundObject.enabled = false;
+                }
                 sceneTransition.ChangeScene();
             }
             bgChange = false;
