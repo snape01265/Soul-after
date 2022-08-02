@@ -13,39 +13,39 @@ public class DialogueUIOverride : MonoBehaviour
 
     public void OnConversationLine(Subtitle subtitle)
     {
+        actorName = subtitle.speakerInfo.Name;
         ChangeDialogueUI();
     }
     public void ChangeDialogueUI()
     {
         image = GetComponent<Image>();
-        actorName = DialogueManager.currentActor.ToString();
         switch (actorName)
         {
-            case "Seulha (UnityEngine.Transform)":
+            case "슬아":
                 image.sprite = dialoguePanels[1];
                 break;
 
-            case "Vincent (UnityEngine.Transform)":
+            case "빈센트":
                 image.sprite = dialoguePanels[2];
                 break;
 
-            case "Michael (UnityEngine.Transform)":
+            case "마이클":
                 image.sprite = dialoguePanels[3];
                 break;
 
-            case "Thomas (UnityEngine.Transform)":
+            case "토마스":
                 image.sprite = dialoguePanels[4];
                 break;
 
-            case "Katherina_II (UnityEngine.Transform)":
+            case "예카테리나 2세":
                 image.sprite = dialoguePanels[5];
                 break;
 
-            case "Fox (UnityEngine.Transform)":
+            case "여우 같은 놈":
                 image.sprite = dialoguePanels[6];
                 break;
 
-            case "GomShik (UnityEngine.Transform)":
+            case "곰식":
                 image.sprite = dialoguePanels[7];
                 break;
 
