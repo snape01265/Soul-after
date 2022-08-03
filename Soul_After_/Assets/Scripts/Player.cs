@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     private readonly float minY = -4.7f;
     private readonly float maxY = 3.65f;
     private readonly float normalVol = 1f;
-    private readonly float pauseVol = .6f;
+    private readonly float pauseVol = 1f;
     private GameObject loadSlotMenu;
 
     void Start()
@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
             {
                 if (menuSet.activeSelf)
                 {
+                    menuSet.transform.Find("Sound Settings").gameObject.SetActive(true);
                     menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
                     menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
                     ResumeGame();
