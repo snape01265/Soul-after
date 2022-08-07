@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
-    public float speed = 8;
+    public float speed = 7.5f;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
