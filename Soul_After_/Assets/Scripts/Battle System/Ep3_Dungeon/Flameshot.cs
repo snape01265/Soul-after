@@ -20,7 +20,6 @@ public class Flameshot : MonoBehaviour
 	private Light2D Light;
 	private Waypoint currentWaypoint;
 	private bool isWaiting = false;
-	private bool damaged = false;
 	private PlayerHealth health;
 
 	void Start()

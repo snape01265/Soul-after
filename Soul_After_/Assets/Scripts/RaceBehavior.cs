@@ -64,10 +64,10 @@ public class RaceBehavior : MonoBehaviour
 
     private void FixedUpdate()
     {
+        RenderSwimmers();
         if (raceStart && !raceOver)
         {
             AISwims();
-            RenderSwimmers();
             CheckRaceFinish();
         }
     }
