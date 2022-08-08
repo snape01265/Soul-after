@@ -203,6 +203,23 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 6500929345555857823, guid: de076cc6fac3bf643bd8f72175ef3325, type: 3}
   m_PrefabInstance: {fileID: 22613690}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &22613694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22613692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de337ed4a0f4e214d8dd2e6a5ff467ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  walkTime: 0
+  waitTime: 0
+  canMove: 0
+  walkZone: {fileID: 0}
 --- !u!1 &29007630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3360,7 +3377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &522220273
 Transform:
   m_ObjectHideFlags: 0
@@ -6492,6 +6509,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 742757573}
+          m_TargetAssemblyTypeName: NpcController, Assembly-CSharp
+          m_MethodName: LookInDirection
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onConversationEnd:
       m_PersistentCalls:
         m_Calls:
@@ -6699,6 +6728,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &742757573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742757567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de337ed4a0f4e214d8dd2e6a5ff467ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  walkTime: 0
+  waitTime: 0
+  canMove: 0
+  walkZone: {fileID: 0}
 --- !u!1 &756271206
 GameObject:
   m_ObjectHideFlags: 0
@@ -25721,6 +25767,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2225282683342224404, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2225282683342224406, guid: 24886b01207bd5c44b688e722eaee409, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -25804,6 +25854,18 @@ MonoBehaviour:
         - m_Target: {fileID: 682269457}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2225282682769596485}
+          m_TargetAssemblyTypeName: NpcController, Assembly-CSharp
+          m_MethodName: LookInDirection
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -25994,6 +26056,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contextOn: {fileID: 11400000, guid: 301b1b7b1a0166848b77b6ac8c431fac, type: 2}
   contextOff: {fileID: 11400000, guid: f8e040436515b7a449e2f6a08dd218ca, type: 2}
+--- !u!114 &2225282682769596485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2225282682769596480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de337ed4a0f4e214d8dd2e6a5ff467ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  walkTime: 0
+  waitTime: 0
+  canMove: 0
+  walkZone: {fileID: 0}
 --- !u!61 &2225282682769596488
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26141,6 +26220,18 @@ MonoBehaviour:
         - m_Target: {fileID: 682269457}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7672006300023912846}
+          m_TargetAssemblyTypeName: NpcController, Assembly-CSharp
+          m_MethodName: LookInDirection
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -26357,3 +26448,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &7672006300023912846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672006300023912840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de337ed4a0f4e214d8dd2e6a5ff467ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  walkTime: 0
+  waitTime: 0
+  canMove: 0
+  walkZone: {fileID: 0}
