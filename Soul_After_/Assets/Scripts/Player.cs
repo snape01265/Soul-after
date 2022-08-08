@@ -18,10 +18,11 @@ public class Player : MonoBehaviour
     public GameObject askWho;
     public InputField myName;
     public FloatValue curVol;
-    public AnimatorOverrideController changeSuit;
+    public AnimatorOverrideController Suit;
+    public AnimatorOverrideController Doc;
     public PlayableDirector timeline;
     public VectorValue startingPosition;
-    public AnimatorValue animatorValue;
+    public BoolValue SuitOn;
     [NonSerialized]
     public bool ispaused = false;
     [NonSerialized]
@@ -49,7 +50,10 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
-        animator.runtimeAnimatorController = animatorValue.initialAnimator as RuntimeAnimatorController;
+        if (SuitOn.initialValue)
+            animator.runtimeAnimatorController = Suit;
+        else
+            animator.runtimeAnimatorController = Doc;
     }
 
     void Update()
@@ -199,8 +203,8 @@ public class Player : MonoBehaviour
 
     public void ChangeSuit()
     {
-        animatorValue.initialAnimator = changeSuit;
-        animator.runtimeAnimatorController = animatorValue.initialAnimator as RuntimeAnimatorController;
+        SuitOn.initialValue = true;
+        animator.runtimeAnimatorController = Suit;
     }
 
     public void PlayerLookRight()
