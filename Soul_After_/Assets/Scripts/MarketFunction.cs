@@ -45,6 +45,7 @@ public class MarketFunction : MonoBehaviour
                 DialogueLua.SetItemField(ItemNo, "Installed", true);
                 IMAGE[ItemID].color = Color.grey;
                 PanelColor = IMAGE[ItemID].color;
+                player.MakePayments();
             }
 
             foreach (string s in Items)
