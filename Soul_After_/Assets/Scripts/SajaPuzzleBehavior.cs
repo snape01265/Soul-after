@@ -41,6 +41,7 @@ public class SajaPuzzleBehavior : MonoBehaviour
             // finish event
             DialogueLua.SetVariable("PuzzleFinished_Saja", true);
             DialogueLua.SetVariable("TimelineToPlay", 3);
+            GameObject.Find("Normal_Talk").SetActive(false);
             finished = true;
             _audio.Play();
         }
