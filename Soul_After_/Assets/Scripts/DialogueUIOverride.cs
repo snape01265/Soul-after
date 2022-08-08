@@ -23,14 +23,17 @@ public class DialogueUIOverride : MonoBehaviour
         {
             case "슬아":
                 image.sprite = dialoguePanels[1];
+                image.color = new Color(.6f, .6f, .6f);
                 break;
 
             case "빈센트":
                 image.sprite = dialoguePanels[2];
+                image.color = new Color(.6f, .6f, .6f);
                 break;
 
             case "마이클":
                 image.sprite = dialoguePanels[3];
+                image.color = new Color(.6f, .6f, .6f);
                 break;
 
             case "토마스":
@@ -43,14 +46,17 @@ public class DialogueUIOverride : MonoBehaviour
 
             case "여우 같은 놈":
                 image.sprite = dialoguePanels[6];
+                image.color = new Color(.6f, .6f, .6f);
                 break;
 
             case "곰식":
                 image.sprite = dialoguePanels[7];
+                image.color = new Color(.6f, .6f, .6f);
                 break;
 
             default:
                 image.sprite = dialoguePanels[0];
+                image.color = new Color(.8f, .8f, .8f);
                 break;
         }
     }

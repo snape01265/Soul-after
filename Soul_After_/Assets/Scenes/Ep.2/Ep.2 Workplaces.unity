@@ -2837,6 +2837,26 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 4770889765666779275, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
   m_PrefabInstance: {fileID: 359514664}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &359514666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3261455662815734082, guid: a8f0bb9c59930fe4c8a438054368882f, type: 3}
+  m_PrefabInstance: {fileID: 359514664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &359514667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359514666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b799838d861178a42bd3fb92b0b1258b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audio: {fileID: 359514665}
+  duration: 0.75
+  targetVolume: 0
 --- !u!1001 &369088286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29799,7 +29819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482667350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55.37, y: 5.48, z: -10}
+  m_LocalPosition: {x: 60.25, y: 3.7999997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1492954461}
@@ -42526,6 +42546,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 37ef8759975e2ac41aa0180d75f16834, type: 2}
     - {fileID: 11400000, guid: 3d0093d92d5511240ba415db48961269, type: 2}
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
+    - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
+    - {fileID: 11400000, guid: 939af2e2c79f0384399b7b9852079f32, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -42604,6 +42626,46 @@ MonoBehaviour:
         - m_Target: {fileID: 709163356}
           m_TargetAssemblyTypeName: Player, Assembly-CSharp
           m_MethodName: CancelControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1771971458}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2142039702}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 359514667}
+          m_TargetAssemblyTypeName: MusicFade, Assembly-CSharp
+          m_MethodName: FadeMusic
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
