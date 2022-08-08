@@ -126,8 +126,8 @@ public class Flameshot : MonoBehaviour
 		else if (other.GetComponent<PlayerHealth>() && !other.GetComponent<PlayerHealth>().PainState)
 		{
 			health = other.GetComponent<PlayerHealth>();
-			health.PainState = true;
 			health.TakeDamage(damage);
+			health.PainState = true;
 			StartCoroutine(WaitForDmg());
 		}
 	}
