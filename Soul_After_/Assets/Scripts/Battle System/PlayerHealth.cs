@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
 
     private List<HeartRenderer> heartRenderers;
     private IEnumerator currentIFrame;
-    //[NonSerialized]
+    [NonSerialized]
     public bool PainState = false;
     private bool ShieldBroken = false;
     private bool ShieldCD = false;
