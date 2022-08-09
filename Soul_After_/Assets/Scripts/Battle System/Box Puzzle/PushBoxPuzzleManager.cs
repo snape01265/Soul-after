@@ -23,7 +23,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     }
     private int turnCount = 1;
     public FloatValue puzzleSave;
-    [HideInInspector]
+    //[HideInInspector]
     public int puzzleNum;
     [HideInInspector]
     public bool goalReached = false;
@@ -111,11 +111,13 @@ public class PushBoxPuzzleManager : MonoBehaviour
                     StartCoroutine(nextPuzzle("Start2", 8));
                     goalReached = false;
                     puzzleNum += 1;
+                    puzzleSave.initialValue = puzzleNum;
                     break;
                 case 1:
                     StartCoroutine(nextPuzzle("Start3", 3));
                     goalReached = false;
                     puzzleNum += 1;
+                    puzzleSave.initialValue = puzzleNum;
                     break;
                 case 2:
                     fade.FadeInOutStatic(fadeDuration);
