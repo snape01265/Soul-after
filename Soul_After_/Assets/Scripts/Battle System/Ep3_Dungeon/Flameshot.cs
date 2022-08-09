@@ -127,7 +127,6 @@ public class Flameshot : MonoBehaviour
 		{
 			health = other.GetComponent<PlayerHealth>();
 			health.TakeDamage(damage);
-			health.PainState = true;
 			StartCoroutine(WaitForDmg());
 		}
 	}
