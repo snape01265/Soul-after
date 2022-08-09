@@ -23,7 +23,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     }
     private int turnCount = 1;
     public FloatValue puzzleSave;
-    //[HideInInspector]
+    [HideInInspector]
     public int puzzleNum;
     [HideInInspector]
     public bool goalReached = false;
