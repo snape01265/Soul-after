@@ -990,7 +990,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4, y: 2.4}
+    oldSize: {x: 15, y: 15}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa40e6232b190a47b01f65fa31965d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HazardSpeed: 4
+  HazardSpeed: 3.5
   ChaseEndXAxis: 2
   isMoving: 0
 --- !u!95 &123812613
@@ -21237,6 +21237,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 37ef8759975e2ac41aa0180d75f16834, type: 2}
     - {fileID: 11400000, guid: ee9816830b60e0e4f8341a41565fbf3c, type: 2}
     - {fileID: 11400000, guid: 88f00affea5bad944861a9c4ea2f55e5, type: 2}
+    - {fileID: 11400000, guid: 939af2e2c79f0384399b7b9852079f32, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -21271,6 +21272,20 @@ MonoBehaviour:
         - m_Target: {fileID: 1652312255}
           m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
           m_MethodName: RestoreHealth
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1473480507}
+          m_TargetAssemblyTypeName: MusicFade, Assembly-CSharp
+          m_MethodName: FadeMusic
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -22014,7 +22029,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &895128975
 MonoBehaviour:
@@ -22377,6 +22392,10 @@ PrefabInstance:
     - target: {fileID: 2490472058125945021, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869986409303595189, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4250899493977110654, guid: 4c8dd344ed75ea34f9c7d49b3550a4df, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -29114,7 +29133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa40e6232b190a47b01f65fa31965d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HazardSpeed: 4
+  HazardSpeed: 3.5
   ChaseEndXAxis: 22
   isMoving: 0
 --- !u!50 &1161944273
@@ -47561,7 +47580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa40e6232b190a47b01f65fa31965d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HazardSpeed: 4
+  HazardSpeed: 3.5
   ChaseEndXAxis: 40
   isMoving: 0
 --- !u!50 &1759114191
