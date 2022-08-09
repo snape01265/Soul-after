@@ -41,11 +41,18 @@ public class MarketFunction : MonoBehaviour
         {
             if (DialogueLua.GetItemField(ItemNo, "State").asBool == false && DialogueLua.GetItemField(ItemNo, "Installed").asBool == false)
             {
-                DialogueLua.SetItemField(ItemNo, "State", true);
-                DialogueLua.SetItemField(ItemNo, "Installed", true);
-                IMAGE[ItemID].color = Color.grey;
-                PanelColor = IMAGE[ItemID].color;
-                player.MakePayments();
+                if (player.Token.initialValue > 0 && player.Token.initialValue >= player.Items[ItemID].Price)
+                {
+                    DialogueLua.SetItemField(ItemNo, "State", true);
+                    DialogueLua.SetItemField(ItemNo, "Installed", true);
+                    IMAGE[ItemID].color = Color.grey;
+                    PanelColor = IMAGE[ItemID].color;
+                    player.MakePayments();
+                }
+                else
+                {
+                    player.NoMoneyTab.SetActive(true);
+                }
             }
 
             foreach (string s in Items)
