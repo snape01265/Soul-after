@@ -282,9 +282,4 @@ public class Player : MonoBehaviour
             col.enabled = true;
         }
     }
-
-    public void ChangeSpeed(int ChangedSpeed)
-    {
-        speed = ChangedSpeed;
-    }
 }
