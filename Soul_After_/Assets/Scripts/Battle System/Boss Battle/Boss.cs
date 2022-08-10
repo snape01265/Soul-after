@@ -20,11 +20,13 @@ public class Boss : MonoBehaviour
     public AudioSource sfx;
 
     private Fadein fade;
+    private BoxCollider2D boxCollider2D;
 
     void Start()
     {
         anim = this.GetComponent<Animator>();
         fade = GameObject.Find("Fadein").GetComponent<Fadein>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -32,10 +34,12 @@ public class Boss : MonoBehaviour
         if(cooldown)
         {
             anim.SetBool("Vulnerable", true);
+            boxCollider2D.enabled = true;
         }
         else
         {
             anim.SetBool("Vulnerable", false);
+            boxCollider2D.enabled = false;
         }
         if(phaseChange)
         {
@@ -54,6 +58,7 @@ public class Boss : MonoBehaviour
             if (sfx)
                 sfx.Play();
             StartCoroutine(BossStun());
+            boxCollider2D.enabled = false;
         }
     }
     public IEnumerator BossStun()
