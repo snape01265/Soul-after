@@ -70,7 +70,6 @@ public class PlayerHealth : MonoBehaviour
             else
             {
                 CurHP.initialValue -= dmg;
-                RenderHp(oldhp, (int)CurHP.initialValue);
             }
 
             if ((int)CurHP.initialValue <= 0)
@@ -83,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
             }
             else if (currentIFrame == null)
             {
+                RenderHp(oldhp, (int)CurHP.initialValue);
                 StartCoroutine(IFrame());
                 currentIFrame = IFrame();
             }
