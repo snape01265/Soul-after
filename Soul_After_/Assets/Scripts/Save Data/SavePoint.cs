@@ -10,7 +10,7 @@ public class SavePoint : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && inRange)
+        if (Input.GetButtonDown("Jump") && inRange)
         {
             Transform playerPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
             startingPosition.initialValue = new Vector2(playerPos.transform.position.x, playerPos.transform.position.y);
