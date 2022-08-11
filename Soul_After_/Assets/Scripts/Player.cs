@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
-    public float speed = 6f;
+    public float speed = 6.5f;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
             animator.runtimeAnimatorController = Suit;
         else
             animator.runtimeAnimatorController = Doc;
+        
     }
 
     void Update()
@@ -68,12 +69,12 @@ public class Player : MonoBehaviour
                     menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
                     menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
                     ResumeGame();
-                    menuSet.SetActive(false);
+                    menuSet.SetActive(false);                    
                 }
                 else
                 {
                     PauseGame();
-                    menuSet.SetActive(true);
+                    menuSet.SetActive(true);                   
                 }
             }
             else
@@ -115,6 +116,8 @@ public class Player : MonoBehaviour
 
     public void ResumeGame()
     {
+        DialogueManager.Unpause();
+        GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
@@ -122,6 +125,8 @@ public class Player : MonoBehaviour
 
     public void PauseGame()
     {
+        DialogueManager.Pause();
+        GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
