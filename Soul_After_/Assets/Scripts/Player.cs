@@ -30,7 +30,9 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
-    public float speed = 6.5f;
+    public float speed = 6f;
+    [NonSerialized]
+    public bool canPause = true;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && canPause)
         {
             if (!loadSlotMenu.activeSelf)
             {
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour
             {
                 loadSlotMenu.SetActive(false);
             }
-        } 
+        }
     }
 
     private void FixedUpdate()
