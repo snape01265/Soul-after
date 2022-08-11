@@ -55,8 +55,7 @@ public class Player : MonoBehaviour
         if (SuitOn.initialValue)
             animator.runtimeAnimatorController = Suit;
         else
-            animator.runtimeAnimatorController = Doc;
-        
+            animator.runtimeAnimatorController = Doc;       
     }
 
     void Update()
@@ -117,18 +116,24 @@ public class Player : MonoBehaviour
     }
 
     public void ResumeGame()
-    {
-        DialogueManager.Unpause();
-        GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
+    {    
+        if (DialogueManager.isConversationActive)
+        {
+            DialogueManager.Unpause();
+            GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
+        }
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
     }
 
     public void PauseGame()
-    {
-        DialogueManager.Pause();
-        GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
+    {   
+        if (DialogueManager.IsConversationActive == true)
+        {
+            DialogueManager.Pause();
+            GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
+        }
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
