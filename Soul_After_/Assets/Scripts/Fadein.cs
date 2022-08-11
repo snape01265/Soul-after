@@ -18,7 +18,7 @@ public class Fadein : MonoBehaviour
 
         if (fadeInPanel != null)
         {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
             Destroy(panel, 1);
         }
     }

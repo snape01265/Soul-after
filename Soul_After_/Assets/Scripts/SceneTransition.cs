@@ -41,6 +41,7 @@ public class SceneTransition : MonoBehaviour
         {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
+        Time.timeScale = 1;
         yield return new WaitForSeconds(fadeWait);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!asyncOperation.isDone)
