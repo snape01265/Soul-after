@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
-    public float speed = 6f;
+    public float speed = 6.5f;
     [NonSerialized]
     public bool canPause = true;
 
