@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     public bool control = true;
     [NonSerialized]
     public float speed = 6f;
+    [NonSerialized]
+    public bool canPause = true;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && canPause)
         {
             if (!loadSlotMenu.activeSelf)
             {
@@ -80,7 +82,14 @@ public class Player : MonoBehaviour
             {
                 loadSlotMenu.SetActive(false);
             }
-        } 
+        } else if (!canPause)
+        {
+            menuSet.transform.Find("Sound Settings").gameObject.SetActive(true);
+            menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
+            menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
+            ResumeGame();
+            menuSet.SetActive(false);
+        }
     }
 
     private void FixedUpdate()
