@@ -52,10 +52,13 @@ public class Player : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
         transform.position = startingPosition.initialValue;
-        if (SuitOn.initialValue)
-            animator.runtimeAnimatorController = Suit;
-        else
-            animator.runtimeAnimatorController = Doc;       
+        if (SuitOn != null)
+        {
+            if (SuitOn.initialValue)
+                animator.runtimeAnimatorController = Suit;
+            else
+                animator.runtimeAnimatorController = Doc;
+        }            
     }
 
     void Update()
