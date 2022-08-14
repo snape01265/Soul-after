@@ -45,13 +45,17 @@ public class Player : MonoBehaviour
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .6f;
     private GameObject loadSlotMenu;
+    private GameObject dialoguePanel;
+    private GameObject saveSlotMenu;
 
     void Start()
     {
         AudioListener.volume = curVol.initialValue * normalVol;
         animator = GetComponent<Animator>();
+        dialoguePanel = GameObject.Find("VN Template Standard Dialogue UI_Practice");
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
+        saveSlotMenu = GameObject.Find("UI").transform.Find("Save Slot Menu").gameObject;
         transform.position = startingPosition.initialValue;
         if (SuitOn != null)
         {
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && canPause)
         {
-            if (!loadSlotMenu.activeSelf)
+            if (!loadSlotMenu.activeSelf && !saveSlotMenu.activeSelf)
             {
                 if (menuSet.activeSelf)
                 {
@@ -126,24 +130,24 @@ public class Player : MonoBehaviour
             DialogueManager.Unpause();
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
         }      
-        PixelCrushers.UIPanel.monitorSelection = true;
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
     }
 
     public void PauseGame()
-    {   
+    {
         if (DialogueManager.IsConversationActive)
         {
             DialogueManager.Pause();
-            GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
+            if (dialoguePanel.transform.Find("Dialogue Panel").gameObject.activeSelf)
+            {
+                GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
+            }        
         }
-        PixelCrushers.UIPanel.monitorSelection = false;
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
-        StartCoroutine(ClearSelectionAfterOneFrame());
     }
 
     //application quit
@@ -300,11 +304,5 @@ public class Player : MonoBehaviour
         {
             col.enabled = true;
         }
-    }
-
-    IEnumerator ClearSelectionAfterOneFrame() // Could select a pause menu button instead.
-    {
-        yield return null;
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
 }

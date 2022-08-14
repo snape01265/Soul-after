@@ -8,11 +8,16 @@ public class DialogueSystemFunction : MonoBehaviour
 {
     public void EndDialogue()
     {
-        if (DialogueManager.IsConversationActive)
+        if (DialogueManager.isConversationActive)
         {
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
-            DialogueManager.StopConversation();
-            DialogueManager.Unpause();
-        }    
+        }
+        DialogueManager.Unpause();
+        DialogueManager.StopConversation();
+    }
+
+    public void EndDialogueForSavePoints()
+    {
+        DialogueManager.StopConversation();
     }
 }
