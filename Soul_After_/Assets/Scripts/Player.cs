@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
                 animator.runtimeAnimatorController = Suit;
             else
                 animator.runtimeAnimatorController = Doc;
-        }            
+        }
     }
 
     void Update()
@@ -119,12 +120,13 @@ public class Player : MonoBehaviour
     }
 
     public void ResumeGame()
-    {    
-        if (DialogueManager.isConversationActive)
+    {
+        if (DialogueManager.IsConversationActive)
         {
             DialogueManager.Unpause();
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
-        }
+        }      
+        PixelCrushers.UIPanel.monitorSelection = true;
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
@@ -132,14 +134,16 @@ public class Player : MonoBehaviour
 
     public void PauseGame()
     {   
-        if (DialogueManager.IsConversationActive == true)
+        if (DialogueManager.IsConversationActive)
         {
             DialogueManager.Pause();
             GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
         }
+        PixelCrushers.UIPanel.monitorSelection = false;
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;
+        StartCoroutine(ClearSelectionAfterOneFrame());
     }
 
     //application quit
@@ -296,5 +300,11 @@ public class Player : MonoBehaviour
         {
             col.enabled = true;
         }
+    }
+
+    IEnumerator ClearSelectionAfterOneFrame() // Could select a pause menu button instead.
+    {
+        yield return null;
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
     }
 }

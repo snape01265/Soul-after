@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PixelCrushers.DialogueSystem;
+using UnityEngine.UI;
 
 public class DialogueSystemFunction : MonoBehaviour
 {
-    private DialogueSystemController dialogueSystem;
-    void Start()
-    {
-        dialogueSystem = GameObject.Find("DialogueSystem").GetComponent<DialogueSystemController>();
-    }
-
     public void EndDialogue()
     {
-        dialogueSystem.StopConversation();
+        if (DialogueManager.IsConversationActive)
+        {
+            GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
+            DialogueManager.StopConversation();
+            DialogueManager.Unpause();
+        }    
     }
 }
