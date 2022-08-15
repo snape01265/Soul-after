@@ -15,11 +15,15 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     private Vector2 m_NextScrollPosition = Vector2.up;
     void OnEnable()
     {
+
+        m_ScrollRect = GetComponent<ScrollRect>();
+
         if (m_ScrollRect)
         {
-            m_NextScrollPosition = m_ScrollRect.normalizedPosition;
             m_ScrollRect.content.GetComponentsInChildren(m_Selectables);
+            m_NextScrollPosition = m_ScrollRect.normalizedPosition;
         }
+        ScrollToSelected(true);
     }
 
     private void Awake()
@@ -40,15 +44,7 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerEnterHandler, IPointe
     {
         // Scroll via input.
         InputScroll();
-        if (!mouseOver)
-        {
-            // Lerp scrolling code.
-            m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
-        }
-        else
-        {
-            m_NextScrollPosition = m_ScrollRect.normalizedPosition;
-        }
+        m_ScrollRect.normalizedPosition = Vector2.Lerp(m_ScrollRect.normalizedPosition, m_NextScrollPosition, scrollSpeed * Time.unscaledDeltaTime);
     }
 
     void InputScroll()
