@@ -45,7 +45,6 @@ public class BossHP : MonoBehaviour
         {
             //Death Animation?
             turret.SetActive(false);
-            boss.SetActive(false);
             endScene.Play();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,7 +31,9 @@ public class Player : MonoBehaviour
     [NonSerialized]
     public bool control = true;
     [NonSerialized]
-    public float speed = 6f;
+    public float speed = 6.5f;
+    [NonSerialized]
+    public bool canPause = true;
 
     private Rigidbody2D myRigidbody;
     private Vector3 change;
@@ -42,25 +45,32 @@ public class Player : MonoBehaviour
     private readonly float normalVol = 1f;
     private readonly float pauseVol = .6f;
     private GameObject loadSlotMenu;
+    private GameObject dialoguePanel;
+    private GameObject saveSlotMenu;
 
     void Start()
     {
         AudioListener.volume = curVol.initialValue * normalVol;
         animator = GetComponent<Animator>();
+        dialoguePanel = GameObject.Find("VN Template Standard Dialogue UI_Practice");
         myRigidbody = GetComponent<Rigidbody2D>();
         loadSlotMenu = GameObject.Find("LoadFunction").transform.Find("LoadSlotMenu").gameObject;
+        saveSlotMenu = GameObject.Find("UI").transform.Find("Save Slot Menu").gameObject;
         transform.position = startingPosition.initialValue;
-        if (SuitOn.initialValue)
-            animator.runtimeAnimatorController = Suit;
-        else
-            animator.runtimeAnimatorController = Doc;
+        if (SuitOn != null)
+        {
+            if (SuitOn.initialValue)
+                animator.runtimeAnimatorController = Suit;
+            else
+                animator.runtimeAnimatorController = Doc;
+        }
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && canPause)
         {
-            if (!loadSlotMenu.activeSelf)
+            if (!loadSlotMenu.activeSelf && !saveSlotMenu.activeSelf)
             {
                 if (menuSet.activeSelf)
                 {
@@ -68,19 +78,19 @@ public class Player : MonoBehaviour
                     menuSet.transform.Find("Option Settings").gameObject.SetActive(true);
                     menuSet.transform.Find("Normal Settings").gameObject.SetActive(true);
                     ResumeGame();
-                    menuSet.SetActive(false);
+                    menuSet.SetActive(false);                    
                 }
                 else
                 {
                     PauseGame();
-                    menuSet.SetActive(true);
+                    menuSet.SetActive(true);                   
                 }
             }
             else
             {
                 loadSlotMenu.SetActive(false);
             }
-        } 
+        }
     }
 
     private void FixedUpdate()
@@ -115,6 +125,11 @@ public class Player : MonoBehaviour
 
     public void ResumeGame()
     {
+        if (DialogueManager.IsConversationActive)
+        {
+            DialogueManager.Unpause();
+            GameObject.Find("Continue Button").GetComponent<Button>().interactable = true;
+        }      
         Time.timeScale = 1;
         ispaused = false;
         AudioListener.volume = curVol.initialValue * normalVol;
@@ -122,6 +137,14 @@ public class Player : MonoBehaviour
 
     public void PauseGame()
     {
+        if (DialogueManager.IsConversationActive)
+        {
+            DialogueManager.Pause();
+            if (dialoguePanel.transform.Find("Dialogue Panel").gameObject.activeSelf)
+            {
+                GameObject.Find("Continue Button").GetComponent<Button>().interactable = false;
+            }        
+        }
         Time.timeScale = 0;
         ispaused = true;
         AudioListener.volume = curVol.initialValue * pauseVol;

@@ -13,6 +13,13 @@ public class SceneTransition : MonoBehaviour
     public float fadeWait;
     public AudioSource _audio;
 
+    private Player player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player") && !other.isTrigger)
@@ -23,6 +30,7 @@ public class SceneTransition : MonoBehaviour
 
     public void ChangeScene()
     {
+        player.canPause = false;
         if(_audio != null)
         {
             _audio.Play();
@@ -41,6 +49,7 @@ public class SceneTransition : MonoBehaviour
         {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
+        Time.timeScale = 1;
         yield return new WaitForSeconds(fadeWait);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!asyncOperation.isDone)

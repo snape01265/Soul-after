@@ -7,13 +7,17 @@ public class RadioFunction : MonoBehaviour
 {
     public AudioClip[] Songs;
 
-    private AudioSource AudioSource;
+    private GameObject musicPlayer;
 
-    public void SelectSong()
+    private void Start()
     {
-        AudioSource = GetComponent<AudioSource>();
+        musicPlayer = GameObject.Find("Music Player");
+        SelectSong();
+    }
+    public void SelectSong()
+    {      
         int SongSelection = DialogueLua.GetVariable("SongSelection").asInt;
-        AudioSource.clip = Songs[SongSelection - 1];
-        AudioSource.Play();
+        musicPlayer.GetComponent<AudioSource>().clip = Songs[SongSelection - 1];
+        musicPlayer.GetComponent<AudioSource>().Play();
     }
 }

@@ -60,7 +60,7 @@ public class MarketFunction : MonoBehaviour
                 if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == true)
                 {
                     DialogueLua.SetItemField(s, "Installed", false);
-                    IMAGE[i].color = Color.yellow;
+                    IMAGE[i].color = Color.green;
                     PanelColor = IMAGE[i].color;
                 }
                 i++;
@@ -106,7 +106,7 @@ public class MarketFunction : MonoBehaviour
                 }
                 else if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == false)
                 {
-                    IMAGE[i].color = Color.yellow;
+                    IMAGE[i].color = Color.green;
                     PanelColor = IMAGE[i].color;
                 }
                 else if (DialogueLua.GetItemField(s, "State").asBool == true && DialogueLua.GetItemField(s, "Installed").asBool == true)

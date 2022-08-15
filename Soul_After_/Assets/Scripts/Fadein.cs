@@ -15,11 +15,13 @@ public class Fadein : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        player.GetComponent<Player>().canPause = false;
 
         if (fadeInPanel != null)
         {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity);
             Destroy(panel, 1);
+            StartCoroutine(ResetPause());
         }
     }
 
@@ -58,6 +60,7 @@ public class Fadein : MonoBehaviour
             Destroy(panel, 1);
         }
     }
+
     private IEnumerator FIOStatic(float time)
     {
         if (fadeToWhite != null)
@@ -71,5 +74,11 @@ public class Fadein : MonoBehaviour
             GameObject panel = Instantiate(fadeFromWhite, Vector3.zero, Quaternion.identity);
             Destroy(panel, time);
         }
+    }
+
+    private IEnumerator ResetPause()
+    {
+        yield return new WaitForSeconds(1);
+        player.GetComponent<Player>().canPause = true;
     }
 }

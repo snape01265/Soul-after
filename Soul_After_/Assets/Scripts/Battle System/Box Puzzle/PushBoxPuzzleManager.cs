@@ -47,6 +47,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
     private GameObject mainCamera;
     private bool isMirrorWorld = false;
     private bool isAvailable = true;
+    private bool timelinePlaying = false;
 
     private void Start()
     {
@@ -72,7 +73,7 @@ public class PushBoxPuzzleManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(keyForMirror) && isAvailable && !box.pushing)
+        if (Input.GetKeyDown(keyForMirror) && isAvailable && !box.pushing && !timelinePlaying)
         {
             mirrorSFX.Play();
             if (!isMirrorWorld)
@@ -265,5 +266,10 @@ public class PushBoxPuzzleManager : MonoBehaviour
     public void SetCounter(int count)
     {
         CounterTxt.text = "≥≤¿∫ ≈œ : " + count.ToString();
+    }
+
+    public void SetTimelineBoolValue(bool playing)
+    {
+        timelinePlaying = playing;
     }
 }
